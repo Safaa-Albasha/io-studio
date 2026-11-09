@@ -11,9 +11,12 @@ description: يجلب آخر أخبار نيش صانع المحتوى ويبن�
 ## مسار Composio (ScrapeCreators) — الترند من الحسابات اللي يتابعها
 هذا المسار اليومي الأول إذا عنده حسابات إنستقرام بـ `.io/sources.json` (`accounts` بـ `platform: "instagram"`). الترند هنا = منشور جاب مشاهدات أكثر من **عادة حسابه**: `outlier = المشاهدات ÷ وسيط مشاهدات الحساب`.
 > ScrapeCreators هو المسار اللي جرّبه صاحب البلگن يومياً. مزوّدين ثانيين (تيك توك، يوتيوب، أدوات سحب ثانية) — لاحقاً.
-> **الكلفة** حسب خطة المستخدم بـ ScrapeCreators (طلب واحد لكل حساب بكل سحب) — گولها له أول مرة.
+> القواعد الكاملة: `references/scrapecreators-composio.md` — اقراها قبل أول سحب.
 
-1. **تأكد من الربط:** `COMPOSIO_MANAGE_CONNECTIONS` بـ toolkit `scrapecreators`. مو مربوط؟ گول له: «افتح رابط الربط اللي طلع، وحط مفتاح API من حسابك بـ scrapecreators.com (Composio → Toolkits → ScrapeCreators)»، وانتظر بـ `COMPOSIO_WAIT_FOR_CONNECTIONS`. ما فيه Composio بهالجلسة أصلاً؟ روح للبديل تحت.
+0. **الكلفة (أول مرة بس):** ScrapeCreators يشتغل على **الحساب الفوري (instant account) مال Composio** — المستخدم يدفع من رصيده بـ Composio، وما يحتاج حساب أو مفتاح ScrapeCreators. `SCRAPECREATORS_LIST_INSTAGRAM_USER_POSTS` ≈ ٠٫٠٠١$ للطلب (طلب لكل حساب). احسب له تقدير قائمته (مثلاً ٢٠ حساب يومياً ≈ ٠٫٠٢$ باليوم ≈ ٠٫٦٠$ بالشهر)، اقرا الأسعار الحالية من `instant_account.prices`، واسأله مرة وحدة. لا تستخدم `SCRAPECREATORS_LIST_INSTAGRAM_POST_COMMENTS` ويّا `include_replies: true` (١٥ رصيد للطلب). لـ `SCRAPECREATORS_GET_INSTAGRAM_POST` مرّر `cache_max_age: "1d"`.
+1. **تأكد من الربط — بدون ما تطلب تسجيل دخول:** `COMPOSIO_SEARCH_TOOLS` بحالة استخدام مثل "list recent instagram posts of a public user via scrapecreators". إذا `has_active_connection: true` و`instant_account.allowed_tool_slugs` بيها `SCRAPECREATORS_LIST_INSTAGRAM_USER_POSTS` ← كمّل.
+   - **لا تستدعي `COMPOSIO_MANAGE_CONNECTIONS` بـ `action: "add"` لـ `scrapecreators` أبداً** — يفتح شاشة تطلب مفتاح ما عنده.
+   - بس إذا الحساب الفوري مو موجود أو طلع خطأ صلاحية: وقف وگوله بلهجته، واعرض رابط الربط كخيار مع توضيح إنه يحتاج مفتاح ScrapeCreators خاص بيه. ما فيه Composio بهالجلسة أصلاً؟ روح للبديل تحت.
 2. **عبّي القالب من المشروع:**
    `node "${CLAUDE_PLUGIN_ROOT}/engine/trends.js" fill --dir "$CLAUDE_PROJECT_DIR" --out output/trends/pull.py`
    يعبّي قسم `IO:INPUTS` بـ `skills/io-trends/scripts/composio_trend_pull.py`: `HANDLES` (حسابات إنستقرام)، `ARABIC` (اللي معلّم عليها `"arabic": true`، وغيرها يتعرّف تلقائياً من الكابشن)، `LAST_N`، و`KEYWORDS` = `sources.keywords` + المجال من `creator-profile.md` + كلمات حزمة نوع الحساب (`types.json` → `keywords`). شوف القيم بـ `trends.js inputs`. `KEYWORDS` فاضي = كل المنشورات.
@@ -23,7 +26,8 @@ description: يجلب آخر أخبار نيش صانع المحتوى ويبن�
    - يحفظ الصفوف بـ `.io/trends/<التاريخ>.json`، ويكتب `.io/trends-last.json`.
    - وسيط كل حساب ← `.io/benchmark.json` (قسم «قارن نفسك» بصفحة الإحصائيات).
    - أقوى N بالـ outlier (≥ `--min`) ← أفكار بـ `plan.json` (`source:"trend"`، `trendRef`، و`why` مثل «هالريل جاب ٤.٢× مشاهدات الحساب المعتادة»).
-6. **كمّل مثل قبل:** ابنِ اللوحة (الخطوات ٤–٦ تحت) من الصفوف — كل بطاقة فيها الـ outlier والرابط والثمبنيل إذا موجود — وحسّن عناوين الأفكار بلهجته وحزمة نوعه (`rewrite-idea` أو عدّل `plan.json`). ما طلع شي فوق `--min`؟ كمّل بالبديل تحت للأخبار.
+   - حساب فشل (خاص، تغيّر اسمه، خطأ) ← تخطّاه وسجّله تحت «مصادر فشلت» بملخص اليوم وكمّل. المواقع وRSS بـ `sites` ما تحتاج Composio — جيبها مباشرة.
+6. **كمّل مثل قبل:** ابنِ اللوحة (الخطوات ٤–٦ تحت) من الصفوف — كل بطاقة فيها الـ outlier والرابط والثمبنيل إذا موجود — وحسّن عناوين الأفكار بلهجته (٣–٥ أفكار: هوك ≤٦ كلمات، الصيغة ريل/كاروسيل/يوتيوب، ورابط المصدر؛ لكل منشور اعرض الحساب والتاريخ وأول سطر من الكابشن واللايكات/التعليقات/المشاهدات. **لا تنسخ كلام أو سكربت أي حساب** — خذ الفكرة واكتبها بصوته، وأسماء الحسابات ما تدخل بمنشوراته) وحزمة نوعه (`rewrite-idea` أو عدّل `plan.json`). ما طلع شي فوق `--min`؟ كمّل بالبديل تحت للأخبار.
 
 ## البديل: البحث العام (WebSearch)
 بدون Composio/ScrapeCreators، أو للأخبار والمواقع (`sites`) — هذا المسار القديم:
