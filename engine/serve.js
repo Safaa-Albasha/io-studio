@@ -19,6 +19,10 @@ const LIB = path.resolve(__dirname, '..', 'library'); // sounds, looks, lessons�
 const PREVIEWS = path.resolve(__dirname, '..', 'skills', 'io-video-editor', 'motion', 'moves', 'previews');
 const PREVIEW_PREFIX = '/skills/io-video-editor/motion/moves/previews/';
 const PREVIEW_EXT = /\.(mp4|webm|jpg|png|webp|gif)$/i;
+// The step-by-step tutorial (docs/tutorial): the page, its pictures and the PDF, read-only — the app's «📖 دليل الاستخدام».
+const DOCS = path.resolve(__dirname, '..', 'docs', 'tutorial');
+const DOCS_PREFIX = '/docs/tutorial/';
+const DOCS_EXT = /\.(html|png|pdf)$/i;
 // Engine files a page loads directly (interior.html → ../engine/blender/room-core.js), read-only, exact paths only.
 const SHARED = { 'engine/blender/room-core.js': path.resolve(__dirname, 'blender', 'room-core.js') };
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json; charset=utf-8', '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.ico': 'image/x-icon', '.mjs': 'text/javascript; charset=utf-8', '.md': 'text/markdown; charset=utf-8', '.txt': 'text/plain; charset=utf-8', '.pdf': 'application/pdf', '.mp4': 'video/mp4', '.webm': 'video/webm', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.gif': 'image/gif', '.wav': 'audio/wav', '.mp3': 'audio/mpeg', '.ogg': 'audio/ogg', '.cube': 'text/plain; charset=utf-8' };
@@ -127,6 +131,16 @@ function start(port, opts) {
       return fs.readFile(file, (err, data) => {
         if (err) { res.writeHead(404); res.end(); return; }
         res.writeHead(200, { 'content-type': TYPES[path.extname(file).toLowerCase()] || 'application/octet-stream', 'cache-control': 'max-age=3600' });
+        res.end(data);
+      });
+    }
+    if (p === DOCS_PREFIX.slice(0, -1) || p === DOCS_PREFIX) p = DOCS_PREFIX + 'tutorial.html';
+    if (p.startsWith(DOCS_PREFIX)) {
+      const file = path.resolve(DOCS, path.normalize(p.slice(DOCS_PREFIX.length)).replace(/^([/\\])+/, ''));
+      if (!file.startsWith(DOCS + path.sep) || !DOCS_EXT.test(file) || req.method !== 'GET') { res.writeHead(403); res.end(); return; }
+      return fs.readFile(file, (err, data) => {
+        if (err) { res.writeHead(404, { 'content-type': 'text/plain; charset=utf-8' }); res.end('مو موجود'); return; }
+        res.writeHead(200, { 'content-type': TYPES[path.extname(file).toLowerCase()] || 'application/octet-stream', 'cache-control': 'no-store' });
         res.end(data);
       });
     }

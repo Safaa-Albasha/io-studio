@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The step-by-step tutorial. Viewable as is (it only references img/*.png).
+     Rebuild the screenshots and the PDF: node docs/tutorial/build.js --shots -->
+<title>I/O Studio — الدليل خطوة بخطوة</title>
+<link rel="icon" href="../../web/lib/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800&display=swap">
+<style>
+@font-face { font-family: "CairoLocal"; src: url("../../skills/io-video-editor/motion/fonts/Cairo-VF.ttf") format("truetype"); font-weight: 200 1000; }
+:root {
+  /* the product palette (web/lib/brand.css): sky + cinematic charcoal */
+  --charcoal: #0E1013; --charcoal-2: #16191E; --charcoal-3: #1D2127;
+  --sky: #5CB8F0; --sky-strong: #2E9BE0; --sky-print: #166DAD; --sky-deep: #0F5A91;
+  --sky-soft: #E3F0FA; --sky-pale: #F3F8FC; --line: #D3E1ED;
+  --ink: #13171C; --ink-2: #333C46; --muted: #55606C;
+  --ok: #17784A; --warn: #8A5A00; --bad: #B8352D;
+  --a: #166DAD; --a-soft: #E3F0FA;   /* way A — عندي فيديوهات */
+  --b: #6B4FC4; --b-soft: #EEE9FB;   /* way B — ما عندي فيديو */
+  --font: Cairo, "CairoLocal", Tajawal, "Noto Naskh Arabic", system-ui, sans-serif;
+  --mono: "DejaVu Sans Mono", Menlo, Consolas, monospace;
+}
+@page { size: A4; margin: 15mm 14mm 16mm 14mm; }
+@page cover { margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { font-family: var(--font); color: var(--ink); font-size: 10.6pt; line-height: 1.75; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+@media screen { body { max-width: 900px; margin: 0 auto; padding: 0 16px 60px; } .cover { margin: 0 -16px 24px; width: auto !important; height: auto !important; min-height: 100vh; } .section { border-top: 1px dashed var(--line); padding-top: 18px; margin-top: 28px; } }
+h1, h2, h3, h4 { line-height: 1.35; margin: 0; }
+h2 { font-size: 19pt; font-weight: 800; color: var(--ink); margin: 0 0 4mm; padding-bottom: 2.4mm; border-bottom: 2px solid var(--sky); }
+h2 .n { display: inline-block; min-width: 10mm; height: 10mm; line-height: 10mm; text-align: center; border-radius: 3mm; background: var(--charcoal); color: var(--sky); font-size: 14pt; margin-left: 3mm; vertical-align: 1mm; padding: 0 1.5mm; }
+h2.wa { border-color: var(--a); } h2.wa .n { color: #fff; background: var(--a); }
+h2.wb { border-color: var(--b); } h2.wb .n { color: #fff; background: var(--b); }
+h3 { font-size: 12.6pt; font-weight: 800; color: var(--sky-deep); margin: 5mm 0 2mm; break-after: avoid; }
+h3.wa { color: var(--a); } h3.wb { color: var(--b); }
+h4 { font-size: 11pt; font-weight: 700; margin: 3mm 0 1mm; break-after: avoid; }
+p { margin: 0 0 2.5mm; }
+ul, ol { margin: 0 0 3mm; padding-right: 6mm; padding-left: 0; }
+li { margin-bottom: 1mm; }
+a { color: var(--sky-print); text-decoration: none; }
+code, .mono { font-family: var(--mono); font-size: 8.6pt; direction: ltr; unicode-bidi: isolate; background: var(--sky-soft); color: var(--sky-deep); padding: 0.2mm 1.4mm; border-radius: 1.2mm; white-space: nowrap; }
+td code, li code { white-space: normal; }
+pre { direction: ltr; text-align: left; unicode-bidi: isolate; font-family: var(--mono); font-size: 8.6pt; line-height: 1.6; background: var(--charcoal); color: #E9EEF3; border-right: 3px solid var(--sky); border-radius: 2.5mm; padding: 2.6mm 3.6mm; margin: 1.5mm 0 3mm; white-space: pre-wrap; word-break: break-word; break-inside: avoid; }
+pre .c { color: #8FA3B5; }
+pre .k { color: var(--sky); }
+.section { break-before: page; }
+.avoid { break-inside: avoid; }
+.lead { font-size: 11.4pt; color: var(--ink-2); }
+.muted { color: var(--muted); }
+.small { font-size: 9pt; }
+.say { display: inline; background: var(--sky-pale); border: 1px solid var(--line); border-radius: 2mm; padding: 0 1.6mm; font-weight: 700; color: var(--ink); }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5mm; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; }
+.card { border: 1px solid var(--line); border-radius: 3mm; padding: 3mm 3.6mm; background: #fff; break-inside: avoid; }
+.card h4 { margin-top: 0; color: var(--sky-deep); }
+.card.a { border-color: var(--a); background: var(--a-soft); } .card.a h4 { color: var(--a); }
+.card.b { border-color: var(--b); background: var(--b-soft); } .card.b h4 { color: var(--b); }
+.note { border-right: 3px solid var(--sky-print); background: var(--sky-pale); padding: 2.4mm 3.6mm; border-radius: 2mm; margin: 2mm 0 3mm; break-inside: avoid; }
+.warn { border-right-color: var(--warn); background: #FBF5E8; }
+.honest { border-right-color: var(--b); background: var(--b-soft); }
+table { width: 100%; border-collapse: collapse; margin: 1.5mm 0 3.5mm; font-size: 9.4pt; }
+th, td { border-bottom: 1px solid var(--line); padding: 1.4mm 2mm; text-align: right; vertical-align: top; }
+th { background: var(--charcoal-2); color: #E9EEF3; font-weight: 700; }
+tr { break-inside: avoid; }
+.tag { display: inline-block; font-size: 7.8pt; border-radius: 2mm; padding: 0 1.6mm; line-height: 1.75; font-weight: 700; }
+.tag.ok { background: #E3F4EA; color: var(--ok); } .tag.need { background: #FBF5E8; color: var(--warn); } .tag.no { background: #FBE9E7; color: var(--bad); }
+
+/* steps */
+ol.steps { list-style: none; counter-reset: st; padding: 0; margin: 0 0 3mm; }
+ol.steps > li { counter-increment: st; position: relative; padding: 0 9mm 0 0; margin-bottom: 2.2mm; break-inside: avoid; }
+ol.steps > li::before { content: counter(st); position: absolute; right: 0; top: .4mm; width: 6.4mm; height: 6.4mm; line-height: 6.4mm; text-align: center; border-radius: 50%; background: var(--charcoal); color: var(--sky); font-weight: 800; font-size: 9pt; }
+.wa ol.steps > li::before, ol.steps.wa > li::before { background: var(--a); color: #fff; }
+ol.steps.wb > li::before { background: var(--b); color: #fff; }
+
+/* screenshots + their callouts (numbers match the sky circles drawn on the picture) */
+figure { margin: 1mm 0 2mm; break-inside: avoid; }
+figure img { display: block; max-width: 100%; max-height: 112mm; margin: 0 auto; border-radius: 2.5mm; border: 1px solid var(--line); box-shadow: 0 2mm 6mm rgba(20,40,60,.10); }
+figure.tall img { max-height: 150mm; }
+figure.short img { max-height: 80mm; }
+figcaption { font-size: 8.8pt; color: var(--muted); margin-top: 1.2mm; text-align: center; }
+ol.co { list-style: none; counter-reset: co; padding: 0; margin: 1.5mm 0 4mm; columns: 2; column-gap: 6mm; font-size: 9.6pt; line-height: 1.6; }
+ol.co.one { columns: 1; }
+ol.co > li { position: relative; padding-right: 8mm; margin-bottom: 1.4mm; break-inside: avoid; }
+ol.co > li::before { content: attr(data-n); position: absolute; right: 0; top: .3mm; width: 5.8mm; height: 5.8mm; line-height: 5.8mm; text-align: center; border-radius: 50%; background: var(--sky); color: var(--charcoal); font-weight: 800; font-size: 8.6pt; box-shadow: 0 0 0 1px var(--charcoal); }
+ol.co b { color: var(--ink); }
+.phone-row { display: grid; grid-template-columns: 92mm 1fr; gap: 6mm; align-items: start; break-inside: avoid; margin: 1mm 0 4mm; }
+.phone-row figure img { max-height: 120mm; border: 0; box-shadow: none; }
+.phone-row ol.co { columns: 1; margin-top: 2mm; }
+.shot-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+
+/* the two ways */
+.ways { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin: 3mm 0; }
+.way { border-radius: 4mm; padding: 4mm; break-inside: avoid; }
+.way.a { background: var(--a-soft); border: 2px solid var(--a); }
+.way.b { background: var(--b-soft); border: 2px solid var(--b); }
+.way h3 { margin: 0 0 1mm; font-size: 14pt; }
+.way.a h3 { color: var(--a); } .way.b h3 { color: var(--b); }
+.flow { display: flex; flex-direction: column; gap: 1.6mm; margin-top: 2.5mm; }
+.flow span { display: block; background: #fff; border: 1px solid var(--line); border-radius: 2mm; padding: 1.4mm 2.6mm; font-size: 9.6pt; position: relative; }
+.flow span + span::before { content: "↓"; position: absolute; top: -4.4mm; right: 50%; font-size: 9pt; color: var(--muted); }
+.way.a .flow b { color: var(--a); } .way.b .flow b { color: var(--b); }
+
+/* cheat sheet */
+.cheat { font-size: 9.4pt; line-height: 1.55; }
+.cheat h2 { margin-bottom: 2.5mm; }
+.cheat .grid2 { gap: 2.6mm; }
+.cheat .card { padding: 2.2mm 3mm; }
+.cheat .card h4 { font-size: 10.4pt; margin-bottom: 1mm; }
+.cheat ul { padding-right: 4mm; margin: 0; }
+.cheat li { margin-bottom: .6mm; }
+
+/* cover */
+.cover { page: cover; position: relative; width: 210mm; height: 297mm; overflow: hidden; background: var(--charcoal); color: #E9EEF3; padding: 26mm 22mm 20mm; break-after: page; }
+.cover::before { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 60% at 50% -8%, rgba(92,184,240,.22), transparent 60%), radial-gradient(150% 100% at 50% 120%, rgba(0,0,0,.6), transparent 60%); }
+.cover > * { position: relative; }
+.cover .logo { width: 22mm; height: 22mm; }
+.cover .logo svg { width: 100%; height: 100%; display: block; }
+.cover h1 { font-size: 36pt; font-weight: 800; margin-top: 12mm; color: #fff; }
+.cover h1 .ar { color: #C5CFD9; font-weight: 700; }
+.cover .t2 { font-size: 22pt; font-weight: 800; color: #9FD3F5; margin-top: 4mm; }
+.cover .sub { font-size: 13pt; color: #C5CFD9; margin-top: 5mm; line-height: 1.75; }
+.cover .bar { height: 1px; background: linear-gradient(90deg, transparent, rgba(92,184,240,.65) 22%, rgba(92,184,240,.65) 78%, transparent); margin: 10mm 0 8mm; }
+.cover .ways .way { background: rgba(255,255,255,.04); color: #C5CFD9; border-width: 1.5px; font-size: 10.4pt; }
+.cover .way.a { border-color: #5CB8F0; } .cover .way.b { border-color: #A994F0; }
+.cover .way.a h3 { color: #9FD3F5; } .cover .way.b h3 { color: #C9BBF7; }
+.cover .inside { margin-top: 8mm; color: #9AA6B2; font-size: 10pt; line-height: 1.9; }
+.cover .inside b { color: #E9EEF3; }
+.cover .foot { position: absolute; bottom: 16mm; right: 22mm; left: 22mm; display: flex; justify-content: space-between; font-size: 9.4pt; color: #9AA6B2; }
+.toc { columns: 2; column-gap: 8mm; list-style: none; padding: 0; font-size: 10.2pt; }
+.toc li { break-inside: avoid; padding: .6mm 0; border-bottom: 1px dotted var(--line); }
+.toc li b { display: inline-block; min-width: 9mm; color: var(--sky-deep); }
+</style>
+</head>
+<body>
+
+<!-- ═════════════ COVER ═════════════ -->
+<section class="cover">
+  <div class="logo"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#5CB8F0"/><path d="M10.5 17h11.5v4.6h-2.6v20.8h2.6V47H10.5v-4.6h2.6V21.6h-2.6z" fill="#14181D"/><ellipse cx="47.4" cy="32" rx="8.6" ry="12.2" fill="none" stroke="#14181D" stroke-width="5.6"/><path d="M22 32h14.2" stroke="#F2FAFF" stroke-width="1.6" stroke-linecap="round"/><path d="M29.1 26.4Q30.1 31.0 34.7 32Q30.1 33.0 29.1 37.6Q28.1 33.0 23.5 32Q28.1 31.0 29.1 26.4z" fill="#FFFFFF"/></svg></div>
+  <h1>I/O Studio <span class="ar">· آي أو استوديو</span></h1>
+  <div class="t2">الدليل خطوة بخطوة — بالصور</div>
+  <div class="sub">شلون تشتغل بالبرنامج من أول تشغيل لحد الفيديو الجاهز.<br>كل صورة بيها أرقام زرقاء وأسهم، وتحتها شرح كل رقم.</div>
+  <div class="bar"></div>
+  <div class="ways">
+    <div class="way a"><h3>أ) «عندي فيديوهات»</h3>تسجّل بالاستوديو أو تجيب فيديو جاهز ← Claude يمنتجه (يشيل السكتات، كابشن، موشن، أصوات، لوك) ← تراجع بالتايملاين ← تنشر.</div>
+    <div class="way b"><h3>ب) «ما عندي فيديو»</h3>ترند يومي أو فكرتك ← Claude يسوي محتوى بلا تصوير: موشن، كاروسيل، قصة AI، درس متحرك… ويگلك بصراحة إذا الفكرة تحتاج تسجّل.</div>
+  </div>
+  <div class="inside"><b>بهالدليل:</b> ابدأ هنا (ورقة وحدة) · التنصيب والتحديث · نافذة الترحيب · تبويبات البرنامج · الطريقة أ · الطريقة ب · السلاسل · الإحصائيات · بنك الحركات · الشاشة الخضرا والتتبّع · الدروس · حزمة النشر · المشاكل والأسئلة.</div>
+  <div class="foot"><span>الإصدار <span data-version>4.0.1</span> · البيانات بالصور افتراضية («اسمك»، «@حسابك»)</span><span dir="ltr">github.com/Safaa-Albasha/io-studio</span></div>
+</section>
+
+<!-- ═════════════ 0. START HERE ═════════════ -->
+<section class="cheat">
+  <h2><span class="n">٠</span>ابدأ هنا — شنو تگول لـ Claude</h2>
+  <p>ما تحتاج تحفظ أوامر. افتح Claude Code بمجلد مشروعك وحچي عادي. هاي أكثر الجمل اللي راح تحتاجها:</p>
+  <div class="grid2">
+    <div class="card"><h4>🚀 أول مرة</h4><ul>
+      <li><span class="say">ابدأ</span> — يفحص الإعداد ويفتح نافذة الترحيب.</li>
+      <li><span class="say">افحص جهازي</span> — يشوف شنو ناقص (ffmpeg، بايثون…) وينصّبه بموافقتك.</li>
+      <li><span class="say">افتح البرنامج</span> — يفتح <code>app.html</code> بالمتصفح.</li>
+      <li><span class="say">شغّل الطيار الآلي</span> — حتى أزرار البرنامج توصله.</li>
+    </ul></div>
+    <div class="card a"><h4>🎬 أ) عندي فيديو</h4><ul>
+      <li><span class="say">أريد أسجّل</span> — يفتح استوديو الكورسات.</li>
+      <li><span class="say">منتج هالفيديو: ~/Videos/clip.mov</span></li>
+      <li><span class="say">حوّله ريل بكابشن</span> · <span class="say">يوتيوب طويل سينمائي</span></li>
+      <li><span class="say">ريلات من الحلقة</span> (بودكاست/كاميرتين)</li>
+      <li><span class="say">عندي شاشة خضرا</span></li>
+    </ul></div>
+    <div class="card b"><h4>✨ ب) ما عندي فيديو</h4><ul>
+      <li><span class="say">شنو الترند بمجالي اليوم؟</span></li>
+      <li><span class="say">سوّي كاروسيل عن هالخبر</span></li>
+      <li><span class="say">سوّ فيلم موشن من هالفكرة</span></li>
+      <li><span class="say">اشرح هالتطبيق بفيديو</span> · <span class="say">اشرح لي شلون يشتغل المكيف</span></li>
+      <li><span class="say">قصة AI بشخصية وحدة</span> · <span class="say">درس حرف الباء للأطفال</span></li>
+    </ul></div>
+    <div class="card"><h4>🎞️ المراجعة والتعديل</h4><ul>
+      <li><span class="say">افتح التايملاين</span> — تشوف المقاطع والجمل وتعدّل.</li>
+      <li><span class="say">الجملة الثالثة أقصر</span> · <span class="say">الصوت أنظف</span></li>
+      <li><span class="say">استخدم الحركة 242 بالختام</span> — بنك الحركات بالرقم.</li>
+      <li><span class="say">ثبّت الرقم على القدر</span> — التتبّع.</li>
+    </ul></div>
+    <div class="card"><h4>📦 النشر</h4><ul>
+      <li><span class="say">جهّز للنشر</span> — كابشن، عنوان، هاشتاقات لكل منصة.</li>
+      <li><span class="say">اكتب «دليل» بالتعليقات ويوصلك الرابط بالخاص</span></li>
+      <li><span class="say">افحص قبل النشر</span> · <span class="say">كفر وثمبنيل</span></li>
+      <li><span class="say">انشر</span> — يسألك قبل كل منشور.</li>
+    </ul></div>
+    <div class="card"><h4>📈 الأرقام</h4><ul>
+      <li><span class="say">اسحب إحصائيات إنستقرام</span> (Composio)</li>
+      <li><span class="say">شلون حساباتي هالشهر؟</span></li>
+      <li><span class="say">ليش هالريل ما مشى؟</span> · <span class="say">حلّل هالريل</span></li>
+      <li><span class="say">أفكار من أفضل منشوراتي</span></li>
+    </ul></div>
+  </div>
+  <div class="note" style="margin-top:3mm"><b>قاعدتين ذهبيات:</b> (١) خلّي Claude Code مفتوح وأنت تستخدم البرنامج — هو اللي ينفّذ الأزرار. (٢) ما ينشر شي ولا يدفع شي بدون ما يسألك أول.</div>
+  <h3 style="margin-top:3mm">المحتويات</h3>
+  <ol class="toc">
+    <li><b>١</b>الفكرة بدقيقة — الطريقتين</li>
+    <li><b>٢</b>التنصيب والتحديث</li>
+    <li><b>٣</b>نافذة الترحيب</li>
+    <li><b>٤</b>جولة بتبويبات البرنامج</li>
+    <li><b>٥</b>الطريقة أ: «عندي فيديوهات»</li>
+    <li><b>٦</b>الطريقة ب: «ما عندي فيديو»</li>
+    <li><b>٧</b>السلاسل — شكل ثابت لكل حلقة</li>
+    <li><b>٨</b>الإحصائيات وإنستقرام</li>
+    <li><b>٩</b>بنك الحركات — اطلب حركة برقمها</li>
+    <li><b>١٠</b>الشاشة الخضرا والتتبّع</li>
+    <li><b>١١</b>الدروس المتحركة</li>
+    <li><b>١٢</b>حزمة النشر وكلمة التعليق</li>
+    <li><b>١٣</b>المشاكل والأسئلة</li>
+    <li><b>١٤</b>وين ملفاتي؟</li>
+  </ol>
+</section>
+
+<!-- ═════════════ 1. THE IDEA ═════════════ -->
+<section class="section">
+  <h2><span class="n">١</span>الفكرة بدقيقة — الطريقتين</h2>
+  <p class="lead">آي أو استوديو = إضافة لـ Claude Code + برنامج بالمتصفح (<code>app.html</code>). البرنامج ترتّب بيه أفكارك وتدوس أزرار، وClaude بالطرفية ينفّذ. كل شي يطلع لإنستقرام ويوتيوب وتيك توك بالتساوي، وملفاتك تبقى بجهازك.</p>
+  <div class="ways">
+    <div class="way a"><h3>أ) «عندي فيديوهات»</h3>
+      <div>عندك كلام للكاميرا، درس، بودكاست، أو مقاطع.</div>
+      <div class="flow">
+        <span><b>١. الفيديو:</b> سجّل باستوديو الكورسات، أو جيب ملفك الجاهز</span>
+        <span><b>٢. للمونتاج:</b> زر بالبرنامج أو جملة لـ Claude</span>
+        <span><b>٣. Claude يمنتج:</b> سكتات، كابشن، موشن، أصوات، لوك</span>
+        <span><b>٤. تراجع:</b> التايملاين، «عدّل لي»</span>
+        <span><b>٥. تنشر:</b> حزمة نشر لكل منصة</span>
+      </div>
+      <p class="small" style="margin-top:2mm">التفاصيل بالقسم <b>٥</b>.</p></div>
+    <div class="way b"><h3>ب) «ما عندي فيديو»</h3>
+      <div>ما تريد تصوّر، أو بس عندك فكرة أو خبر.</div>
+      <div class="flow">
+        <span><b>١. الفكرة:</b> ترند يومي من حساباتك، أو فكرتك/سكربتك</span>
+        <span><b>٢. تعدّلها:</b> «خلّي Claude يعدّلها»</span>
+        <span><b>٣. Claude يصنع:</b> موشن، كاروسيل، قصة AI، درس متحرك…</span>
+        <span><b>٤. تراجع:</b> لقطات ومعاينة قبل التسليم</span>
+        <span><b>٥. تنشر:</b> نفس حزمة النشر</span>
+      </div>
+      <p class="small" style="margin-top:2mm">التفاصيل بالقسم <b>٦</b> — وبيه شنو <b>ما</b> يگدر يسويه بلا تصوير.</p></div>
+  </div>
+  <h3>شلون الزر بالبرنامج يوصل لـ Claude؟</h3>
+  <p>المتصفح ما يگدر يحچي ويّا Claude مباشرة. لما تدوس «🎬 للمونتاج» أو «🤖 خلّي Claude يعدّلها» أو «أرسل لـ Claude»، الطلب ينحفظ بملف <code>.io/queue.json</code> بمجلد مشروعك. Claude (الطيار الآلي) يراقب هالملف، يستلم الطلب، يشتغل، ويكتب التقدّم — وأنت تشوفه بالبطاقة (⏳ بالانتظار ← ⚙️ يشتغل ← ✅ خلص).</p>
+  <div class="note warn"><b>ما صار شي بعد ما دست الزر؟</b> اكتب لـ Claude <span class="say">شغّل الطيار الآلي</span>. الطلبات ما تضيع — محفوظة وينفّذها أول ما يشتغل.</div>
+  <h3>شنو لازم يكون مفتوح؟</h3>
+  <table>
+    <tr><th>الشي</th><th>ليش</th><th>شلون</th></tr>
+    <tr><td>Claude Code بمجلد مشروعك</td><td>هو اللي يشتغل</td><td>بالطرفية: <code>cd ~/my-project</code> ثم <code>claude</code></td></tr>
+    <tr><td>البرنامج <code>app.html</code></td><td>الأفكار والأزرار والمكتبات</td><td><span class="say">افتح البرنامج</span> — أو <code>http://localhost:4747/app.html</code></td></tr>
+    <tr><td>محرّر التايملاين (اختياري)</td><td>تشوف الفيديو مقسوم وتعدّل بيدك</td><td><span class="say">افتح التايملاين</span> — يشغّل <code>studio.py</code></td></tr>
+  </table>
+</section>
+
+<!-- ═════════════ 2. INSTALL & UPDATE ═════════════ -->
+<section class="section">
+  <h2><span class="n">٢</span>التنصيب والتحديث</h2>
+  <h3>التنصيب (مرة وحدة)</h3>
+  <ol class="steps">
+    <li>سوّ مجلد فاضي لمشروعك (مثلاً <code>~/my-project</code>)، افتح الطرفية بيه واكتب <code>claude</code>.</li>
+    <li>داخل Claude Code اكتب السطرين (كل واحد لوحده):
+<pre><span class="k">/plugin marketplace add</span> Safaa-Albasha/io-studio
+<span class="k">/plugin install</span> io@io-studio</pre></li>
+    <li><b>سكّر Claude Code وافتحه من جديد</b> بنفس المجلد — حتى تشتغل السكلات.</li>
+    <li>اكتب <span class="say">ابدأ</span>. يسألك: «تكمل الإعدادات من صفحة الويب لو هنا بالشات؟» — اختار الصفحة (القسم ٣).</li>
+    <li>ناقصك أدوات؟ گول <span class="say">افحص جهازي</span>. الطبيب يگلك شنو جاهز وشنو ناقص، وينصّب بموافقتك (ffmpeg، بايثون، كروم، وِسبر للكابشن…).</li>
+  </ol>
+  <h3>التحديث (لما ينزل إصدار جديد)</h3>
+  <ol class="steps">
+    <li>داخل Claude Code:
+<pre><span class="k">/plugin marketplace update</span> io-studio   <span class="c"># يجيب قائمة الإصدارات الجديدة</span>
+<span class="k">/plugin update</span> io@io-studio              <span class="c"># يحدّث الإضافة نفسها</span></pre></li>
+    <li><b>سكّر Claude Code وافتحه من جديد.</b> بدون هالخطوة يضل يشتغل بالإصدار القديم.</li>
+    <li>تريد تتأكد؟ اكتب <code>/plugin</code> وشوف رقم الإصدار جنب <code>io</code>.</li>
+  </ol>
+  <div class="note">التحديث ما يمس ملفاتك: هويتك وأفكارك بـ <code>.io/</code>، وفيديوهاتك بـ <code>recordings/</code> و<code>work/</code> و<code>output/</code> — كلها تبقى.</div>
+  <h3>الإزالة</h3>
+  <pre><span class="k">/plugin uninstall</span> io@io-studio   <span class="c"># ملفاتك بمجلد المشروع تبقى</span></pre>
+  <h3>المتطلبات باختصار</h3>
+  <table>
+    <tr><th>الأداة</th><th>ليش</th></tr>
+    <tr><td>Claude Code + Node.js 18+ + Git</td><td>أساسي — الإضافة وصفحاتها</td></tr>
+    <tr><td>ffmpeg + Python 3</td><td>أساسي للفيديو — القص والصوت والتايملاين</td></tr>
+    <tr><td>Chrome أو Edge</td><td>استوديو الكورسات (الكاميرا والحفظ بالمجلد) ورسم الموشن</td></tr>
+    <tr><td>whisper (اختياري)</td><td>كابشن عربي تلقائي بتوقيت الكلمة</td></tr>
+  </table>
+  <p class="small muted">التفاصيل لكل نظام (ماك، ويندوز، لينكس) بدليل التنصيب <code>docs/guide/io-studio-guide.pdf</code>.</p>
+</section>
+
+<!-- ═════════════ 3. WELCOME ═════════════ -->
+<section class="section">
+  <h2><span class="n">٣</span>نافذة الترحيب — أول تشغيل</h2>
+  <p>تنفتح بأول مرة (أو من «هويتي» ← «عدّل هويتي»). خمس خطوات وتخلص، وبعدها ترجع لـ Claude وتكتب <span class="say">خلصت</span>.</p>
+  <figure><img style="max-height:62mm" src="img/welcome-dialect.png" alt="نافذة الترحيب — اختيار اللهجة"></figure>
+  <ol class="co">
+    <li><b>خمس خطوات:</b> اللهجة، الاسم والحسابات، نوع الحساب، الهوية البصرية، الحفظ.</li>
+    <li><b>اللهجة:</b> عراقي، خليجي، شامي، مصري… Claude يحچي ويكتب محتواك بيها.</li>
+    <li><b>التالي:</b> بالخطوة الثانية تكتب اسمك وحساباتك الثلاث ومجالك.</li>
+  </ol>
+  <figure style="margin-bottom:0"><img style="max-height:100mm" src="img/welcome-type.png" alt="الخطوة الثالثة — نوع الحساب والحسابات والترند اليومي"></figure>
+  <ol class="co">
+    <li><b>نوع الحساب:</b> طبيب، مهندس ديكور، رائد أعمال، صانع محتوى، مدرّس/طالب، شخص عادي. يغيّر الحركات والأصوات والقوالب والقواعد المقترحة.</li>
+    <li><b>شكل المحتوى:</b> فيديو عادي (كلام للكاميرا) أو بودكاست.</li>
+    <li><b>الحسابات اللي تتابعها:</b> هي أول مصدر للترند اليومي. اكتب حسابات بمجالك (مو حسابك).</li>
+    <li><b>مواقع مجالك:</b> اختياري — مواقع أخبار تحب تتابعها.</li>
+    <li><b>الترند يومياً؟</b> «إي» = كل يوم تنزل أفكار جاهزة بتبويب الأفكار.</li>
+    <li><b>الساعة:</b> متى يجيب الترند (افتراضياً ٩ الصبح). تغيّرها بعدين من «هويتي».</li>
+  </ol>
+  <p class="small muted">الخطوة الرابعة «هويتك البصرية»: «أنشئ لي هوية» (تختار إحساس وتاخذ وحدة من ثلاث) أو «أرفع هويتي» (شعار أو بوستات). الألوان تمشي على كل فيديو وكاروسيل.</p>
+</section>
+
+<!-- ═════════════ 4. APP TOUR ═════════════ -->
+<section class="section">
+  <h2><span class="n">٤</span>جولة بتبويبات البرنامج</h2>
+  <p>سبع تبويبات + رابطين (الإحصائيات وإنستقرام). كل تبويب خطوة من الشغل: <b>الأفكار ← الجدول ← البناء ← المونتاج</b>، و<b>مشاريعي</b> تجمع كلشي، و<b>المكتبة</b> كل الأدوات، و<b>هويتي</b> إعداداتك.</p>
+  <h3>💡 الأفكار</h3>
+  <figure><img src="img/app-ideas.png" alt="تبويب الأفكار"></figure>
+  <ol class="co">
+    <li><b>التبويبات:</b> الأفكار، الجدول، البناء، المونتاج، مشاريعي، المكتبة، هويتي.</li>
+    <li><b>فكرة جديدة:</b> عنوان + هوك + شكل + المنصات، و«أضف».</li>
+    <li><b>سكربت/فكرة مني:</b> الصق سكربتك، Claude يرتّبه بلهجتك ويضيفه.</li>
+    <li><b>اقتراحات اليوم:</b> الأفكار اللي جابها الترند اليومي.</li>
+    <li><b>ابنِها:</b> يفتح خطوات البناء لهالفكرة.</li>
+    <li><b>للمونتاج:</b> تختار الصيغة والطلب يروح لـ Claude.</li>
+    <li><b>طلباتك لـ Claude:</b> كل طلب وحالته ونسبة التقدّم.</li>
+    <li><b>مصادري:</b> الحسابات والمواقع والكلمات اللي يجيب منها الترند.</li>
+  </ol>
+  <div class="phone-row">
+    <figure><img src="img/app-ideas-phone.png" alt="تبويب الأفكار على الجوال"></figure>
+    <div>
+      <h4>نفس البرنامج على الجوال</h4>
+      <p>افتح نفس الرابط من متصفح الجوال (لو على نفس الشبكة أو بجلسة سحابية). الأزرار نفسها:</p>
+      <ol class="co">
+        <li><b>اقتراحات اليوم</b> فوق.</li>
+        <li><b>من الترند</b> + رابط المنشور اللي ألهم الفكرة واسم الحساب.</li>
+        <li><b>للمونتاج:</b> وتحتها بطاقة التقدّم (مثلاً «أشيل السكتات وأركّب الكابشن 45٪»).</li>
+      </ol>
+    </div>
+  </div>
+
+  <h3>📅 الجدول</h3>
+  <figure><img src="img/app-schedule.png" alt="تبويب الجدول"></figure>
+  <ol class="co">
+    <li><b>أسبوع أو شهر</b>، وأزرار السابق/اليوم/التالي.</li>
+    <li><b>أفضل وقت:</b> يطلع من إحصائياتك لكل منصة.</li>
+    <li><b>فكرة مجدولة:</b> اسحبها ليوم ثاني (أو اضغطها وبعدين اضغط اليوم).</li>
+    <li><b>بلا موعد:</b> الأفكار اللي ما إلها يوم بعد.</li>
+    <li><b>التوازن:</b> كم منشور لكل منصة بهالفترة — وزّعها بالتساوي.</li>
+  </ol>
+
+  <h3>🛠️ البناء</h3>
+  <figure><img src="img/app-build.png" alt="تبويب البناء"></figure>
+  <ol class="co">
+    <li><b>الفكرة</b> اللي تبنيها.</li>
+    <li><b>شريط الخطوات:</b> كم خطوة خلصت من ٨ (سكربت، تسجيل، مونتاج، موشن، أصوات، ألوان، كفرات، نشر).</li>
+    <li><b>علّم الخطوة</b> لما تخلص.</li>
+    <li><b>استوديو الكورسات:</b> خطوة «تسجيل» تفتحه مباشرة.</li>
+    <li><b>📋 الأمر:</b> ينسخ طلب جاهز تلصقه لـ Claude (مثلاً «اكتب سكربت لهالفكرة…»).</li>
+  </ol>
+
+  <h3>🎞️ المونتاج</h3>
+  <figure class="short"><img src="img/app-montage.png" alt="تبويب المونتاج"></figure>
+  <ol class="co">
+    <li><b>الفكرة.</b></li>
+    <li><b>مجلد الشغل:</b> هنا ينحط الفيديو باسم <code>src.mov</code> وكل ملفات المونتاج.</li>
+    <li><b>اطلبه من Claude:</b> ينسخ جملة تشغّل المحرّر (أو «انسخ الأمر» تشغّله بنفسك).</li>
+    <li><b>افتح المحرّر:</b> التايملاين (القسم ٥ ← المراجعة).</li>
+    <li><b>الحالة:</b> «● شغّال» يعني المحرّر جاهز.</li>
+  </ol>
+
+  <h3>🗂️ مشاريعي</h3>
+  <figure><img src="img/app-projects.png" alt="تبويب مشاريعي"></figure>
+  <ol class="co">
+    <li><b>الحالة:</b> فكرة ← مسجّل ← قيد المونتاج ← جاهز ← منشور (تنحسب لحالها من ملفاتك).</li>
+    <li><b>سلسلة:</b> مجلد بشكل ثابت (القسم ٧).</li>
+    <li><b>سلسلة جديدة</b> — أو وحدة من المقترحة لنوع حسابك.</li>
+    <li><b>فيديو بـ recordings/:</b> أي فيديو تحطه بهالمجلد يطلع هنا تلقائياً.</li>
+    <li><b>⋯ ← أرسله للمونتاج:</b> يروح لـ Claude بنفس الصيغة (عمودي = ريل، عرضي = يوتيوب).</li>
+  </ol>
+
+  <h3>📚 المكتبة</h3>
+  <figure><img src="img/app-library.png" alt="تبويب المكتبة — حركات الموشن"></figure>
+  <ol class="co">
+    <li><b>دوّر:</b> «ووش»، «سينمائي»، «رقم»…</li>
+    <li><b>الأنواع:</b> حركات الموشن، ستايلات، أصوات، ألوان، دروس، ملصقات، تصميم داخلي، سكلات، صفحات.</li>
+    <li><b>مقترح لنوع حسابك:</b> اللي يناسبك يطلع أول.</li>
+    <li><b>معاينة:</b> الحركة تتحرك بمكانها.</li>
+    <li><b>📋 المعرّف:</b> ينسخ اسم الحركة/الصوت تلصقه بطلبك لـ Claude.</li>
+  </ol>
+
+  <h3>🪪 هويتي</h3>
+  <figure class="short"><img src="img/app-me.png" alt="تبويب هويتي"></figure>
+  <ol class="co">
+    <li><b>هويتك:</b> الاسم، اللهجة، الحسابات، الألوان.</li>
+    <li><b>عدّل هويتي:</b> يفتح نافذة الترحيب من جديد.</li>
+    <li><b>الترند اليومي:</b> شغّله أو طفّيه.</li>
+    <li><b>الساعة</b> اللي يجيب بيها الترند.</li>
+    <li><b>حزمة نوع حسابك:</b> الأدوات والقواعد المقترحة إلك.</li>
+  </ol>
+</section>
+
+<!-- ═════════════ 5. WAY A ═════════════ -->
+<section class="section">
+  <h2 class="wa"><span class="n">٥</span>الطريقة أ: «عندي فيديوهات»</h2>
+  <p class="lead">عندك فيديو (أو راح تسجّل)، وتريد Claude يمنتجه. ثلاث طرق توصّل الفيديو، وبعدها نفس المسار.</p>
+
+  <h3 class="wa">أ١ — سجّل باستوديو الكورسات (أسهل طريق)</h3>
+  <p>من «البناء» ← «تسجيل» ← «استوديو الكورسات»، أو گول <span class="say">أريد أسجّل</span>. يحتاج Chrome أو Edge.</p>
+  <figure class="tall"><img src="img/course-studio.png" alt="استوديو الكورسات — الإعدادات"></figure>
+  <ol class="co">
+    <li><b>صيغة الملف:</b> MP4 (الأسهل، يشتغل بكل مكان) أو WebM.</li>
+    <li><b>الجودة:</b> 1080p تكفي. «حسب الشرائح» بلا هوامش.</li>
+    <li><b>يروح للمونتاج كـ:</b> يوتيوب طويل 16:9، ريلز 9:16، أو الاثنين (طويل + ٣–٥ ريلز منه).</li>
+    <li><b>اربطه بفكرة:</b> (اختياري) Claude ياخذ عنوانها وهوكها.</li>
+    <li><b>السلسلة:</b> (اختياري) المونتاج يمشي على شكلها.</li>
+    <li><b>أرسله لـ Claude أول ما أوقف:</b> خلّيه مفعّل — هذا اللي يخلي المونتاج تلقائي.</li>
+    <li><b>اختر مجلد:</b> فيه صور شرائح أو PDF، ونص الملقّن من <code>prompt.txt</code>.</li>
+    <li><b>أو شارك شاشتك</b> بدون شرائح.</li>
+  </ol>
+  <div class="note"><b>شنو يصير لما توقف التسجيل؟</b> الملف ينرفع لـ <code>recordings/</code> بمجلد مشروعك، وطلب مونتاج ينضاف لـ Claude. تشوف التقدّم ببطاقة الفكرة و«طلباتك لـ Claude»، والفيديو الجاهز يطلع بـ <code>output/</code>.</div>
+
+  <h3 class="wa">أ٢ — عندك فيديو جاهز (من الجوال أو الكاميرا)</h3>
+  <table>
+    <tr><th style="width:30%">الطريقة</th><th>شلون بالضبط</th></tr>
+    <tr><td><b>١. گول لـ Claude المسار</b> (الأسرع)</td><td><span class="say">منتج هالفيديو: ~/Videos/clip.mov — ريل بكابشن</span>. Claude ينسخه لمجلد شغل (<code>work/…/src.mov</code>) ويبدي. رابط Google Drive (مشاركة «أي شخص لديه الرابط») يشتغل هم.</td></tr>
+    <tr><td><b>٢. حطّه بمجلد <code>recordings/</code></b></td><td>انسخ الملف لـ <code>~/my-project/recordings/</code> (mp4، mov، webm، mkv، m4v). يطلع بـ «مشاريعي» كـ «مسجّل» ← <b>⋯ ← 🎬 أرسله للمونتاج</b> (الصورة تحت).</td></tr>
+    <tr><td><b>٣. لفكرة معيّنة</b></td><td>بتبويب «المونتاج» شوف «مجلد الشغل» للفكرة (مثلاً <code>work/three-tools</code>)، انسخ الفيديو داخله باسم <code>src.mov</code>، وارجع للفكرة ودوس <b>🎬 للمونتاج</b> ← الصيغة.</td></tr>
+    <tr><td><b>من الجوال (جلسة سحابية)</b></td><td>أرفق الفيديو بالمحادثة مباشرة وگول <span class="say">منتجه</span>.</td></tr>
+  </table>
+  <figure class="short"><img src="img/app-projects.png" alt="مشاريعي — أرسل التسجيل للمونتاج"></figure>
+  <p class="small muted">نفس صورة «مشاريعي» فوق: الرقم ٤ فيديو حطيناه بـ <code>recordings/</code>، والرقم ٥ زر «أرسله للمونتاج».</p>
+  <p>4K أحسن (الزوم ياخذ من الأصل) بس 1080p يشتغل عادي. فيديو بالعرض (مقابلة/بودكاست)؟ Claude يقصّه بالطول حول الوجه بدل ما يمطّه.</p>
+
+  <h3 class="wa">أ٣ — زر «للمونتاج» واختيار الصيغة</h3>
+  <figure><img src="img/idea-trend.png" alt="بطاقة فكرة — للمونتاج والصيغة والتقدّم"></figure>
+  <ol class="co">
+    <li><b>من الترند:</b> (إذا الفكرة جاية من الترند).</li>
+    <li><b>المنشور الأصلي:</b> رابط اللي ألهم الفكرة.</li>
+    <li><b>ليش تناسبك:</b> سبب قصير.</li>
+    <li><b>الصيغة:</b> ريل 9:16، يوتيوب طويل 16:9، أو الاثنين — اختيارك يرسل الطلب.</li>
+    <li><b>التقدّم:</b> ⏳ بالانتظار ← ⚙️ يشتغل (مع النسبة) ← ✅ خلص + مسار الملف.</li>
+    <li><b>عدّل الفكرة</b> قبل المونتاج إذا تريد.</li>
+  </ol>
+
+  <h3 class="wa">أ٤ — شنو يسوي Claude بالمونتاج</h3>
+  <table>
+    <tr><th>الخطوة</th><th>شنو يصير</th></tr>
+    <tr><td>قص السكتات</td><td>يشيل الصمت والوقفات (وإذا طلبت: الحشو والتأتأة والإعادة) — والختام محمي.</td></tr>
+    <tr><td>الكابشن</td><td>يفرّغ كلامك بوِسبر بتوقيت كل كلمة، ويركّب كابشن عربي بستايل (كاريوكي، بطاقة، خط…).</td></tr>
+    <tr><td>الموشن</td><td>حركات من بنك الحركات بألوانك (رقم، قائمة، كلمة مفتاحية، كرت ختام) — ٣ حركات أساسية لكل فيديو ولهجات للحظات الخاصة.</td></tr>
+    <tr><td>الأصوات</td><td>مؤثرات (ووش، بوب، ضربة…) بلحظات إلها معنى، مو رش.</td></tr>
+    <tr><td>الصوت</td><td>تنظيف وعلو موحّد (يوتيوب الطويل على −14 LUFS).</td></tr>
+    <tr><td>اللوك</td><td>تلوين/LUT — بالريل بخفة، وباليوتيوب الطويل لوك سينمائي كامل.</td></tr>
+    <tr><td>شكل السلسلة</td><td>إذا الفكرة أو التسجيل ضمن سلسلة: نفس الألوان والكابشن والمقدمة والختام بكل حلقة.</td></tr>
+    <tr><td>يوتيوب طويل</td><td>قص، صوت، لوك، فصول (00:00…)، وثمبنيل. «الاثنين» = الطويل + ٣–٥ ريلز منه.</td></tr>
+  </table>
+  <p>ياخذ دقايق حسب الطول. Claude يحدّث البطاقة كل مرحلة، ويوريك لقطة قبل ما يسلّم. الملف النهائي بـ <code>output/</code> — ويطلع بـ «مشاريعي» كـ «جاهز».</p>
+
+  <h3 class="wa">أ٥ — راجع بالتايملاين</h3>
+  <p>گول <span class="say">افتح التايملاين</span> (أو من تبويب «المونتاج» ← «افتح المحرّر»). الفيديو يطلع مقسوم لأجزائه:</p>
+  <figure><img src="img/timeline.png" alt="محرّر التايملاين"></figure>
+  <ol class="co">
+    <li><b>المعاينة:</b> حيّة، النهائي، معاينة مقطع، تتبّع.</li>
+    <li><b>مقطع باقي:</b> الملوّن باقي بالفيديو، والمخطّط بالأحمر بيناتهم سكتة انشالت. اسحب الأطراف تقص، <code>S</code> يقسّم، <code>Del</code> يحذف أو يرجّع.</li>
+    <li><b>الجمل (الكابشن):</b> اضغط جملة تنفتح نافذتها.</li>
+    <li><b>الزوم</b> لكل مقطع.</li>
+    <li><b>🎯 تتبّع:</b> ثبّت عنصر على شي يتحرك (القسم ١٠).</li>
+    <li><b>🤖 عدّل لي:</b> اكتب طلبك وClaude يطبّقه.</li>
+  </ol>
+  <p class="small">بعد ما تعدّل بيدك (قص، زوم، مؤثر)، زر <b>«طبّق»</b> بآخر شريط الأدوات يعيد بس الخطوات اللي تأثرت بتعديلك.</p>
+  <div class="shot-pair">
+    <figure><img src="img/timeline-caption.png" alt="نافذة تعديل الجملة"></figure>
+    <figure><img src="img/timeline-ask.png" alt="عدّل لي"></figure>
+  </div>
+  <div class="grid2">
+    <div><h4>تعديل جملة (يمين)</h4><ol class="co one">
+      <li><b>صحّح النص</b> بمكانه — بنفس عدد الكلمات.</li>
+      <li><b>احفظ وطبّق:</b> يعيد الكابشن بس.</li>
+      <li><b>خلّي Claude يعيد صياغتها:</b> «أقصر، بلهجتي…».</li>
+      <li><b>أرسل:</b> الطلب يوصل Claude.</li>
+    </ol></div>
+    <div><h4>«عدّل لي» (يسار)</h4><ol class="co one">
+      <li><b>على شنو:</b> الصوت، الكابشن، أو أي شي ثاني.</li>
+      <li><b>اكتب طلبك</b> بكلامك: «الصوت واطي بالنص الثاني».</li>
+      <li><b>أرسل لـ Claude:</b> يعدّل ويطبّق بس الجزء اللي تغيّر.</li>
+    </ol></div>
+  </div>
+  <p class="small muted">بلا تحديد = الطلب على الفيديو كله. حدّد مقطع أو جملة أول حتى يكون الطلب عليه بس.</p>
+
+  <h3 class="wa">أ٦ — التصدير والنشر</h3>
+  <ol class="steps wa">
+    <li>الفيديو النهائي MP4 جاهز بـ <code>output/</code> (أو بمجلد الشغل) — يطلع بـ «مشاريعي» ← «جاهز» و«📋 انسخ المسار».</li>
+    <li>گول <span class="say">كفر وثمبنيل</span> — كفر الريل (ينقرا بشبكة البروفايل) وثمبنيل يوتيوب.</li>
+    <li>گول <span class="say">جهّز للنشر</span> — حزمة النشر (القسم ١٢).</li>
+    <li>گول <span class="say">افحص قبل النشر</span> — حكم: يعدّي أو يحتاج إصلاح.</li>
+    <li>النشر نفسه: تنزّله أنت، أو <span class="say">انشر</span> (بلوتاتو) — يسألك قبل كل منشور.</li>
+  </ol>
+</section>
+
+<!-- ═════════════ 6. WAY B ═════════════ -->
+<section class="section">
+  <h2 class="wb"><span class="n">٦</span>الطريقة ب: «ما عندي فيديو، خلّي الذكاء يسوي»</h2>
+  <p class="lead">تبدي من فكرة (ترند أو منك)، وClaude يصنع محتوى ما يحتاج تصوير. وإذا الفكرة نفسها تحتاج وجهك أو صوتك، يگلك بصراحة.</p>
+
+  <h3 class="wb">ب١ — الترند اليومي ← «اقتراحات اليوم»</h3>
+  <ol class="steps wb">
+    <li><b>تفعيله:</b> من نافذة الترحيب أو «هويتي» ← الترند اليومي + الساعة.</li>
+    <li><b>شلون يجيبه:</b> بالساعة اللي اخترتها (لو عندك مهام مجدولة) أو بأول جلسة Claude Code باليوم، Claude يسحب آخر منشورات الحسابات اللي تتابعها بإنستقرام عبر <b>Composio</b> (أداة ScrapeCreators). يقيس كل منشور على عادة حسابه: منشور جاب ٤× مشاهدات الحساب المعتادة = ترند.</li>
+    <li><b>الحساب الفوري (instant account):</b> ScrapeCreators يشتغل على الحساب الفوري مال Composio — <b>ما تحتاج حساب أو مفتاح ScrapeCreators</b>، تدفع من رصيدك بـ Composio. Claude يسألك مرة وحدة قبل أول سحب.</li>
+    <li><b>الكلفة تقريباً:</b> طلب لكل حساب ≈ ٠٫٠٠١$. يعني ٢٠ حساب يومياً ≈ ٠٫٠٢$ باليوم ≈ ٠٫٦٠$ بالشهر. Claude يقرا الأسعار الحالية ويگلك الرقم قبل ما يبدي.</li>
+    <li><b>بدون Composio؟</b> يشتغل بالبحث العام بالويب (أخبار ومواقع مجالك) — بلا كلفة إضافية، بس بدون مقياس «× عادة الحساب».</li>
+    <li><b>النتيجة:</b> ٣–٥ أفكار تنزل بـ «🔥 اقتراحات اليوم»، ولوحة أخبار بـ <code>output/trends/</code>. تريده هسه؟ گول <span class="say">شنو الترند بمجالي اليوم؟</span></li>
+  </ol>
+  <div class="note honest">Claude ياخذ <b>الفكرة</b> من الترند ويكتبها بصوتك — ما ينسخ كلام أو سكربت أي حساب، وما يذكر أسماء الحسابات بمنشوراتك.</div>
+
+  <h3 class="wb">ب٢ — عدّل الفكرة، أو ابدأ من سكربتك</h3>
+  <div class="shot-pair">
+    <figure><img src="img/idea-edit.png" alt="عدّل الفكرة"></figure>
+    <figure><img src="img/own-script.png" alt="سكربت أو فكرة مني"></figure>
+  </div>
+  <div class="grid2">
+    <div><h4>«✏️ عدّل الفكرة» (يمين)</h4><ol class="co one">
+      <li><b>العنوان</b> — عدّله بيدك.</li>
+      <li><b>الهوك</b> (أول ٣ ثواني).</li>
+      <li><b>السلسلة</b> — إذا تريدها حلقة بشكل ثابت.</li>
+      <li><b>الموعد</b> — تنجدول بالتقويم.</li>
+      <li><b>شنو تريد يتغيّر:</b> «خلّ الهوك أقوى، حوّلها قصة».</li>
+      <li><b>🤖 خلّي Claude يعدّلها:</b> يعيد كتابتها ويحدّثها بالبرنامج.</li>
+    </ol></div>
+    <div><h4>«+ سكربت/فكرة مني» (يسار)</h4><ol class="co one">
+      <li><b>الصق</b> سكربتك أو اكتب فكرتك.</li>
+      <li><b>الصيغة:</b> ريل، يوتيوب طويل، الاثنين، أو كاروسيل.</li>
+      <li><b>أرسلها لـ Claude:</b> يرتّبها بهويتك ولهجتك وتنضاف فكرة جديدة.</li>
+    </ol></div>
+  </div>
+
+  <h3 class="wb" style="break-before:page">ب٣ — شنو يگدر Claude يسوي <u>بلا تصوير</u>؟</h3>
+  <p>اطلبها بالشات (أو من «البناء» ← انسخ الأمر). كلها تطلع بألوانك ولهجتك وللمنصات الثلاث:</p>
+  <table style="font-size:8.8pt">
+    <tr style="font-size:8.9pt"><th style="width:24%">الناتج</th><th>شلون تطلبه</th><th style="width:36%">شنو تحتاج منك</th></tr>
+    <tr><td><b>كاروسيل</b><br><span class="small muted">io-carousel</span></td><td><span class="say">سوّي كاروسيل عن هالخبر</span> — شرائح HTML ← صور PNG (1080×1440)</td><td><span class="tag ok">ولا شي</span> الخبر أو الموضوع بس</td></tr>
+    <tr><td><b>موشن سريع</b> ٤–١٠ ث<br><span class="small muted">io-motion</span></td><td>١١ قالب: كتابة حركية، رقم يعد، أعمدة، اقتباس، قبل/بعد، انترو، خطوات، قائمة…</td><td><span class="tag ok">ولا شي</span> (قبل/بعد يحتاج صورتين)</td></tr>
+    <tr><td><b>فيلم موشن 3D</b><br><span class="small muted">io-motion-video</span></td><td><span class="say">سوّ فيلم موشن من هالسكربت</span> · <span class="say">اشرح هالتطبيق بفيديو</span> (لقطات حقيقية داخل آيفون/ماك بوك 3D) · <span class="say">اشرح لي شلون يشتغل المكيف</span></td><td><span class="tag ok">بلا تصوير</span> الصوت: صوت مولّد (edge-tts، يحتاج إنترنت) <b>أو</b> صوتك مسجّل لحاله. شرح تطبيق = رابطه أو لقطاته.</td></tr>
+    <tr><td><b>قصة AI</b> بشخصية ثابتة<br><span class="small muted">io-ai-story</span></td><td><span class="say">قصة AI عن ليش نشخر</span> — سكربت، قائمة لقطات، ورقة الشخصية، وصف صورة لكل لقطة (نفس الـseed)، وبعدها التركيب بالحركات والكابشن الكاريوكي.</td><td><span class="tag need">صور منك</span> صور الشخصية <b>تولّدها أنت</b> بأداة الصور اللي تستخدمها (Claude يعطيك الأوصاف جاهزة). الخلفيات بلا أشخاص ممكن تتولّد بخدمة مدفوعة (مفتاح FAL) — يگلك الكلفة قبل.</td></tr>
+    <tr><td><b>درس متحرك</b><br><span class="small muted">io-lesson</span></td><td><span class="say">درس حرف الباء للأطفال</span> · <span class="say">درس قوانين نيوتن على سبورة</span> — سبورة طباشير/بيضاء، دفتر، كرتون، شخصية معلّم/معلّمة، رسوم ومحاكاة.</td><td><span class="tag ok">ولا شي</span> تريده بصوتك؟ تسجّله بالاستوديو والملقّن يعرض جملة كل لقطة.</td></tr>
+    <tr><td><b>ريل من أرقامك</b></td><td>من صفحة الإحصائيات: «🎬 سو ريل من هالأرقام» — عدّاد، أعمدة، منحنى بقاء. الأرقام من إحصائياتك بس.</td><td><span class="tag ok">ولا شي</span></td></tr>
+    <tr><td><b>إعلان منتج</b><br><span class="small muted">io-ads</span></td><td><span class="say">سوّي إعلان لمنتجي</span> — زاوية بيعية، سكربت ١٥–٣٠ ث، صور بمقاسات المنصات، وفيديو موشن من صور المنتج.</td><td><span class="tag need">صور المنتج</span> أو رابط صفحته</td></tr>
+    <tr><td><b>تعريب بوست</b></td><td><span class="say">عرّب هالبوست بنفس تصميمه</span> · <span class="say">نفس الفكرة لجمهوري</span></td><td><span class="tag ok">الرابط أو الصورة</span></td></tr>
+  </table>
+
+  <h3 class="wb">ب٤ — ومتى يطلب منك تسجّل؟</h3>
+  <table style="font-size:8.9pt">
+    <tr><th>تريد…</th><th>الجواب الصريح</th></tr>
+    <tr><td>ريل كلام للكاميرا، يوتيوب طويل، بودكاست، فلوگ</td><td><span class="tag no">يحتاج تسجيل</span> هذا مونتاج لفيديوك — ما يتسوّى بلا فيديو. روح للطريقة أ.</td></tr>
+    <tr><td>دست «🎬 للمونتاج» على فكرة ما إلها فيديو</td><td>الزر للمونتاج بس: Claude يسألك سؤال واحد — «ترفع الفيديو لو تسجّل؟». تريد محتوى بلا تصوير لنفس الفكرة؟ گول بالشات: <span class="say">سوّ هالفكرة فيلم موشن</span> أو <span class="say">كاروسيل</span>.</td></tr>
+    <tr><td>شخصية تشبهك بالقصة</td><td>صورة وجهك مرجع (بإذنك)، أو الحركة 233 «صورتك بدائرة على جسم كرتوني» — بلا توليد.</td></tr>
+    <tr><td>صوتك بالفيلم</td><td>سجّل الصوت لحاله (حتى بالجوال) وگول <span class="say">استخدم صوتي</span> — يوقّت الكلمات عليه.</td></tr>
+  </table>
+  <div class="note honest">Claude ما يولّد فيديو بوجه شخص حقيقي، ولا يحط أشخاص حقيقيين أو شعارات بالصور المولّدة، ويذكر بالكابشن إن الصور مولّدة بالذكاء الاصطناعي.</div>
+</section>
+
+<!-- ═════════════ 7. SERIES ═════════════ -->
+<section class="section">
+  <h2><span class="n">٧</span>السلاسل — شكل ثابت لكل حلقة</h2>
+  <p>عندك برنامج أسبوعي («درس الأسبوع»، «تحدي الأسبوع»…)؟ سوّ سلسلة مرة وحدة، وكل حلقة تنضاف إلها يبدي مونتاجها من نفس الشكل: الألوان، الخط، ستايل الكابشن، ستايل الموشن، المقدمة، الختام، الشريط السفلي، الموسيقى، اللوك، والصيغة.</p>
+  <figure><img src="img/series-dialog.png" alt="نافذة شكل السلسلة"></figure>
+  <ol class="co">
+    <li><b>اسم السلسلة</b> وإيموجي ووصف.</li>
+    <li><b>ألوانها</b> — اللي ما تختاره ياخذ من هويتك.</li>
+    <li><b>ستايل الكابشن</b> (كاريوكي، بطاقة، خط…).</li>
+    <li><b>ستايل الموشن</b> — أو «Claude يختار كل مرة».</li>
+    <li><b>اللوك (LUT)</b> — تلوين ثابت.</li>
+    <li><b>الصيغة:</b> ريل 9:16 أو يوتيوب 16:9.</li>
+  </ol>
+  <h3>ثلاث طرق تسوي سلسلة</h3>
+  <ol class="steps">
+    <li>«مشاريعي» ← <b>＋ سلسلة جديدة</b> (أو وحدة من المقترحة لنوع حسابك).</li>
+    <li>عجبك فيديو خلص؟ «مشاريعي» ← ⋯ ← <b>⭐ اعتمد شكله للسلسلة</b>.</li>
+    <li>بالشات: <span class="say">سوّ سلسلة اسمها درس الأسبوع بكابشن كاريوكي</span>.</li>
+  </ol>
+  <h3>شلون حلقة تدخل السلسلة؟</h3>
+  <ul>
+    <li>بالفكرة: «✏️ عدّل الفكرة» ← السلسلة.</li>
+    <li>باستوديو الكورسات: «السلسلة» قبل التسجيل.</li>
+    <li>بـ «مشاريعي»: ⋯ ← «انقل لـ…».</li>
+  </ul>
+  <div class="note">أي شي تغيّره بحلقة وحدة (مثلاً لون) ينحفظ إلها بس — وشكل السلسلة ما ينمسح.</div>
+</section>
+
+<!-- ═════════════ 8. STATS ═════════════ -->
+<section class="section">
+  <h2><span class="n">٨</span>الإحصائيات وإنستقرام</h2>
+  <p>صفحتين: <b>📊 الإحصائيات</b> (المنصات الثلاث جنب بعض، بنفس المعادلات) و<b>📱 إنستقرام</b> (بشكل التطبيق، مع تحليل كل ريل). الروابط فوق البرنامج.</p>
+  <h3>من وين الأرقام؟</h3>
+  <figure class="short"><img src="img/stats-sources.png" alt="صفحة الإحصائيات — مصدر الأرقام"></figure>
+  <ol class="co">
+    <li><b>إنستقرام عبر Composio:</b> أرقام رسمية (وصول، حفظ، مشاركة، متوسط المشاهدة، نسبة السحب) بدون مفاتيح بالإضافة. حسابك لازم «احترافي» (منشئ محتوى أو تجاري).</li>
+    <li><b>اسحب الآن:</b> يرسل طلب لـ Claude يسحب — ويومياً بعد أول طلب بالجلسة.</li>
+    <li><b>آخر سحب</b> وعدد المنشورات.</li>
+    <li><b>يدوي:</b> ليوتيوب وتيك توك (Composio لهم لاحقاً).</li>
+  </ol>
+  <figure class="short"><img src="img/stats-manual.png" alt="الإدخال اليدوي"></figure>
+  <ol class="co">
+    <li><b>المنصة:</b> يوتيوب أو تيك توك (أو إنستقرام يدوي).</li>
+    <li><b>متابعينك اليوم.</b></li>
+    <li><b>ملف تصدير:</b> يوتيوب: YouTube Studio ← Analytics ← Advanced ← Export · تيك توك: TikTok Studio ← Analytics ← Download data.</li>
+    <li><b>أو منشور بأرقامه</b> من شاشة إحصائياته.</li>
+  </ol>
+  <p class="small muted">الرقم اليدوي ما يمسح رقم رسمي، وكل رقم مكتوب مصدره (رسمي / يدوي / ملف).</p>
+
+  <h3>📱 صفحة إنستقرام — حسابك وتحليل كل ريل</h3>
+  <div class="phone-row">
+    <figure><img src="img/instagram-phone.png" alt="صفحة إنستقرام على الجوال"></figure>
+    <div><ol class="co">
+      <li><b>اسحب الآن:</b> سحب جديد عبر Composio.</li>
+      <li><b>رسمي · Composio:</b> مصدر الأرقام.</li>
+      <li><b>مؤشراتك بدوائر:</b> المشاهدات، الوصول، التفاعل، الحفظ… مقارنة بالفترة اللي قبل.</li>
+      <li><b>كل ريل بدرجته</b> (٠–١٠٠) مقارنة بعادة حسابك — أخضر قوي، أحمر ضعيف. اضغطه تنفتح إحصائياته.</li>
+    </ol>
+    <p class="small">على الحاسبة، العمود الثاني «تحليل آي أو استوديو»: شنو يشتغل عندك، أكثر شي يضعّفك، وخطة الأسبوع الجاي («أضف للأفكار»).</p></div>
+  </div>
+  <div class="phone-row">
+    <figure><img src="img/instagram-sheet.png" alt="إحصائيات ريل وتحليله"></figure>
+    <div><h4>داخل الريل</h4><p class="small">فوق: درجة الريل (٠–١٠٠)، دليل الهوك، والاحتفاظ والتفاعل. وتحت:</p><ol class="co">
+      <li><b>تحليل Claude:</b> شنو وعد الهوك، وين تركوه الناس، ليش، و٣ تصليحات.</li>
+      <li><b>هوك أقوى</b> مكتوب جاهز.</li>
+      <li><b>حلّل بعمق:</b> Claude يشوف الفيديو نفسه (أول ٥ ثواني، أول فريم، الكابشن) ويقارنه بأفضل منشوراتك.</li>
+      <li><b>نسخة محسّنة:</b> فكرة جديدة بنفس الموضوع وهوك أقوى.</li>
+    </ol>
+    <p class="small muted">بالصورة: تحليل تجريبي لريل افتراضي.</p></div>
+  </div>
+</section>
+
+<!-- ═════════════ 9. MOTION BANK ═════════════ -->
+<section class="section">
+  <h2><span class="n">٩</span>بنك الحركات — اطلب حركة برقمها</h2>
+  <p>كل حركة موشن إلها <b>رقم ثابت</b> ما يتغيّر (البنك فيه أكثر من ٣٥٠ حركة). Claude يختار لكل فيديو ٣ حركات أساسية ولهجات للحظات الخاصة — بس تگدر تطلب بالرقم، أو تمنع حركة ما تحبها.</p>
+  <figure><img src="img/moves-gallery.png" alt="معرض بنك الحركات"></figure>
+  <ol class="co">
+    <li><b>رقم الحركة</b> — هذا اللي تذكره لـ Claude.</li>
+    <li><b>معاينة</b> بألوان مثال (بفيديوك تطلع بألوانك وكلامك).</li>
+    <li><b>أبي:</b> تتقدّم بالاختيار.</li>
+    <li><b>لا:</b> ما تنستخدم أبد.</li>
+    <li><b>احفظ:</b> اختيارك يوصل Claude.</li>
+  </ol>
+  <h3>شلون تفتح المعرض وتطلب</h3>
+  <table>
+    <tr><th>تريد</th><th>گول لـ Claude</th></tr>
+    <tr><td>تتفرّج على الحركات المرقّمة</td><td><span class="say">افتح معرض الحركات</span> — أو من «المكتبة» ← «حركات الموشن»</td></tr>
+    <tr><td>حركة معيّنة بلحظة معيّنة</td><td><span class="say">استخدم الحركة 242 بالختام</span> · <span class="say">الحركة 103 على الرقم</span></td></tr>
+    <tr><td>تفضّل وتمنع</td><td><span class="say">أبي 3 و7 و12، و5 لا</span> — ينحفظ لكل الفيديوهات الجاية</td></tr>
+  </table>
+  <p class="small muted">بالمكتبة زر «📋 المعرّف» ينسخ اسم الحركة الإنكليزي (مثلاً <code>stampSlam</code>) — Claude يفهم الاسم أو الرقم.</p>
+</section>
+
+<!-- ═════════════ 10. GREEN SCREEN + TRACKING ═════════════ -->
+<section class="section">
+  <h2><span class="n">١٠</span>الشاشة الخضرا والتتبّع</h2>
+  <h3>🟩 الشاشة الخضرا</h3>
+  <p>صوّرت قدام قماش أخضر (أو حايط أزرق موحّد)؟ گول <span class="say">عندي شاشة خضرا</span> — القصّ باللون أنظف وأسرع من قصّ الذكاء الاصطناعي، والشعر يطلع أحسن. اختار شكل الخلفية:</p>
+  <table>
+    <tr><th>گول…</th><th>الشكل</th><th>ينفع لـ</th></tr>
+    <tr><td><span class="say">خلفية توهج</span> (glow)</td><td>أرضية ليلية من ألوانك، توهج يتنفس ورا راسك، بوكيه وحبيبات</td><td>أي ريل كلام نظيف بلا غرفة</td></tr>
+    <tr><td><span class="say">زجاج مثلّج</span> (glass)</td><td>أنت فوق غرفة (فيديو/صورة منك) + ويدجتات زجاج: إشعار، رقم كبير، تقدّم</td><td>إنجاز، رقم، «خلّص الشغل»</td></tr>
+    <tr><td><span class="say">خط LED</span> (led)</td><td>جدار غامق وخط LED بلونك، أو مقطعك يتكرر</td><td>هوية ثابتة لسلسلة</td></tr>
+    <tr><td><span class="say">طرفية تكتب</span> (terminal)</td><td>أوامر تنكتب وراك</td><td>محتوى تقني</td></tr>
+    <tr><td><span class="say">صفحة ورايه</span> (page)</td><td>لقطة صفحة حقيقية تنسحب ورا الشخص</td><td>شرح موقع أو أداة</td></tr>
+    <tr><td><span class="say">خلفيتي هاي</span> (key)</td><td>قصّ بسيط وخلفية من عندك (صورة/فيديو/لون)</td><td>أي شي</td></tr>
+  </table>
+  <p class="small muted">Claude يجرّب على أول ثانيتين أول، ويوريك قبل ما يرسم الكامل. حواف خضرا؟ گول <span class="say">الحواف بيها أخضر</span> ويضبط العتبة.</p>
+
+  <h3>🎯 التتبّع — ثبّت شي على شي يتحرك</h3>
+  <p>رقم على قاع قدر، شعار على شاشة، سهم يلحق جسم… گول <span class="say">ثبّت السعر على العلبة</span>، أو من التايملاين زر «🎯 تتبّع»:</p>
+  <figure class="short"><img src="img/timeline-track.png" alt="لوحة التتبّع بالتايملاين"></figure>
+  <ol class="co">
+    <li><b>لوحة التتبّع:</b> تختار فريم واضح، وتأشّر زوايا السطح (أو الجسم أو النقطة).</li>
+    <li><b>النوع:</b> سطح مستوي، جسم، أو نقطة.</li>
+    <li><b>وضع التتبّع:</b> المعاينة تشتغل على الفيديو بعد القص والزوم.</li>
+  </ol>
+  <p>إذا التتبّع ضاع بلحظة، «صلّح من هنا» يكمّل من الفريم الصح. بعدها تربط العنصر بالتتبّع و«طبّق».</p>
+</section>
+
+<!-- ═════════════ 11. LESSONS ═════════════ -->
+<section class="section">
+  <h2><span class="n">١١</span>الدروس المتحركة</h2>
+  <p>مكتبة دروس جاهزة (عربي، رياضيات، فيزياء، علوم، كيمياء، أحياء، تاريخ، جغرافيا، صناعة محتوى…) بأربع ستايلات وبالمقاسين. افتحها من «المكتبة» ← «دروس» ← «↗ افتح»، أو <code>lessons.html</code>.</p>
+  <figure><img src="img/lessons.png" alt="مكتبة الدروس"></figure>
+  <ol class="co">
+    <li><b>المادة.</b></li>
+    <li><b>الستايل:</b> سبورة طباشير، سبورة بيضاء، دفتر، كرتون.</li>
+    <li><b>المقاس:</b> 9:16 ريلز أو 16:9 يوتيوب.</li>
+    <li><b>اضغط الدرس:</b> يشتغل بمكانه (تشغيل، إيقاف، سحب).</li>
+  </ol>
+  <h3>درس جديد</h3>
+  <ol class="steps">
+    <li>گول <span class="say">درس عن الكسور للصف الرابع، سبورة طباشير، 16:9</span>.</li>
+    <li>بأول درس يسألك: «الشخصية اللي تشرح ذكر لو أنثى؟» — وينحفظ.</li>
+    <li>Claude يبدي من أقرب درس جاهز، يكتب اللقطات بلهجتك، يتأكد من المعلومة، ويوريك شريط لقطات قبل التصدير MP4.</li>
+    <li>بصوتك؟ <span class="say">أريد أسجّل الدرس بصوتي</span> — الاستوديو يعرض جملة كل لقطة بالملقّن.</li>
+  </ol>
+</section>
+
+<!-- ═════════════ 12. PUBLISH KIT ═════════════ -->
+<section class="section">
+  <h2><span class="n">١٢</span>حزمة النشر وكلمة التعليق</h2>
+  <p>گول <span class="say">جهّز للنشر</span> بعد أي فيديو أو كاروسيل. تطلع ملف <code>output/publish/&lt;الاسم&gt;.md</code> بثلاث أقسام، كل منصة بلغتها وحدودها:</p>
+  <div class="grid3">
+    <div class="card"><h4>إنستقرام</h4>كابشن (أول سطر هوك ≤١٢٥ حرف)، ٣ هاشتاقات، نص الغلاف، وصف الصورة.</div>
+    <div class="card"><h4>يوتيوب</h4>عنوان ≤٦٠ حرف، وصف + فصول بالوقت، ٣ هاشتاقات، نص الثمبنيل.</div>
+    <div class="card"><h4>تيك توك</h4>كابشن بأسلوب كلام وسؤال، ٣–٥ هاشتاقات، نص لأول ثانيتين.</div>
+  </div>
+  <p style="margin-top:2mm">ووقت النشر المقترح لكل منصة من إحصائياتك (أو «جرّب المساء ٨–١٠» إذا ما عندك أرقام). Claude يفحص الحزمة قبل ما يسلّمها (هاشتاقات زايدة، عنوان طويل، إعلان بلا إفصاح…).</p>
+  <h3>💬 كلمة التعليق ← رسالة خاصة</h3>
+  <p>تريد «اكتب <b>دليل</b> بالتعليقات ويوصلك الرابط بالخاص»؟ گول:</p>
+  <p><span class="say">جهّز للنشر، والكلمة «دليل» والرابط https://example.com/guide</span></p>
+  <ol class="steps">
+    <li>آخر كابشن إنستقرام وتيك توك ينضاف له: «اكتب «دليل» بالتعليقات ويوصلك الرابط بالخاص».</li>
+    <li>يوتيوب ما بيه خاص: الرابط بالتعليق المثبّت — ويكتبلك التعليق جاهز.</li>
+    <li>ملف <code>…dm-reply.txt</code>: نص الرد التلقائي (تنسخه كما هو) + ملاحظات كل منصة.</li>
+    <li>كرت النهاية بالفيديو بنفس الكلمة (الحركة 242).</li>
+  </ol>
+  <div class="note warn"><b>انتبه:</b> الإضافة ما تربط ولا ترسل رسائل تلقائياً. الرد التلقائي تفعّله أنت بأداة الردود اللي تستخدمها (إنستقرام يحتاج حساب احترافي، والرسالة لغير المتابعين تروح «طلبات الرسائل»). تيك توك: الخاص محدود — البديل رد بالتعليق أو الرابط بالبايو.</div>
+  <h3>النشر نفسه</h3>
+  <p>تنشر بنفسك من تطبيقات المنصات، أو گول <span class="say">انشر</span> (بلوتاتو) — Claude يسألك موافقة صريحة قبل <b>كل</b> منشور، وما ينشر شي بسبب زر بالبرنامج.</p>
+</section>
+
+<!-- ═════════════ 13. TROUBLESHOOTING ═════════════ -->
+<section class="section">
+  <h2><span class="n">١٣</span>المشاكل والأسئلة</h2>
+  <table>
+    <tr><th style="width:36%">المشكلة / السؤال</th><th>الحل</th></tr>
+    <tr><td>دست زر بالبرنامج وما صار شي</td><td>الطيار الآلي مو شغّال. گول <span class="say">شغّل الطيار الآلي</span> أو <span class="say">شنو بالطابور</span>. الطلبات محفوظة وما تضيع.</td></tr>
+    <tr><td>السكلات ما تطلع بعد التنصيب أو التحديث</td><td>سكّر Claude Code وافتحه من جديد بمجلد المشروع. تأكد إن <code>/plugin</code> يعرض <code>io</code> مفعّل.</td></tr>
+    <tr><td>بعد التحديث نفس الشي القديم</td><td><code>/plugin marketplace update io-studio</code> ثم <code>/plugin update io@io-studio</code> ثم أعد التشغيل.</td></tr>
+    <tr><td>«ffmpeg / python3 not found»</td><td><span class="say">افحص جهازي</span> — الطبيب ينصّبها بموافقتك. ويندوز: افتح طرفية جديدة بعد التنصيب.</td></tr>
+    <tr><td>الصفحة ما تنفتح / المنفذ مشغول</td><td>السيرفر يجرّب 4747 لحد 4800 — شوف الرابط المطبوع، أو <span class="say">افتح البرنامج</span>.</td></tr>
+    <tr><td>الكاميرا أو «اختر مجلد» ما يشتغلون</td><td>افتح الصفحة من <code>http://localhost</code> (مو ملف مباشر) وبـ Chrome أو Edge.</td></tr>
+    <tr><td>التايملاين ما ينفتح</td><td>يحتاج Python 3 وffmpeg ومجلد شغل فيه <code>src.mov</code>. گول <span class="say">افتح التايملاين</span>.</td></tr>
+    <tr><td>الكابشن ما ينطلع تلقائياً</td><td>نصّب وِسبر: <span class="say">نصّب whisper</span> (أو <code>doctor.js --install --only whisper</code>).</td></tr>
+    <tr><td>الترند اليومي ما اشتغل</td><td>«هويتي» ← مفعّل؟ بلا مهمة مجدولة يشتغل بأول جلسة Claude Code باليوم. أو گول <span class="say">شنو الترند اليوم؟</span></td></tr>
+    <tr><td>«ScrapeCreators مو مربوط»</td><td>الترند يشتغل على الحساب الفوري مال Composio — تأكد إن Composio مربوط بجلسة Claude. ما تحتاج مفتاح ScrapeCreators. البديل: البحث العام.</td></tr>
+    <tr><td>«Composio مو مربوط» بالإحصائيات</td><td>اربط Composio (وحسابك إنستقرام احترافي)، أو استخدم الإدخال اليدوي.</td></tr>
+    <tr><td>Claude يحچي بلهجة غلط</td><td>گوله <span class="say">احچي ويّاي عراقي</span> — أو «هويتي» ← عدّل هويتي.</td></tr>
+    <tr><td>كم يكلّف؟</td><td>الإضافة مجانية. تدفع اشتراك Claude، وبس إذا اخترت: سحب الترند عبر Composio (سنتات بالشهر)، وتوليد صور مدفوع — وClaude يگلك الرقم قبل.</td></tr>
+    <tr><td>ملفاتي وين تروح؟ ترتفع لأي مكان؟</td><td>كلها بمجلد مشروعك على جهازك. ما يطلع شي إلا إذا طلبت (نشر، سحب إحصائيات).</td></tr>
+    <tr><td>أشتغل من الجوال؟</td><td>إي — بجلسة Claude سحابية ترفق الفيديو بالمحادثة، والبرنامج يفتح بمتصفح الجوال.</td></tr>
+  </table>
+</section>
+
+<!-- ═════════════ 14. FILES ═════════════ -->
+<section class="avoid">
+  <h2 style="margin-top:6mm"><span class="n">١٤</span>وين ملفاتي؟</h2>
+<pre>~/my-project/
+  .io/creator-profile.md   <span class="c">مَن أنت، جمهورك، صوتك، قيودك</span>
+  .io/theme.json           <span class="c">ألوانك وخطوطك</span>
+  .io/project.json         <span class="c">المنصات، اللهجة، نوع الحساب، الترند اليومي</span>
+  .io/sources.json         <span class="c">الحسابات والمواقع اللي تتابعها (مصادر الترند)</span>
+  .io/plan.json            <span class="c">الأفكار والجدول</span>
+  .io/queue.json           <span class="c">طلبات الأزرار لـ Claude</span>
+  .io/series/              <span class="c">السلاسل وأشكالها</span>
+  .io/stats.json           <span class="c">الإحصائيات</span>
+  recordings/              <span class="c">تسجيلات الاستوديو + أي فيديو تحطه للمونتاج</span>
+  work/&lt;الفكرة&gt;/src.mov   <span class="c">مجلد شغل كل فيديو (المونتاج والتايملاين)</span>
+  output/                  <span class="c">الجاهز: video · carousels · covers · motion · publish · trends</span></pre>
+  <p class="small muted">هالدليل يتولّد من <code>docs/tutorial/tutorial.html</code> بالأمر <code>node docs/tutorial/build.js --shots</code> — الصور من مشروع تجريبي ببيانات افتراضية.</p>
+</section>
+
+<script>document.querySelectorAll('ol.co').forEach((ol) => ol.querySelectorAll(':scope > li').forEach((li, k) => li.setAttribute('data-n', k + 1)));</script>
+</body>
+</html>

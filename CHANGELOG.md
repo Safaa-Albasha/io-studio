@@ -1,5 +1,8 @@
 # Changelog
 
+## 4.0.2
+- دليل تعليمي مصوّر `docs/tutorial/io-studio-tutorial.pdf` (٢٥ صفحة، صور حقيقية عليها أرقام وأسهم) — يفتح من البرنامج «📖 دليل الاستخدام».
+
 ## 4.0.1
 - io-trends: ScrapeCreators يشتغل على الحساب الفوري مال Composio — ما يطلب تسجيل دخول أو مفتاح ScrapeCreators؛ تقدير الكلفة أول مرة وقواعد التشغيل (`references/scrapecreators-composio.md`).
 
