@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "id": "minimal",
+  "name_ar": "مينيمال (بساطة)",
+  "name_en": "Minimal",
+  "description_ar": "أقل قطع ممكنة، أبيض وبيج، مساحات فاضية مقصودة. كل قطعة لها سبب. ممتاز لفيديوهات «قبل وبعد» الترتيب.",
+  "palette": [
+    "#f3f1ec",
+    "#e5ded3",
+    "#d9c7ab",
+    "#b7ab98",
+    "#2f2f2f"
+  ],
+  "materials": {
+    "wall": "white-paint",
+    "floor": "light-ash",
+    "main": "boucle",
+    "cushion": "boucle",
+    "accent": {
+      "kind": "fabric",
+      "color": "#d9c7ab",
+      "roughness": 0.9
+    },
+    "wood": "light-ash",
+    "metal": {
+      "kind": "metal",
+      "color": "#d6d3cc",
+      "roughness": 0.35
+    },
+    "fabric": "linen",
+    "rug": {
+      "kind": "fabric",
+      "color": "#ebe5da",
+      "roughness": 1
+    },
+    "rug2": {
+      "kind": "fabric",
+      "color": "#e2dbcf",
+      "roughness": 1
+    },
+    "stone": "travertine",
+    "frame": "light-ash",
+    "art": {
+      "kind": "plain",
+      "color": "#cbbfae",
+      "roughness": 0.8
+    }
+  },
+  "swaps": {
+    "coffee-table": "coffee-table-round",
+    "curtains": "sheer-curtains"
+  },
+  "recommended": [
+    "sofa",
+    "coffee-table-round",
+    "sheer-curtains",
+    "plant-tall",
+    "vase"
+  ],
+  "lighting": {
+    "time_of_day": "noon",
+    "lamp_color": "#fff1dc"
+  },
+  "tips_ar": [
+    "شيل نص الأغراض قبل التصوير — الفراغ هو الجمال هنا.",
+    "لقطة واسعة ثابتة أقوى من الحركة السريعة."
+  ]
+}

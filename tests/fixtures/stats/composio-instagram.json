@@ -1,0 +1,448 @@
+{
+ "kind": "io-composio-instagram",
+ "pulledAt": "2026-10-10T08:00:00Z",
+ "user": {
+  "data": {
+   "id": "17840000000000000",
+   "username": "example_creator",
+   "name": "Example",
+   "account_type": "MEDIA_CREATOR",
+   "followers_count": 5000,
+   "follows_count": 100,
+   "media_count": 3
+  },
+  "successful": true,
+  "error": null
+ },
+ "media": {
+  "data": {
+   "data": [
+    {
+     "id": "1801",
+     "caption": "ليش ما أحد يگلك هالشي؟\nسطر ثاني",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "media_url": "https://cdn.example.invalid/v1.mp4",
+     "permalink": "https://www.instagram.com/reel/AAA1/",
+     "thumbnail_url": "https://cdn.example.invalid/t1.jpg",
+     "timestamp": "2026-10-01T18:00:00+0000",
+     "like_count": 300,
+     "comments_count": 20
+    },
+    {
+     "id": "1802",
+     "caption": "٣ أخطاء بالتصوير",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "media_url": "https://cdn.example.invalid/v2.mp4",
+     "permalink": "https://www.instagram.com/reel/AAA2/",
+     "thumbnail_url": "https://cdn.example.invalid/t2.jpg",
+     "timestamp": "2026-10-03T02:00:00+0000",
+     "like_count": 40,
+     "comments_count": 2
+    },
+    {
+     "id": "1803",
+     "caption": "كاروسيل نصائح",
+     "media_type": "CAROUSEL_ALBUM",
+     "media_product_type": "FEED",
+     "media_url": "https://cdn.example.invalid/c3.jpg",
+     "permalink": "https://www.instagram.com/p/AAA3/",
+     "timestamp": "2026-10-05T20:00:00+0000",
+     "like_count": 120,
+     "comments_count": 9
+    }
+   ],
+   "paging": {
+    "cursors": {
+     "after": "ZZZ"
+    }
+   }
+  },
+  "successful": true
+ },
+ "insights": {
+  "1801": {
+   "data": {
+    "data": [
+     {
+      "name": "views",
+      "period": "lifetime",
+      "values": [
+       {
+        "value": 12000
+       }
+      ],
+      "title": "views",
+      "description": "",
+      "id": "x/insights/views/lifetime"
+     },
+     {
+      "name": "reach",
+      "period": "lifetime",
+      "values": [
+       {
+        "value": 9000
+       }
+      ],
+      "title": "reach",
+      "description": "",
+      "id": "x/insights/reach/lifetime"
+     },
+     {
+      "name": "saved",
+      "period": "lifetime",
+      "values": [
+       {
+        "value": 400
+       }
+      ],
+      "title": "saved",
+      "description": "",
+      "id": "x/insights/saved/lifetime"
+     },
+     {
+      "name": "shares",
+      "period": "lifetime",
+      "values": [
+       {
+        "value": 250
+       }
+      ],
+      "title": "shares",
+      "description": "",
+      "id": "x/insights/shares/lifetime"
+     },
+     {
+      "name": "likes",
+      "period": "lifetime",
+      "values": [
+       {
+        "value": 300
+       }
+      ],
+      "title": "likes",
+      "description": "",
+      "id": "x/insights/likes/lifetime"
+     },
+     {
+      "name": "comments",
+      "period": "lifetime",
+      "values": [
+       {
+        "value": 20
+       }
+      ],
+      "title": "comments",
+      "description": "",
+      "id": "x/insights/comments/lifetime"
+     },
+     {
+      "name": "total_interactions",
+      "period": "lifetime",
+      "values": [
+       {
+        "value": 970
+       }
+      ],
+      "title": "total_interactions",
+      "description": "",
+      "id": "x/insights/total_interactions/lifetime"
+     },
+     {
+      "name": "ig_reels_avg_watch_time",
+      "period": "lifetime",
+      "values": [
+       {
+        "value": 9800
+       }
+      ],
+      "title": "ig_reels_avg_watch_time",
+      "description": "",
+      "id": "x/insights/ig_reels_avg_watch_time/lifetime"
+     },
+     {
+      "name": "ig_reels_video_view_total_time",
+      "period": "lifetime",
+      "values": [
+       {
+        "value": 117600000
+       }
+      ],
+      "title": "ig_reels_video_view_total_time",
+      "description": "",
+      "id": "x/insights/ig_reels_video_view_total_time/lifetime"
+     },
+     {
+      "name": "reels_skip_rate",
+      "period": "lifetime",
+      "values": [
+       {
+        "value": 22.5
+       }
+      ],
+      "title": "reels_skip_rate",
+      "description": "",
+      "id": "x/insights/reels_skip_rate/lifetime"
+     }
+    ]
+   },
+   "successful": true,
+   "error": null
+  },
+  "1802": {
+   "data": {
+    "data": [
+     {
+      "name": "views",
+      "period": "lifetime",
+      "values": [
+       {
+        "value": 1500
+       }
+      ],
+      "title": "views",
+      "description": "",
+      "id": "x/insights/views/lifetime"
+     },
+     {
+      "name": "reach",
+      "period": "lifetime",
+      "values": [
+       {
+        "value": 1100
+       }
+      ],
+      "title": "reach",
+      "description": "",
+      "id": "x/insights/reach/lifetime"
+     },
+     {
+      "name": "saved",
+      "period": "lifetime",
+      "values": [
+       {
+        "value": 5
+       }
+      ],
+      "title": "saved",
+      "description": "",
+      "id": "x/insights/saved/lifetime"
+     },
+     {
+      "name": "shares",
+      "period": "lifetime",
+      "values": [
+       {
+        "value": 3
+       }
+      ],
+      "title": "shares",
+      "description": "",
+      "id": "x/insights/shares/lifetime"
+     },
+     {
+      "name": "likes",
+      "period": "lifetime",
+      "values": [
+       {
+        "value": 40
+       }
+      ],
+      "title": "likes",
+      "description": "",
+      "id": "x/insights/likes/lifetime"
+     },
+     {
+      "name": "comments",
+      "period": "lifetime",
+      "values": [
+       {
+        "value": 2
+       }
+      ],
+      "title": "comments",
+      "description": "",
+      "id": "x/insights/comments/lifetime"
+     },
+     {
+      "name": "ig_reels_avg_watch_time",
+      "period": "lifetime",
+      "values": [
+       {
+        "value": 3100
+       }
+      ],
+      "title": "ig_reels_avg_watch_time",
+      "description": "",
+      "id": "x/insights/ig_reels_avg_watch_time/lifetime"
+     },
+     {
+      "name": "reels_skip_rate",
+      "period": "lifetime",
+      "values": [
+       {
+        "value": 61
+       }
+      ],
+      "title": "reels_skip_rate",
+      "description": "",
+      "id": "x/insights/reels_skip_rate/lifetime"
+     }
+    ]
+   },
+   "successful": true,
+   "error": null
+  },
+  "1803": {
+   "data": [
+    {
+     "name": "views",
+     "period": "lifetime",
+     "total_value": {
+      "value": 4000
+     },
+     "title": "views",
+     "description": "",
+     "id": "views"
+    },
+    {
+     "name": "reach",
+     "period": "lifetime",
+     "total_value": {
+      "value": 3000
+     },
+     "title": "reach",
+     "description": "",
+     "id": "reach"
+    },
+    {
+     "name": "saved",
+     "period": "lifetime",
+     "total_value": {
+      "value": 210
+     },
+     "title": "saved",
+     "description": "",
+     "id": "saved"
+    },
+    {
+     "name": "shares",
+     "period": "lifetime",
+     "total_value": {
+      "value": 30
+     },
+     "title": "shares",
+     "description": "",
+     "id": "shares"
+    },
+    {
+     "name": "likes",
+     "period": "lifetime",
+     "total_value": {
+      "value": 120
+     },
+     "title": "likes",
+     "description": "",
+     "id": "likes"
+    },
+    {
+     "name": "comments",
+     "period": "lifetime",
+     "total_value": {
+      "value": 9
+     },
+     "title": "comments",
+     "description": "",
+     "id": "comments"
+    }
+   ]
+  }
+ },
+ "userInsights": [
+  {
+   "data": {
+    "data": [
+     {
+      "name": "follower_count",
+      "period": "day",
+      "values": [
+       {
+        "value": 12,
+        "end_time": "2026-10-08T07:00:00+0000"
+       },
+       {
+        "value": 20,
+        "end_time": "2026-10-09T07:00:00+0000"
+       }
+      ],
+      "title": "",
+      "description": "",
+      "id": "a"
+     }
+    ]
+   },
+   "successful": true
+  },
+  {
+   "data": [
+    {
+     "name": "online_followers",
+     "period": "lifetime",
+     "values": [
+      {
+       "value": {
+        "0": 10,
+        "21": 300,
+        "9": 120
+       },
+       "end_time": "2026-10-09T07:00:00+0000"
+      }
+     ],
+     "title": "",
+     "description": "",
+     "id": "b"
+    }
+   ]
+  },
+  {
+   "data": [
+    {
+     "name": "follower_demographics",
+     "period": "lifetime",
+     "title": "",
+     "description": "",
+     "id": "c",
+     "total_value": {
+      "value": 0,
+      "breakdowns": [
+       {
+        "dimension_keys": [
+         "timeframe",
+         "country"
+        ],
+        "results": [
+         {
+          "dimension_values": [
+           "THIS_MONTH",
+           "IQ"
+          ],
+          "value": 2600
+         },
+         {
+          "dimension_values": [
+           "THIS_MONTH",
+           "SA"
+          ],
+          "value": 700
+         }
+        ]
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "errors": []
+}

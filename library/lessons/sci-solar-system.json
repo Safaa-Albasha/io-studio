@@ -1,0 +1,256 @@
+{
+  "meta": {
+    "id": "sci-solar-system",
+    "subject": "science",
+    "subjectLabel": "علوم",
+    "level": "ابتدائي ٥–٦",
+    "stage": "primary"
+  },
+  "title": "المجموعة الشمسية",
+  "format": "16:9",
+  "style": "chalkboard",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّمة",
+    "shirt": "#E0663A",
+    "hijab": "#2F7FBF"
+  },
+  "beats": [
+    {
+      "say": "الأرض تدور حول الشمس مرة كل سنة، تقريباً ٣٦٥ يوم وربع.",
+      "orbit": {
+        "planets": [
+          {
+            "name": "الأرض",
+            "r": 330,
+            "period": 8,
+            "color": "blue",
+            "size": 30,
+            "moon": true,
+            "moonPeriod": 2
+          }
+        ],
+        "run": 5
+      }
+    },
+    {
+      "say": "والقمر يدور حول الأرض تقريباً كل شهر.",
+      "highlight": {
+        "box": [
+          130,
+          130,
+          740,
+          740
+        ],
+        "kind": "circle",
+        "color": "gray"
+      }
+    },
+    {
+      "say": "عدنا ثمان كواكب: أقربها عطارد وأبعدها نبتون.",
+      "erase": true,
+      "orbit": {
+        "sunSize": 50,
+        "sunLabelSize": 24,
+        "planets": [
+          {
+            "name": "عطارد",
+            "r": 95,
+            "period": 2,
+            "color": "gray",
+            "size": 10,
+            "labelSize": 22
+          },
+          {
+            "name": "الزهرة",
+            "r": 140,
+            "period": 3.2,
+            "color": "orange",
+            "size": 15,
+            "labelSize": 22
+          },
+          {
+            "name": "الأرض",
+            "r": 185,
+            "period": 4.5,
+            "color": "blue",
+            "size": 16,
+            "labelSize": 22
+          },
+          {
+            "name": "المريخ",
+            "r": 230,
+            "period": 6,
+            "color": "red",
+            "size": 12,
+            "labelSize": 22
+          },
+          {
+            "name": "المشتري",
+            "r": 295,
+            "period": 9,
+            "color": "orange",
+            "size": 30,
+            "labelSize": 22
+          },
+          {
+            "name": "زحل",
+            "r": 355,
+            "period": 12,
+            "color": "yellow",
+            "size": 26,
+            "labelSize": 22
+          },
+          {
+            "name": "أورانوس",
+            "r": 410,
+            "period": 15,
+            "color": "blue",
+            "size": 20,
+            "labelSize": 22
+          },
+          {
+            "name": "نبتون",
+            "r": 462,
+            "period": 18,
+            "color": "blue",
+            "size": 19,
+            "labelSize": 22
+          }
+        ],
+        "run": 6
+      }
+    },
+    {
+      "say": "السرعات بالرسم مو حقيقية: الكواكب البعيدة أبطأ بكثير بالواقع.",
+      "write": {
+        "text": "الرسم للتوضيح فقط",
+        "at": [
+          140,
+          50
+        ],
+        "size": 32,
+        "color": "gray"
+      }
+    },
+    {
+      "say": "أكبرها المشتري، وزحل مشهور بحلقاته.",
+      "erase": true,
+      "draw": [
+        {
+          "shape": "circle",
+          "center": [
+            330,
+            480
+          ],
+          "r": 200,
+          "fill": "orange",
+          "color": "orange"
+        },
+        {
+          "shape": "circle",
+          "center": [
+            760,
+            480
+          ],
+          "r": 120,
+          "fill": "yellow",
+          "color": "yellow"
+        },
+        {
+          "shape": "ellipse",
+          "center": [
+            760,
+            480
+          ],
+          "rx": 210,
+          "ry": 50,
+          "color": "yellow"
+        }
+      ],
+      "write": [
+        {
+          "text": "المشتري",
+          "at": [
+            330,
+            760
+          ],
+          "size": 50,
+          "color": "orange"
+        },
+        {
+          "text": "زحل",
+          "at": [
+            760,
+            760
+          ],
+          "size": 50,
+          "color": "yellow"
+        }
+      ]
+    },
+    {
+      "say": "ضوء الشمس يوصلنا بحوالي ثمان دقائق!",
+      "erase": true,
+      "draw": [
+        {
+          "shape": "emoji",
+          "value": "☀️",
+          "at": [
+            820,
+            480
+          ],
+          "size": 220
+        },
+        {
+          "shape": "emoji",
+          "value": "🌍",
+          "at": [
+            170,
+            480
+          ],
+          "size": 120
+        },
+        {
+          "shape": "arrow",
+          "from": [
+            690,
+            480
+          ],
+          "to": [
+            260,
+            480
+          ],
+          "color": "yellow",
+          "dash": true
+        }
+      ],
+      "write": {
+        "text": "حوالي ٨ دقائق",
+        "at": [
+          475,
+          400
+        ],
+        "size": 60,
+        "color": "yellow"
+      }
+    },
+    {
+      "say": "أقرب كوكب للشمس؟",
+      "erase": true,
+      "quiz": {
+        "options": [
+          "المريخ",
+          "عطارد",
+          "الزهرة"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "say": "عطارد! أحسنتم يا رواد الفضاء.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

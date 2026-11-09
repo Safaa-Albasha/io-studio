@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="I/O Studio">
+  <title>I/O Studio · آي أو استوديو</title>
+  <rect width="64" height="64" rx="15" fill="#5CB8F0"/>
+  <path d="M10.5 17h11.5v4.6h-2.6v20.8h2.6V47H10.5v-4.6h2.6V21.6h-2.6z" fill="#14181D"/>
+  <ellipse cx="47.4" cy="32" rx="8.6" ry="12.2" fill="none" stroke="#14181D" stroke-width="5.6"/>
+  <path d="M22 32h14.2" stroke="#F2FAFF" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M29.1 26.4Q30.1 31.0 34.7 32Q30.1 33.0 29.1 37.6Q28.1 33.0 23.5 32Q28.1 31.0 29.1 26.4z" fill="#FFFFFF"/>
+</svg>

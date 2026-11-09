@@ -1,0 +1,28 @@
+{
+  "name": "",
+  "owner": "",
+  "platforms": [
+    "instagram",
+    "youtube",
+    "tiktok"
+  ],
+  "handles": {
+    "instagram": "",
+    "youtube": "",
+    "tiktok": ""
+  },
+  "language": "ar",
+  "dialect": "",
+  "outputDir": "output",
+  "lessonsDir": "lessons",
+  "carouselSize": "1080x1440",
+  "hashtags": 3,
+  "contentRules": [],
+  "ending": {
+    "followCard": false,
+    "ctaDefault": null,
+    "signOff": null
+  },
+  "writingStyle": "auto",
+  "videoStyle": "auto"
+}

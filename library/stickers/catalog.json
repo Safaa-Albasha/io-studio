@@ -1,0 +1,629 @@
+{
+ "version": 1,
+ "via": "Reel Studio (MIT, © 2026 Mohamed Abdou) — engine/public/stickers + third-party/emoji, third-party/icons",
+ "note": "ملصقات متحركة (Lottie) وثابتة (SVG). الحقوق بهالملف وبـ licenses/ وthird_party/NOTICE.md — ما تنكتب على الفيديو. الملفات بدون تعديل.",
+ "render": "node engine/stickers.js render <id> --size 360 --out <work>/stk/<id>",
+ "sources": {
+  "noto": {
+   "name": "Google Noto Animated Emoji",
+   "license": "CC BY 4.0",
+   "credit": "Animated Noto Emoji by Google, licensed under CC BY 4.0.",
+   "home": "https://googlefonts.github.io/noto-emoji-animation/",
+   "base": "https://fonts.gstatic.com/s/e/notoemoji/latest/",
+   "notice": "licenses/NOTICE-noto-animated-emoji.md"
+  },
+  "fluent": {
+   "name": "Microsoft Fluent Emoji (Color SVG)",
+   "license": "MIT",
+   "home": "https://github.com/microsoft/fluentui-emoji",
+   "base": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/",
+   "notice": "licenses/LICENSE-fluent-emoji"
+  },
+  "useanimations": {
+   "name": "useAnimations",
+   "license": "MIT",
+   "home": "https://github.com/useanimations/react-useanimations",
+   "base": "https://raw.githubusercontent.com/useanimations/react-useanimations/035f164df779da512f06f1de4b0b59f7bf5624ba/icons/",
+   "notice": "licenses/LICENSE-useanimations"
+  },
+  "meteocons": {
+   "name": "Meteocons (fill, @meteocons/lottie@0.1.0)",
+   "license": "MIT",
+   "home": "https://github.com/basmilius/meteocons",
+   "base": "https://cdn.jsdelivr.net/npm/@meteocons/lottie@0.1.0/fill/",
+   "notice": "licenses/LICENSE-meteocons"
+  }
+ },
+ "stickers": [
+  {
+   "id": "emoji-fire",
+   "ar": "نار",
+   "kind": "lottie",
+   "file": "emoji/animated/fire.json",
+   "source": "noto",
+   "upstream": "1f525/lottie.json",
+   "bytes": 29358,
+   "sha256": "96199d8e8fea7d90196b95b9a9e56b13af43e3817efe037bd9aa1e5215579838"
+  },
+  {
+   "id": "emoji-hundred",
+   "ar": "مئة بالمئة",
+   "kind": "lottie",
+   "file": "emoji/animated/hundred.json",
+   "source": "noto",
+   "upstream": "1f4af/lottie.json",
+   "bytes": 66142,
+   "sha256": "8e48b464d7473e94e7b744a1774f4c3b7c7a6892faee8667f9e555ddf5160798"
+  },
+  {
+   "id": "emoji-party",
+   "ar": "احتفال",
+   "kind": "lottie",
+   "file": "emoji/animated/party.json",
+   "source": "noto",
+   "upstream": "1f389/lottie.json",
+   "bytes": 67875,
+   "sha256": "eab1fd7070bffd2965c12a80d2d91cff76683af65019f142acf9a553ee877b5c"
+  },
+  {
+   "id": "emoji-thumbs-up",
+   "ar": "إعجاب",
+   "kind": "lottie",
+   "file": "emoji/animated/thumbs-up.json",
+   "source": "noto",
+   "upstream": "1f44d/lottie.json",
+   "bytes": 40892,
+   "sha256": "a5803c4978c0760977aa08033ab0abcb5023945a47008261cd405815fc947698"
+  },
+  {
+   "id": "emoji-red-heart",
+   "ar": "قلب أحمر",
+   "kind": "lottie",
+   "file": "emoji/animated/red-heart.json",
+   "source": "noto",
+   "upstream": "2764_fe0f/lottie.json",
+   "bytes": 8439,
+   "sha256": "7925790edd7ec4a4da6ccb9491c61a2e03705182e7db263f12d8e46a8fcddb79"
+  },
+  {
+   "id": "emoji-thinking",
+   "ar": "تفكير",
+   "kind": "lottie",
+   "file": "emoji/animated/thinking.json",
+   "source": "noto",
+   "upstream": "1f914/lottie.json",
+   "bytes": 68027,
+   "sha256": "46405d972ad78a2fc917fa8e5786b0ebcdfdf644114be3c0941b98cb7e1c47c5"
+  },
+  {
+   "id": "emoji-surprised",
+   "ar": "دهشة",
+   "kind": "lottie",
+   "file": "emoji/animated/surprised.json",
+   "source": "noto",
+   "upstream": "1f62e/lottie.json",
+   "bytes": 18749,
+   "sha256": "daa0118bbc4f628aaabde5b0c96ebf3980c7aca265700bb0da809cb9f4d0ffbd"
+  },
+  {
+   "id": "emoji-light-bulb",
+   "ar": "فكرة",
+   "kind": "lottie",
+   "file": "emoji/animated/light-bulb.json",
+   "source": "noto",
+   "upstream": "1f4a1/lottie.json",
+   "bytes": 23436,
+   "sha256": "beccdc9a9a3d50ca382d3dfeecbade2f26af02c63fa2f1637c56b6ec449925de"
+  },
+  {
+   "id": "emoji-rocket",
+   "ar": "صاروخ",
+   "kind": "lottie",
+   "file": "emoji/animated/rocket.json",
+   "source": "noto",
+   "upstream": "1f680/lottie.json",
+   "bytes": 81575,
+   "sha256": "2b6daf24cee4de340073838a7d97d07c097f2d3919b676d0e4e5fed8a2f23453"
+  },
+  {
+   "id": "emoji-star",
+   "ar": "نجمة",
+   "kind": "lottie",
+   "file": "emoji/animated/star.json",
+   "source": "noto",
+   "upstream": "2b50/lottie.json",
+   "bytes": 12057,
+   "sha256": "074dfd63037b9bcd30ad54f0f22fcde6c1bbba2b6611344d4b853fdc9dc8135f"
+  },
+  {
+   "id": "emoji-sparkles",
+   "ar": "لمعان",
+   "kind": "lottie",
+   "file": "emoji/animated/sparkles.json",
+   "source": "noto",
+   "upstream": "2728/lottie.json",
+   "bytes": 15584,
+   "sha256": "60b0b7e80faadfadef6972fbf63b707f01b022fe7662573dca0bbf76785863ad"
+  },
+  {
+   "id": "emoji-eyes",
+   "ar": "عيون",
+   "kind": "lottie",
+   "file": "emoji/animated/eyes.json",
+   "source": "noto",
+   "upstream": "1f440/lottie.json",
+   "bytes": 28242,
+   "sha256": "0dfcabf677099ebe20efacf98f680cf3aeac6f7b647228acda73917c65e2120f"
+  },
+  {
+   "id": "emoji-bullseye",
+   "ar": "هدف",
+   "kind": "lottie",
+   "file": "emoji/animated/bullseye.json",
+   "source": "noto",
+   "upstream": "1f3af/lottie.json",
+   "bytes": 45947,
+   "sha256": "ae36f71945619fab24d26c18b01f8954a04648ee92d82d601a9a0b7e1e32a4c0"
+  },
+  {
+   "id": "emoji-check-mark",
+   "ar": "علامة صح",
+   "kind": "lottie",
+   "file": "emoji/animated/check-mark.json",
+   "source": "noto",
+   "upstream": "2705/lottie.json",
+   "bytes": 15925,
+   "sha256": "6afa2843755236d432ebf032dd9b5370d663842ca6f0252c04152612cd27520f"
+  },
+  {
+   "id": "emoji-cross-mark",
+   "ar": "علامة خطأ",
+   "kind": "lottie",
+   "file": "emoji/animated/cross-mark.json",
+   "source": "noto",
+   "upstream": "274c/lottie.json",
+   "bytes": 7292,
+   "sha256": "dc1f748a503825ca71e45629288bb166a0a39d180ab6e11ebb08d79c58f74506"
+  },
+  {
+   "id": "emoji-high-voltage",
+   "ar": "طاقة",
+   "kind": "lottie",
+   "file": "emoji/animated/high-voltage.json",
+   "source": "noto",
+   "upstream": "26a1/lottie.json",
+   "bytes": 89096,
+   "sha256": "9a746760dea14bcfe68bfa995a571a63d20805631432cd24d286a122f1ff5a2e"
+  },
+  {
+   "id": "emoji-chart-up",
+   "ar": "منحنى صاعد",
+   "kind": "lottie",
+   "file": "emoji/animated/chart-up.json",
+   "source": "noto",
+   "upstream": "1f4c8/lottie.json",
+   "bytes": 12551,
+   "sha256": "5a6495ae9e4feabf9e7ff5c18bd5aa81f6222a1aeebad597cc8379814f0f6ce0"
+  },
+  {
+   "id": "emoji-warning",
+   "ar": "تحذير",
+   "kind": "lottie",
+   "file": "emoji/animated/warning.json",
+   "source": "noto",
+   "upstream": "26a0_fe0f/lottie.json",
+   "bytes": 16168,
+   "sha256": "9cf176002ced202e175e3d9437495cd87b98974301cbee535b04ac1e9ef72888"
+  },
+  {
+   "id": "emoji-bar-chart",
+   "ar": "أعمدة بيانية",
+   "kind": "lottie",
+   "file": "emoji/animated/bar-chart.json",
+   "source": "noto",
+   "upstream": "1f4ca/lottie.json",
+   "bytes": 15238,
+   "sha256": "cec2ed2da127a72c38badcf31650241357959cffabab842ceaac0997798039c5"
+  },
+  {
+   "id": "emoji-money-bag",
+   "ar": "كيس مال",
+   "kind": "svg",
+   "file": "emoji/still/money-bag.svg",
+   "source": "fluent",
+   "upstream": "Money bag/Color/money_bag_color.svg",
+   "bytes": 12574,
+   "sha256": "00e17aacf5634ae62242f17b75991dd4d27cf1a963b11052402c49426ff269cc"
+  },
+  {
+   "id": "emoji-crescent-moon",
+   "ar": "هلال",
+   "kind": "svg",
+   "file": "emoji/still/crescent-moon.svg",
+   "source": "fluent",
+   "upstream": "Crescent moon/Color/crescent_moon_color.svg",
+   "bytes": 14461,
+   "sha256": "76c8d99774542de9814d6b191cdf6a046b0db6c867cd2988e77a8c8fdd13149f"
+  },
+  {
+   "id": "emoji-mobile-phone",
+   "ar": "هاتف",
+   "kind": "svg",
+   "file": "emoji/still/mobile-phone.svg",
+   "source": "fluent",
+   "upstream": "Mobile phone/Color/mobile_phone_color.svg",
+   "bytes": 21323,
+   "sha256": "0109d1473297bf47a35ea6d411187825b5b5f6f51416c28400a65c7f4f095514"
+  },
+  {
+   "id": "emoji-pushpin",
+   "ar": "دبوس",
+   "kind": "svg",
+   "file": "emoji/still/pushpin.svg",
+   "source": "fluent",
+   "upstream": "Pushpin/Color/pushpin_color.svg",
+   "bytes": 9469,
+   "sha256": "5f50051e970f51ca55f2a90267793084a34ad8b26bfe333c591c2f9f71539e0e"
+  },
+  {
+   "id": "emoji-key",
+   "ar": "مفتاح",
+   "kind": "svg",
+   "file": "emoji/still/key.svg",
+   "source": "fluent",
+   "upstream": "Key/Color/key_color.svg",
+   "bytes": 4483,
+   "sha256": "c139414f3caafc28c58f751404b3cb4bb3ceaf38dff36e2f5858b13017fd8c86"
+  },
+  {
+   "id": "emoji-bell",
+   "ar": "جرس",
+   "kind": "svg",
+   "file": "emoji/still/bell.svg",
+   "source": "fluent",
+   "upstream": "Bell/Color/bell_color.svg",
+   "bytes": 8290,
+   "sha256": "6656cc465e0044810beee1fb9e1d5780f26315de1b8c64df4757cd1b619c5136"
+  },
+  {
+   "id": "emoji-megaphone",
+   "ar": "مكبر صوت",
+   "kind": "svg",
+   "file": "emoji/still/megaphone.svg",
+   "source": "fluent",
+   "upstream": "Megaphone/Color/megaphone_color.svg",
+   "bytes": 9043,
+   "sha256": "750059f387c33c976eb1726d721a4867cc928b0ca30caf064602078c9c2bff12"
+  },
+  {
+   "id": "emoji-magnifying-glass",
+   "ar": "عدسة مكبرة",
+   "kind": "svg",
+   "file": "emoji/still/magnifying-glass.svg",
+   "source": "fluent",
+   "upstream": "Magnifying glass tilted left/Color/magnifying_glass_tilted_left_color.svg",
+   "bytes": 8617,
+   "sha256": "381ec02fb4392dfda0870c028af938fa738c32b39b74a2b206c4ca7c00ac832e"
+  },
+  {
+   "id": "emoji-calendar",
+   "ar": "تقويم",
+   "kind": "svg",
+   "file": "emoji/still/calendar.svg",
+   "source": "fluent",
+   "upstream": "Calendar/Color/calendar_color.svg",
+   "bytes": 20832,
+   "sha256": "6fc6c58e6e810395cea31778672e2d0454cea78a2f6819afc23c59646fd3b102"
+  },
+  {
+   "id": "emoji-books",
+   "ar": "كتب",
+   "kind": "svg",
+   "file": "emoji/still/books.svg",
+   "source": "fluent",
+   "upstream": "Books/Color/books_color.svg",
+   "bytes": 13569,
+   "sha256": "2e27d282f5b3fdbb78353bd169ba40f70b7ae3c66c15ae083df894ac6c778927"
+  },
+  {
+   "id": "emoji-clapper-board",
+   "ar": "لوح تصوير",
+   "kind": "svg",
+   "file": "emoji/still/clapper-board.svg",
+   "source": "fluent",
+   "upstream": "Clapper board/Color/clapper_board_color.svg",
+   "bytes": 19442,
+   "sha256": "089eb1e444f25077e2a8d98358839f6d89757e9a531df83410b33d1f7337f9a0"
+  },
+  {
+   "id": "emoji-studio-microphone",
+   "ar": "ميكروفون استوديو",
+   "kind": "svg",
+   "file": "emoji/still/studio-microphone.svg",
+   "source": "fluent",
+   "upstream": "Studio microphone/Color/studio_microphone_color.svg",
+   "bytes": 13438,
+   "sha256": "35cdbb62247d08cad69249a72446aabc2e449915fb08834efca37bfe625f7e4b"
+  },
+  {
+   "id": "emoji-briefcase",
+   "ar": "حقيبة عمل",
+   "kind": "svg",
+   "file": "emoji/still/briefcase.svg",
+   "source": "fluent",
+   "upstream": "Briefcase/Color/briefcase_color.svg",
+   "bytes": 11477,
+   "sha256": "6299cd032bad4829e8a9439a2509e1bf5b936eeac8dcb6a77f6cd21a9fbf9f57"
+  },
+  {
+   "id": "emoji-pencil",
+   "ar": "قلم رصاص",
+   "kind": "svg",
+   "file": "emoji/still/pencil.svg",
+   "source": "fluent",
+   "upstream": "Pencil/Color/pencil_color.svg",
+   "bytes": 6068,
+   "sha256": "26703e613ec5856ba89a7a68ff8db701c9e229447b698a2d96f5610c0aba3968"
+  },
+  {
+   "id": "emoji-package",
+   "ar": "طرد",
+   "kind": "svg",
+   "file": "emoji/still/package.svg",
+   "source": "fluent",
+   "upstream": "Package/Color/package_color.svg",
+   "bytes": 9535,
+   "sha256": "e48835722b58a57c543a3141e7a8528b0a65bccb415b5ebbac80f407bf8c34e6"
+  },
+  {
+   "id": "emoji-globe-europe-africa",
+   "ar": "كرة أرضية",
+   "kind": "svg",
+   "file": "emoji/still/globe-europe-africa.svg",
+   "source": "fluent",
+   "upstream": "Globe showing europe-africa/Color/globe_showing_europe-africa_color.svg",
+   "bytes": 12505,
+   "sha256": "3520f53c7342b3af0227b08abd5de334ea49890f20b1ed5cc6a7accfbacf0cad"
+  },
+  {
+   "id": "emoji-gem-stone",
+   "ar": "جوهرة",
+   "kind": "svg",
+   "file": "emoji/still/gem-stone.svg",
+   "source": "fluent",
+   "upstream": "Gem stone/Color/gem_stone_color.svg",
+   "bytes": 4669,
+   "sha256": "f9a62aea55fc1a75879093d693b064c2c212e1abda8070863e6e751b8fcf5243"
+  },
+  {
+   "id": "emoji-trophy",
+   "ar": "كأس",
+   "kind": "svg",
+   "file": "emoji/still/trophy.svg",
+   "source": "fluent",
+   "upstream": "Trophy/Color/trophy_color.svg",
+   "bytes": 14280,
+   "sha256": "0d4c7fec9a8e162b6581732454f4d1eb68945aa2fe078b5275c47a8456e7cfee"
+  },
+  {
+   "id": "emoji-memo",
+   "ar": "مذكرة",
+   "kind": "svg",
+   "file": "emoji/still/memo.svg",
+   "source": "fluent",
+   "upstream": "Memo/Color/memo_color.svg",
+   "bytes": 13776,
+   "sha256": "1dfc763ee05dd6f97530cb59e53c95c6b2ac93cb3bc9b0b3690c5e96d3c1c3c5"
+  },
+  {
+   "id": "emoji-credit-card",
+   "ar": "بطاقة دفع",
+   "kind": "svg",
+   "file": "emoji/still/credit-card.svg",
+   "source": "fluent",
+   "upstream": "Credit card/Color/credit_card_color.svg",
+   "bytes": 8961,
+   "sha256": "c9d3834890ccce2e68a7dd6510f455c60643fb8a5de791245597f1de0a55519c"
+  },
+  {
+   "id": "icon-checkmark",
+   "ar": "علامة صح",
+   "kind": "lottie",
+   "file": "icons/checkmark.json",
+   "source": "useanimations",
+   "upstream": "checkmark.json",
+   "bytes": 981,
+   "sha256": "785f9a805f1ba9c949850bc5ebc2637e0882f9a81fdf3b41c9dc74760fd4526e"
+  },
+  {
+   "id": "icon-check-circle",
+   "ar": "صح داخل دائرة",
+   "kind": "lottie",
+   "file": "icons/check-circle.json",
+   "source": "useanimations",
+   "upstream": "checkCircle.json",
+   "bytes": 2355,
+   "sha256": "be3f0a05435e8c5a586ce2dd346c2a046fcacdfd5eaa89ebf3e0aa201545ca8c"
+  },
+  {
+   "id": "icon-alert-triangle",
+   "ar": "تنبيه مثلث",
+   "kind": "lottie",
+   "file": "icons/alert-triangle.json",
+   "source": "useanimations",
+   "upstream": "alertTriangle.json",
+   "bytes": 3325,
+   "sha256": "69add5450e7f62ce65bb12859addd1d84c7da27eef472d79e09d99ed8581cfa9"
+  },
+  {
+   "id": "icon-info",
+   "ar": "معلومة",
+   "kind": "lottie",
+   "file": "icons/info.json",
+   "source": "useanimations",
+   "upstream": "info.json",
+   "bytes": 2489,
+   "sha256": "c405080f9ce5c7935ee01b4b57dfcd78d446917a9723588a7b8bfed219b7be74"
+  },
+  {
+   "id": "icon-help",
+   "ar": "سؤال",
+   "kind": "lottie",
+   "file": "icons/help.json",
+   "source": "useanimations",
+   "upstream": "help.json",
+   "bytes": 2621,
+   "sha256": "76fedc3941b8b1b2046925283de8b1af8260442f95399eabd20d7be575e3dad8"
+  },
+  {
+   "id": "icon-heart",
+   "ar": "قلب",
+   "kind": "lottie",
+   "file": "icons/heart.json",
+   "source": "useanimations",
+   "upstream": "heart.json",
+   "bytes": 2421,
+   "sha256": "8f3ea1c015bc07c147f3eeb775fd246013cdfd53681f4e33e6b87209d80265c2"
+  },
+  {
+   "id": "icon-star",
+   "ar": "نجمة",
+   "kind": "lottie",
+   "file": "icons/star.json",
+   "source": "useanimations",
+   "upstream": "star.json",
+   "bytes": 2050,
+   "sha256": "fa18d30e9cb1525d5b6fd6603898189493c1fb0441adda4abe6d188c67d09e86"
+  },
+  {
+   "id": "icon-thumbs-up",
+   "ar": "إعجاب",
+   "kind": "lottie",
+   "file": "icons/thumbs-up.json",
+   "source": "useanimations",
+   "upstream": "thumbUp.json",
+   "bytes": 6883,
+   "sha256": "60110c935c0d47398bb743fb2295cee84def398075fbeeb7cb4219092b05bc00"
+  },
+  {
+   "id": "icon-trending-up",
+   "ar": "منحنى صاعد",
+   "kind": "lottie",
+   "file": "icons/trending-up.json",
+   "source": "useanimations",
+   "upstream": "trendingUp.json",
+   "bytes": 1940,
+   "sha256": "ce40119a6b06dd7f92c634b49f85ecafb15841dca2ed788c87f6ca08274f7738"
+  },
+  {
+   "id": "icon-trending-down",
+   "ar": "منحنى هابط",
+   "kind": "lottie",
+   "file": "icons/trending-down.json",
+   "source": "useanimations",
+   "upstream": "trendingDown.json",
+   "bytes": 1944,
+   "sha256": "3efe419cac7f32ab1ec87f8985b26508f4cb539c60180f5ed26ae450a7611485"
+  },
+  {
+   "id": "icon-bar-chart",
+   "ar": "أعمدة بيانية",
+   "kind": "lottie",
+   "file": "icons/bar-chart.json",
+   "source": "useanimations",
+   "upstream": "barChart.json",
+   "bytes": 3368,
+   "sha256": "84d17f68efaa1e613dc315d0e31b587af9702dc2ace8c6970245121dd366ad40"
+  },
+  {
+   "id": "icon-target",
+   "ar": "هدف",
+   "kind": "lottie",
+   "file": "icons/target.json",
+   "source": "useanimations",
+   "upstream": "target.json",
+   "bytes": 3266,
+   "sha256": "e82ab3627a53b43fee4050cf56ed2c1678612aa65dfb5562e2882dfd5fa4ba2f"
+  },
+  {
+   "id": "icon-zap",
+   "ar": "برق",
+   "kind": "lottie",
+   "file": "icons/zap.json",
+   "source": "useanimations",
+   "upstream": "zap.json",
+   "bytes": 1624,
+   "sha256": "9009229c61d2e7532d94540fd871b6972971ce09d21464c3bac3d0ffc37c17d8"
+  },
+  {
+   "id": "icon-lock",
+   "ar": "قفل",
+   "kind": "lottie",
+   "file": "icons/lock.json",
+   "source": "useanimations",
+   "upstream": "lock.json",
+   "bytes": 1668,
+   "sha256": "83ceee9f6a3efe301226f92371529194a3c7620863ddbf140e4f86f7d801eeff"
+  },
+  {
+   "id": "icon-notification",
+   "ar": "كتم التنبيهات",
+   "kind": "lottie",
+   "file": "icons/notification.json",
+   "source": "useanimations",
+   "upstream": "notification.json",
+   "bytes": 2193,
+   "sha256": "d3ded55782dbbbb983119fd3c701663389290bbdcdd94b7ed2db562b92244fa5"
+  },
+  {
+   "id": "icon-weather-clear-day",
+   "ar": "شمس",
+   "kind": "lottie",
+   "file": "icons/weather-clear-day.json",
+   "source": "meteocons",
+   "upstream": "clear-day.json",
+   "bytes": 7302,
+   "sha256": "930084453639864f519a4e2d2b791b042ac94b67816614144ff28e471106fc24"
+  },
+  {
+   "id": "icon-weather-clear-night",
+   "ar": "ليل صافٍ",
+   "kind": "lottie",
+   "file": "icons/weather-clear-night.json",
+   "source": "meteocons",
+   "upstream": "clear-night.json",
+   "bytes": 1820,
+   "sha256": "e194875a354040c9bbbb95a7343a77a1fddbb68459de9308c0cce842f8f394f9"
+  },
+  {
+   "id": "icon-weather-lightning-bolt",
+   "ar": "صاعقة",
+   "kind": "lottie",
+   "file": "icons/weather-lightning-bolt.json",
+   "source": "meteocons",
+   "upstream": "lightning-bolt.json",
+   "bytes": 2845,
+   "sha256": "7ff3c92350afa9e9edb217674fa6cbe56d936af60e2ddcbbec1046e6da6c108c"
+  },
+  {
+   "id": "icon-weather-rainbow",
+   "ar": "قوس قزح",
+   "kind": "lottie",
+   "file": "icons/weather-rainbow.json",
+   "source": "meteocons",
+   "upstream": "rainbow.json",
+   "bytes": 3511,
+   "sha256": "4d2ba89a319b7ac5aecf98d4a1939ad7d7b8b5bad32fb92d07a032169bc4db85"
+  },
+  {
+   "id": "icon-weather-thermometer",
+   "ar": "ميزان حرارة",
+   "kind": "lottie",
+   "file": "icons/weather-thermometer.json",
+   "source": "meteocons",
+   "upstream": "thermometer.json",
+   "bytes": 4459,
+   "sha256": "0eda8384493895d1d3231a3f6b526961518aeab804913a64764521f37d0cc16e"
+  }
+ ]
+}

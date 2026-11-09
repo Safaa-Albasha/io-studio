@@ -1,0 +1,161 @@
+{
+  "version": 1,
+  "note": "حِزم نوع الحساب — الترحيب يحفظ النوع والشكل بـ .io/project.json (accountType, contentFormat)، وكل سكل يقرا الحزمة: node engine/account-type.js show. كل id هني لازم يكون موجود (tests/account-type.test.js يتأكد).",
+  "types": [
+    {
+      "id": "doctor",
+      "name": "طبيب / صحة",
+      "icon": "🩺",
+      "description": "توعية صحية بلغة بسيطة — خرافة وحقيقة، مصادر علمية، وألوان هادئة.",
+      "identity": { "mood": "calm", "accent": "#4A7FB5" },
+      "carousel": ["غلاف: سؤال يسألوه الناس", "خرافة وحقيقة", "الشرح المبسّط", "شنو تسوي؟ (خطوات)", "متى تراجع الطبيب", "المصادر العلمية", "إخلاء مسؤولية وحفظ"],
+      "skills": ["io-carousel", "io-script", "io-motion", "io-video-cut", "io-thumbnail-video", "io-publish-kit", "io-trends", "io-quality"],
+      "moves": ["mythFact", "checklist", "heartbeat", "ringStat", "iconArray", "numberedList", "flipCards", "highlight", "lowerThird", "quoteCard", "blurIn", "softWipe", "dipFade"],
+      "sfx": ["pop_soft", "click_soft", "cc0_chime_soft", "heartbeat", "page_turn", "whoosh_soft"],
+      "looks": ["clean_bright", "natural_plus", "skin_soft", "documentary"],
+      "rules": [
+        "إلزامي: كل معلومة طبية وياها مصدر علمي موثوق (دراسة، منظمة صحة، دليل طبي) بشريحة المصادر أو بالكابشن.",
+        "إلزامي: إخلاء مسؤولية واضح — «المحتوى للتوعية ومو بديل عن استشارة الطبيب».",
+        "ممنوع تشخيص حالة محددة أو وصف دواء أو جرعة.",
+        "ألوان هادئة وحركات ناعمة — بلا تخويف ولا صور صادمة.",
+        "لا وعود مبالغ بيها مثل «شفاء مضمون» أو «نتيجة بثلاث أيام»."
+      ],
+      "trendSites": ["who.int", "pubmed.ncbi.nlm.nih.gov", "mayoclinic.org", "medlineplus.gov", "nhs.uk"],
+      "series": [{"name":"خرافة وحقيقة","emoji":"🩺","description":"كل أسبوع خرافة صحية منتشرة ونقضها بمصدر.","look":{"captionStyle":"card","motionStyle":"explainer","lut":"clean_bright","format":"9:16","brollDensity":"medium","cadence":{"every":"weekly"},"intro":{"move":"mythFact"},"lowerThird":{"move":"lowerThird"},"cta":"احفظه وشاركه مع اللي يحتاجه"}},{"name":"سؤال المراجعين","emoji":"❓","description":"سؤال يسألونه بالعيادة وجوابه بدقيقة.","look":{"captionStyle":"underline","motionStyle":"keynote","lut":"natural_plus","format":"9:16","cadence":{"every":"weekly"},"cta":"اكتب سؤالك بالتعليقات"}}],
+      "keywords": ["صحة", "طبيب", "دكتور", "علاج", "مرض", "أعراض", "تغذية", "دواء", "وقاية", "رياضة", "health", "doctor", "medical", "nutrition", "symptoms", "treatment", "wellness", "fitness"]
+    },
+    {
+      "id": "interior",
+      "name": "مهندس ديكور",
+      "icon": "🛋️",
+      "description": "قبل وبعد، زوايا الغرفة، وتصميم داخلي مربوط بـ Blender.",
+      "identity": { "mood": "natural", "accent": "#A0522D" },
+      "carousel": ["قبل", "بعد", "زاوية ١: المدخل", "زاوية ٢: الجلسة", "زاوية ٣: الإضاءة", "الخامات والألوان", "المخطط", "التكلفة التقريبية"],
+      "skills": ["io-interior", "io-carousel", "io-montage-video", "io-color-grade", "io-motion-video", "io-thumbnail-video", "io-publish-kit"],
+      "moves": ["compare", "scanLine", "kenBurns", "kenBurns25D", "parallax", "orbit", "craneUp", "doorway", "blueprintLook", "priceTag", "polaroidDrop", "lowerThird"],
+      "sfx": ["whoosh_soft", "swipe_ui", "camera_shutter", "tap_wood", "sparkle_magic", "page_turn"],
+      "looks": ["warm_interior", "natural_plus", "clean_bright", "golden_hour", "matte_fade"],
+      "rules": [
+        "صوّر القبل والبعد من نفس الزاوية ونفس الإضاءة.",
+        "اذكر الخامات والمقاسات والميزانية التقريبية.",
+        "إذا ما عندك صورة بعد التنفيذ، ابنِ الغرفة بـ Blender (سكل io-interior) ووضّح إنها تصوّر ثلاثي الأبعاد.",
+        "خذ موافقة صاحب البيت قبل ما تنشر صور بيته."
+      ],
+      "trendSites": ["archdaily.com", "dezeen.com", "houzz.com", "architecturaldigest.com", "pinterest.com"],
+      "series": [{"name":"قبل وبعد","emoji":"🛋️","description":"تحويل غرفة كل أسبوع — قبل، الفكرة، بعد.","look":{"captionStyle":"shadow","motionStyle":"editorial","format":"9:16","brollDensity":"high","cadence":{"every":"weekly"},"cta":"احفظها لبيتك"}},{"name":"غلطة ديكور","emoji":"⚠️","description":"غلطة شائعة وكيف تصلحها.","look":{"captionStyle":"card","motionStyle":"swiss","format":"9:16","cadence":{"every":"weekly"}}}],
+      "keywords": ["ديكور", "تصميم داخلي", "أثاث", "غرفة", "مطبخ", "صالة", "إضاءة", "ألوان", "تجديد", "interior", "decor", "design", "furniture", "living room", "kitchen", "lighting", "renovation", "home"]
+    },
+    {
+      "id": "entrepreneur",
+      "name": "رائد أعمال",
+      "icon": "📈",
+      "description": "أرقام وأعمدة، قصص فشل ونجاح، بطاقات مقارنة ومنحنيات.",
+      "identity": { "mood": "tech", "accent": "#4F8CFF" },
+      "carousel": ["الرقم الصادم", "القصة: البداية", "الفشل والدرس", "النجاح بالأرقام", "بطاقة مقارنة", "المنحنى", "الخلاصة والخطوة الجاية"],
+      "skills": ["io-dashboard", "io-carousel", "io-script", "io-motion", "io-video-cut", "io-ads", "io-thumbnail-video", "io-publish-kit", "io-trends"],
+      "moves": ["counter", "barChart", "compareBars", "lineChartDraw", "barsToLine", "pieChart", "ringStat", "rankSwap", "versus", "compare", "receiptPrint", "timelineRoad", "checklist"],
+      "sfx": ["kaching", "cash_register", "coin_single", "riser_tone", "cinematic_hit", "success_chime", "typing_keys"],
+      "looks": ["documentary", "teal_orange_soft", "tech_cool", "clean_bright"],
+      "rules": [
+        "كل رقم حقيقي ووياه مصدر أو تاريخ — لا تخترع أرقام.",
+        "احچي عن الفشل بصراحة مثل النجاح.",
+        "المقارنة بمعيار واضح وعادل بين الخيارين.",
+        "لا وعود ربح سريع ولا نصيحة استثمار مباشرة."
+      ],
+      "trendSites": ["techcrunch.com", "hbr.org", "entrepreneur.com", "producthunt.com", "magnitt.com"],
+      "series": [{"name":"درس من مشروعي","emoji":"💼","description":"درس واحد تعلمته من الشغل كل أسبوع.","look":{"captionStyle":"card","motionStyle":"keynote","lut":"documentary","format":"9:16","cadence":{"every":"weekly"},"cta":"تابعني للدرس الجاي"}},{"name":"أرقام الأسبوع","emoji":"📈","description":"رقم واحد من السوق وشنو يعني لك.","look":{"captionStyle":"big","motionStyle":"newsprint","format":"9:16","cadence":{"every":"weekly"}}}],
+      "keywords": ["مشروع", "ريادة", "شركة ناشئة", "تسويق", "مبيعات", "استثمار", "تمويل", "عملاء", "إدارة", "startup", "business", "marketing", "sales", "funding", "founder", "growth", "entrepreneur"]
+    },
+    {
+      "id": "creator",
+      "name": "صانع محتوى",
+      "icon": "🎬",
+      "description": "ترندات، ريلز سريعة، وكابشن كاريوكي.",
+      "identity": { "mood": "playful", "accent": "#FF5C8A" },
+      "carousel": ["الهوك", "الترند بسطر", "ليش ينتشر", "طريقتي", "أمثلة", "جرّبها وانشر", "تابعني للمزيد"],
+      "skills": ["io-trends", "io-script", "io-video-cut", "io-video-editor", "io-motion", "io-sfx", "io-color-grade", "io-style-copy", "io-thumbnail-video", "io-publish-kit", "io-hook-meter"],
+      "moves": ["caption", "wordPop", "boldCaption", "snapZoom", "whip", "punchCut", "zoomWord", "stickerPop", "likeBurst", "commentPrompt", "followButton", "glitch", "rgbSplit"],
+      "sfx": ["whoosh_short", "swish_fast", "pop_bright", "impact_punch", "boing", "glitch_short", "notify_ding", "like_heart"],
+      "looks": ["pop_contrast", "clean_bright", "summer_vivid", "teal_orange"],
+      "rules": [
+        "هوك قوي بأول ثانيتين.",
+        "كابشن كاريوكي دايماً — أغلب الناس تتفرج بلا صوت.",
+        "قطع سريع كل ١–٣ ثواني.",
+        "انزل الترند بأول ٢٤–٤٨ ساعة.",
+        "إنستقرام ويوتيوب وتيك توك بالتساوي."
+      ],
+      "trendSites": ["trends.google.com", "ads.tiktok.com/business/creativecenter", "creators.instagram.com", "blog.youtube"],
+      "series": [{"name":"تحدي الأسبوع","emoji":"🔥","description":"تحدي أو تجربة بنفس الشكل كل حلقة.","look":{"captionStyle":"karaoke","motionStyle":"stickerToon","format":"9:16","brollDensity":"high","cadence":{"every":"weekly"},"cta":"شنو التحدي الجاي؟ اكتبه"}},{"name":"يوميات","emoji":"🎥","description":"فلوق قصير بنفس الافتتاحية والختام.","look":{"captionStyle":"shadow","motionStyle":"paperCut","lut":"warm_film","format":"9:16","cadence":{"every":"daily"}}}],
+      "keywords": ["ترند", "تحدي", "محتوى", "ريلز", "فلوق", "يوميات", "تجربة", "مراجعة", "trend", "challenge", "content", "reels", "vlog", "review", "creator", "viral"]
+    },
+    {
+      "id": "teacher",
+      "name": "مدرّس / طالب",
+      "icon": "📚",
+      "description": "دروس متحركة، سبورة طباشير، وكورسات كاملة.",
+      "identity": { "mood": "warm", "accent": "#2F7FBF" },
+      "carousel": ["سؤال الدرس", "الفكرة بمثال", "خطوة بخطوة", "رسم توضيحي", "غلطة شائعة", "تمرين", "الجواب والملخّص"],
+      "skills": ["io-lesson", "io-studio", "io-live-stage", "io-carousel", "io-script", "io-motion", "io-video-cut", "io-thumbnail-video"],
+      "moves": ["qalamWrite", "typewriter", "strokeFill", "highlight", "markerCircle", "arrowPoint", "checklist", "numberedList", "questionCard", "iconPop", "flipCards", "timelineRoad", "pageTurnRTL"],
+      "sfx": ["page_turn", "paper_flip", "pop_soft", "success_chime", "error_soft", "tick_tock", "click_soft", "cc0_chime_zen"],
+      "looks": ["clean_bright", "natural_plus", "warm_film"],
+      "rules": [
+        "فكرة وحدة بكل فيديو.",
+        "مثال من الحياة قبل القاعدة.",
+        "الدروس المتحركة من مكتبة الدروس (سكل io-lesson) — سبورة طباشير أو بيضاء أو دفتر أو كرتون.",
+        "للكورسات الطويلة استخدم استوديو الكورسات (web/course-studio) من سكل io-studio.",
+        "تأكد من صحة المعلومة ومناسبتها لعمر الطلاب."
+      ],
+      "trendSites": ["khanacademy.org", "edraak.org", "coursera.org", "ted.com"],
+      "series": [{"name":"درس أسبوعي","emoji":"📚","description":"درس واحد كل أسبوع بنفس المقدمة والخاتمة — الطلاب يعرفونه من أول ثانية.","look":{"captionStyle":"card","motionStyle":"explainer","format":"16:9","brollDensity":"medium","imageCount":6,"cadence":{"every":"weekly"},"intro":{"text":"الدرس الأسبوعي"},"outro":{"text":"نشوفكم الأسبوع الجاي"},"cta":"اشترك حتى ما يفوتك الدرس الجاي"}},{"name":"سؤال امتحان","emoji":"📝","description":"سؤال امتحان وحلّه خطوة خطوة.","look":{"captionStyle":"chunk","motionStyle":"blueprint","format":"9:16","cadence":{"every":"weekly"},"cta":"جاوب قبل ما تشوف الحل"}}],
+      "keywords": ["تعليم", "درس", "طالب", "مدرسة", "جامعة", "مذاكرة", "امتحان", "شرح", "تعلم", "education", "lesson", "study", "student", "exam", "learning", "tips", "school"]
+    },
+    {
+      "id": "personal",
+      "name": "شخص عادي",
+      "icon": "🙂",
+      "description": "قوالب بسيطة ويوميات بلا تعقيد.",
+      "identity": { "mood": "warm", "accent": "#E0663A" },
+      "carousel": ["لحظة اليوم", "صور اليوم", "شنو تعلمت", "سؤال للمتابعين"],
+      "skills": ["io-video-cut", "io-montage-video", "io-trips", "io-color-grade", "io-carousel", "io-thumbnail-video", "io-publish-kit"],
+      "moves": ["caption", "kenBurns", "polaroidDrop", "scrapTape", "handleTag", "calendarTear", "mapPin", "routeLine", "stickerPop", "lightLeak", "dipFade"],
+      "sfx": ["whoosh_soft", "pop_soft", "camera_shutter", "sparkle_magic", "page_turn"],
+      "looks": ["natural_plus", "golden_hour", "warm_film", "food_warm"],
+      "rules": [
+        "خليها بسيطة وطبيعية — قالب واحد ثابت يكفي.",
+        "يوميات قصيرة ١٥–٣٠ ثانية.",
+        "احترم خصوصية الناس اللي يطلعون بالصورة.",
+        "لا تنشر موقعك المباشر وانت بالمكان."
+      ],
+      "trendSites": ["trends.google.com"],
+      "series": [{"name":"يومياتي","emoji":"☀️","description":"لحظة من يومك بنفس الشكل كل مرة.","look":{"captionStyle":"shadow","motionStyle":"doodle","lut":"warm_film","format":"9:16","cadence":{"every":"weekly"}}}],
+      "keywords": ["يوميات", "نصائح", "تجربة", "سفر", "طبخ", "عائلة", "تحدي", "daily", "tips", "life", "travel", "food", "family", "challenge"]
+    }
+  ],
+  "formats": [
+    {
+      "id": "video",
+      "name": "فيديو عادي",
+      "description": "كلام للكاميرا — مونتاج كلام: شيل السكتات، كابشن، قطعات وحركات.",
+      "skills": ["io-script", "io-video-cut", "io-video-editor", "io-motion", "io-thumbnail-video", "io-publish-kit"],
+      "moves": ["caption", "punchCut", "snapZoom", "pushIn", "lowerThird", "jcut"],
+      "rules": [
+        "مونتاج كلام: شيل السكتات والغلطات وخلّي الإيقاع سريع.",
+        "بدّل الزاوية أو الزوم كل جملة أو جملتين حتى ما يملّ المتفرج."
+      ]
+    },
+    {
+      "id": "podcast",
+      "name": "بودكاست",
+      "description": "حلقة طويلة بكاميرتين أو أكثر — تنقص لريلز قصيرة بأفكار مستقلة.",
+      "skills": ["io-podcast-video", "io-video-cut", "io-video-editor", "io-thumbnail-video", "io-publish-kit"],
+      "moves": ["podcastMic", "radialEq", "caption", "lowerThird", "punchCut", "splitScreen", "quoteCard", "seriesEndCard"],
+      "rules": [
+        "قص الحلقة لـ ٣–٥ ريلز، كل وحدة فكرة كاملة بروحها: node engine/podcast-batch.js propose ثم select ثم status.",
+        "كاميرتين: الصورة على اللي يحچي، ولقطة الاثنين عند الضحك والتفاعل (سكل io-podcast-video).",
+        "اسم الضيف وتعريفه بلوور ثيرد بأول ظهور.",
+        "كرت «الحلقة الكاملة» أو «الحلقة الجاية» بالنهاية."
+      ]
+    }
+  ]
+}

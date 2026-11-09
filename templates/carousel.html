@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>كاروسيل — I/O Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800&display=swap">
+<style>
+/* ── الهوية: من .io/theme.json ── */
+:root{
+  --bg:#FFF7EC; --ink:#2A2622; --accent:#E0663A; --accent2:#2F7FBF; --soft:#F3E3CF;
+  --font:"Cairo",sans-serif;
+  --w:1080px; --h:1440px;            /* إنستقرام 3:4 — يتغيّر بـ ?size= */
+  --pad:96px;
+}
+*{box-sizing:border-box;margin:0}
+body{background:#1b1917;font-family:var(--font);color:var(--ink);padding:40px 0;display:flex;flex-direction:column;align-items:center;gap:32px}
+html.export body{padding:0;gap:0;background:none}
+.preview-bar{color:#ddd;font-size:15px;display:flex;gap:12px;align-items:center}
+.preview-bar a{color:#fff}
+html.export .preview-bar{display:none}
+.frame{width:calc(var(--w) * var(--s,0.42));height:calc(var(--h) * var(--s,0.42));overflow:hidden;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+html.export .frame{width:auto;height:auto;border-radius:0;box-shadow:none}
+.slide{width:var(--w);height:var(--h);background:var(--bg);position:relative;overflow:hidden;transform:scale(var(--s,0.42));transform-origin:top right;padding:var(--pad);display:flex;flex-direction:column}
+html.export .slide{transform:none}
+/* 9:16 (تيك توك): واجهة التطبيق تغطي فوق وتحت — المهم داخل المنطقة الآمنة */
+html.tall .slide{padding:240px 150px 500px}
+html.tall .handle,html.tall .count,html.tall .cover .swipe{bottom:500px}
+html.tall .handle{left:150px}html.tall .count,html.tall .cover .swipe{right:150px}
+
+/* ── عناصر مشتركة ── */
+.handle{position:absolute;bottom:56px;left:var(--pad);font-size:30px;font-weight:700;direction:ltr;opacity:.7}
+.count{position:absolute;bottom:56px;right:var(--pad);font-size:30px;font-weight:700;opacity:.5;direction:ltr}
+.kicker{font-size:36px;font-weight:700;color:var(--accent);margin-bottom:24px}
+h1{font-size:104px;line-height:1.15;font-weight:800}
+h2{font-size:76px;line-height:1.2;font-weight:800;margin-bottom:36px}
+p,li{font-size:46px;line-height:1.6;font-weight:500}
+.hl{color:var(--accent)}
+.mark{background:linear-gradient(transparent 58%, var(--soft) 58%)}
+
+/* غلاف */
+.cover{justify-content:center;background:var(--ink);color:var(--bg)}
+.cover h1{font-size:124px}
+.cover .big-num{font-size:300px;font-weight:800;color:var(--accent);line-height:1;direction:ltr;text-align:right}
+.cover .swipe{position:absolute;bottom:56px;right:var(--pad);font-size:34px;font-weight:700;color:var(--accent)}
+.cover .handle{color:var(--bg)}
+
+/* محتوى */
+.content{justify-content:center}
+.num{width:120px;height:120px;border-radius:32px;background:var(--accent);color:#fff;font-size:68px;font-weight:800;display:grid;place-items:center;margin-bottom:40px;direction:ltr}
+ul{padding-right:48px}li{margin:10px 0}
+
+/* حفظ — شريحة تستاهل الحفظ */
+.save{justify-content:center;background:var(--soft)}
+.save .card{background:var(--bg);border-radius:40px;padding:60px}
+.save li{list-style:none;padding-right:0}
+.save li::before{content:"✓ ";color:var(--accent);font-weight:800}
+
+/* CTA */
+.cta{justify-content:center;align-items:center;text-align:center;background:var(--accent);color:#fff}
+.cta h2{font-size:88px}
+.cta .pill{margin-top:40px;background:#fff;color:var(--accent);font-size:44px;font-weight:800;padding:22px 52px;border-radius:999px}
+.cta .handle{color:#fff;opacity:.9}
+</style>
+<script>
+// ?size=1080x1920 لتيك توك، 1080x1080 ليوتيوب، الافتراضي 1080x1440 لإنستقرام. ?export=1 للتصدير.
+(function () {
+  const q = new URLSearchParams(location.search);
+  const m = (q.get('size') || '').match(/^(\d+)x(\d+)$/);
+  if (m) { document.documentElement.style.setProperty('--w', m[1] + 'px'); document.documentElement.style.setProperty('--h', m[2] + 'px'); if (+m[2] / +m[1] > 1.5) document.documentElement.classList.add('tall'); }
+  if (q.get('export')) document.documentElement.classList.add('export');
+})();
+</script>
+</head>
+<body>
+<div class="preview-bar">معاينة · المقاس: <a href="?">إنستقرام 3:4</a> <a href="?size=1080x1920">تيك توك 9:16</a> <a href="?size=1080x1080">يوتيوب 1:1</a></div>
+
+<!-- ١ غلاف: هوك واحد يوقف السكرول -->
+<div class="frame"><section class="slide cover">
+  <div class="big-num">3</div>
+  <h1>أخطاء تخلي <span class="hl">الريل</span> يموت بأول ثانية</h1>
+  <span class="swipe">اسحب ←</span>
+  <span class="handle">@حسابك</span>
+</section></div>
+
+<!-- ٢ محتوى -->
+<div class="frame"><section class="slide content">
+  <div class="num">1</div>
+  <h2>تبدي بالتعريف بنفسك</h2>
+  <p>أول ثانيتين للـ<span class="mark">هوك</span> بس. التعريف خليه بالكابشن.</p>
+  <span class="count">2/5</span><span class="handle">@حسابك</span>
+</section></div>
+
+<!-- ٣ شريحة تستاهل الحفظ -->
+<div class="frame"><section class="slide save">
+  <div class="card">
+    <h2>احفظ هالقائمة 🔖</h2>
+    <ul><li>هوك بأول ثانيتين</li><li>نص على الشاشة</li><li>نهاية تفتح سؤال</li></ul>
+  </div>
+  <span class="count">4/5</span><span class="handle">@حسابك</span>
+</section></div>
+
+<!-- ٤ CTA -->
+<div class="frame"><section class="slide cta">
+  <h2>أي غلطة كنت تسويها؟</h2>
+  <p>اكتب الرقم بالتعليقات</p>
+  <div class="pill">علّق «هوك» وأرسلك القائمة</div>
+  <span class="handle">@حسابك</span>
+</section></div>
+</body>
+</html>

@@ -1,0 +1,2610 @@
+{
+ "name": "I/O Studio SFX library",
+ "version": 1,
+ "license": "مولّدة بالكامل بالكود (engine/sfx-gen.py) — حرّة، بلا حقوق لأحد. نفس رخصة البلگن (MIT). مدخلات cc0_* أصوات مسجّلة CC0 1.0 (library/sfx/cc0/ledger.json).",
+ "format": {
+  "sample_rate": 48000,
+  "channels": 1,
+  "bits": 16,
+  "container": "wav"
+ },
+ "loudness": {
+  "peak_dbfs_max": -1.0,
+  "momentary_lufs_max": -16.0,
+  "rule": "الربح = الأقل بين (قمة −1 dBFS) و(أعلى علو لحظي 400ms = −16 LUFS)"
+ },
+ "regenerate": "python3 engine/sfx-gen.py",
+ "categories": {
+  "transition": "انتقالات",
+  "ui": "واجهة وتطبيقات",
+  "impact": "ضربات",
+  "riser": "صعود ونزول",
+  "tech": "تقنية",
+  "money": "فلوس",
+  "countdown": "عدّ ووقت",
+  "nature": "طبيعة",
+  "cartoon": "كرتون وسحر",
+  "objects": "ورق وأشياء",
+  "music": "طبول وموسيقى"
+ },
+ "sounds": [
+  {
+   "id": "whoosh_short",
+   "ar": "ووش قصير",
+   "en": "Short whoosh",
+   "name_ar": "ووش قصير",
+   "name_en": "Short whoosh",
+   "category": "transition",
+   "duration": 0.38,
+   "tags": [
+    "ووش",
+    "انتقال",
+    "سريع"
+   ],
+   "use": "قطع سريع بين لقطتين أو دخول نص",
+   "file": "wav/whoosh_short.wav",
+   "peak_db": -2.72,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "whoosh_long",
+   "ar": "ووش طويل",
+   "en": "Long whoosh",
+   "name_ar": "ووش طويل",
+   "name_en": "Long whoosh",
+   "category": "transition",
+   "duration": 1.25,
+   "tags": [
+    "ووش",
+    "انتقال",
+    "بطيء"
+   ],
+   "use": "انتقال مشهد كامل أو حركة كاميرا بطيئة",
+   "file": "wav/whoosh_long.wav",
+   "peak_db": -5.21,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "whoosh_up",
+   "ar": "ووش صاعد",
+   "en": "Whoosh up",
+   "name_ar": "ووش صاعد",
+   "name_en": "Whoosh up",
+   "category": "transition",
+   "duration": 0.5,
+   "tags": [
+    "ووش",
+    "صعود",
+    "دخول"
+   ],
+   "use": "عنصر يطلع من تحت أو تكبير (زوم إن)",
+   "file": "wav/whoosh_up.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -16.1,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "whoosh_down",
+   "ar": "ووش نازل",
+   "en": "Whoosh down",
+   "name_ar": "ووش نازل",
+   "name_en": "Whoosh down",
+   "category": "transition",
+   "duration": 0.5,
+   "tags": [
+    "ووش",
+    "نزول",
+    "خروج"
+   ],
+   "use": "عنصر يطلع برّه الشاشة أو زوم آوت",
+   "file": "wav/whoosh_down.wav",
+   "peak_db": -2.82,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "whoosh_soft",
+   "ar": "ووش ناعم",
+   "en": "Soft whoosh",
+   "name_ar": "ووش ناعم",
+   "name_en": "Soft whoosh",
+   "category": "transition",
+   "duration": 0.7,
+   "tags": [
+    "ووش",
+    "هادي",
+    "ناعم"
+   ],
+   "use": "فيديوهات هادئة (طبخ، سفر، تأمل) — انتقال بلا إزعاج",
+   "file": "wav/whoosh_soft.wav",
+   "peak_db": -1.62,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "whoosh_heavy",
+   "ar": "ووش ثقيل",
+   "en": "Heavy whoosh",
+   "name_ar": "ووش ثقيل",
+   "name_en": "Heavy whoosh",
+   "category": "transition",
+   "duration": 0.9,
+   "tags": [
+    "ووش",
+    "ثقيل",
+    "سينمائي"
+   ],
+   "use": "انتقال قوي قبل لقطة مهمة",
+   "file": "wav/whoosh_heavy.wav",
+   "peak_db": -3.44,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "swish_fast",
+   "ar": "سويش سريع",
+   "en": "Fast swish",
+   "name_ar": "سويش سريع",
+   "name_en": "Fast swish",
+   "category": "transition",
+   "duration": 0.2,
+   "tags": [
+    "سويش",
+    "سريع",
+    "سحب"
+   ],
+   "use": "سحب سريع لكرت أو صورة",
+   "file": "wav/swish_fast.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -16.5,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "swish_double",
+   "ar": "سويش مزدوج",
+   "en": "Double swish",
+   "name_ar": "سويش مزدوج",
+   "name_en": "Double swish",
+   "category": "transition",
+   "duration": 0.44,
+   "tags": [
+    "سويش",
+    "مزدوج"
+   ],
+   "use": "حركة ذهاب وإياب، أو عنصرين يدخلون ورا بعض",
+   "file": "wav/swish_double.wav",
+   "peak_db": -1.29,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "swoosh_transition",
+   "ar": "سووش انتقال",
+   "en": "Swoosh transition",
+   "name_ar": "سووش انتقال",
+   "name_en": "Swoosh transition",
+   "category": "transition",
+   "duration": 0.85,
+   "tags": [
+    "سووش",
+    "انتقال",
+    "مشهد"
+   ],
+   "use": "انتقال بين فقرتين — فيه نفَس هوائي ونغمة خفيفة",
+   "file": "wav/swoosh_transition.wav",
+   "peak_db": -4.34,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "whoosh_reverse",
+   "ar": "سحبة معكوسة",
+   "en": "Reverse swell",
+   "name_ar": "سحبة معكوسة",
+   "name_en": "Reverse swell",
+   "category": "transition",
+   "duration": 1.3,
+   "tags": [
+    "معكوس",
+    "سحبة",
+    "تمهيد"
+   ],
+   "use": "تمهيد قبل الكشف — ينتهي بالضبط على لحظة القطع",
+   "file": "wav/whoosh_reverse.wav",
+   "peak_db": -3.21,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "air_pass",
+   "ar": "شي يمر سريع",
+   "en": "Air pass-by",
+   "name_ar": "شي يمر سريع",
+   "name_en": "Air pass-by",
+   "category": "transition",
+   "duration": 1.08,
+   "tags": [
+    "مرور",
+    "دوبلر",
+    "طيران"
+   ],
+   "use": "شي يعبر الشاشة (سيارة، طيارة ورق، عنصر طاير)",
+   "file": "wav/air_pass.wav",
+   "peak_db": -4.72,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "swipe_ui",
+   "ar": "سحبة إصبع",
+   "en": "UI swipe",
+   "name_ar": "سحبة إصبع",
+   "name_en": "UI swipe",
+   "category": "transition",
+   "duration": 0.14,
+   "tags": [
+    "سحب",
+    "واجهة",
+    "تطبيق"
+   ],
+   "use": "سحب شاشة تطبيق أو تقليب ستوري",
+   "file": "wav/swipe_ui.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -17.8,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "pop_soft",
+   "ar": "بوب ناعم",
+   "en": "Soft pop",
+   "name_ar": "بوب ناعم",
+   "name_en": "Soft pop",
+   "category": "ui",
+   "duration": 0.11,
+   "tags": [
+    "بوب",
+    "فقاعة",
+    "ظهور"
+   ],
+   "use": "كرت أو إيموجي يطلع — الأكثر استعمالاً",
+   "file": "wav/pop_soft.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -18.7,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "pop_bright",
+   "ar": "بوب حاد",
+   "en": "Bright pop",
+   "name_ar": "بوب حاد",
+   "name_en": "Bright pop",
+   "category": "ui",
+   "duration": 0.09,
+   "tags": [
+    "بوب",
+    "حاد",
+    "ظهور"
+   ],
+   "use": "نقطة مهمة تطلع، رقم، أيقونة",
+   "file": "wav/pop_bright.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -18.9,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "pop_bubble_up",
+   "ar": "بلوب صاعد",
+   "en": "Bubble bloop",
+   "name_ar": "بلوب صاعد",
+   "name_en": "Bubble bloop",
+   "category": "ui",
+   "duration": 0.13,
+   "tags": [
+    "بلوب",
+    "صعود",
+    "لطيف"
+   ],
+   "use": "عنصر يكبر ويطلع — محتوى أطفال ولطيف",
+   "file": "wav/pop_bubble_up.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -16.7,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "click_ui",
+   "ar": "كليك واجهة",
+   "en": "UI click",
+   "name_ar": "كليك واجهة",
+   "name_en": "UI click",
+   "category": "ui",
+   "duration": 0.03,
+   "tags": [
+    "كليك",
+    "زر",
+    "اختيار"
+   ],
+   "use": "ضغطة زر أو اختيار بشرح تطبيق",
+   "file": "wav/click_ui.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -23.4,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "click_soft",
+   "ar": "كليك ناعم",
+   "en": "Soft click",
+   "name_ar": "كليك ناعم",
+   "name_en": "Soft click",
+   "category": "ui",
+   "duration": 0.04,
+   "tags": [
+    "كليك",
+    "هادي"
+   ],
+   "use": "تحديد عنصر بهدوء، قائمة، تبويب",
+   "file": "wav/click_soft.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -22.8,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "tap_wood",
+   "ar": "نقرة خشب",
+   "en": "Wood tap",
+   "name_ar": "نقرة خشب",
+   "name_en": "Wood tap",
+   "category": "ui",
+   "duration": 0.12,
+   "tags": [
+    "نقرة",
+    "خشب",
+    "طبيعي"
+   ],
+   "use": "ظهور كلمة بإيقاع دافئ — بديل طبيعي للبوب",
+   "file": "wav/tap_wood.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -21.7,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "tap_glass",
+   "ar": "نقرة زجاج",
+   "en": "Glass tap",
+   "name_ar": "نقرة زجاج",
+   "name_en": "Glass tap",
+   "category": "ui",
+   "duration": 0.6,
+   "tags": [
+    "زجاج",
+    "رنين",
+    "أنيق"
+   ],
+   "use": "منتج فاخر، عطر، مجوهرات — لمسة أنيقة",
+   "file": "wav/tap_glass.wav",
+   "peak_db": -6.0,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "blip_up",
+   "ar": "بليب صاعد",
+   "en": "Blip up",
+   "name_ar": "بليب صاعد",
+   "name_en": "Blip up",
+   "category": "ui",
+   "duration": 0.15,
+   "tags": [
+    "بليب",
+    "صعود",
+    "إيجابي"
+   ],
+   "use": "إشعار إيجابي صغير، تفعيل ميزة",
+   "file": "wav/blip_up.wav",
+   "peak_db": -7.27,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "blip_down",
+   "ar": "بليب نازل",
+   "en": "Blip down",
+   "name_ar": "بليب نازل",
+   "name_en": "Blip down",
+   "category": "ui",
+   "duration": 0.15,
+   "tags": [
+    "بليب",
+    "نزول"
+   ],
+   "use": "إغلاق، رجوع، إلغاء خفيف",
+   "file": "wav/blip_down.wav",
+   "peak_db": -7.27,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "blip_select",
+   "ar": "بليب اختيار",
+   "en": "Select blip",
+   "name_ar": "بليب اختيار",
+   "name_en": "Select blip",
+   "category": "ui",
+   "duration": 0.07,
+   "tags": [
+    "بليب",
+    "اختيار",
+    "قائمة"
+   ],
+   "use": "التنقل بين خيارات قائمة",
+   "file": "wav/blip_select.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -16.5,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "toggle_on",
+   "ar": "تشغيل مفتاح",
+   "en": "Toggle on",
+   "name_ar": "تشغيل مفتاح",
+   "name_en": "Toggle on",
+   "category": "ui",
+   "duration": 0.1,
+   "tags": [
+    "مفتاح",
+    "تشغيل"
+   ],
+   "use": "تفعيل خيار بشرح تطبيق",
+   "file": "wav/toggle_on.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -19.3,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "toggle_off",
+   "ar": "إطفاء مفتاح",
+   "en": "Toggle off",
+   "name_ar": "إطفاء مفتاح",
+   "name_en": "Toggle off",
+   "category": "ui",
+   "duration": 0.1,
+   "tags": [
+    "مفتاح",
+    "إطفاء"
+   ],
+   "use": "إلغاء تفعيل خيار",
+   "file": "wav/toggle_off.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -19.7,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "notify_ding",
+   "ar": "دنگ إشعار",
+   "en": "Notification ding",
+   "name_ar": "دنگ إشعار",
+   "name_en": "Notification ding",
+   "category": "ui",
+   "duration": 1.2,
+   "tags": [
+    "إشعار",
+    "دنگ",
+    "رسالة"
+   ],
+   "use": "وصول رسالة، تنبيه، معلومة جديدة",
+   "file": "wav/notify_ding.wav",
+   "peak_db": -7.04,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "notify_double",
+   "ar": "إشعار نغمتين",
+   "en": "Two-note notification",
+   "name_ar": "إشعار نغمتين",
+   "name_en": "Two-note notification",
+   "category": "ui",
+   "duration": 1.24,
+   "tags": [
+    "إشعار",
+    "نغمتين"
+   ],
+   "use": "تنبيه لطيف، فكرة جديدة",
+   "file": "wav/notify_double.wav",
+   "peak_db": -7.58,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "notify_message",
+   "ar": "رسالة واردة",
+   "en": "Message pluck",
+   "name_ar": "رسالة واردة",
+   "name_en": "Message pluck",
+   "category": "ui",
+   "duration": 0.45,
+   "tags": [
+    "رسالة",
+    "دردشة",
+    "واتساب"
+   ],
+   "use": "محادثة على الشاشة، تعليق متابع يطلع",
+   "file": "wav/notify_message.wav",
+   "peak_db": -2.75,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "success_chime",
+   "ar": "رنّة نجاح",
+   "en": "Success chime",
+   "name_ar": "رنّة نجاح",
+   "name_en": "Success chime",
+   "category": "ui",
+   "duration": 1.8,
+   "tags": [
+    "نجاح",
+    "صح",
+    "إنجاز"
+   ],
+   "use": "النتيجة النهائية، قبل/بعد ناجح، إجابة صحيحة",
+   "file": "wav/success_chime.wav",
+   "peak_db": -5.27,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "error_buzz",
+   "ar": "خطأ (بز)",
+   "en": "Error buzz",
+   "name_ar": "خطأ (بز)",
+   "name_en": "Error buzz",
+   "category": "ui",
+   "duration": 0.42,
+   "tags": [
+    "خطأ",
+    "غلط",
+    "رفض"
+   ],
+   "use": "إجابة غلط، «لا تسوي هيچ»، خرافة شائعة",
+   "file": "wav/error_buzz.wav",
+   "peak_db": -8.73,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "error_soft",
+   "ar": "خطأ ناعم",
+   "en": "Soft error",
+   "name_ar": "خطأ ناعم",
+   "name_en": "Soft error",
+   "category": "ui",
+   "duration": 0.25,
+   "tags": [
+    "خطأ",
+    "تنبيه",
+    "هادي"
+   ],
+   "use": "تنبيه غلطة بلطف (محتوى تعليمي)",
+   "file": "wav/error_soft.wav",
+   "peak_db": -4.97,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "like_heart",
+   "ar": "لايك قلب",
+   "en": "Like heart",
+   "name_ar": "لايك قلب",
+   "name_en": "Like heart",
+   "category": "ui",
+   "duration": 0.57,
+   "tags": [
+    "لايك",
+    "قلب",
+    "تفاعل"
+   ],
+   "use": "طلب لايك/متابعة، قلب يطلع على الشاشة",
+   "file": "wav/like_heart.wav",
+   "peak_db": -1.87,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "mouse_click",
+   "ar": "كليك ماوس",
+   "en": "Mouse click",
+   "name_ar": "كليك ماوس",
+   "name_en": "Mouse click",
+   "category": "ui",
+   "duration": 0.11,
+   "tags": [
+    "ماوس",
+    "كمبيوتر",
+    "شرح"
+   ],
+   "use": "شرح شاشة كمبيوتر، ضغطة على رابط",
+   "file": "wav/mouse_click.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -25.0,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "mouse_double",
+   "ar": "دبل كليك",
+   "en": "Mouse double click",
+   "name_ar": "دبل كليك",
+   "name_en": "Mouse double click",
+   "category": "ui",
+   "duration": 0.287,
+   "tags": [
+    "ماوس",
+    "دبل"
+   ],
+   "use": "فتح ملف بشرح برنامج",
+   "file": "wav/mouse_double.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -24.2,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "typing_keys",
+   "ar": "كتابة كيبورد",
+   "en": "Keyboard typing",
+   "name_ar": "كتابة كيبورد",
+   "name_en": "Keyboard typing",
+   "category": "ui",
+   "duration": 1.98,
+   "tags": [
+    "كتابة",
+    "كيبورد",
+    "نص"
+   ],
+   "use": "نص ينكتب حرف حرف على الشاشة",
+   "file": "wav/typing_keys.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -23.4,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "key_single",
+   "ar": "زر كيبورد",
+   "en": "Single key",
+   "name_ar": "زر كيبورد",
+   "name_en": "Single key",
+   "category": "ui",
+   "duration": 0.06,
+   "tags": [
+    "كيبورد",
+    "زر"
+   ],
+   "use": "حرف واحد، رقم يتغيّر",
+   "file": "wav/key_single.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -25.6,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "key_enter",
+   "ar": "زر إنتر",
+   "en": "Enter key",
+   "name_ar": "زر إنتر",
+   "name_en": "Enter key",
+   "category": "ui",
+   "duration": 0.202,
+   "tags": [
+    "إنتر",
+    "كيبورد",
+    "إرسال"
+   ],
+   "use": "إرسال، تأكيد، بحث بگوگل",
+   "file": "wav/key_enter.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -21.7,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "camera_shutter",
+   "ar": "غالق كاميرا",
+   "en": "Camera shutter",
+   "name_ar": "غالق كاميرا",
+   "name_en": "Camera shutter",
+   "category": "ui",
+   "duration": 0.14,
+   "tags": [
+    "كاميرا",
+    "صورة",
+    "لقطة"
+   ],
+   "use": "لقطة شاشة، صورة تثبت، فلاش",
+   "file": "wav/camera_shutter.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -24.3,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "scroll_tick",
+   "ar": "تمرير",
+   "en": "Scroll ticks",
+   "name_ar": "تمرير",
+   "name_en": "Scroll ticks",
+   "category": "ui",
+   "duration": 0.639,
+   "tags": [
+    "تمرير",
+    "سكرول",
+    "عجلة"
+   ],
+   "use": "تمرير قائمة أو عجلة اختيار تدور",
+   "file": "wav/scroll_tick.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -21.9,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "thud_soft",
+   "ar": "دگة ناعمة",
+   "en": "Soft thud",
+   "name_ar": "دگة ناعمة",
+   "name_en": "Soft thud",
+   "category": "impact",
+   "duration": 0.35,
+   "tags": [
+    "دگة",
+    "هبوط",
+    "ثقيل"
+   ],
+   "use": "عنصر ينزل ويثبت، عنوان يستقر",
+   "file": "wav/thud_soft.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -16.6,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "impact_punch",
+   "ar": "ضربة بوكس",
+   "en": "Punch impact",
+   "name_ar": "ضربة بوكس",
+   "name_en": "Punch impact",
+   "category": "impact",
+   "duration": 0.45,
+   "tags": [
+    "ضربة",
+    "قوة",
+    "پنچ"
+   ],
+   "use": "معلومة صادمة، كلمة قوية، قطع حاد",
+   "file": "wav/impact_punch.wav",
+   "peak_db": -5.7,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "boom_deep",
+   "ar": "بووم عميق",
+   "en": "Deep boom",
+   "name_ar": "بووم عميق",
+   "name_en": "Deep boom",
+   "category": "impact",
+   "duration": 2.2,
+   "tags": [
+    "بووم",
+    "عميق",
+    "سينمائي"
+   ],
+   "use": "كشف كبير، عنوان الفيديو، لحظة الذروة",
+   "file": "wav/boom_deep.wav",
+   "peak_db": -8.02,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "cinematic_hit",
+   "ar": "ضربة سينمائية",
+   "en": "Cinematic hit",
+   "name_ar": "ضربة سينمائية",
+   "name_en": "Cinematic hit",
+   "category": "impact",
+   "duration": 3.2,
+   "tags": [
+    "سينمائي",
+    "ترايلر",
+    "ضربة"
+   ],
+   "use": "افتتاحية قوية، ظهور الشعار، تريلر",
+   "file": "wav/cinematic_hit.wav",
+   "peak_db": -7.61,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "braam",
+   "ar": "برااام",
+   "en": "Braam",
+   "name_ar": "برااام",
+   "name_en": "Braam",
+   "category": "impact",
+   "duration": 3.6,
+   "tags": [
+    "برااام",
+    "توتر",
+    "سينمائي",
+    "نحاس"
+   ],
+   "use": "لحظة درامية ضخمة، مقدمة وثائقي",
+   "file": "wav/braam.wav",
+   "peak_db": -9.2,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "sub_drop",
+   "ar": "سب دروب",
+   "en": "Sub drop",
+   "name_ar": "سب دروب",
+   "name_en": "Sub drop",
+   "category": "impact",
+   "duration": 1.6,
+   "tags": [
+    "سب",
+    "نزول",
+    "بيس"
+   ],
+   "use": "بعد الرايزر مباشرة، لحظة الكشف",
+   "file": "wav/sub_drop.wav",
+   "peak_db": -7.78,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "bass_hit",
+   "ar": "ضربة بيس",
+   "en": "Bass hit",
+   "name_ar": "ضربة بيس",
+   "name_en": "Bass hit",
+   "category": "impact",
+   "duration": 1.1,
+   "tags": [
+    "بيس",
+    "808",
+    "ضربة"
+   ],
+   "use": "إيقاع، ضربة على الكلمة المهمة",
+   "file": "wav/bass_hit.wav",
+   "peak_db": -8.46,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "slam_metal",
+   "ar": "خبطة حديد",
+   "en": "Metal slam",
+   "name_ar": "خبطة حديد",
+   "name_en": "Metal slam",
+   "category": "impact",
+   "duration": 1.799,
+   "tags": [
+    "حديد",
+    "باب",
+    "قفل"
+   ],
+   "use": "قفل، باب يتسكّر، «خلص!»",
+   "file": "wav/slam_metal.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -16.5,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "hit_trailer_tail",
+   "ar": "ضربة بذيل طويل",
+   "en": "Trailer hit with tail",
+   "name_ar": "ضربة بذيل طويل",
+   "name_en": "Trailer hit with tail",
+   "category": "impact",
+   "duration": 4.0,
+   "tags": [
+    "ترايلر",
+    "صدى",
+    "نهاية"
+   ],
+   "use": "آخر لقطة قبل الشعار، نهاية درامية",
+   "file": "wav/hit_trailer_tail.wav",
+   "peak_db": -4.89,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "riser_noise",
+   "ar": "رايزر هوائي",
+   "en": "Noise riser",
+   "name_ar": "رايزر هوائي",
+   "name_en": "Noise riser",
+   "category": "riser",
+   "duration": 2.5,
+   "tags": [
+    "رايزر",
+    "صعود",
+    "تشويق"
+   ],
+   "use": "قبل الكشف بثانيتين — ينتهي على لحظة الكشف",
+   "file": "wav/riser_noise.wav",
+   "peak_db": -5.65,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "riser_tone",
+   "ar": "رايزر نغمي",
+   "en": "Tonal riser",
+   "name_ar": "رايزر نغمي",
+   "name_en": "Tonal riser",
+   "category": "riser",
+   "duration": 2.5,
+   "tags": [
+    "رايزر",
+    "نغمة",
+    "تشويق"
+   ],
+   "use": "تصاعد تشويق (سؤال قبل الجواب)",
+   "file": "wav/riser_tone.wav",
+   "peak_db": -5.48,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "riser_short",
+   "ar": "رايزر قصير",
+   "en": "Short riser",
+   "name_ar": "رايزر قصير",
+   "name_en": "Short riser",
+   "category": "riser",
+   "duration": 1.0,
+   "tags": [
+    "رايزر",
+    "قصير"
+   ],
+   "use": "تمهيد سريع قبل رقم أو نتيجة",
+   "file": "wav/riser_short.wav",
+   "peak_db": -3.08,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "downer_drop",
+   "ar": "نزول ودروب",
+   "en": "Downer drop",
+   "name_ar": "نزول ودروب",
+   "name_en": "Downer drop",
+   "category": "riser",
+   "duration": 1.995,
+   "tags": [
+    "نزول",
+    "دروب",
+    "هبوط"
+   ],
+   "use": "بعد الذروة، انتقال للهدوء، «بس انتبه…»",
+   "file": "wav/downer_drop.wav",
+   "peak_db": -3.9,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "downer_tone",
+   "ar": "نغمة نازلة",
+   "en": "Pitch dive",
+   "name_ar": "نغمة نازلة",
+   "name_en": "Pitch dive",
+   "category": "riser",
+   "duration": 1.2,
+   "tags": [
+    "نزول",
+    "غوص"
+   ],
+   "use": "شي يطيح، رقم ينزل، خسارة",
+   "file": "wav/downer_tone.wav",
+   "peak_db": -9.55,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "tension_swell",
+   "ar": "توتر يتصاعد",
+   "en": "Tension swell",
+   "name_ar": "توتر يتصاعد",
+   "name_en": "Tension swell",
+   "category": "riser",
+   "duration": 3.6,
+   "tags": [
+    "توتر",
+    "غموض",
+    "درون"
+   ],
+   "use": "غموض، قصة جريمة، «اللي صار بعدين…»",
+   "file": "wav/tension_swell.wav",
+   "peak_db": -4.12,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "glitch_short",
+   "ar": "گلتش قصير",
+   "en": "Short glitch",
+   "name_ar": "گلتش قصير",
+   "name_en": "Short glitch",
+   "category": "tech",
+   "duration": 0.283,
+   "tags": [
+    "گلتش",
+    "خلل",
+    "ديجيتال"
+   ],
+   "use": "قطع تقني، تحويل لنص ثاني، خطأ نظام",
+   "file": "wav/glitch_short.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -16.9,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "glitch_long",
+   "ar": "گلتش طويل",
+   "en": "Long glitch",
+   "name_ar": "گلتش طويل",
+   "name_en": "Long glitch",
+   "category": "tech",
+   "duration": 1.0,
+   "tags": [
+    "گلتش",
+    "تشويش",
+    "هاكر"
+   ],
+   "use": "انتقال تقني، «النظام انهار»، محتوى سايبر",
+   "file": "wav/glitch_long.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -17.6,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "digital_beep",
+   "ar": "بيب رقمي",
+   "en": "Digital beep",
+   "name_ar": "بيب رقمي",
+   "name_en": "Digital beep",
+   "category": "tech",
+   "duration": 0.15,
+   "tags": [
+    "بيب",
+    "جهاز",
+    "رقمي"
+   ],
+   "use": "جهاز يشتغل، تأكيد، عنصر تقني",
+   "file": "wav/digital_beep.wav",
+   "peak_db": -10.24,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "data_chirp",
+   "ar": "تشيرپ بيانات",
+   "en": "Data chirps",
+   "name_ar": "تشيرپ بيانات",
+   "name_en": "Data chirps",
+   "category": "tech",
+   "duration": 0.88,
+   "tags": [
+    "بيانات",
+    "كمبيوتر",
+    "معالجة"
+   ],
+   "use": "تحليل بيانات، تحميل، الذكاء الاصطناعي يفكر",
+   "file": "wav/data_chirp.wav",
+   "peak_db": -14.29,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "scan_beam",
+   "ar": "مسح ضوئي",
+   "en": "Scan beam",
+   "name_ar": "مسح ضوئي",
+   "name_en": "Scan beam",
+   "category": "tech",
+   "duration": 1.3,
+   "tags": [
+    "مسح",
+    "سكانر",
+    "ليزر"
+   ],
+   "use": "مسح منتج أو وجه، خط ضوء يمر",
+   "file": "wav/scan_beam.wav",
+   "peak_db": -9.72,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "power_up",
+   "ar": "تشغيل طاقة",
+   "en": "Power up",
+   "name_ar": "تشغيل طاقة",
+   "name_en": "Power up",
+   "category": "tech",
+   "duration": 1.3,
+   "tags": [
+    "تشغيل",
+    "طاقة",
+    "شحن"
+   ],
+   "use": "شي يشتغل، تطوير، «ابدأ»",
+   "file": "wav/power_up.wav",
+   "peak_db": -5.75,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "power_down",
+   "ar": "إطفاء طاقة",
+   "en": "Power down",
+   "name_ar": "إطفاء طاقة",
+   "name_en": "Power down",
+   "category": "tech",
+   "duration": 1.3,
+   "tags": [
+    "إطفاء",
+    "نهاية"
+   ],
+   "use": "شي ينطفي، بطارية خلصت، نهاية",
+   "file": "wav/power_down.wav",
+   "peak_db": -5.44,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "robot_blips",
+   "ar": "روبوت يحچي",
+   "en": "Robot blips",
+   "name_ar": "روبوت يحچي",
+   "name_en": "Robot blips",
+   "category": "tech",
+   "duration": 0.923,
+   "tags": [
+    "روبوت",
+    "ذكاء اصطناعي",
+    "بليب"
+   ],
+   "use": "روبوت أو ذكاء اصطناعي يرد",
+   "file": "wav/robot_blips.wav",
+   "peak_db": -12.42,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "static_burst",
+   "ar": "تشويش راديو",
+   "en": "Static burst",
+   "name_ar": "تشويش راديو",
+   "name_en": "Static burst",
+   "category": "tech",
+   "duration": 0.55,
+   "tags": [
+    "تشويش",
+    "راديو",
+    "تلفزيون"
+   ],
+   "use": "تقليب قنوات، ذكريات، انقطاع إرسال",
+   "file": "wav/static_burst.wav",
+   "peak_db": -5.67,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "coin_single",
+   "ar": "عملة",
+   "en": "Coin",
+   "name_ar": "عملة",
+   "name_en": "Coin",
+   "category": "money",
+   "duration": 0.51,
+   "tags": [
+    "عملة",
+    "فلوس",
+    "ربح"
+   ],
+   "use": "ربح صغير، نقطة، توفير",
+   "file": "wav/coin_single.wav",
+   "peak_db": -5.23,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "coins_shower",
+   "ar": "مطر عملات",
+   "en": "Coins shower",
+   "name_ar": "مطر عملات",
+   "name_en": "Coins shower",
+   "category": "money",
+   "duration": 1.202,
+   "tags": [
+    "عملات",
+    "فلوس",
+    "ثروة"
+   ],
+   "use": "أرباح كبيرة، «كم وفّرت؟»",
+   "file": "wav/coins_shower.wav",
+   "peak_db": -5.83,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "cash_register",
+   "ar": "كاشير",
+   "en": "Cash register",
+   "name_ar": "كاشير",
+   "name_en": "Cash register",
+   "category": "money",
+   "duration": 1.23,
+   "tags": [
+    "كاشير",
+    "بيع",
+    "شراء"
+   ],
+   "use": "بيع، سعر، «اشتريته بـ…»",
+   "file": "wav/cash_register.wav",
+   "peak_db": -9.6,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "kaching",
+   "ar": "كاچينگ",
+   "en": "Ka-ching",
+   "name_ar": "كاچينگ",
+   "name_en": "Ka-ching",
+   "category": "money",
+   "duration": 1.07,
+   "tags": [
+    "فلوس",
+    "ربح",
+    "سعر"
+   ],
+   "use": "رقم الربح، سعر مغري، خصم",
+   "file": "wav/kaching.wav",
+   "peak_db": -6.38,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "countdown_beep",
+   "ar": "بيب عدّ",
+   "en": "Countdown beep",
+   "name_ar": "بيب عدّ",
+   "name_en": "Countdown beep",
+   "category": "countdown",
+   "duration": 0.14,
+   "tags": [
+    "عدّ",
+    "بيب",
+    "ثانية"
+   ],
+   "use": "كل رقم بالعد التنازلي (3، 2، 1)",
+   "file": "wav/countdown_beep.wav",
+   "peak_db": -6.67,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "countdown_final",
+   "ar": "بيب الصفر",
+   "en": "Countdown final beep",
+   "name_ar": "بيب الصفر",
+   "name_en": "Countdown final beep",
+   "category": "countdown",
+   "duration": 0.6,
+   "tags": [
+    "عدّ",
+    "نهاية",
+    "انطلاق"
+   ],
+   "use": "الصفر — لحظة البداية",
+   "file": "wav/countdown_final.wav",
+   "peak_db": -10.27,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "countdown_3_2_1",
+   "ar": "عدّ ٣-٢-١",
+   "en": "3-2-1 countdown",
+   "name_ar": "عدّ ٣-٢-١",
+   "name_en": "3-2-1 countdown",
+   "category": "countdown",
+   "duration": 3.61,
+   "tags": [
+    "عدّ",
+    "٣٢١",
+    "انطلاق"
+   ],
+   "use": "عد تنازلي كامل (3 ث + الانطلاق)",
+   "file": "wav/countdown_3_2_1.wav",
+   "peak_db": -10.2,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "tick_tock",
+   "ar": "تك توك",
+   "en": "Tick tock",
+   "name_ar": "تك توك",
+   "name_en": "Tick tock",
+   "category": "countdown",
+   "duration": 1.59,
+   "tags": [
+    "ساعة",
+    "وقت",
+    "انتظار"
+   ],
+   "use": "الوقت يمشي، انتظار، تحدّي بوقت",
+   "file": "wav/tick_tock.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -21.6,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "clock_tick",
+   "ar": "تكة ساعة",
+   "en": "Clock tick",
+   "name_ar": "تكة ساعة",
+   "name_en": "Clock tick",
+   "category": "countdown",
+   "duration": 0.06,
+   "tags": [
+    "ساعة",
+    "تكة"
+   ],
+   "use": "ثانية وحدة، عدّاد يتحرك",
+   "file": "wav/clock_tick.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -20.7,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "timer_alarm",
+   "ar": "منبّه",
+   "en": "Timer alarm",
+   "name_ar": "منبّه",
+   "name_en": "Timer alarm",
+   "category": "countdown",
+   "duration": 1.43,
+   "tags": [
+    "منبه",
+    "وقت",
+    "انتهى"
+   ],
+   "use": "الوقت خلص، تذكير، «قوم!»",
+   "file": "wav/timer_alarm.wav",
+   "peak_db": -12.1,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "water_drop",
+   "ar": "قطرة ماي",
+   "en": "Water drop",
+   "name_ar": "قطرة ماي",
+   "name_en": "Water drop",
+   "category": "nature",
+   "duration": 0.7,
+   "tags": [
+    "ماي",
+    "قطرة",
+    "هدوء"
+   ],
+   "use": "مشروب، بشرة، منتج عناية، لحظة هادئة",
+   "file": "wav/water_drop.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -17.3,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "bubble",
+   "ar": "فقاعة",
+   "en": "Bubble",
+   "name_ar": "فقاعة",
+   "name_en": "Bubble",
+   "category": "nature",
+   "duration": 0.12,
+   "tags": [
+    "فقاعة",
+    "ماي",
+    "لطيف"
+   ],
+   "use": "عنصر يطفو، محتوى أطفال",
+   "file": "wav/bubble.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -18.1,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "bubbles_stream",
+   "ar": "فقاعات",
+   "en": "Bubbles stream",
+   "name_ar": "فقاعات",
+   "name_en": "Bubbles stream",
+   "category": "nature",
+   "duration": 1.574,
+   "tags": [
+    "فقاعات",
+    "ماي",
+    "غوص"
+   ],
+   "use": "تحت الماي، مشروب غازي، غسيل",
+   "file": "wav/bubbles_stream.wav",
+   "peak_db": -3.71,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "heartbeat",
+   "ar": "دقات قلب",
+   "en": "Heartbeat",
+   "name_ar": "دقات قلب",
+   "name_en": "Heartbeat",
+   "category": "nature",
+   "duration": 2.0,
+   "tags": [
+    "قلب",
+    "توتر",
+    "خوف"
+   ],
+   "use": "لحظة توتر، انتظار نتيجة، خوف",
+   "file": "wav/heartbeat.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -16.1,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "wind_gust",
+   "ar": "هبّة هوا",
+   "en": "Wind gust",
+   "name_ar": "هبّة هوا",
+   "name_en": "Wind gust",
+   "category": "nature",
+   "duration": 3.0,
+   "tags": [
+    "هوا",
+    "رياح",
+    "صحراء"
+   ],
+   "use": "صحراء، جبل، سفر، فراغ",
+   "file": "wav/wind_gust.wav",
+   "peak_db": -5.15,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "rain_patter",
+   "ar": "مطر خفيف",
+   "en": "Light rain",
+   "name_ar": "مطر خفيف",
+   "name_en": "Light rain",
+   "category": "nature",
+   "duration": 3.0,
+   "tags": [
+    "مطر",
+    "شتاء",
+    "هدوء"
+   ],
+   "use": "جو شتوي، قهوة، محتوى هادئ",
+   "file": "wav/rain_patter.wav",
+   "peak_db": -5.19,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "fire_crackle",
+   "ar": "طقطقة نار",
+   "en": "Fire crackle",
+   "name_ar": "طقطقة نار",
+   "name_en": "Fire crackle",
+   "category": "nature",
+   "duration": 3.0,
+   "tags": [
+    "نار",
+    "حطب",
+    "دفء"
+   ],
+   "use": "شوي، مخيم، شتاء، طبخ على الفحم",
+   "file": "wav/fire_crackle.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -21.3,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "sparkle_magic",
+   "ar": "لمعة سحرية",
+   "en": "Magic sparkle",
+   "name_ar": "لمعة سحرية",
+   "name_en": "Magic sparkle",
+   "category": "cartoon",
+   "duration": 1.7,
+   "tags": [
+    "لمعة",
+    "سحر",
+    "نجوم"
+   ],
+   "use": "شي يلمع، تحوّل، قبل/بعد تنظيف",
+   "file": "wav/sparkle_magic.wav",
+   "peak_db": -7.63,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "magic_wand",
+   "ar": "عصا سحرية",
+   "en": "Magic wand",
+   "name_ar": "عصا سحرية",
+   "name_en": "Magic wand",
+   "category": "cartoon",
+   "duration": 1.6,
+   "tags": [
+    "سحر",
+    "تحول",
+    "عصا"
+   ],
+   "use": "حرف يتحوّل لصورة (درس متحرك)، مفاجأة",
+   "file": "wav/magic_wand.wav",
+   "peak_db": -5.6,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "boing",
+   "ar": "بوينگ",
+   "en": "Boing",
+   "name_ar": "بوينگ",
+   "name_en": "Boing",
+   "category": "cartoon",
+   "duration": 0.7,
+   "tags": [
+    "بوينگ",
+    "قفزة",
+    "مضحك"
+   ],
+   "use": "قفزة، شي يرتد، لحظة مضحكة",
+   "file": "wav/boing.wav",
+   "peak_db": -6.15,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "boing_low",
+   "ar": "بوينگ واطي",
+   "en": "Low boing",
+   "name_ar": "بوينگ واطي",
+   "name_en": "Low boing",
+   "category": "cartoon",
+   "duration": 0.9,
+   "tags": [
+    "بوينگ",
+    "ثقيل",
+    "مضحك"
+   ],
+   "use": "شي ثقيل يرتد، سقوط مضحك",
+   "file": "wav/boing_low.wav",
+   "peak_db": -6.56,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "slide_whistle_up",
+   "ar": "صفّارة صاعدة",
+   "en": "Slide whistle up",
+   "name_ar": "صفّارة صاعدة",
+   "name_en": "Slide whistle up",
+   "category": "cartoon",
+   "duration": 0.8,
+   "tags": [
+    "صفارة",
+    "صعود",
+    "كرتون"
+   ],
+   "use": "شي يطير لفوق، فكرة ترتفع",
+   "file": "wav/slide_whistle_up.wav",
+   "peak_db": -11.74,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "slide_whistle_down",
+   "ar": "صفّارة نازلة",
+   "en": "Slide whistle down",
+   "name_ar": "صفّارة نازلة",
+   "name_en": "Slide whistle down",
+   "category": "cartoon",
+   "duration": 0.8,
+   "tags": [
+    "صفارة",
+    "نزول",
+    "سقوط"
+   ],
+   "use": "سقوط مضحك، فشل خفيف",
+   "file": "wav/slide_whistle_down.wav",
+   "peak_db": -12.19,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "spring_wobble",
+   "ar": "سبرنگ",
+   "en": "Spring wobble",
+   "name_ar": "سبرنگ",
+   "name_en": "Spring wobble",
+   "category": "cartoon",
+   "duration": 0.8,
+   "tags": [
+    "سبرنگ",
+    "اهتزاز",
+    "مرن"
+   ],
+   "use": "عنصر يهتز بمرونة (bounce)",
+   "file": "wav/spring_wobble.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -17.7,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "cartoon_zip",
+   "ar": "زيپ سريع",
+   "en": "Cartoon zip",
+   "name_ar": "زيپ سريع",
+   "name_en": "Cartoon zip",
+   "category": "cartoon",
+   "duration": 0.35,
+   "tags": [
+    "زيپ",
+    "سرعة",
+    "هروب"
+   ],
+   "use": "شخصية تركض بسرعة، شي يختفي",
+   "file": "wav/cartoon_zip.wav",
+   "peak_db": -9.28,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "squeak",
+   "ar": "صويت لعبة",
+   "en": "Toy squeak",
+   "name_ar": "صويت لعبة",
+   "name_en": "Toy squeak",
+   "category": "cartoon",
+   "duration": 0.28,
+   "tags": [
+    "لعبة",
+    "صويت",
+    "أطفال"
+   ],
+   "use": "لعبة أطفال، شي صغير ينضغط",
+   "file": "wav/squeak.wav",
+   "peak_db": -9.99,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "pluck_cartoon",
+   "ar": "نقرة وتر",
+   "en": "Cartoon pluck",
+   "name_ar": "نقرة وتر",
+   "name_en": "Cartoon pluck",
+   "category": "cartoon",
+   "duration": 0.7,
+   "tags": [
+    "وتر",
+    "نقرة",
+    "لطيف"
+   ],
+   "use": "ظهور عنصر لطيف، فكرة صغيرة",
+   "file": "wav/pluck_cartoon.wav",
+   "peak_db": -3.73,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "fail_wah",
+   "ar": "واه فشل",
+   "en": "Fail wah-wah",
+   "name_ar": "واه فشل",
+   "name_en": "Fail wah-wah",
+   "category": "cartoon",
+   "duration": 2.15,
+   "tags": [
+    "فشل",
+    "مضحك",
+    "حزين"
+   ],
+   "use": "فشل مضحك، توقّع غلط (بلا ضحك جاهز)",
+   "file": "wav/fail_wah.wav",
+   "peak_db": -6.45,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "paper_flip",
+   "ar": "قلبة ورقة",
+   "en": "Paper flip",
+   "name_ar": "قلبة ورقة",
+   "name_en": "Paper flip",
+   "category": "objects",
+   "duration": 0.25,
+   "tags": [
+    "ورق",
+    "قلب",
+    "كرت"
+   ],
+   "use": "تقليب كروت، ورقة تطلع",
+   "file": "wav/paper_flip.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -16.9,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "page_turn",
+   "ar": "تقليب صفحة",
+   "en": "Page turn",
+   "name_ar": "تقليب صفحة",
+   "name_en": "Page turn",
+   "category": "objects",
+   "duration": 0.7,
+   "tags": [
+    "صفحة",
+    "كتاب",
+    "قصة"
+   ],
+   "use": "قصة، كتاب، الفصل التالي",
+   "file": "wav/page_turn.wav",
+   "peak_db": -6.84,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "zipper",
+   "ar": "سحّاب",
+   "en": "Zipper",
+   "name_ar": "سحّاب",
+   "name_en": "Zipper",
+   "category": "objects",
+   "duration": 0.798,
+   "tags": [
+    "سحاب",
+    "شنطة",
+    "سفر"
+   ],
+   "use": "فتح شنطة، سفر، تجهيز",
+   "file": "wav/zipper.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -18.0,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "paper_crumple",
+   "ar": "كرمشة ورق",
+   "en": "Paper crumple",
+   "name_ar": "كرمشة ورق",
+   "name_en": "Paper crumple",
+   "category": "objects",
+   "duration": 1.0,
+   "tags": [
+    "ورق",
+    "كرمشة",
+    "رمي"
+   ],
+   "use": "رمي فكرة غلط، «انسَ هالطريقة»",
+   "file": "wav/paper_crumple.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -16.8,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "kick",
+   "ar": "كيك",
+   "en": "Kick drum",
+   "name_ar": "كيك",
+   "name_en": "Kick drum",
+   "category": "music",
+   "duration": 0.5,
+   "tags": [
+    "طبل",
+    "كيك",
+    "إيقاع"
+   ],
+   "use": "إيقاع المونتاج على البيت، ضربة كلمة",
+   "file": "wav/kick.wav",
+   "peak_db": -4.86,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "snare",
+   "ar": "سنير",
+   "en": "Snare drum",
+   "name_ar": "سنير",
+   "name_en": "Snare drum",
+   "category": "music",
+   "duration": 0.3,
+   "tags": [
+    "طبل",
+    "سنير",
+    "إيقاع"
+   ],
+   "use": "ضربة ثانية بالإيقاع، تأكيد",
+   "file": "wav/snare.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -19.8,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "hat_closed",
+   "ar": "هاي هات مسكّر",
+   "en": "Closed hi-hat",
+   "name_ar": "هاي هات مسكّر",
+   "name_en": "Closed hi-hat",
+   "category": "music",
+   "duration": 0.08,
+   "tags": [
+    "هاي هات",
+    "إيقاع"
+   ],
+   "use": "إيقاع خفيف سريع",
+   "file": "wav/hat_closed.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -22.9,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "hat_open",
+   "ar": "هاي هات مفتوح",
+   "en": "Open hi-hat",
+   "name_ar": "هاي هات مفتوح",
+   "name_en": "Open hi-hat",
+   "category": "music",
+   "duration": 0.5,
+   "tags": [
+    "هاي هات",
+    "إيقاع"
+   ],
+   "use": "نهاية جملة إيقاعية",
+   "file": "wav/hat_open.wav",
+   "peak_db": -1.24,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "clap",
+   "ar": "تصفيق",
+   "en": "Clap",
+   "name_ar": "تصفيق",
+   "name_en": "Clap",
+   "category": "music",
+   "duration": 0.343,
+   "tags": [
+    "تصفيق",
+    "إيقاع",
+    "يد"
+   ],
+   "use": "إيقاع، «برافو» صغيرة",
+   "file": "wav/clap.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -17.2,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "tom",
+   "ar": "توم",
+   "en": "Tom drum",
+   "name_ar": "توم",
+   "name_en": "Tom drum",
+   "category": "music",
+   "duration": 0.5,
+   "tags": [
+    "طبل",
+    "توم"
+   ],
+   "use": "حشوة إيقاع، انتقال طبول",
+   "file": "wav/tom.wav",
+   "peak_db": -3.36,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "rim",
+   "ar": "ريم",
+   "en": "Rim shot",
+   "name_ar": "ريم",
+   "name_en": "Rim shot",
+   "category": "music",
+   "duration": 0.1,
+   "tags": [
+    "طبل",
+    "ريم",
+    "خشب"
+   ],
+   "use": "إيقاع لاتيني خفيف، تكة",
+   "file": "wav/rim.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -24.1,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "stinger_positive",
+   "ar": "ستنگر إيجابي",
+   "en": "Positive stinger",
+   "name_ar": "ستنگر إيجابي",
+   "name_en": "Positive stinger",
+   "category": "music",
+   "duration": 1.9,
+   "tags": [
+    "ستنگر",
+    "نهاية",
+    "إيجابي"
+   ],
+   "use": "نهاية فقرة حلوة، كشف نتيجة جيدة",
+   "file": "wav/stinger_positive.wav",
+   "peak_db": -3.03,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "ta_da",
+   "ar": "تادا",
+   "en": "Ta-da fanfare",
+   "name_ar": "تادا",
+   "name_en": "Ta-da fanfare",
+   "category": "music",
+   "duration": 1.8,
+   "tags": [
+    "تادا",
+    "كشف",
+    "مفاجأة"
+   ],
+   "use": "كشف المنتج، النتيجة النهائية، قبل/بعد",
+   "file": "wav/ta_da.wav",
+   "peak_db": -2.94,
+   "momentary_lufs": -16.0,
+   "gain_rule": "loudness"
+  },
+  {
+   "id": "orchestra_hit",
+   "ar": "ضربة أوركسترا",
+   "en": "Orchestra-style stab",
+   "name_ar": "ضربة أوركسترا",
+   "name_en": "Orchestra-style stab",
+   "category": "music",
+   "duration": 1.6,
+   "tags": [
+    "أوركسترا",
+    "ضربة",
+    "درامي"
+   ],
+   "use": "مفاجأة درامية، عنوان كبير",
+   "file": "wav/orchestra_hit.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -17.4,
+   "gain_rule": "peak"
+  },
+  {
+   "id": "cc0_click_minimal",
+   "ar": "نقرة جافة",
+   "en": "Click minimal (CC0)",
+   "name_ar": "نقرة جافة",
+   "name_en": "Click minimal (CC0)",
+   "category": "ui",
+   "duration": 0.149,
+   "tags": [
+    "نقرة",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "One dry damped press: a screenshot, a capture, a pressed button.",
+   "file": "cc0/click-minimal.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -17.3,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "UI SFX"
+  },
+  {
+   "id": "cc0_click_mechanical",
+   "ar": "نقرة زر ميكانيكي",
+   "en": "Click mechanical (CC0)",
+   "name_ar": "نقرة زر ميكانيكي",
+   "name_en": "Click mechanical (CC0)",
+   "category": "ui",
+   "duration": 0.163,
+   "tags": [
+    "نقرة",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A firmer mechanical press for a real product button.",
+   "file": "cc0/click-mechanical.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -22.5,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "UI SFX"
+  },
+  {
+   "id": "cc0_click_snap",
+   "ar": "نقرة تثبيت",
+   "en": "Click snap (CC0)",
+   "name_ar": "نقرة تثبيت",
+   "name_en": "Click snap (CC0)",
+   "category": "ui",
+   "duration": 0.184,
+   "tags": [
+    "نقرة",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A short soft snap when something locks into place.",
+   "file": "cc0/click-snap.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -20.2,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "UI SFX"
+  },
+  {
+   "id": "cc0_click_tiny",
+   "ar": "نقرة صغيرة جداً",
+   "en": "Click tiny (CC0)",
+   "name_ar": "نقرة صغيرة جداً",
+   "name_en": "Click tiny (CC0)",
+   "category": "ui",
+   "duration": 0.03,
+   "tags": [
+    "نقرة",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A very short tick-like click (about 20 ms); stack it under a bigger sound or use it alone at low gain.",
+   "file": "cc0/click-tiny.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -29.2,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "Kenney Interface Sounds 1.0"
+  },
+  {
+   "id": "cc0_click_metal",
+   "ar": "نقرة قفل معدني",
+   "en": "Click metal (CC0)",
+   "name_ar": "نقرة قفل معدني",
+   "name_en": "Click metal (CC0)",
+   "category": "ui",
+   "duration": 0.446,
+   "tags": [
+    "نقرة",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A small metal latch click for a capture or a confirmed selection.",
+   "file": "cc0/click-metal.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -24.6,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "Kenney RPG Audio 1.0"
+  },
+  {
+   "id": "cc0_pop_minimal",
+   "ar": "فقعة صغيرة",
+   "en": "Pop minimal (CC0)",
+   "name_ar": "فقعة صغيرة",
+   "name_en": "Pop minimal (CC0)",
+   "category": "ui",
+   "duration": 0.336,
+   "tags": [
+    "فقعة",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A small pop for a badge, chip or sticker that appears.",
+   "file": "cc0/pop-minimal.wav",
+   "peak_db": -4.35,
+   "momentary_lufs": -16.0,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "UI SFX"
+  },
+  {
+   "id": "cc0_pop_rubber",
+   "ar": "فقعة مطاطية",
+   "en": "Pop rubber (CC0)",
+   "name_ar": "فقعة مطاطية",
+   "name_en": "Pop rubber (CC0)",
+   "category": "ui",
+   "duration": 0.307,
+   "tags": [
+    "فقعة",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A rounder pop for a card or highlight that appears.",
+   "file": "cc0/pop-rubber.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -16.0,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "UI SFX"
+  },
+  {
+   "id": "cc0_pop_organic",
+   "ar": "فقعة دافئة",
+   "en": "Pop organic (CC0)",
+   "name_ar": "فقعة دافئة",
+   "name_en": "Pop organic (CC0)",
+   "category": "ui",
+   "duration": 0.291,
+   "tags": [
+    "فقعة",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A warmer pop for a hand-made element (paper, tape, sticker).",
+   "file": "cc0/pop-organic.wav",
+   "peak_db": -1.08,
+   "momentary_lufs": -16.0,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "UI SFX"
+  },
+  {
+   "id": "cc0_pop_zen",
+   "ar": "فقعة هادية",
+   "en": "Pop zen (CC0)",
+   "name_ar": "فقعة هادية",
+   "name_en": "Pop zen (CC0)",
+   "category": "ui",
+   "duration": 0.262,
+   "tags": [
+    "فقعة",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A light pop with a soft tail for a calm reveal.",
+   "file": "cc0/pop-zen.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -19.0,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "UI SFX"
+  },
+  {
+   "id": "cc0_pop_select",
+   "ar": "فقعة اختيار",
+   "en": "Pop select (CC0)",
+   "name_ar": "فقعة اختيار",
+   "name_en": "Pop select (CC0)",
+   "category": "ui",
+   "duration": 0.06,
+   "tags": [
+    "فقعة",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A tiny pop (about 60 ms) for a chip or a list item that appears.",
+   "file": "cc0/pop-select.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -22.5,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "Kenney Interface Sounds 1.0"
+  },
+  {
+   "id": "cc0_chime_minimal",
+   "ar": "رنّة تمّ",
+   "en": "Chime minimal (CC0)",
+   "name_ar": "رنّة تمّ",
+   "name_en": "Chime minimal (CC0)",
+   "category": "ui",
+   "duration": 0.586,
+   "tags": [
+    "رنّة تأكيد",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A short chime after a click: done, confirmed, installed.",
+   "file": "cc0/chime-minimal.wav",
+   "peak_db": -7.46,
+   "momentary_lufs": -16.0,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "UI SFX"
+  },
+  {
+   "id": "cc0_chime_zen",
+   "ar": "رنّة هادية",
+   "en": "Chime zen (CC0)",
+   "name_ar": "رنّة هادية",
+   "name_en": "Chime zen (CC0)",
+   "category": "ui",
+   "duration": 0.571,
+   "tags": [
+    "رنّة تأكيد",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A softer chime for a calm result.",
+   "file": "cc0/chime-zen.wav",
+   "peak_db": -4.62,
+   "momentary_lufs": -16.0,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "UI SFX"
+  },
+  {
+   "id": "cc0_chime_bright",
+   "ar": "رنّة مشرقة",
+   "en": "Chime bright (CC0)",
+   "name_ar": "رنّة مشرقة",
+   "name_en": "Chime bright (CC0)",
+   "category": "ui",
+   "duration": 0.295,
+   "tags": [
+    "رنّة تأكيد",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A short bright confirmation (about 0.3 s).",
+   "file": "cc0/chime-bright.wav",
+   "peak_db": -3.6,
+   "momentary_lufs": -16.0,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "Kenney Interface Sounds 1.0"
+  },
+  {
+   "id": "cc0_chime_soft",
+   "ar": "رنّة ناعمة",
+   "en": "Chime soft (CC0)",
+   "name_ar": "رنّة ناعمة",
+   "name_en": "Chime soft (CC0)",
+   "category": "ui",
+   "duration": 0.324,
+   "tags": [
+    "رنّة تأكيد",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A short soft confirmation (about 0.3 s).",
+   "file": "cc0/chime-soft.wav",
+   "peak_db": -3.71,
+   "momentary_lufs": -16.0,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "Kenney Interface Sounds 1.0"
+  },
+  {
+   "id": "cc0_tick_minimal",
+   "ar": "تكّة عدّاد",
+   "en": "Tick minimal (CC0)",
+   "name_ar": "تكّة عدّاد",
+   "name_en": "Tick minimal (CC0)",
+   "category": "countdown",
+   "duration": 0.203,
+   "tags": [
+    "تكّة",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "One step of a counter or a progress bar.",
+   "file": "cc0/tick-minimal.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -17.6,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "UI SFX"
+  },
+  {
+   "id": "cc0_tick_1",
+   "ar": "تكّة ١",
+   "en": "Tick 1 (CC0)",
+   "name_ar": "تكّة ١",
+   "name_en": "Tick 1 (CC0)",
+   "category": "countdown",
+   "duration": 0.045,
+   "tags": [
+    "تكّة",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A short counter tick.",
+   "file": "cc0/tick-1.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -29.3,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "Kenney Interface Sounds 1.0"
+  },
+  {
+   "id": "cc0_tick_2",
+   "ar": "تكّة ٢",
+   "en": "Tick 2 (CC0)",
+   "name_ar": "تكّة ٢",
+   "name_en": "Tick 2 (CC0)",
+   "category": "countdown",
+   "duration": 0.03,
+   "tags": [
+    "تكّة",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A shorter, higher counter tick; alternate with tick-1.",
+   "file": "cc0/tick-2.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -27.9,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "Kenney Interface Sounds 1.0"
+  },
+  {
+   "id": "cc0_tick_3",
+   "ar": "تكّة ٣",
+   "en": "Tick 3 (CC0)",
+   "name_ar": "تكّة ٣",
+   "name_en": "Tick 3 (CC0)",
+   "category": "countdown",
+   "duration": 0.055,
+   "tags": [
+    "تكّة",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A third counter tick for variation.",
+   "file": "cc0/tick-3.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -21.6,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "Kenney Interface Sounds 1.0"
+  },
+  {
+   "id": "cc0_type_minimal",
+   "ar": "زر كيبورد خفيف",
+   "en": "Type minimal (CC0)",
+   "name_ar": "زر كيبورد خفيف",
+   "name_en": "Type minimal (CC0)",
+   "category": "ui",
+   "duration": 0.087,
+   "tags": [
+    "زر كيبورد",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "One key tap; vary the pick and the gain for a short uneven burst.",
+   "file": "cc0/type-minimal.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -23.9,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "UI SFX"
+  },
+  {
+   "id": "cc0_type_mechanical",
+   "ar": "زر كيبورد ميكانيكي",
+   "en": "Type mechanical (CC0)",
+   "name_ar": "زر كيبورد ميكانيكي",
+   "name_en": "Type mechanical (CC0)",
+   "category": "ui",
+   "duration": 0.087,
+   "tags": [
+    "زر كيبورد",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A firmer key tap for a code or terminal line.",
+   "file": "cc0/type-mechanical.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -28.9,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "UI SFX"
+  },
+  {
+   "id": "cc0_type_organic",
+   "ar": "زر كيبورد ناعم",
+   "en": "Type organic (CC0)",
+   "name_ar": "زر كيبورد ناعم",
+   "name_en": "Type organic (CC0)",
+   "category": "ui",
+   "duration": 0.105,
+   "tags": [
+    "زر كيبورد",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A softer key tap for a chat or search box.",
+   "file": "cc0/type-organic.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -22.3,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "UI SFX"
+  },
+  {
+   "id": "cc0_reject_dull",
+   "ar": "رفض مكتوم",
+   "en": "Reject dull (CC0)",
+   "name_ar": "رفض مكتوم",
+   "name_en": "Reject dull (CC0)",
+   "category": "ui",
+   "duration": 0.255,
+   "tags": [
+    "رفض",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A wrong answer or a rejected option: one short dull click at a low gain.",
+   "file": "cc0/reject-dull.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -18.2,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "UI SFX"
+  },
+  {
+   "id": "cc0_landing_cinematic",
+   "ar": "هبوط سينمائي",
+   "en": "Landing cinematic (CC0)",
+   "name_ar": "هبوط سينمائي",
+   "name_en": "Landing cinematic (CC0)",
+   "category": "impact",
+   "duration": 0.584,
+   "tags": [
+    "هبوط ناعم",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A soft low landing for a stamp or a heavy card (about 0.6 s).",
+   "file": "cc0/landing-cinematic.wav",
+   "peak_db": -3.41,
+   "momentary_lufs": -16.0,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "UI SFX"
+  },
+  {
+   "id": "cc0_landing_soft_heavy",
+   "ar": "هبوط ثقيل ناعم",
+   "en": "Landing soft heavy (CC0)",
+   "name_ar": "هبوط ثقيل ناعم",
+   "name_en": "Landing soft heavy (CC0)",
+   "category": "impact",
+   "duration": 0.527,
+   "tags": [
+    "هبوط ناعم",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A soft heavy thud: a weighted landing or a chapter change.",
+   "file": "cc0/landing-soft-heavy.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -18.9,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "Kenney Impact Sounds 1.0"
+  },
+  {
+   "id": "cc0_landing_soft_medium",
+   "ar": "هبوط خفيف",
+   "en": "Landing soft medium (CC0)",
+   "name_ar": "هبوط خفيف",
+   "name_en": "Landing soft medium (CC0)",
+   "category": "impact",
+   "duration": 0.115,
+   "tags": [
+    "هبوط ناعم",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A lighter soft thud for a card that settles.",
+   "file": "cc0/landing-soft-medium.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -22.4,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "Kenney Impact Sounds 1.0"
+  },
+  {
+   "id": "cc0_landing_wood",
+   "ar": "خبطة خشب",
+   "en": "Landing wood (CC0)",
+   "name_ar": "خبطة خشب",
+   "name_en": "Landing wood (CC0)",
+   "category": "impact",
+   "duration": 0.31,
+   "tags": [
+    "هبوط ناعم",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A dry wooden thud for a stamp or a block that drops.",
+   "file": "cc0/landing-wood.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -23.7,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "Kenney Impact Sounds 1.0"
+  },
+  {
+   "id": "cc0_landing_plank",
+   "ar": "طرقة لوح",
+   "en": "Landing plank (CC0)",
+   "name_ar": "طرقة لوح",
+   "name_en": "Landing plank (CC0)",
+   "category": "impact",
+   "duration": 0.779,
+   "tags": [
+    "هبوط ناعم",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A hollow plank knock for a board or a panel that lands.",
+   "file": "cc0/landing-plank.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -22.1,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "Kenney Impact Sounds 1.0"
+  },
+  {
+   "id": "cc0_paper_flip",
+   "ar": "قلب صفحة",
+   "en": "Paper flip (CC0)",
+   "name_ar": "قلب صفحة",
+   "name_en": "Paper flip (CC0)",
+   "category": "objects",
+   "duration": 0.214,
+   "tags": [
+    "ورق",
+    "مسجّل",
+    "CC0"
+   ],
+   "use": "A single page turn for the Arabic page-turn move. Paper foley, not a sweep; drop it if you treat page turns as sweeps.",
+   "file": "cc0/paper-flip.wav",
+   "peak_db": -1.0,
+   "momentary_lufs": -26.8,
+   "gain_rule": "cc0-import",
+   "source": "cc0",
+   "license": "CC0-1.0",
+   "origin": "Kenney RPG Audio 1.0"
+  }
+ ]
+}

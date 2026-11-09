@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>صوّت</title>
+<link rel="icon" href="../lib/logo.svg" type="image/svg+xml">
+<style>
+/* هوية آي أو استوديو — نسخة من web/lib/brand.css (server.py يخدم هالمجلد بس) */
+:root{
+  color-scheme:dark;
+  --page:#0E1013;
+  --card:#16191E;
+  --card-2:#1D2127;
+  --line:#2A3038;
+  --ink:#E9EEF3;
+  --ink-2:#C5CFD9;           /* secondary text */
+  --muted:#9AA6B2;
+  --accent:#5CB8F0;          /* sky */
+  --accent-strong:#2E9BE0;
+  --accent-ink:#0A1A26;      /* text on accent */
+  --sky-soft:#15293A;        /* chips, notes, soft highlights */
+  --sky-soft-ink:#9FD3F5;
+  --ok:#4CC38A;
+  --bad:#F0716A;
+  --warn:#E7B04A;
+  --shadow:0 12px 40px rgba(0,0,0,.45);
+  --vignette:radial-gradient(120% 70% at 50% -12%, rgba(92,184,240,.10), transparent 62%),
+             radial-gradient(150% 110% at 50% 115%, rgba(0,0,0,.45), transparent 60%);
+  --letterbox:linear-gradient(90deg, transparent, rgba(92,184,240,.55) 22%, rgba(92,184,240,.55) 78%, transparent);
+  --font:Cairo,Tajawal,"Noto Naskh Arabic","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    color-scheme:light;
+    --page:#F3F8FC;
+    --card:#FFFFFF;
+    --card-2:#EAF2F9;
+    --line:#D3E1ED;
+    --ink:#13171C;
+    --ink-2:#333C46;
+    --muted:#55606C;
+    --accent:#166DAD;
+    --accent-strong:#0F5A91;
+    --accent-ink:#FFFFFF;
+    --sky-soft:#E3F0FA;
+    --sky-soft-ink:#0F5A91;
+    --ok:#17784A;
+    --bad:#B8352D;
+    --warn:#8A5A00;
+    --shadow:0 10px 30px rgba(20,40,60,.12);
+    --vignette:radial-gradient(120% 70% at 50% -12%, rgba(92,184,240,.18), transparent 62%);
+    --letterbox:linear-gradient(90deg, transparent, rgba(22,109,173,.45) 22%, rgba(22,109,173,.45) 78%, transparent);
+  }
+}
+:root[data-theme="light"]{
+  color-scheme:light;
+  --page:#F3F8FC;
+  --card:#FFFFFF;
+  --card-2:#EAF2F9;
+  --line:#D3E1ED;
+  --ink:#13171C;
+  --ink-2:#333C46;
+  --muted:#55606C;
+  --accent:#166DAD;
+  --accent-strong:#0F5A91;
+  --accent-ink:#FFFFFF;
+  --sky-soft:#E3F0FA;
+  --sky-soft-ink:#0F5A91;
+  --ok:#17784A;
+  --bad:#B8352D;
+  --warn:#8A5A00;
+  --shadow:0 10px 30px rgba(20,40,60,.12);
+  --vignette:radial-gradient(120% 70% at 50% -12%, rgba(92,184,240,.18), transparent 62%);
+  --letterbox:linear-gradient(90deg, transparent, rgba(22,109,173,.45) 22%, rgba(22,109,173,.45) 78%, transparent);
+}
+:root{--bg:var(--page);--mute:var(--muted)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);padding:24px 16px;min-height:100vh}
+main{max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+h1{font-size:24px;line-height:1.4;margin:0 0 6px}
+.opt{font:inherit;font-size:19px;padding:16px;border-radius:16px;border:2px solid var(--line);background:var(--card);color:var(--ink);text-align:start;cursor:pointer}
+.opt:active{border-color:var(--accent)}
+textarea{font:inherit;font-size:17px;padding:14px;border-radius:16px;border:2px solid var(--line);background:var(--card);color:var(--ink);min-height:90px;resize:vertical}
+.opt.on{border-color:var(--accent);background:var(--sky-soft);font-weight:600}
+.opt.on::before{content:'✓ ';color:var(--accent)}
+.sub{color:var(--mute);margin:-8px 0 2px;font-size:15px}
+.send{font:inherit;font-size:18px;padding:14px;border-radius:999px;border:0;background:var(--accent);color:var(--accent-ink);font-weight:700}
+.msg{color:var(--mute);font-size:17px;text-align:center;padding:40px 0}
+.done{font-size:22px;text-align:center;padding:40px 0}
+</style>
+</head>
+<body>
+<main id="app"><p class="msg">لحظة…</p></main>
+<script>
+const app=document.getElementById('app');
+let voter='';
+try{ voter=localStorage.getItem('voter')||''; if(!voter){ voter=Math.random().toString(36).slice(2)+Date.now().toString(36); localStorage.setItem('voter',voter);} }catch(e){ voter=Math.random().toString(36).slice(2); }
+const voted=id=>{try{return localStorage.getItem('v:'+id)==='1'}catch(e){return false}};
+const markVoted=id=>{try{localStorage.setItem('v:'+id,'1')}catch(e){}};
+let current='';
+function el(tag,cls,txt){const e=document.createElement(tag); if(cls) e.className=cls; if(txt!==undefined) e.textContent=txt; return e;}
+function render(p){
+  current=p.id+(p.open?'1':'0');
+  app.replaceChildren();
+  if(!p.open||!p.id){ app.append(el('p','msg','ما فيه تصويت مفتوح الحين. خلك على هالصفحة، أول ما يبدأ بيطلع لك.')); return; }
+  if(voted(p.id)){ app.append(el('p','done','وصل صوتك، شوف الشاشة 👀')); return; }
+  app.append(el('h1','',p.question));
+  if(p.multi){
+    // اختيار متعدد: يأشر على اللي يبيه ويضغط أرسل
+    app.append(el('p','sub','تقدر تختار أكثر من خيار'));
+    const picked=new Set();
+    p.options.forEach((o,i)=>{ const b=el('button','opt',o); b.type='button'; b.onclick=()=>{ picked.has(i)?picked.delete(i):picked.add(i); b.classList.toggle('on',picked.has(i)); }; app.append(b); });
+    const t=p.free?el('textarea'):null; if(t){ t.placeholder='أو اكتب جوابك'; t.maxLength=140; app.append(t); }
+    const s=el('button','send','أرسل'); s.type='button';
+    s.onclick=()=>{ const v=t?t.value.trim():''; if(picked.size||v) send(p.id,{options:[...picked],text:v}); };
+    app.append(s);
+    return;
+  }
+  p.options.forEach((o,i)=>{ const b=el('button','opt',o); b.type='button'; b.onclick=()=>send(p.id,{option:i}); app.append(b); });
+  if(p.free){
+    const t=el('textarea'); t.placeholder='أو اكتب جوابك'; t.maxLength=140;
+    const s=el('button','send','أرسل'); s.type='button';
+    s.onclick=()=>{ const v=t.value.trim(); if(v) send(p.id,{text:v}); };
+    app.append(t,s);
+  }
+}
+async function send(id,payload){
+  try{
+    const r=await fetch('/poll/vote',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(Object.assign({poll:id,voter},payload))});
+    if(r.ok||r.status===409){ markVoted(id); current=''; load(); }
+  }catch(e){ alert('ما وصل، جرّب مرة ثانية'); }
+}
+async function load(){
+  try{
+    const p=await (await fetch('/poll',{cache:'no-store'})).json();
+    if(p.id+(p.open?'1':'0')!==current) render(p);
+  }catch(e){}
+}
+load(); setInterval(load,2000);
+</script>
+</body>
+</html>

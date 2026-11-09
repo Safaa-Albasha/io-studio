@@ -1,0 +1,459 @@
+{
+ "version": 1,
+ "note": "حركات 265–283 — باقة «أنظمة الموشن»: الدوال بـmotion/moves-plus-f.js، المعاينات بـmotion/moves/render-preview-f.js، الشرح بـreferences/moves.md. أنظمة موشن كاملة (عنوان بكبسولة، كروت واجهات، تقويم، شبكة بعمق، بولارويد، كلمات وأغراض، تموّج…) مكتوبة بكودنا، الألوان من الثيم والخط Cairo؛ أي صورة اختيارية وبلاها رسم بالكود. نفس مخطط catalog.json.",
+ "moves": [
+  {
+   "n": 265,
+   "id": "starfieldBg",
+   "cat": "card",
+   "name": "سما بكسلات",
+   "sub": "خلفية نجوم بكسل وتوهج يتنفس",
+   "desc": "خلفية بلون الثيم وتوهج ناعم باللون المميز يتنفس، وجزيئات (نقاط ومربعات مفرّغة ومليانة) تصعد ببطء وتلمع، وإطار خطوط اختياري — أرضية لشرح أداة بخطوات.",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/265.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "tech",
+    "reveal"
+   ]
+  },
+  {
+   "n": 266,
+   "id": "capsuleHeadline",
+   "cat": "text",
+   "name": "عنوان بكبسولة",
+   "sub": "سطر هادي وسطر عريض وكلمة بكبسولة",
+   "desc": "سطر صغير فوق (لاتيني متباعد) وسطر هادي وسطر عريض، كلها تطلع من الضباب بتتابع 80 مللي، وكلمة وحدة بكبسولة اللون المميز تفرقع. للهوك والعناوين.",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/266.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "emphasis",
+    "reveal"
+   ]
+  },
+  {
+   "n": 267,
+   "id": "uiTabsCard",
+   "cat": "card",
+   "name": "كرت تبويبات",
+   "sub": "الاسم يتبدّل لين يستقر",
+   "desc": "نافذة تطبيق بتبويبات، والاسم الكبير يتبدّل بسرعة بضباب (كل 0.42 ث) لين يستقر على واحد، وتحته سطر وشارة تفرقع بميلان. «منو أحسن؟» و«جرّب، لا تسأل».",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/267.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "contrast",
+    "tech"
+   ]
+  },
+  {
+   "n": 268,
+   "id": "timelineEdit",
+   "cat": "card",
+   "name": "قبل وبعد ويا تايملاين",
+   "sub": "التعديل ينطبق مقطع مقطع",
+   "desc": "كرت «قبل» يملأ الشاشة ويصغر يسار، كرت «بعد» يدخل يمين، وتايملاين مونتاج تحت (نص · صوت · فحص): رأس التشغيل يمشي وكل مقطع يوصله يطبّق تعديل على النص (الكلمات المشطوبة تنشال).",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/268.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "contrast",
+    "reveal",
+    "tech"
+   ]
+  },
+  {
+   "n": 269,
+   "id": "progressChips",
+   "cat": "card",
+   "name": "شرائح تقدّم",
+   "sub": "مشاريع واقفة بالنص",
+   "desc": "كروت صغيرة فوق الفيديو (اسم وشريط نسبة وحالة) تفرقع بميلان حوالين الراس، ترجف «واقفة»، وتطلع بضباب؛ وبعدها كرت «تم» بحد اللون المميز.",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/269.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "list",
+    "number",
+    "contrast"
+   ]
+  },
+  {
+   "n": 270,
+   "id": "cornerGlow",
+   "cat": "card",
+   "name": "توهج الزاوية",
+   "sub": "خلفية كروسيل فاخمة",
+   "desc": "لون الخلفية وتوهج ناعم وحيد من زاوية يتحرك ببطء، وظل مقابل وحبيبات خفيفة — خلفية كروسيل تعليمي أو كفر (h: 1350 للكروسيل).",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/270.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 271,
+   "id": "calendarGlide",
+   "cat": "card",
+   "name": "تقويم ينزلق",
+   "sub": "الأيام تولّع والكاميرا تمشي",
+   "desc": "مربعات أيام مدوّرة (الأول يمين)، تولّع وحدة وحدة ويا رقم تحتها، والكاميرا تمشي عليها بعمق (البعيد يتضبب) وتوقف على «اليوم». للتحدي والأيام والتوقع.",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/271.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "list",
+    "number"
+   ]
+  },
+  {
+   "n": 272,
+   "id": "depthGrid",
+   "cat": "camera",
+   "name": "شبكة وعمق",
+   "sub": "ثلاث مفاهيم بلقطة وحدة",
+   "desc": "لقطة وحدة بلا قص: الكاميرا تنزل على شبكة بعمق بين ثلاث أقسام (كلمة كبيرة لكل قسم)، طبقات بسرعات مختلفة وكريستالات قريبة مضبّبة، وخط نبض يرتسم ويا الكاميرا. لثلاث مفاهيم مترابطة.",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/272.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "list",
+    "tech",
+    "reveal"
+   ]
+  },
+  {
+   "n": 273,
+   "id": "readmeScroll",
+   "cat": "card",
+   "name": "صفحة مشروع تنسحب",
+   "sub": "نافذة متصفح وأوامر",
+   "desc": "نافذة متصفح تطلع من تحت (عنوان المشروع، شارات، أسطر، صناديق أوامر)، والصفحة الطويلة تنسحب داخلها ويا وقفة على كل أمر. لإعلان أداة جربتها.",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/273.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "tech",
+    "reveal"
+   ]
+  },
+  {
+   "n": 274,
+   "id": "starSweep",
+   "cat": "transition",
+   "name": "نجمة تعبر قدام",
+   "sub": "نجمة غامقة تغطي القص",
+   "desc": "نجمة غامقة مضبّبة (قريبة من الكاميرا) تعبر الشاشة وتلف وتكبر لين تغطي القص بين مشهدين، وتطلع من الجهة الثانية.",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/274.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "reveal"
+   ]
+  },
+  {
+   "n": 275,
+   "id": "promptStep",
+   "cat": "card",
+   "name": "خطوة مرقّمة",
+   "sub": "رقم ينضرب ويصعد وكرت ينكتب",
+   "desc": "«#رقم» ينضرب كبير ويصعد فوق، كلمة الخطوة تطلع، كرت غامق ينكتب فيه السطر، ملصق أمر يفرقع بخط منقّط، وسطر عريض تحت. لقوالب البرومت والخطوات.",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/275.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "list",
+    "tech"
+   ]
+  },
+  {
+   "n": 276,
+   "id": "polaroidString",
+   "cat": "card",
+   "name": "بولارويد على حبل",
+   "sub": "قائمة صور تتمرجح",
+   "desc": "حبل مرخي، والصور (صورك أو رمز كبير) تطيح عليه وحدة وحدة وتتمرجح، الأولى يمين والكاميرا تمشي معها لليسار، وبالآخر ترجع تشوف الكل. لقائمة أخطاء أو أنواع.",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/276.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "list",
+    "reveal"
+   ]
+  },
+  {
+   "n": 277,
+   "id": "giantWordObject",
+   "cat": "text",
+   "name": "كلمة ورا الشي",
+   "sub": "كلمة عملاقة وشي قدامها",
+   "desc": "كلمة عملاقة باهتة ورا تنزلق، وشي قدامها (صورتك أو كريستالة مرسومة) يطلع من الضباب ويطفو، وعنوان فوق؛ وتبديل الشي بلحظة (مثل زر توليد).",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/277.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "reveal",
+    "emphasis"
+   ]
+  },
+  {
+   "n": 278,
+   "id": "wordProps",
+   "cat": "text",
+   "name": "كلمات وأغراض",
+   "sub": "كلمة على كل نبضة وأغراض من الزوايا",
+   "desc": "ورق بشبكة وخطوط إرشاد ترتسم وقوس ناعم، الكلمات تنبني وحدة على كل نبضة (صغير، عريض، صغير)، وأغراض حقيقية (صورك، أو مرسومة: فاتورة · كومة فواتير · جوال · دفتر · قلم) تدخل من الزوايا وتطفو.",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/278.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "emphasis",
+    "number",
+    "reveal"
+   ]
+  },
+  {
+   "n": 279,
+   "id": "detectBoxes",
+   "cat": "card",
+   "name": "الذكاء يشوف",
+   "sub": "صناديق كشف تقفل",
+   "desc": "صناديق كشف تقفل على الأشياء (زوايا تصغر لمقاسها)، بطاقة اسم ونسبة تعدّ، وخط مسح يعبر — «الذكاء الاصطناعي يشوف».",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/279.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "tech",
+    "reveal"
+   ]
+  },
+  {
+   "n": 280,
+   "id": "lightLineWipe",
+   "cat": "transition",
+   "name": "خط ضوء يمسح",
+   "sub": "من اليمين لليسار",
+   "desc": "خط ضوء عمودي باللون المميز يعبر من اليمين لليسار، واللي عبره صار المشهد الجديد — بنفس اتجاه القراءة العربية.",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/280.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 281,
+   "id": "rtlWipeText",
+   "cat": "text",
+   "name": "مسحة عربية ناعمة",
+   "sub": "الكلمة تنكشف من اليمين",
+   "desc": "الكلمة تنكشف من حافة اليمين لليسار بحافة ناعمة وضباب يستقر، وخط نبض اختياري ينرسم تحتها بنفس الاتجاه. لقرار أو استراتيجية.",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/281.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "reveal",
+    "emphasis"
+   ]
+  },
+  {
+   "n": 282,
+   "id": "planToBuild",
+   "cat": "card",
+   "name": "من المخطط للبناية",
+   "sub": "مخطط يصير مبنى",
+   "desc": "مخطط يرتسم على ورقة مايلة ويا المقاس، يلف لمنظور أيزومتري، والجدران تطلع من الأرض والسقف يلمع. لبناء موقع أو تطبيق أو مشروع.",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/282.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "reveal",
+    "tech"
+   ]
+  },
+  {
+   "n": 283,
+   "id": "luxWaves",
+   "cat": "card",
+   "name": "تموّج فاخم",
+   "sub": "خطوط حرير تتموج",
+   "desc": "خطوط حرير كثيرة تتموج بهدوء (من اللون المميز للحبر) وتكمل بين السلايدات (slide) — خلفية كروسيل وكفر.",
+   "source": {
+    "label": "I/O Studio — أنظمة الموشن (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/283.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  }
+ ]
+}

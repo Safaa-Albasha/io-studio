@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "id": "creator-studio",
+  "name_ar": "استوديو صانع محتوى",
+  "name_en": "Home office / creator studio",
+  "description_ar": "مكتب مرتب للتصوير: ستاند رنگ لايت وسوفت بوكس، مايك على ذراع، كاميرا ترايبود، رفوف بخلفية الكادر، ألواح عزل صوت، ولمسة نيون. خلفية الفيديو هي البراند.",
+  "palette": [
+    "#22252b",
+    "#3a4250",
+    "#e0663a",
+    "#c49a6c",
+    "#f2f0ec"
+  ],
+  "materials": {
+    "wall": {
+      "kind": "plaster",
+      "color": "#3a4250",
+      "roughness": 0.95
+    },
+    "floor": "walnut",
+    "main": {
+      "kind": "fabric",
+      "color": "#22252b",
+      "roughness": 0.8
+    },
+    "cushion": {
+      "kind": "fabric",
+      "color": "#e0663a",
+      "roughness": 0.9
+    },
+    "accent": {
+      "kind": "fabric",
+      "color": "#e0663a",
+      "roughness": 0.85
+    },
+    "wood": "oak",
+    "metal": "matte-black",
+    "fabric": {
+      "kind": "fabric",
+      "color": "#2c3038",
+      "roughness": 1
+    },
+    "rug": {
+      "kind": "fabric",
+      "color": "#2a2d33",
+      "roughness": 1
+    },
+    "rug2": {
+      "kind": "fabric",
+      "color": "#3b3f47",
+      "roughness": 1
+    },
+    "frame": "matte-black",
+    "neon": {
+      "kind": "emission",
+      "color": "#e0663a",
+      "strength": 12
+    },
+    "light": "lamp-white"
+  },
+  "swaps": {
+    "desk": "creator-desk",
+    "dining-chair": "office-chair"
+  },
+  "recommended": [
+    "creator-desk",
+    "office-chair",
+    "monitor",
+    "mic-arm",
+    "ring-light",
+    "softbox",
+    "camera-tripod",
+    "acoustic-panel",
+    "neon-sign",
+    "bookshelf",
+    "wall-shelf"
+  ],
+  "lighting": {
+    "time_of_day": "night",
+    "lamp_color": "#ffe0b8"
+  },
+  "tips_ar": [
+    "خلفية الكادر (اللي ورا راسك) أهم شي — رتّب الرف والنيون فيها.",
+    "ضوء رئيسي من ٤٥ درجة (سوفت بوكس) وضوء خلفي خفيف يفصلك عن الجدار."
+  ]
+}

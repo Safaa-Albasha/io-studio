@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "id": "math-counting",
+    "subject": "math",
+    "subjectLabel": "رياضيات",
+    "level": "أطفال ٤–٦",
+    "stage": "kindergarten"
+  },
+  "title": "نعد من ١ إلى ٥",
+  "format": "9:16",
+  "style": "cartoon",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّمة",
+    "shirt": "#E0663A",
+    "hijab": "#2F7FBF"
+  },
+  "beats": [
+    {
+      "say": "هلا حبايبي! اليوم نتعلم نعد لحد خمسة.",
+      "mood": "happy",
+      "show": "🍎",
+      "bounce": true,
+      "label": "تفاحة"
+    },
+    {
+      "say": "نعد التفاحات: وحدة، ثنتين، ثلاثة، أربعة، خمسة!",
+      "count": {
+        "item": "🍎",
+        "n": 5,
+        "label": "تفاحات"
+      }
+    },
+    {
+      "say": "هسه نمشي على خط الأعداد، خطوة خطوة.",
+      "numberline": {
+        "from": 0,
+        "to": 5,
+        "y": 560,
+        "x0": 120,
+        "x1": 880,
+        "start": 0,
+        "jumps": [
+          {
+            "from": 0,
+            "by": 5
+          }
+        ],
+        "marker": "🐸",
+        "size": 56
+      }
+    },
+    {
+      "say": "الضفدع نط خمس نطات ووصل للخمسة!",
+      "highlight": {
+        "box": [
+          790,
+          520,
+          120,
+          140
+        ],
+        "kind": "circle"
+      }
+    },
+    {
+      "say": "سؤال: كم بطّة هنا؟",
+      "quiz": {
+        "question": "🦆🦆🦆",
+        "options": [
+          "٢",
+          "٣",
+          "٥"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "say": "ثلاثة! أحسنتم يا أبطال.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

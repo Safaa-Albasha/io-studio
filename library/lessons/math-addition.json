@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "id": "math-addition",
+    "subject": "math",
+    "subjectLabel": "رياضيات",
+    "level": "ابتدائي ١–٢",
+    "stage": "primary"
+  },
+  "title": "الجمع والطرح بخط الأعداد",
+  "format": "9:16",
+  "style": "paper",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّمة",
+    "shirt": "#2A64AA",
+    "hijab": "#D2502A"
+  },
+  "beats": [
+    {
+      "say": "شلون نجمع ثلاثة وأربعة؟ نستخدم خط الأعداد.",
+      "mood": "thinking",
+      "write": {
+        "text": "3 + 4 = ?",
+        "at": [
+          500,
+          180
+        ],
+        "size": 100,
+        "color": "blue",
+        "dir": "ltr"
+      }
+    },
+    {
+      "say": "نبدأ من الثلاثة، ونقفز أربع قفزات لليمين.",
+      "numberline": {
+        "from": 0,
+        "to": 10,
+        "y": 600,
+        "start": 3,
+        "jumps": [
+          {
+            "by": 4
+          }
+        ],
+        "marker": "🐸"
+      }
+    },
+    {
+      "say": "وصلنا للسبعة! إذن ثلاثة زائد أربعة يساوي سبعة.",
+      "write": {
+        "text": "3 + 4 = 7",
+        "at": [
+          500,
+          870
+        ],
+        "size": 100,
+        "color": "green",
+        "dir": "ltr",
+        "box": true
+      }
+    },
+    {
+      "say": "والطرح؟ تسعة ناقص ثلاثة: نرجع لليسار.",
+      "erase": true,
+      "write": {
+        "text": "9 − 3 = ?",
+        "at": [
+          500,
+          180
+        ],
+        "size": 100,
+        "color": "blue",
+        "dir": "ltr"
+      },
+      "numberline": {
+        "from": 0,
+        "to": 10,
+        "y": 600,
+        "start": 9,
+        "jumps": [
+          {
+            "by": -3
+          }
+        ],
+        "marker": "🐸"
+      }
+    },
+    {
+      "say": "وقفنا على الستة. تسعة ناقص ثلاثة يساوي ستة.",
+      "write": {
+        "text": "9 − 3 = 6",
+        "at": [
+          500,
+          870
+        ],
+        "size": 100,
+        "color": "green",
+        "dir": "ltr",
+        "box": true
+      }
+    },
+    {
+      "say": "جربوا: خمسة زائد اثنين كم؟",
+      "erase": true,
+      "quiz": {
+        "question": "كم ناتج ٥ + ٢ ؟",
+        "options": [
+          "٦",
+          "٧",
+          "٨"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "say": "سبعة! أنتم أبطال الحساب.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

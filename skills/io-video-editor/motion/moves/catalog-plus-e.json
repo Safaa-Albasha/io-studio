@@ -1,0 +1,520 @@
+{
+ "version": 1,
+ "note": "حركات 243–264 — باقة «أنمي وكرتون»: الدوال بـmotion/moves-plus-e.js، المعاينات بـmotion/moves/render-preview-e.js، الشرح بـreferences/moves.md. أدوات النوع العامة (خطوط سرعة وتركيز، فريم ضربة، علامات، تشيبي، فقاعات، ألواح…) مرسومة بكودنا من الصفر — بلا أي شخصية أو شعار أو تصميم من أنمي أو سلسلة موجودة. حركات manual (تحتاج صورة) ما تنختار تلقائي. نفس مخطط catalog.json.",
+ "moves": [
+  {
+   "n": 243,
+   "id": "speedLines",
+   "cat": "camera",
+   "name": "خطوط السرعة",
+   "sub": "خطوط أكشن شعاعية أو متوازية",
+   "desc": "خطوط مدببة بلون الحبر ترتجف على 12 فريم بالثانية: شعاعية حوالين نقطة بفراغ بالنص للكلام، أو متوازية مايلة عبر الشاشة — إحساس السرعة والاندفاع بأسلوب الأنمي.",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/243.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "emphasis"
+   ]
+  },
+  {
+   "n": 244,
+   "id": "focusBurst",
+   "cat": "text",
+   "name": "خطوط التركيز",
+   "sub": "كلمة بنص خطوط مانغا",
+   "desc": "خطوط تركيز مانغا تتجمع حوالين الكلمة بفراغ على قدّها، والكلمة تنضرب من كبير بحد أسود عريض وحد أبيض داخلي وتنبض.",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/244.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "emphasis",
+    "hit",
+    "reveal"
+   ]
+  },
+  {
+   "n": 245,
+   "id": "impactFrame",
+   "cat": "camera",
+   "name": "فريم الضربة",
+   "sub": "سلبي بتباين عالي لحظة الصدمة",
+   "desc": "لحظة الصدمة: المشهد ينقلب سلبي أبيض وأسود بتباين عالي، فريم بلون الهوية، خطوط سرعة بيضا ورجّة — وبعدها يرجع طبيعي. كلمة اختيارية على الضربة.",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/245.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "contrast"
+   ]
+  },
+  {
+   "n": 246,
+   "id": "dramaZoom",
+   "cat": "camera",
+   "name": "زووم الدراما",
+   "sub": "ثلاث ضربات زووم على الوجه",
+   "desc": "ثلاث ضربات زووم سريعة على الوجه أو النقطة، كل ضربة برجّة وخطوط سرعة بيضا، والإطار يغمق حوالين — لحظة «الحقيقة».",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/246.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "reveal",
+    "emphasis"
+   ]
+  },
+  {
+   "n": 247,
+   "id": "twinkleStars",
+   "cat": "card",
+   "name": "نجوم تلمع",
+   "sub": "بريق حوالين الشي أو بالعيون",
+   "desc": "نجوم بريق رباعية بيضا بحافة لون الهوية تومض حوالين منتج أو كلمة، أو لمعة «عيون تلمع» كبيرة على العيون (o.eyes).",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/247.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "punch"
+   ],
+   "cues": [
+    "reveal",
+    "emphasis"
+   ]
+  },
+  {
+   "n": 248,
+   "id": "sweatDrop",
+   "cat": "card",
+   "name": "قطرة عرق",
+   "sub": "حرج… «أوبس»",
+   "desc": "قطرة عرق زرقا كبيرة بحد أسود تنبثق جنب الراس وتنزلق ببطء، ومعها قطرتين صغار — حرج أو توتر أو خطأ بسيط.",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/248.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "punch",
+    "calm"
+   ],
+   "cues": [
+    "contrast"
+   ]
+  },
+  {
+   "n": 249,
+   "id": "angerMark",
+   "cat": "card",
+   "name": "علامة الزعل",
+   "sub": "علامة متقاطعة تنبض فوق الراس",
+   "desc": "علامة الزعل المتقاطعة بلون الهوية وحد أسود تنبثق فوق الراس وتنبض مع وحدة أصغر — قهر، زعل، «جد؟».",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/249.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "contrast",
+    "hit"
+   ]
+  },
+  {
+   "n": 250,
+   "id": "shockMarks",
+   "cat": "card",
+   "name": "خطوط الصدمة",
+   "sub": "مروحة خطوط فوق الراس",
+   "desc": "خطوط قصيرة مدببة تطلق من فوق الراس على شكل مروحة وترتجف، وتتكرر مرتين — صدمة و«إيش؟!».",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/250.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "contrast"
+   ]
+  },
+  {
+   "n": 251,
+   "id": "questionPop",
+   "cat": "card",
+   "name": "علامة استفهام",
+   "sub": "«؟» تنط فوق الراس",
+   "desc": "«؟» كبيرة بحد عريض وظل قاسي تنبثق فوق الراس وتتمايل، ووراها وحدة أصغر — حيرة وسؤال. أعلى صوت من iconPop 229.",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/251.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "punch"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 252,
+   "id": "exclaimPop",
+   "cat": "card",
+   "name": "علامة تعجب",
+   "sub": "«!» تنط مع خطوط تأكيد",
+   "desc": "«!» (أو «!!») تنط فوق الراس مع خطوط تأكيد على الجنبين، وتنط مرة ثانية كل شوي — انتباه واكتشاف.",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/252.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "emphasis",
+    "hit"
+   ]
+  },
+  {
+   "n": 253,
+   "id": "entranceShine",
+   "cat": "text",
+   "name": "لمعة الدخول",
+   "sub": "العنصر يطلع وتمرّ عليه لمعة",
+   "desc": "العنصر (كبسولة بكلمة، أو أي رسمة عبر o.draw) يطلع، وتمرّ عليه لمعة مايلة على بكسلاته بس من اليمين لليسار، وبآخرها نجمة بريق تومض.",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/253.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "reveal",
+    "price",
+    "cta"
+   ]
+  },
+  {
+   "n": 254,
+   "id": "poofSmoke",
+   "cat": "card",
+   "name": "بوف! دخان",
+   "sub": "العنصر يختفي بغيمة",
+   "desc": "العنصر ينكمش ويختفي بغيمة دخان كرتونية بحد أسود تتفرّق وتتلاشى مع نجوم صغار، وكلمة اختيارية فوقها.",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/254.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "reveal",
+    "contrast"
+   ]
+  },
+  {
+   "n": 255,
+   "id": "boldShout",
+   "cat": "text",
+   "name": "صرخة مانغا",
+   "sub": "كلمة ضخمة مايلة ترتجف",
+   "desc": "كلمة ضخمة مايلة بحد أسود عريض وحد أبيض داخلي وظل قاسي، تنضرب من كبير لمكانها وترتجف، وخطوط تأكيد تطير حوالينها.",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/255.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "emphasis",
+    "cta"
+   ]
+  },
+  {
+   "n": 256,
+   "id": "onoBurst",
+   "cat": "text",
+   "name": "انفجار صوتي",
+   "sub": "«بووم» «ووش» «طاخ»",
+   "desc": "كلمة صوت عربية على انفجار مسنّن بنقاط هافتون بلون الهوية، تنضرب وترتجف مع خطوط أكشن — وسلسلة كلمات وحدة ورا الثانية.",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/256.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit"
+   ]
+  },
+  {
+   "n": 257,
+   "id": "comicBubble",
+   "cat": "card",
+   "name": "فقاعة كوميك",
+   "sub": "دائرية · مسننة · تفكير",
+   "desc": "فقاعة كلام بحد أسود: دائرية للكلام، مسننة ترتجف للصراخ، أو غيمة تفكير بدوائر صغار — تأشّر على المتكلم والكلام يطلع كلمة كلمة.",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/257.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "emphasis",
+    "list"
+   ]
+  },
+  {
+   "n": 258,
+   "id": "chibiReact",
+   "cat": "card",
+   "name": "وجه تشيبي",
+   "sub": "مبسوط · مصدوم · يفكر · يبكي",
+   "desc": "راس تشيبي كرتوني دائري كبير (تصميمنا الأصلي، ذكر أو أنثى) بتعبير يتبدّل بنطّة: مبسوط، مصدوم، يفكر، يبكي، زعلان — ومع o.photo يصير وجهك بالتعابير.",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/258.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch",
+    "calm"
+   ],
+   "cues": [
+    "emphasis",
+    "contrast"
+   ]
+  },
+  {
+   "n": 259,
+   "id": "chibiPhoto",
+   "cat": "card",
+   "name": "شخصيتك تشيبي",
+   "sub": "صورة وجهك على جسم تشيبي",
+   "desc": "صورة الوجه (نفس photoToon 233) راس كبير على جسم تشيبي صغير يتنطط ويتبدّل مزاجه: بريق، صدمة وكآبة، تفكير، دموع شلال. بلا صورة: وجه تشيبي مرسوم.",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/259.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "emphasis"
+   ],
+   "manual": true
+  },
+  {
+   "n": 260,
+   "id": "starBurst",
+   "cat": "card",
+   "name": "انفجار نجوم",
+   "sub": "نجوم ملوّنة تطير وتطيح",
+   "desc": "ومضة بالنص ثم نجوم خماسية ورباعية ونقاط بألوان الثيم وحد أسود تنطلق وتدور وتطيح بجاذبية — فوز، رقم، شكر.",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/260.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "reveal",
+    "number",
+    "cta"
+   ]
+  },
+  {
+   "n": 261,
+   "id": "halftoneBg",
+   "cat": "card",
+   "name": "خلفية هافتون",
+   "sub": "نقاط طباعة كوميك",
+   "desc": "خلفية نقاط هافتون بلون الهوية تكبر للأطراف وتفضى بالنص للكلام، تنبت من النص وتنزلق ببطء، وأشعة اختيارية وراها.",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/261.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 262,
+   "id": "mangaPanels",
+   "cat": "transition",
+   "name": "ألواح مانغا",
+   "sub": "الشاشة تنقسم ألواح وتقلب",
+   "desc": "الشاشة تنقسم ألواح مايلة بفواصل بيضا وحد أسود، وكل لوح يقلب للمشهد الجديد بالترتيب العربي (يمين ← يسار، فوق ← تحت)، وبعدين الفواصل تنسحب.",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/262.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 3,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "reveal",
+    "contrast"
+   ]
+  },
+  {
+   "n": 263,
+   "id": "brushWipe",
+   "cat": "transition",
+   "name": "مسحة فرشاة",
+   "sub": "ضربة حبر بشعيرات",
+   "desc": "ضربة فرشاة حبر عريضة بحواف شعيرات تمسح الشاشة ثلاث مرات متعرّجة، والمشهد الجديد يطلع وراها.",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/263.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 264,
+   "id": "spiralWipe",
+   "cat": "transition",
+   "name": "مسحة دوّامة",
+   "sub": "دوّامة تلف وتغطي",
+   "desc": "دوّامة بذراعين تلف من نص الشاشة وتتعرّض لين تغطيها، والمشهد الجديد داخلها بحافة لون الهوية — انتقال كرتوني مرح.",
+   "source": {
+    "label": "I/O Studio — أنمي وكرتون (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/264.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  }
+ ]
+}

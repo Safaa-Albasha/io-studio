@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "id": "gulf-majlis",
+  "name_ar": "مجلس خليجي",
+  "name_en": "Gulf majlis",
+  "description_ar": "جلسة أرضية على امتداد الجدران، مساند، صينية قهوة ودلة، ألوان رملية وكحلي وذهبي، وأقواس ناعمة. للضيافة والمناسبات.",
+  "palette": [
+    "#efe4d0",
+    "#1f3550",
+    "#c9a24a",
+    "#8a6a4a",
+    "#f7f3ea"
+  ],
+  "materials": {
+    "wall": {
+      "kind": "plaster",
+      "color": "#efe4d0",
+      "roughness": 0.9
+    },
+    "floor": "travertine",
+    "main": {
+      "kind": "fabric",
+      "color": "#1f3550",
+      "roughness": 0.85
+    },
+    "cushion": {
+      "kind": "fabric",
+      "color": "#efe4d0",
+      "roughness": 0.85
+    },
+    "accent": {
+      "kind": "fabric",
+      "color": "#c9a24a",
+      "roughness": 0.7
+    },
+    "wood": "walnut",
+    "metal": "brass",
+    "fabric": {
+      "kind": "fabric",
+      "color": "#8a6a4a",
+      "roughness": 0.9
+    },
+    "rug": {
+      "kind": "fabric",
+      "color": "#8a2f2f",
+      "roughness": 1
+    },
+    "rug2": {
+      "kind": "fabric",
+      "color": "#c9a24a",
+      "roughness": 1
+    },
+    "frame": "brass",
+    "trim": {
+      "kind": "plain",
+      "color": "#e6d6bb",
+      "roughness": 0.6
+    }
+  },
+  "swaps": {
+    "sofa": "majlis-floor-seat",
+    "loveseat": "majlis-floor-seat",
+    "sectional": "majlis-floor-seat",
+    "armchair": "majlis-armrest",
+    "coffee-table": "tea-tray-table",
+    "coffee-table-round": "tea-tray-table",
+    "pendant-lamp": "chandelier"
+  },
+  "recommended": [
+    "majlis-floor-seat",
+    "majlis-armrest",
+    "tea-tray-table",
+    "coffee-pot-set",
+    "arch-niche",
+    "chandelier",
+    "air-conditioner",
+    "rug"
+  ],
+  "lighting": {
+    "time_of_day": "evening",
+    "lamp_color": "#ffd08a"
+  },
+  "tips_ar": [
+    "صوّر لقطة من مستوى الجلسة (ارتفاع ٨٠ سم) حتى تحس بالضيافة.",
+    "الدلة والفناجين بمقدمة الكادر تعطي هوية."
+  ]
+}

@@ -1,0 +1,296 @@
+{
+  "id": "studio-apartment",
+  "version": 1,
+  "name": "Small studio apartment",
+  "name_ar": "شقة استوديو صغيرة",
+  "style": "japandi",
+  "description_ar": "شقة ستوديو ٦×٤ م: نوم وقعدة ومطبخ صغير بنفس المساحة — ممتازة لفيديوهات «كيف تستغل مساحة صغيرة».",
+  "room": {
+    "width": 6,
+    "depth": 4,
+    "height": 2.8
+  },
+  "walls": [
+    {
+      "side": "north",
+      "openings": [
+        {
+          "type": "window",
+          "offset": 2.8,
+          "width": 1.6,
+          "height": 1.5,
+          "sill": 0.8
+        }
+      ]
+    },
+    {
+      "side": "south",
+      "openings": [
+        {
+          "type": "door",
+          "offset": 4.6,
+          "width": 0.9,
+          "height": 2.1
+        }
+      ]
+    },
+    {
+      "side": "east"
+    },
+    {
+      "side": "west"
+    }
+  ],
+  "lighting": {
+    "time_of_day": "morning"
+  },
+  "furniture": [
+    {
+      "id": "bed",
+      "type": "bed-double",
+      "wall": "north",
+      "at": 1.2,
+      "size": [
+        1.6,
+        2.05,
+        1
+      ]
+    },
+    {
+      "id": "ns",
+      "type": "nightstand",
+      "wall": "north",
+      "at": 2.4
+    },
+    {
+      "id": "wardrobe",
+      "type": "wardrobe",
+      "wall": "west",
+      "at": 0.85,
+      "size": [
+        1.4,
+        0.6,
+        2.2
+      ]
+    },
+    {
+      "id": "sofa",
+      "type": "loveseat",
+      "wall": "south",
+      "at": 2.9
+    },
+    {
+      "id": "table",
+      "type": "coffee-table",
+      "position": [
+        2.9,
+        1.6
+      ]
+    },
+    {
+      "id": "k-fridge",
+      "type": "fridge",
+      "wall": "east",
+      "at": 3.55,
+      "size": [
+        0.65,
+        0.65,
+        1.8
+      ]
+    },
+    {
+      "id": "k-stove",
+      "type": "kitchen-stove",
+      "wall": "east",
+      "at": 2.9
+    },
+    {
+      "id": "k-sink",
+      "type": "kitchen-sink",
+      "wall": "east",
+      "at": 2.2
+    },
+    {
+      "id": "k-base",
+      "type": "kitchen-base",
+      "wall": "east",
+      "at": 1.5
+    },
+    {
+      "id": "dining",
+      "type": "bistro-table",
+      "position": [
+        4.45,
+        2.5
+      ]
+    },
+    {
+      "id": "d-chair-1",
+      "type": "dining-chair",
+      "position": [
+        4.45,
+        3.05
+      ]
+    },
+    {
+      "id": "d-chair-2",
+      "type": "dining-chair",
+      "position": [
+        3.9,
+        2.5
+      ],
+      "rotation": 90
+    },
+    {
+      "id": "lamp",
+      "type": "floor-lamp",
+      "position": [
+        1.85,
+        0.35
+      ]
+    },
+    {
+      "id": "pendant",
+      "type": "pendant-lamp",
+      "position": [
+        4.45,
+        2.5
+      ]
+    }
+  ],
+  "decor": [
+    {
+      "id": "rug",
+      "type": "rug",
+      "position": [
+        2.9,
+        1.4
+      ],
+      "size": [
+        1.9,
+        1.3,
+        0.015
+      ]
+    },
+    {
+      "id": "curtains",
+      "type": "sheer-curtains",
+      "wall": "north",
+      "at": 3.6,
+      "size": [
+        2,
+        0.06,
+        2.55
+      ]
+    },
+    {
+      "id": "plant",
+      "type": "plant-tall",
+      "position": [
+        5,
+        3.6
+      ],
+      "size": [
+        0.45,
+        0.45,
+        1.3
+      ]
+    },
+    {
+      "id": "lamp-ns",
+      "type": "table-lamp",
+      "wall": "north",
+      "at": 2.4,
+      "gap": 0.07
+    },
+    {
+      "id": "art",
+      "type": "frame-art",
+      "wall": "north",
+      "at": 1.2,
+      "elevation": 1.45,
+      "size": [
+        0.8,
+        0.03,
+        0.5
+      ]
+    },
+    {
+      "id": "wc",
+      "type": "kitchen-wall-cabinet",
+      "wall": "east",
+      "at": 2.2,
+      "size": [
+        1.2,
+        0.35,
+        0.7
+      ]
+    }
+  ],
+  "cameras": {
+    "stills": [
+      {
+        "name": "wide",
+        "position": [
+          1,
+          0.3,
+          1.7
+        ],
+        "target": [
+          3.8,
+          3,
+          0.9
+        ]
+      },
+      {
+        "name": "living",
+        "position": [
+          2.9,
+          3.3,
+          1.3
+        ],
+        "target": [
+          2.9,
+          0.4,
+          0.7
+        ]
+      },
+      {
+        "name": "kitchen",
+        "position": [
+          3.6,
+          1,
+          1.5
+        ],
+        "target": [
+          5.6,
+          2.6,
+          1
+        ]
+      }
+    ],
+    "walkthrough": {
+      "points": [
+        [
+          5.15,
+          0.35
+        ],
+        [
+          4.4,
+          1.1
+        ],
+        [
+          3.4,
+          1.6
+        ]
+      ],
+      "seconds": 9,
+      "look": "ahead"
+    }
+  },
+  "outputs": [
+    "9:16",
+    "16:9",
+    "3:4"
+  ]
+}

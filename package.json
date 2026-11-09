@@ -1,0 +1,14 @@
+{
+  "name": "io-studio",
+  "version": "4.0.0",
+  "private": true,
+  "license": "MIT",
+  "description": "I/O Studio · آي أو استوديو — Arabic AI tools for content creators (Instagram, YouTube, TikTok). Idea in. Story out.",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test",
+    "serve": "node engine/serve.js"
+  }
+}

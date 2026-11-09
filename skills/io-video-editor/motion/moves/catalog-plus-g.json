@@ -1,0 +1,530 @@
+{
+ "version": 1,
+ "note": "حركات 284–306 — باقة «مراجع الريلز» (الجزء الأول): الدوال بـmotion/moves-plus-g.js، المعاينات بـmotion/moves/render-preview-g.js، الشرح بـreferences/moves.md. تقنيات موشن عامة مدروسة من ريلز مرجعية (بلا أسماء ولا شعارات ولا رسومات أحد)، الألوان من الثيم والخط Cairo؛ أي صورة أو تتبّع اختياري. نفس مخطط catalog.json.",
+ "moves": [
+  {
+   "n": 284,
+   "id": "sharedMorph",
+   "cat": "card",
+   "name": "عنصر يعبر المشهدين",
+   "sub": "الكبسولة تطير لمكانها الجديد",
+   "desc": "عنصر (كبسولة تعليق أو أي رسمة) يطير من مكانه بالمشهد القديم لمكانه بالجديد مع ظل يكبر بالنص، والباقي قص حاد — يحس المشهدين وحدة. FX.morphAt للمشاهد المتعددة.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/284.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "reveal",
+    "cta"
+   ]
+  },
+  {
+   "n": 285,
+   "id": "ditherResolve",
+   "cat": "card",
+   "name": "نتيجة تنرسم",
+   "sub": "نقش ديذر يصفى للصورة",
+   "desc": "كرت ينملي نقش نقط مربعة بلون مميز وهو «ينتظر»، وبعدين النقش يصغر ويصفى للصورة الحقيقية — لحظة «الأداة طلّعت النتيجة».",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/285.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "reveal",
+    "tech"
+   ]
+  },
+  {
+   "n": 286,
+   "id": "explodedCallouts",
+   "cat": "card",
+   "name": "قطع منفصلة وأسماء",
+   "sub": "عرض مفكك بخطوط قائدة",
+   "desc": "الأجزاء تنفصل على محور مايل بالتتابع، وخط قائد ينرسم من كل جزء لعمود أسماء (رقم · اسم · سطر صغير) — لشرح منتج أو فكرة من أجزاء.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/286.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "list",
+    "tech"
+   ]
+  },
+  {
+   "n": 287,
+   "id": "progressChip",
+   "cat": "card",
+   "name": "شارة التقدّم",
+   "sub": "NN/المجموع واسم المقطع",
+   "desc": "كبسولة «NN/المجموع» باللون المميز وجنبها اسم المقطع، تتبدّل مع كل مقطع والرقم يلف — لمونتاج «24 مؤثر بكليب».",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/287.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm"
+   ],
+   "cues": [
+    "list"
+   ]
+  },
+  {
+   "n": 288,
+   "id": "drosteTunnel",
+   "cat": "camera",
+   "name": "نفق متكرر",
+   "sub": "الإطار داخل نفسه بلا نهاية",
+   "desc": "الإطار جوّا نفسه طبقات كل وحدة أصغر وتلف، والكاميرا تدخل للداخل بلا نهاية — «حفرة الأرنب».",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/288.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "reveal"
+   ]
+  },
+  {
+   "n": 289,
+   "id": "wallShadows",
+   "cat": "camera",
+   "name": "ظلال على الجدار",
+   "sub": "سيبيا وظلال أيقونات ورا الشخص",
+   "desc": "لون دافي وظلال أيقونات تنعكس على الجدار ورا الشخص (بالقصّ)؛ بلاه الظلال على الأطراف بس.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/289.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 290,
+   "id": "tierBoard",
+   "cat": "card",
+   "name": "قائمة تقييم",
+   "sub": "S A B C D F والعنصر يطيح بصفه",
+   "desc": "لوح صفوف تقييم بألوان مشتقة من اللون المميز ينزلق، والعناصر تطيح لصفوفها بارتداد — للمقارنة والترتيب.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/290.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "list",
+    "contrast"
+   ]
+  },
+  {
+   "n": 291,
+   "id": "weightMorph",
+   "cat": "text",
+   "name": "الكلمة تثقل",
+   "sub": "من رفيع لأسود بخط متغيّر",
+   "desc": "نفس الكلمة تتحول من خط رفيع لأسود (Cairo متغيّر الوزن)، فوقها أسهم تنط وتحتها خط ينحني كأنه شايل ثقل.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/291.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "hit"
+   ]
+  },
+  {
+   "n": 292,
+   "id": "dustDissolve",
+   "cat": "transition",
+   "name": "يتفتت غبار",
+   "sub": "الموضوع يطير ذرات",
+   "desc": "الموضوع (القصّ أو المشهد كامل) يتفكك لذرات تطير مع جبهة تمشي، ويبين المشهد الجاي مكانه.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/292.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "reveal"
+   ]
+  },
+  {
+   "n": 293,
+   "id": "notesChecklist",
+   "cat": "card",
+   "name": "ملاحظات «جرّب»",
+   "sub": "قائمة صح تنزلق مع كل مقطع",
+   "desc": "كرت ملاحظات صغير فيه قائمة: الحالي بدايرة وعريض، اللي خلص صح ورمادي، والقائمة تنزلق سطر مع كل مقطع وفوقها عدّاد.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/293.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm"
+   ],
+   "cues": [
+    "list"
+   ]
+  },
+  {
+   "n": 294,
+   "id": "slashCommand",
+   "cat": "card",
+   "name": "أمر بالشات",
+   "sub": "/ وقائمة اقتراح وكيبورد",
+   "desc": "تطبيق محادثة: «/» تطلع قائمة اقتراح، الأمر ينكتب حرف حرف والكيبورد تنط أزراره، يرسل والرسالة تطير وسطر حالة بلمعة.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/294.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "tech",
+    "cta"
+   ]
+  },
+  {
+   "n": 295,
+   "id": "cardExpand",
+   "cat": "transition",
+   "name": "كرت يكبر للشاشة",
+   "sub": "من كرت بالواجهة للشاشة كاملة",
+   "desc": "كرت داخل الواجهة يكبر لين يغطي الشاشة ويصير المشهد الجاي، والواجهة حوله تختفي.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/295.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "calm"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 296,
+   "id": "slotList",
+   "cat": "text",
+   "name": "قائمة بخانات جاهزة",
+   "sub": "الأرقام موجودة والأسماء تطلع مع الكلام",
+   "desc": "الأرقام 1..N ظاهرة باهتة من البداية، ومع كل بند ينقال يطلع اسمه جنب رقمه والحالي باللون المميز.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/296.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "list"
+   ]
+  },
+  {
+   "n": 297,
+   "id": "ctaRetype",
+   "cat": "card",
+   "name": "خانة تعليق تنكتب من جديد",
+   "sub": "الكلمة تنمسح وترجع",
+   "desc": "شريط تعليق ثابت «اكتب الكلمة بالتعليقات»، وكل شوي الكلمة تنمسح حرف حرف وترجع تنكتب بمؤشر.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/297.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm"
+   ],
+   "cues": [
+    "cta"
+   ]
+  },
+  {
+   "n": 298,
+   "id": "headlineAccrue",
+   "cat": "text",
+   "name": "عنوان يكبر سطر سطر",
+   "sub": "سطر جديد مع كل جملة",
+   "desc": "العنوان فوق ويزيد سطر مع كل جملة (الجديد يطلع من الضباب والقديم ثابت)، والأحجام تتناوب كبير وصغير.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/298.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 1,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "emphasis",
+    "list"
+   ]
+  },
+  {
+   "n": 299,
+   "id": "stepCard",
+   "cat": "card",
+   "name": "كرت الخطوة",
+   "sub": "STEP N وجوال على ورق متدرّج",
+   "desc": "قطع لخلفية متدرّجة بملمس ورق مجعّد، جوال كبير يصغر للنص وفوقه «الخطوة N» ينزل، وسطر صغير ينبني كلمة كلمة.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/299.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "list",
+    "reveal"
+   ]
+  },
+  {
+   "n": 300,
+   "id": "pipNote",
+   "cat": "card",
+   "name": "مثال بملاحظة وسهم",
+   "sub": "كليب صغير وسهم بخط اليد",
+   "desc": "كليب مثال صغير يطلع فوق، تحته ملاحظة بخط اليد تنكتب وسهم مرسوم يأشّر عليه (أو سهم لفّة للّوب).",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/300.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 301,
+   "id": "mirrorQuad",
+   "cat": "camera",
+   "name": "أربع نسخ مرايا",
+   "sub": "2×2 مقلوبة مثل المشكال",
+   "desc": "الإطار ينقسم 2×2 وكل خانة نفس الفيديو مقلوب ومعكوس والوجوه تتجه للنص، ويدخل من غباش.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/301.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit"
+   ]
+  },
+  {
+   "n": 302,
+   "id": "proofAvatars",
+   "cat": "card",
+   "name": "قائمة إثبات",
+   "sub": "صور حسابات وأرقام تعدّ",
+   "desc": "صور حسابات بدواير، تحت كل وحدة كبسولة اسم وجنبها شارة «+500K» تعدّ، تطلع وحدة ورا وحدة.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/302.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "number"
+   ]
+  },
+  {
+   "n": 303,
+   "id": "measureRuler",
+   "cat": "card",
+   "name": "مسطرة قياس",
+   "sub": "خط أبعاد ورقم يعدّ",
+   "desc": "خط أبعاد تحت عنصر يتمدد برقم «+235px» يعدّ مع العرض — مع o.text يرسم الكلمة تتمدد بالكشيدة.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/303.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "tech",
+    "hit"
+   ]
+  },
+  {
+   "n": 304,
+   "id": "takeStrip",
+   "cat": "card",
+   "name": "شريط اللقطات",
+   "sub": "لقطات بديلة ومؤشر يختار",
+   "desc": "بطاقات لقطات بديلة تنزلق فوق على قوس، مؤشر يختار وحدة فتكبر بحلقة والباقي يخفت.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/304.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "contrast"
+   ]
+  },
+  {
+   "n": 305,
+   "id": "laserSlice",
+   "cat": "transition",
+   "name": "قطعة ليزر",
+   "sub": "خط ضوء يقص المشهد",
+   "desc": "خط ضوء مايل يعبر الإطار، والمشهد ينقسم على الخط والنصين ينفصلون ويكشفون الجاي.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/305.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit"
+   ]
+  },
+  {
+   "n": 306,
+   "id": "asciiSubject",
+   "cat": "camera",
+   "name": "شخص من حروف",
+   "sub": "شبكة حروف بكثافة الضوء",
+   "desc": "الموضوع يصير شبكة حروف على خلفية غامقة (كثافة الحرف من الإضاءة) والحروف تتبدّل.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/306.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "tech",
+    "hit"
+   ]
+  }
+ ]
+}

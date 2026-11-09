@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>كتابة حركية — موشن I/O Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;800&display=swap">
+<style>
+/* الهوية من .io/theme.json — بدّل هذي القيم بس */
+:root{--bg:#FFF7EC;--ink:#2A2622;--accent:#E0663A;--accent2:#2F7FBF;--soft:#F3E3CF;--font:"Cairo",sans-serif;--W:1080px;--H:1920px}
+*{box-sizing:border-box;margin:0}
+html,body{width:var(--W);height:var(--H);overflow:hidden;background:var(--bg);font-family:var(--font);color:var(--ink)}
+#stage{position:relative;width:var(--W);height:var(--H);overflow:hidden}
+.el{position:absolute;will-change:transform,opacity}
+.line{right:120px;left:120px;font-weight:800;line-height:1.15;text-align:right}
+#l1{top:520px;font-size:130px}#l2{top:520px;font-size:130px}
+.w{display:inline-block;transform-origin:50% 80%}
+.key{color:var(--accent)}
+#under{top:900px;right:120px;height:22px;border-radius:11px;background:var(--accent2)}
+#handle{top:1380px;left:120px;font-size:34px;font-weight:800;direction:ltr;opacity:.6}
+</style>
+</head>
+<body>
+<div id="stage">
+<div class="el line" id="l1">الفكرة مو بالأداة</div>
+<div class="el line" id="l2">الفكرة <span class="key">بشلون تستخدمها</span></div>
+<div class="el" id="under"></div>
+<div class="el" id="handle">@حسابك</div>
+</div>
+<script>
+// ── عقد الموشن: __duration بالثواني، و__seek(t) يرسم اللقطة عند t بدون مؤقتات ──
+// نص يدخل كلمة كلمة بإيقاع، الكلمة المهمة تكبر وتتلوّن، وبعدين ينقلب لسطر ثاني.
+window.__duration = 6;
+const $ = (id) => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const p = (t, a, d) => clamp((t - a) / d);                       // تقدّم 0→1
+const outCubic = (x) => 1 - Math.pow(1 - x, 3);
+const inOut = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+const outBack = (x) => 1 + 2.7 * Math.pow(x - 1, 3) + 1.7 * Math.pow(x - 1, 2);
+const outElastic = (x) => (x === 0 || x === 1 ? x : Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * (2 * Math.PI / 3)) + 1);
+const lerp = (a, b, k) => a + (b - a) * k;
+function rise(el, k, dist) { el.style.opacity = k; el.style.transform = `translateY(${(1 - outCubic(k)) * (dist || 60)}px)`; }
+function pop(el, k) { el.style.opacity = clamp(k * 2); el.style.transform = `scale(${k ? outBack(k) : 0})`; }
+function fmt(n, dec) { return Number(n).toLocaleString('en-US', { minimumFractionDigits: dec || 0, maximumFractionDigits: dec || 0 }); }
+/** يقسم نص العنصر لكلمات <span> حتى تتحرك كلمة كلمة. */
+function words(el) { if (!el.dataset.split) { el.innerHTML = el.textContent.trim().split(/\s+/).map((w) => `<span class="w">${w}</span>`).join(' '); el.dataset.split = 1; } return [...el.querySelectorAll('.w')]; }
+window.__seek = function (t) {
+  const w1 = words($('l1'));
+  const out1 = p(t, 2.3, 0.4);
+  w1.forEach((w, i) => { const k = p(t, 0.15 + i * 0.22, 0.35); w.style.opacity = k * (1 - out1); w.style.transform = `translateY(${(1 - outBack(k)) * 70 - out1 * 80}px) rotate(${(1 - k) * -8}deg)`; });
+  const l2 = $('l2');
+  if (!l2.dataset.split) { l2.innerHTML = l2.innerHTML.replace(/>([^<]+)</g, (m, s) => '>' + s.trim().split(/\s+/).map((x) => `<span class="w">${x}</span>`).join(' ') + '<').replace(/^([^<]+)/, (m) => m.trim().split(/\s+/).map((x) => `<span class="w">${x}</span>`).join(' ') + ' '); l2.dataset.split = 1; }
+  [...l2.querySelectorAll('.w')].forEach((w, i) => { const k = p(t, 2.6 + i * 0.25, 0.4); w.style.opacity = k; w.style.transform = `translateY(${(1 - outBack(k)) * 70}px) scale(${w.closest('.key') ? 1 + 0.12 * Math.sin(p(t, 3.6, 0.6) * Math.PI) : 1})`; });
+  $('under').style.width = `${outCubic(p(t, 3.8, 0.6)) * 520}px`;
+  $('handle').style.opacity = p(t, 4.2, 0.4) * 0.6;
+  $('stage').style.opacity = 1 - p(t, window.__duration - 0.4, 0.4);
+};
+// المعاينة بالمتصفح: يشتغل لوحده. وضع التصدير (?render=1): الرسّام يتحكم بالوقت.
+if (!/render=1/.test(location.search)) {
+  const t0 = performance.now();
+  (function loop(now) { window.__seek(((now - t0) / 1000) % (window.__duration + 1)); requestAnimationFrame(loop); })(t0);
+} else window.__seek(0);
+</script>
+</body>
+</html>

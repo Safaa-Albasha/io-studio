@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "id": "phys-circuits",
+    "subject": "physics",
+    "subjectLabel": "فيزياء",
+    "level": "ابتدائي ٦ / متوسط",
+    "stage": "primary"
+  },
+  "title": "الدائرة الكهربائية",
+  "format": "16:9",
+  "style": "chalkboard",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّمة",
+    "shirt": "#E0663A",
+    "hijab": "#2F7FBF"
+  },
+  "beats": [
+    {
+      "say": "هذي دائرة كهربائية بسيطة: بطارية، مصباح، ومفتاح مفتوح.",
+      "circuit": {
+        "bulbs": 1,
+        "switch": "open",
+        "volts": 1.5
+      }
+    },
+    {
+      "say": "الدائرة مفتوحة، فما يمشي تيار والمصباح منطفي.",
+      "highlight": {
+        "box": [
+          420,
+          700,
+          160,
+          80
+        ],
+        "kind": "circle",
+        "color": "red"
+      }
+    },
+    {
+      "say": "نسد المفتاح... المصباح اشتغل! الدائرة صارت مغلقة.",
+      "erase": true,
+      "circuit": {
+        "bulbs": 1,
+        "switch": 1.2,
+        "volts": 1.5
+      }
+    },
+    {
+      "say": "الإلكترونات تطلع من القطب السالب، وتلف وترجع للموجب.",
+      "highlight": {
+        "box": [
+          140,
+          470,
+          80,
+          80
+        ],
+        "kind": "circle",
+        "color": "blue"
+      }
+    },
+    {
+      "say": "بالتوالي: مصباحين على نفس المسار، والتيار الاصطلاحي عكس الإلكترونات.",
+      "erase": true,
+      "circuit": {
+        "bulbs": 2,
+        "switch": 0,
+        "volts": 3,
+        "current": true
+      }
+    },
+    {
+      "say": "إذا انقطع مصباح بدائرة توالي، شنو يصير؟",
+      "erase": true,
+      "quiz": {
+        "options": [
+          "الثاني يبقى شغال",
+          "كلهم ينطفون"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "say": "كلهم ينطفون، لأن المسار صار مفتوح.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

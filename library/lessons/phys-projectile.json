@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "id": "phys-projectile",
+    "subject": "physics",
+    "subjectLabel": "فيزياء",
+    "level": "إعدادي",
+    "stage": "secondary"
+  },
+  "title": "حركة المقذوفات",
+  "format": "16:9",
+  "style": "chalkboard",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّمة",
+    "shirt": "#E0663A",
+    "hijab": "#2F7FBF"
+  },
+  "beats": [
+    {
+      "say": "نرمي كرة بسرعة عشرين متر بالثانية وبزاوية خمسة وأربعين درجة.",
+      "projectile": {
+        "v0": 20,
+        "angle": 45,
+        "scale": 18
+      }
+    },
+    {
+      "say": "نعيدها ببطء: الأزرق السرعة الأفقية ثابتة، والوردي العمودية تقل.",
+      "erase": true,
+      "projectile": {
+        "v0": 20,
+        "angle": 45,
+        "scale": 18,
+        "speed": 0.4,
+        "labels": false
+      },
+      "write": [
+        {
+          "text": "أزرق: السرعة الأفقية (ثابتة)",
+          "at": [
+            60,
+            260
+          ],
+          "size": 34,
+          "align": "left",
+          "color": "blue",
+          "with": true
+        },
+        {
+          "text": "وردي: السرعة العمودية (تقل ثم تنعكس)",
+          "at": [
+            60,
+            315
+          ],
+          "size": 34,
+          "align": "left",
+          "color": "pink",
+          "with": true
+        },
+        {
+          "text": "أصفر: السرعة المحصّلة",
+          "at": [
+            60,
+            370
+          ],
+          "size": 34,
+          "align": "left",
+          "color": "yellow",
+          "with": true
+        }
+      ]
+    },
+    {
+      "say": "بالقمة السرعة العمودية صفر، والجاذبية ترجع الكرة للأرض.",
+      "highlight": {
+        "box": [
+          380,
+          560,
+          120,
+          90
+        ],
+        "kind": "circle"
+      }
+    },
+    {
+      "say": "بزاوية ثلاثين وستين نفس المدى، لأن مجموعهم تسعين.",
+      "erase": true,
+      "projectile": [
+        {
+          "v0": 20,
+          "angle": 60,
+          "scale": 18,
+          "color": "pink",
+          "traceColor": "pink"
+        },
+        {
+          "v0": 20,
+          "angle": 30,
+          "scale": 18,
+          "color": "blue",
+          "traceColor": "blue",
+          "with": true,
+          "info": false
+        }
+      ]
+    },
+    {
+      "say": "وأكبر مدى يكون بزاوية خمسة وأربعين، إذا ما كو مقاومة هواء.",
+      "write": {
+        "text": "أكبر مدى عند ٤٥°",
+        "at": [
+          700,
+          300
+        ],
+        "size": 56,
+        "color": "yellow",
+        "box": true
+      }
+    },
+    {
+      "say": "إذا ضاعفنا السرعة، المدى شكد يصير؟",
+      "erase": true,
+      "quiz": {
+        "options": [
+          "ضعفين",
+          "أربع أضعاف",
+          "نفسه"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "say": "أربع أضعاف! لأن المدى يتناسب مع مربع السرعة.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

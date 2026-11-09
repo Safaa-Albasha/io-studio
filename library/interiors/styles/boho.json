@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "id": "boho",
+  "name_ar": "بوهو",
+  "name_en": "Boho",
+  "description_ar": "خيزران وجوت وقطع مكرمية، ألوان ترابية (طين، خردلي، أخضر زيتوني)، نباتات كثيرة ومخدات أرضية. حيوي ويطلع حلو بالريلز.",
+  "palette": [
+    "#e9dcc8",
+    "#c8a06a",
+    "#b7653f",
+    "#7a7a3a",
+    "#d9a441"
+  ],
+  "materials": {
+    "wall": {
+      "kind": "plaster",
+      "color": "#eadfcd",
+      "roughness": 0.95
+    },
+    "floor": "oak",
+    "main": {
+      "kind": "fabric",
+      "color": "#e6d8c3",
+      "roughness": 0.95
+    },
+    "cushion": {
+      "kind": "fabric",
+      "color": "#d9a441",
+      "roughness": 0.95
+    },
+    "accent": {
+      "kind": "fabric",
+      "color": "#b7653f",
+      "roughness": 0.9
+    },
+    "wood": "teak",
+    "metal": "brass",
+    "fabric": "jute",
+    "rug": {
+      "kind": "fabric",
+      "color": "#c7a27c",
+      "roughness": 1
+    },
+    "rug2": {
+      "kind": "fabric",
+      "color": "#a5603f",
+      "roughness": 1
+    },
+    "pot": "pot-terracotta",
+    "frame": "rattan",
+    "art": {
+      "kind": "plain",
+      "color": "#7a7a3a",
+      "roughness": 0.8
+    }
+  },
+  "swaps": {
+    "armchair": "rattan-chair",
+    "coffee-table": "coffee-table-round",
+    "frame-art": "macrame"
+  },
+  "recommended": [
+    "rattan-chair",
+    "pouf",
+    "floor-cushion",
+    "macrame",
+    "plant-hanging",
+    "basket",
+    "string-lights",
+    "rug-round"
+  ],
+  "lighting": {
+    "time_of_day": "golden",
+    "lamp_color": "#ffc98a"
+  },
+  "tips_ar": [
+    "كثّر النباتات بأحجام مختلفة.",
+    "الساعة الذهبية (قبل المغرب) تطلّع الألوان الترابية."
+  ]
+}

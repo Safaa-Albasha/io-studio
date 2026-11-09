@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "id": "modern",
+  "name_ar": "مودرن",
+  "name_en": "Modern",
+  "description_ar": "خطوط نظيفة، ألوان محايدة (رمادي، بيج، أسود) مع لمسة لون وحدة، خشب فاتح ومعدن أسود. يناسب أغلب البيوت وسهل بالتصوير.",
+  "palette": [
+    "#e6e2dc",
+    "#2b2b2d",
+    "#c49a6c",
+    "#8a8f94",
+    "#c2703d"
+  ],
+  "materials": {
+    "wall": {
+      "kind": "plaster",
+      "color": "#e6e2dc",
+      "roughness": 0.9
+    },
+    "floor": "oak",
+    "main": {
+      "kind": "fabric",
+      "color": "#8a8f94",
+      "roughness": 0.85
+    },
+    "cushion": "boucle",
+    "accent": {
+      "kind": "fabric",
+      "color": "#c2703d",
+      "roughness": 0.85
+    },
+    "wood": "oak",
+    "metal": "black-steel",
+    "fabric": "linen",
+    "rug": {
+      "kind": "fabric",
+      "color": "#bdb7ad",
+      "roughness": 1
+    },
+    "rug2": {
+      "kind": "fabric",
+      "color": "#a39d93",
+      "roughness": 1
+    },
+    "stone": "marble-white",
+    "frame": "matte-black"
+  },
+  "swaps": {},
+  "recommended": [
+    "sofa",
+    "coffee-table",
+    "tv-unit",
+    "floor-lamp",
+    "plant-tall",
+    "rug",
+    "frame-art"
+  ],
+  "lighting": {
+    "time_of_day": "morning",
+    "lamp_color": "#ffe2b8"
+  },
+  "tips_ar": [
+    "خلي لون واحد قوي بس (مخدات أو لوحة) والباقي محايد.",
+    "الإضاءة الطبيعية من الشباك تكفي بالنهار، صور الصبح."
+  ]
+}

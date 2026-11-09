@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "id": "ar-alif-baa",
+    "subject": "arabic",
+    "subjectLabel": "العربي",
+    "level": "أطفال ٤–٦",
+    "stage": "kindergarten"
+  },
+  "title": "حرف الألف والباء",
+  "format": "9:16",
+  "style": "whiteboard",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّمة",
+    "shirt": "#E0663A",
+    "hijab": "#2F7FBF"
+  },
+  "beats": [
+    {
+      "say": "هلا حبايبي! اليوم نتعلم حرفين: الألف والباء.",
+      "mood": "happy",
+      "write": {
+        "text": "أ  ب",
+        "at": [
+          500,
+          420
+        ],
+        "size": 220,
+        "color": "blue"
+      }
+    },
+    {
+      "say": "الألف خط واحد، من فوق لجوّه. نتتبعه سوا.",
+      "erase": true,
+      "alphabet": {
+        "letter": "ا",
+        "at": [
+          500,
+          470
+        ],
+        "size": 760
+      }
+    },
+    {
+      "say": "الألف بداية كلمة أرنب.",
+      "draw": {
+        "shape": "emoji",
+        "value": "🐰",
+        "at": [
+          790,
+          300
+        ],
+        "size": 200
+      },
+      "write": {
+        "text": "أرنب",
+        "at": [
+          250,
+          300
+        ],
+        "size": 90,
+        "color": "accent"
+      }
+    },
+    {
+      "say": "هسه حرف الباء: مثل قارب صغير وتحته نقطة.",
+      "erase": true,
+      "alphabet": {
+        "letter": "ب",
+        "at": [
+          500,
+          430
+        ],
+        "size": 820
+      }
+    },
+    {
+      "say": "الباء بداية كلمة بطّة!",
+      "write": {
+        "text": "بطّة",
+        "at": [
+          330,
+          860
+        ],
+        "size": 100,
+        "color": "accent"
+      },
+      "draw": {
+        "shape": "emoji",
+        "value": "🦆",
+        "at": [
+          700,
+          860
+        ],
+        "size": 160
+      }
+    },
+    {
+      "say": "وين النقطة؟ تحت لو فوق؟",
+      "erase": true,
+      "quiz": {
+        "question": "نقطة الباء وين؟",
+        "options": [
+          "⬆️",
+          "⬇️"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "say": "صح! تحت. شاطرين، باي باي!",
+      "celebrate": true,
+      "mood": "happy",
+      "show": "ب",
+      "bounce": true,
+      "label": "باء"
+    }
+  ]
+}

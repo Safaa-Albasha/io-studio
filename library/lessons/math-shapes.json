@@ -1,0 +1,134 @@
+{
+  "meta": {
+    "id": "math-shapes",
+    "subject": "math",
+    "subjectLabel": "رياضيات",
+    "level": "روضة ٤–٥",
+    "stage": "kindergarten"
+  },
+  "title": "الأشكال: دائرة ومربع ومثلث",
+  "format": "16:9",
+  "style": "cartoon",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّم",
+    "gender": "male",
+    "shirt": "#E8A90C"
+  },
+  "beats": [
+    {
+      "say": "هيا نتعرف على الأشكال! هذه دائرة: مستديرة مثل الشمس، وليس لها زوايا.",
+      "draw": {
+        "shape": "circle",
+        "center": [
+          500,
+          430
+        ],
+        "r": 220,
+        "fill": "yellow",
+        "color": "orange"
+      },
+      "write": {
+        "text": "دائرة",
+        "at": [
+          500,
+          800
+        ],
+        "size": 90,
+        "color": "orange"
+      }
+    },
+    {
+      "say": "وهذا مربع: له أربعة أضلاع متساوية في الطول.",
+      "erase": true,
+      "draw": {
+        "shape": "rect",
+        "x": 290,
+        "y": 220,
+        "w": 420,
+        "h": 420,
+        "fill": "blue",
+        "color": "blue"
+      },
+      "write": {
+        "text": "مربع",
+        "at": [
+          500,
+          800
+        ],
+        "size": 90,
+        "color": "blue"
+      }
+    },
+    {
+      "say": "وهذا مثلث: له ثلاثة أضلاع وثلاث زوايا.",
+      "erase": true,
+      "draw": {
+        "shape": "polygon",
+        "points": [
+          [
+            500,
+            190
+          ],
+          [
+            760,
+            640
+          ],
+          [
+            240,
+            640
+          ]
+        ],
+        "fill": "green",
+        "color": "green"
+      },
+      "write": {
+        "text": "مثلث",
+        "at": [
+          500,
+          800
+        ],
+        "size": 90,
+        "color": "green"
+      }
+    },
+    {
+      "say": "وهذا مستطيل: له أربعة أضلاع، ضلعان طويلان وضلعان قصيران.",
+      "erase": true,
+      "draw": {
+        "shape": "rect",
+        "x": 180,
+        "y": 290,
+        "w": 640,
+        "h": 340,
+        "fill": "pink",
+        "color": "pink"
+      },
+      "write": {
+        "text": "مستطيل",
+        "at": [
+          500,
+          800
+        ],
+        "size": 90,
+        "color": "pink"
+      }
+    },
+    {
+      "say": "أي شكل له ثلاثة أضلاع؟",
+      "quiz": {
+        "options": [
+          "🔺",
+          "🟦",
+          "🟡"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "say": "المثلث! له ثلاثة أضلاع. أحسنتم يا أبطال.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "id": "creator-studio",
+  "version": 1,
+  "name": "Creator studio",
+  "name_ar": "مكتب منزلي / استوديو صانع محتوى",
+  "style": "creator-studio",
+  "description_ar": "استوديو ٤×٣٫٦ م لتصوير «توكنگ هيد»: مكتب، كرسي، مايك، رنگ لايت، سوفت بوكس، كاميرا، وخلفية رفوف ونيون.",
+  "room": {
+    "width": 4,
+    "depth": 3.6,
+    "height": 2.8
+  },
+  "walls": [
+    {
+      "side": "north"
+    },
+    {
+      "side": "south",
+      "openings": [
+        {
+          "type": "door",
+          "offset": 3,
+          "width": 0.9,
+          "height": 2.1
+        }
+      ]
+    },
+    {
+      "side": "east"
+    },
+    {
+      "side": "west",
+      "openings": [
+        {
+          "type": "window",
+          "offset": 1,
+          "width": 1.2,
+          "height": 1.3,
+          "sill": 0.9
+        }
+      ]
+    }
+  ],
+  "lighting": {
+    "time_of_day": "night"
+  },
+  "furniture": [
+    {
+      "id": "desk",
+      "type": "creator-desk",
+      "position": [
+        2,
+        2.05
+      ],
+      "rotation": 180
+    },
+    {
+      "id": "chair",
+      "type": "office-chair",
+      "position": [
+        2,
+        2.75
+      ],
+      "rotation": 180
+    },
+    {
+      "id": "bookshelf",
+      "type": "bookshelf",
+      "wall": "north",
+      "at": 0.7
+    },
+    {
+      "id": "plant",
+      "type": "plant-tall",
+      "position": [
+        3.6,
+        3.2
+      ]
+    },
+    {
+      "id": "tripod",
+      "type": "camera-tripod",
+      "position": [
+        1.6,
+        0.75
+      ],
+      "rotation": 165
+    },
+    {
+      "id": "ring",
+      "type": "ring-light",
+      "position": [
+        2.45,
+        0.95
+      ],
+      "rotation": 195,
+      "light_power": 1
+    },
+    {
+      "id": "softbox",
+      "type": "softbox",
+      "position": [
+        0.8,
+        1.1
+      ],
+      "rotation": 146
+    }
+  ],
+  "decor": [
+    {
+      "id": "monitor",
+      "type": "monitor",
+      "position": [
+        1.5,
+        1.85
+      ],
+      "rotation": 165,
+      "on": "desk"
+    },
+    {
+      "id": "laptop",
+      "type": "laptop",
+      "position": [
+        2.45,
+        1.95
+      ],
+      "rotation": 190,
+      "on": "desk"
+    },
+    {
+      "id": "mic",
+      "type": "mic-arm",
+      "position": [
+        2.35,
+        1.85
+      ],
+      "rotation": 180,
+      "on": "desk"
+    },
+    {
+      "id": "neon",
+      "type": "neon-sign",
+      "wall": "north",
+      "at": 2.1,
+      "elevation": 1.85
+    },
+    {
+      "id": "shelf",
+      "type": "wall-shelf",
+      "wall": "north",
+      "at": 2.9,
+      "elevation": 1.35
+    },
+    {
+      "id": "panel-1",
+      "type": "acoustic-panel",
+      "wall": "north",
+      "at": 3,
+      "elevation": 1.85
+    },
+    {
+      "id": "panel-2",
+      "type": "acoustic-panel",
+      "wall": "east",
+      "at": 2.4,
+      "elevation": 1.3
+    },
+    {
+      "id": "rug",
+      "type": "rug",
+      "position": [
+        2,
+        2.3
+      ],
+      "size": [
+        2,
+        1.4,
+        0.015
+      ]
+    },
+    {
+      "id": "strings",
+      "type": "string-lights",
+      "wall": "north",
+      "at": 1.9,
+      "elevation": 2.35
+    }
+  ],
+  "cameras": {
+    "stills": [
+      {
+        "name": "talking-head",
+        "position": [
+          2,
+          0.55,
+          1.3
+        ],
+        "target": [
+          2,
+          3.6,
+          1.2
+        ]
+      },
+      {
+        "name": "setup",
+        "position": [
+          3.75,
+          0.3,
+          1.9
+        ],
+        "target": [
+          1.6,
+          2.3,
+          0.9
+        ]
+      },
+      {
+        "name": "background",
+        "position": [
+          2,
+          1.4,
+          1.3
+        ],
+        "target": [
+          2,
+          3.6,
+          1.5
+        ]
+      }
+    ],
+    "walkthrough": {
+      "points": [
+        [
+          3.6,
+          0.35
+        ],
+        [
+          3.4,
+          1
+        ],
+        [
+          3,
+          1.3
+        ]
+      ],
+      "seconds": 8,
+      "target": [
+        1.8,
+        2.6,
+        1
+      ]
+    }
+  },
+  "outputs": [
+    "9:16",
+    "16:9",
+    "3:4"
+  ]
+}

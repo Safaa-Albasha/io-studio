@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "id": "scandinavian",
+  "name_ar": "إسكندنافي",
+  "name_en": "Scandinavian",
+  "description_ar": "أبيض دافئ، خشب فاتح، أقمشة ناعمة وصوف، نباتات خضراء. دافئ ومريح ويبين واسع.",
+  "palette": [
+    "#f4f1ea",
+    "#dcc6a2",
+    "#9fb3a3",
+    "#5c6b73",
+    "#e9d7c2"
+  ],
+  "materials": {
+    "wall": "white-paint",
+    "floor": "light-ash",
+    "main": {
+      "kind": "fabric",
+      "color": "#c9c3b8",
+      "roughness": 0.95
+    },
+    "cushion": {
+      "kind": "fabric",
+      "color": "#9fb3a3",
+      "roughness": 0.95
+    },
+    "accent": {
+      "kind": "fabric",
+      "color": "#5c6b73",
+      "roughness": 0.9
+    },
+    "wood": "light-ash",
+    "metal": {
+      "kind": "metal",
+      "color": "#e7e4dd",
+      "roughness": 0.4
+    },
+    "fabric": {
+      "kind": "fabric",
+      "color": "#e9d7c2",
+      "roughness": 0.95
+    },
+    "rug": {
+      "kind": "fabric",
+      "color": "#efe9df",
+      "roughness": 1
+    },
+    "rug2": {
+      "kind": "fabric",
+      "color": "#d8d0c4",
+      "roughness": 1
+    },
+    "pot": "pot-white",
+    "frame": "light-ash"
+  },
+  "swaps": {},
+  "recommended": [
+    "sofa",
+    "armchair",
+    "coffee-table-round",
+    "floor-lamp",
+    "plant-tall",
+    "rug",
+    "wall-shelf",
+    "basket"
+  ],
+  "lighting": {
+    "time_of_day": "morning",
+    "lamp_color": "#ffe9c9"
+  },
+  "tips_ar": [
+    "بطانية على الكنبة ونبتة بالزاوية تسوي الفرق.",
+    "صور بضوء الصبح الناعم."
+  ]
+}

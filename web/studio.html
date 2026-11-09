@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>آي أو استوديو — التسجيل</title>
+<link rel="icon" href="lib/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="lib/brand.css">
+<script src="lib/ls-migrate.js"></script>
+<style>
+:root{
+  /* product chrome = lib/brand.css (sky + cinematic charcoal) */
+  --bg:var(--page); --panel:var(--card); --panel2:var(--card-2); --rec:#E5484D;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px}
+button,select,input{font-family:inherit;font-size:14px;color:inherit}
+button{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 12px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:700}
+button.rec{background:var(--rec);border-color:var(--rec);color:#fff;font-weight:800}
+button[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+select,input[type=text],input[type=number]{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:7px 8px;width:100%}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.app{display:grid;grid-template-columns:330px 1fr;height:100vh;overflow:hidden}
+aside{background:var(--panel);border-inline-end:1px solid var(--line);overflow:auto;padding:14px 14px 40px}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:12px}
+.brand .logo.sf-mark{width:38px;height:38px;border-radius:12px;font-size:22px}
+.brand b{font-size:18px}.brand small{display:block;color:var(--muted);font-size:12px}
+fieldset{border:1px solid var(--line);border-radius:12px;padding:10px 12px 12px;margin:0 0 12px}
+legend{padding:0 6px;color:var(--muted);font-size:13px}
+.row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.row>*{flex:1 1 auto}
+.seg{display:flex;gap:4px;flex-wrap:wrap}.seg button{flex:1 1 30%;padding:7px 6px;font-size:13px}
+label.l{display:block;font-size:12px;color:var(--muted);margin:8px 0 4px}
+.hint{color:var(--muted);font-size:12px;line-height:1.6;margin:6px 0 0}
+.status{font-size:12px;color:var(--muted);min-height:18px}
+main{position:relative;display:flex;flex-direction:column;min-width:0;min-height:0;height:100%;overflow:hidden}
+.top{display:flex;gap:8px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--panel)}
+.top .sp{flex:1}
+.timer{font-variant-numeric:tabular-nums;font-weight:800;min-width:70px;text-align:center}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--muted);display:inline-block}
+.dot.on{background:var(--rec);animation:blink 1s infinite}@keyframes blink{50%{opacity:.3}}
+.stage{flex:1;display:grid;place-items:center;padding:14px;min-height:0;position:relative}
+#out{display:block;background:#000;border-radius:10px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.prompter{position:absolute;top:10px;inset-inline:10%;max-height:34%;overflow:auto;background:rgba(8,10,13,.88);color:#F2F5F8;border:1px solid var(--line);border-radius:14px;padding:14px 20px;line-height:1.75;font-weight:700;white-space:pre-wrap;display:none;scroll-behavior:smooth}
+.prompter.on{display:block}
+.prompter.mirror{transform:scaleX(-1)}
+.bottom{display:flex;gap:8px;align-items:center;padding:10px 14px;border-top:1px solid var(--line);background:var(--panel)}
+.thumbs{display:flex;gap:6px;overflow-x:auto;flex:1}
+.thumbs img,.thumbs .beat{height:54px;border-radius:6px;border:2px solid transparent;cursor:pointer;flex:0 0 auto}
+.thumbs .beat{min-width:54px;padding:0 8px;display:grid;place-items:center;background:var(--panel2);font-weight:700}
+.thumbs .cur{border-color:var(--accent)}
+.toast{position:fixed;bottom:18px;inset-inline-start:50%;transform:translateX(50%);background:var(--panel2);border:1px solid var(--line);padding:10px 16px;border-radius:12px;display:none;z-index:9}
+.toast.on{display:block}
+.empty{color:var(--muted);text-align:center;line-height:2}
+kbd{background:var(--panel2);border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 5px;font-size:12px}
+@media (max-width:820px){.app{grid-template-columns:1fr;grid-template-rows:auto auto;height:auto;overflow:visible}aside{border:0;border-bottom:1px solid var(--line)}main{height:85vh}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside>
+    <div class="brand sf-letterbox"><div class="logo sf-mark"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#5CB8F0"/><path d="M10.5 17h11.5v4.6h-2.6v20.8h2.6V47H10.5v-4.6h2.6V21.6h-2.6z" fill="#14181D"/><ellipse cx="47.4" cy="32" rx="8.6" ry="12.2" fill="none" stroke="#14181D" stroke-width="5.6"/><path d="M22 32h14.2" stroke="#F2FAFF" stroke-width="1.6" stroke-linecap="round"/><path d="M29.1 26.4Q30.1 31.0 34.7 32Q30.1 33.0 29.1 37.6Q28.1 33.0 23.5 32Q28.1 31.0 29.1 26.4z" fill="#FFFFFF"/></svg></div><div><b>I/O Studio · آي أو استوديو</b><small>تسجيل درس — شرائح، شاشة، أو مشهد متحرك</small></div></div>
+
+    <fieldset>
+      <legend>١. مجلد الدرس</legend>
+      <div class="row"><button class="primary" id="pickDir">📂 افتح مجلد الدرس</button></div>
+      <div class="row" style="margin-top:6px"><button id="pickFiles">أو اختر ملفات…</button></div>
+      <input type="file" id="filesInput" multiple webkitdirectory hidden>
+      <p class="status" id="dirStatus">المجلد يحتوي: صور الشرائح (أو مجلد slides)، و prompt.md، و scene.json اختياري.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>٢. المصدر</legend>
+      <div class="seg" id="sourceSeg">
+        <button data-v="slides" aria-pressed="true">🖼️ شرائح</button>
+        <button data-v="scene">🎬 مشهد</button>
+        <button data-v="screen">🖥️ شاشة</button>
+      </div>
+      <div class="row" style="margin-top:8px"><button id="importDeck">📥 استيراد عرض HTML → صور</button></div>
+      <input type="file" id="deckInput" accept=".html,.htm" hidden>
+      <p class="hint" id="sourceHint"></p>
+    </fieldset>
+
+    <fieldset>
+      <legend>٣. المقاس والتوزيع</legend>
+      <label class="l">المقاس</label>
+      <select id="format"></select>
+      <label class="l">التوزيع</label>
+      <div class="seg" id="layoutSeg">
+        <button data-v="corner" aria-pressed="true">كاميرا بالزاوية</button>
+        <button data-v="split">نص ونص</button>
+        <button data-v="content">بدون كاميرا</button>
+        <button data-v="camera">كاميرا بس</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>٤. الكاميرا والمايك</legend>
+      <div class="row"><button id="camBtn">📷 شغّل الكاميرا والمايك</button></div>
+      <label class="l">الكاميرا</label><select id="camSel"></select>
+      <label class="l">المايك</label><select id="micSel"></select>
+      <label class="l">مكان الكاميرا</label>
+      <div class="seg" id="posSeg">
+        <button data-v="tr">↗ فوق يمين</button><button data-v="tl">↖ فوق يسار</button>
+        <button data-v="br" aria-pressed="true">↘ تحت يمين</button><button data-v="bl">↙ تحت يسار</button>
+      </div>
+      <label class="l">الحجم <span id="camSizeV"></span></label><input type="range" id="camSize" min="0.15" max="0.5" step="0.01" value="0.3">
+      <div class="seg" style="margin-top:8px">
+        <button id="shapeBtn" aria-pressed="true">⚪ دائرة</button>
+        <button id="mirrorBtn" aria-pressed="true">↔ مرآة</button>
+      </div>
+      <canvas id="meter" width="280" height="8" style="width:100%;height:8px;margin-top:8px;border-radius:4px;background:var(--panel2)"></canvas>
+    </fieldset>
+
+    <fieldset>
+      <legend>٥. الملقّن (تليبرومتر)</legend>
+      <div class="seg">
+        <button id="promptBtn" aria-pressed="true">📜 إظهار</button>
+        <button id="promptPop">🪟 نافذة منفصلة</button>
+        <button id="promptMirror">↔ مقلوب</button>
+      </div>
+      <label class="l">حجم الخط</label><input type="range" id="promptSize" min="18" max="64" value="32">
+      <label class="l">تمرير تلقائي (0 = يدوي)</label><input type="range" id="promptSpeed" min="0" max="80" value="0">
+    </fieldset>
+
+    <fieldset>
+      <legend>٦. الهوية</legend>
+      <label class="l">الحساب (يظهر كعلامة)</label><input type="text" id="handle" placeholder="@حسابك">
+      <div class="row" style="margin-top:8px"><button id="themeBtn">🎨 تحميل theme.json</button></div>
+      <input type="file" id="themeInput" accept=".json" hidden>
+    </fieldset>
+
+    <p class="hint">
+      <kbd>Space</kbd>/<kbd>←</kbd> التالي · <kbd>→</kbd> السابق · <kbd>R</kbd> تسجيل/إيقاف · <kbd>P</kbd> إيقاف مؤقت · <kbd>T</kbd> الملقّن · <kbd>M</kbd> علامة
+    </p>
+  </aside>
+
+  <main>
+    <div class="top">
+      <span class="dot" id="recDot"></span><span class="timer" id="timer">00:00</span>
+      <button class="rec" id="recBtn">⏺ سجّل</button>
+      <button id="pauseBtn" disabled>⏸ إيقاف مؤقت</button>
+      <button id="markBtn" disabled>🔖 علامة</button>
+      <span class="sp"></span>
+      <span class="status" id="saveStatus"></span>
+      <a href="index.html" style="color:var(--muted);font-size:13px">الرئيسية</a>
+    </div>
+    <div class="stage">
+      <canvas id="out" width="1080" height="1920"></canvas>
+      <div class="prompter on" id="prompter"></div>
+    </div>
+    <div class="bottom">
+      <button id="prevBtn">→</button>
+      <div class="thumbs" id="thumbs"><div class="empty">افتح مجلد درس حتى تظهر الشرائح هنا</div></div>
+      <button id="nextBtn">←</button>
+    </div>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<iframe id="deckFrame" style="position:fixed;left:-99999px;top:0;width:1920px;height:1080px;border:0" aria-hidden="true"></iframe>
+
+<script src="lib/platforms.js"></script>
+<script src="lib/studio-core.js"></script>
+<script src="lib/scene-core.js"></script>
+<script>
+'use strict';
+const $ = (id) => document.getElementById(id);
+const out = $('out'), ctx = out.getContext('2d');
+const SC = window.IoRecorder, SS = window.IoScene;
+
+const state = {
+  dir: null,              // FileSystemDirectoryHandle (null when using the file input)
+  fileMap: new Map(),     // name → File (for the fallback and for deck import)
+  slides: [],             // [{name, img}]
+  prompts: [],            // per slide/beat text
+  scene: null, sceneTl: null, sceneCanvas: null, sceneStart: 0, scenePaused: false, sceneT: 0,
+  source: 'slides', format: 'vertical', layout: 'corner',
+  idx: 0,
+  cam: { stream: null, video: document.createElement('video'), pos: 'br', size: 0.3, circle: true, mirror: true },
+  mic: { stream: null, analyser: null },
+  screen: { stream: null, video: document.createElement('video') },
+  theme: { bg: '#FFF7EC', ink: '#2A2622', accent: '#E0663A', accent2: '#2F7FBF', soft: '#F3E3CF', font: 'Cairo' },
+  handle: '',
+  rec: null,
+};
+state.cam.video.muted = true; state.cam.video.playsInline = true;
+state.screen.video.muted = true; state.screen.video.playsInline = true;
+
+function toast(msg, ms) {
+  const t = $('toast'); t.textContent = msg; t.classList.add('on');
+  clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('on'), ms || 3200);
+}
+
+// ------------------------------------------------------------------ prefs
+const PREF_KEY = 'io-prefs';
+function savePrefs() {
+  try {
+    localStorage.setItem(PREF_KEY, JSON.stringify({
+      format: state.format, layout: state.layout, pos: state.cam.pos, size: state.cam.size, circle: state.cam.circle,
+      mirror: state.cam.mirror, handle: state.handle, theme: state.theme,
+      promptSize: $('promptSize').value, promptSpeed: $('promptSpeed').value,
+    }));
+  } catch (e) { /* storage may be blocked */ }
+}
+function loadPrefs() {
+  try {
+    const p = JSON.parse(localStorage.getItem(PREF_KEY) || '{}');
+    if (p.format) state.format = p.format;
+    if (p.layout) state.layout = p.layout;
+    if (p.pos) state.cam.pos = p.pos;
+    if (p.size) state.cam.size = +p.size;
+    if (p.circle !== undefined) state.cam.circle = p.circle;
+    if (p.mirror !== undefined) state.cam.mirror = p.mirror;
+    if (p.handle) state.handle = p.handle;
+    if (p.theme) Object.assign(state.theme, p.theme);
+    if (p.promptSize) $('promptSize').value = p.promptSize;
+    if (p.promptSpeed) $('promptSpeed').value = p.promptSpeed;
+  } catch (e) { /* ignore */ }
+}
+
+// ------------------------------------------------------------------ format
+function fillFormats() {
+  const sel = $('format');
+  for (const [k, o] of Object.entries(SC.OUTPUTS)) {
+    const op = document.createElement('option'); op.value = k; op.textContent = o.labelAr; sel.appendChild(op);
+  }
+  sel.value = state.format;
+  sel.onchange = () => { state.format = sel.value; applyFormat(); savePrefs(); };
+}
+function applyFormat() {
+  const o = SC.OUTPUTS[state.format];
+  out.width = o.w; out.height = o.h;
+  fitPreview();
+}
+// Size the preview to the stage; the canvas itself stays full resolution.
+function fitPreview() {
+  const st = out.parentElement;
+  const cs = getComputedStyle(st);
+  const bw = st.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+  const bh = st.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+  if (bw <= 0 || bh <= 0) return;
+  const f = SC.fit(out.width, out.height, bw, bh, 'contain');
+  out.style.width = Math.floor(f.w) + 'px'; out.style.height = Math.floor(f.h) + 'px';
+}
+window.addEventListener('resize', fitPreview);
+
+// ------------------------------------------------------------------ segmented controls
+function seg(id, get, set) {
+  const el = $(id);
+  const sync = () => el.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.v === get())));
+  el.addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; set(b.dataset.v); sync(); savePrefs(); });
+  sync();
+}
+
+// ------------------------------------------------------------------ lesson folder
+const hasFS = 'showDirectoryPicker' in window;
+
+async function readDir(dir) {
+  const files = new Map();
+  async function walk(h, prefix, depth) {
+    for await (const [name, entry] of h.entries()) {
+      if (entry.kind === 'file') files.set(prefix + name, await entry.getFile());
+      else if (depth < 1 && name !== 'recordings') await walk(entry, prefix + name + '/', depth + 1);
+    }
+  }
+  await walk(dir, '', 0);
+  return files;
+}
+
+async function openFolder() {
+  if (!hasFS) { $('filesInput').click(); return; }
+  try {
+    state.dir = await window.showDirectoryPicker({ id: 'io-lesson', mode: 'readwrite' });
+    await loadLesson(await readDir(state.dir), state.dir.name);
+  } catch (e) { if (e.name !== 'AbortError') toast('ما گدرت أفتح المجلد: ' + e.message); }
+}
+
+async function loadLesson(files, name) {
+  state.fileMap = files;
+  // slides: prefer slides/ or deck_frames/, else images at root
+  const all = [...files.keys()];
+  const inSub = all.filter((n) => /^(slides|deck_frames|frames)\//i.test(n) && SC.IMAGE_RE.test(n));
+  const atRoot = all.filter((n) => !n.includes('/') && SC.IMAGE_RE.test(n) && !/^(logo|cover|thumb)/i.test(n));
+  const names = (inSub.length ? inSub : atRoot).sort(SC.naturalCompare);
+  state.slides = await Promise.all(names.map(async (n) => ({ name: n, img: await loadImage(files.get(n)) })));
+  const pf = ['prompt.md', 'prompt.txt', 'script.md', 'سكربت.md'].find((n) => files.has(n));
+  state.prompts = pf ? SC.parsePrompter(await files.get(pf).text()) : [];
+  state.scene = null;
+  if (files.has('scene.json')) {
+    try {
+      const { scene, errors } = SS.normalizeScene(await files.get('scene.json').text());
+      if (errors.length) toast('scene.json فيه أخطاء: ' + errors[0], 6000);
+      else setScene(scene);
+    } catch (e) { toast('scene.json مو JSON صالح: ' + e.message, 6000); }
+  }
+  if (files.has('theme.json')) {
+    try { applyTheme(JSON.parse(await files.get('theme.json').text())); } catch (e) { toast('theme.json مو صالح'); }
+  }
+  const parts = [];
+  parts.push(`${state.slides.length} شريحة`);
+  parts.push(pf ? `نص الملقّن: ${pf}` : 'بدون نص ملقّن');
+  if (state.scene) parts.push(`مشهد: ${state.scene.beats.length} لقطة`);
+  $('dirStatus').textContent = `«${name}» — ${parts.join(' · ')}`;
+  if (!state.slides.length && state.scene) state.source = 'scene';
+  syncSource();
+  go(0);
+}
+
+function loadImage(file) {
+  return new Promise((res, rej) => {
+    const img = new Image();
+    img.onload = () => res(img);
+    img.onerror = rej;
+    img.src = URL.createObjectURL(file);
+  });
+}
+
+function setScene(scene) {
+  state.scene = scene;
+  state.sceneTl = SS.timeline(scene);
+  const [w, h] = SS.FORMATS[scene.format];
+  state.sceneCanvas = Object.assign(document.createElement('canvas'), { width: w, height: h });
+  state.sceneT = 0; state.sceneStart = performance.now(); state.scenePaused = true;
+}
+
+// ------------------------------------------------------------------ theme
+function applyTheme(t) {
+  const c = t.colors || t;
+  for (const k of ['bg', 'ink', 'accent', 'accent2', 'soft']) if (c[k]) state.theme[k] = c[k];
+  if (t.fonts && t.fonts.heading) state.theme.font = t.fonts.heading;
+  if (t.handle && !state.handle) { state.handle = t.handle; $('handle').value = t.handle; }
+  // The creator's colours drive the recorded canvas (state.theme); the studio chrome keeps lib/brand.css.
+  if (state.scene) state.scene.theme = Object.assign({}, state.scene.theme, { bg: state.theme.bg, ink: state.theme.ink, accent: state.theme.accent, accent2: state.theme.accent2, soft: state.theme.soft });
+  savePrefs();
+}
+
+// ------------------------------------------------------------------ source
+const SOURCE_HINTS = {
+  slides: 'صور الشرائح من مجلد الدرس. Space للشريحة التالية.',
+  scene: 'scene.json: شخصية تحچي بفقاعة، عنصر يتحوّل، وأشياء تنحسب. Space يشغّل/يوقف، والتسجيل يبدي المشهد من أوله.',
+  screen: 'شارك شاشة أو نافذة أو تبويب. الكاميرا تنرسم فوقها.',
+};
+function syncSource() {
+  $('sourceSeg').querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.v === state.source)));
+  $('sourceHint').textContent = SOURCE_HINTS[state.source];
+  renderThumbs();
+  updatePrompter();
+}
+async function setSource(v) {
+  if (v === 'screen' && !state.screen.stream) {
+    try {
+      const s = await navigator.mediaDevices.getDisplayMedia({ video: { frameRate: 30 }, audio: false });
+      state.screen.stream = s; state.screen.video.srcObject = s; await state.screen.video.play();
+      s.getVideoTracks()[0].addEventListener('ended', () => { state.screen.stream = null; if (state.source === 'screen') { state.source = 'slides'; syncSource(); } });
+    } catch (e) { toast('ما انشاركت الشاشة'); return; }
+  }
+  if (v === 'scene' && !state.scene) { toast('ما لگيت scene.json بمجلد الدرس'); return; }
+  state.source = v; state.idx = 0; syncSource(); go(0);
+}
+
+// ------------------------------------------------------------------ slides / beats navigation
+function count() {
+  if (state.source === 'scene' && state.scene) return state.scene.beats.length;
+  if (state.source === 'slides') return Math.max(state.slides.length, state.prompts.length);
+  return state.prompts.length;
+}
+function go(i) {
+  const n = count();
+  state.idx = n ? Math.max(0, Math.min(n - 1, i)) : 0;
+  if (state.source === 'scene' && state.scene) {
+    state.sceneT = state.sceneTl[state.idx].start;
+    state.sceneStart = performance.now() - state.sceneT * 1000;
+  }
+  document.querySelectorAll('#thumbs > *').forEach((el, k) => el.classList.toggle('cur', k === state.idx));
+  const cur = document.querySelector('#thumbs .cur'); if (cur) cur.scrollIntoView({ inline: 'center', block: 'nearest' });
+  updatePrompter();
+  if (state.rec) state.rec.markers.push({ t: recTime(), type: 'slide', index: state.idx });
+}
+function next() {
+  if (state.source === 'scene' && state.scene && state.scenePaused) { playScene(); return; }
+  go(state.idx + 1);
+}
+function prev() { go(state.idx - 1); }
+
+function playScene() {
+  state.scenePaused = false; state.sceneStart = performance.now() - state.sceneT * 1000;
+}
+function renderThumbs() {
+  const box = $('thumbs'); box.innerHTML = '';
+  if (state.source === 'slides' && state.slides.length) {
+    state.slides.forEach((s, k) => { const im = new Image(); im.src = s.img.src; im.title = s.name; im.onclick = () => go(k); box.appendChild(im); });
+  } else if (state.source === 'scene' && state.scene) {
+    state.scene.beats.forEach((b, k) => { const d = document.createElement('div'); d.className = 'beat'; d.textContent = k + 1; d.title = b.say; d.onclick = () => go(k); box.appendChild(d); });
+  } else if (state.prompts.length) {
+    state.prompts.forEach((p, k) => { const d = document.createElement('div'); d.className = 'beat'; d.textContent = k + 1; d.title = p.slice(0, 80); d.onclick = () => go(k); box.appendChild(d); });
+  } else box.innerHTML = '<div class="empty">افتح مجلد درس حتى تظهر الشرائح هنا</div>';
+}
+
+// ------------------------------------------------------------------ prompter
+let popup = null;
+function promptText() {
+  if (state.source === 'scene' && state.scene) return state.scene.beats[state.idx] ? state.scene.beats[state.idx].say : '';
+  return state.prompts[state.idx] || '';
+}
+function updatePrompter() {
+  const el = $('prompter');
+  const txt = promptText();
+  const n = count();
+  el.textContent = txt ? txt : (n ? '— ما بيه نص لهالشريحة —' : 'الملقّن: حط prompt.md بمجلد الدرس (كل شريحة تبدي بـ ## رقمها).');
+  el.style.fontSize = $('promptSize').value + 'px';
+  el.scrollTop = 0;
+  if (popup && !popup.closed) {
+    const b = popup.document.body;
+    b.style.fontSize = (+$('promptSize').value * 1.4) + 'px';
+    popup.document.getElementById('t').textContent = txt;
+    popup.document.getElementById('n').textContent = n ? `${state.idx + 1} / ${n}` : '';
+    popup.scrollTo(0, 0);
+  }
+}
+function openPopup() {
+  popup = window.open('', 'io-prompter', 'width=900,height=520');
+  if (!popup) { toast('المتصفح منع النافذة — اسمح بالنوافذ المنبثقة'); return; }
+  popup.document.write('<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>الملقّن</title><style>body{margin:0;background:#000;color:#fff;font-family:Cairo,Tajawal,system-ui,sans-serif;font-weight:700;line-height:1.7;padding:30px 50px}#n{color:#999;font-size:.5em}#t{white-space:pre-wrap}</style></head><body><div id="n"></div><div id="t"></div></body></html>');
+  popup.document.close();
+  popup.addEventListener('keydown', onKey);
+  updatePrompter();
+}
+let lastScroll = performance.now();
+function autoScroll(now) {
+  const sp = +$('promptSpeed').value;
+  const dt = (now - lastScroll) / 1000; lastScroll = now;
+  if (!sp) return;
+  const el = $('prompter'); el.style.scrollBehavior = 'auto'; el.scrollTop += sp * dt;
+  if (popup && !popup.closed) popup.scrollBy(0, sp * dt * 1.4);
+}
+
+// ------------------------------------------------------------------ camera & mic
+async function listDevices() {
+  const devs = await navigator.mediaDevices.enumerateDevices();
+  const fill = (sel, kind) => {
+    const cur = sel.value; sel.innerHTML = '';
+    devs.filter((d) => d.kind === kind).forEach((d, i) => { const o = document.createElement('option'); o.value = d.deviceId; o.textContent = d.label || `${kind} ${i + 1}`; sel.appendChild(o); });
+    if (cur) sel.value = cur;
+  };
+  fill($('camSel'), 'videoinput'); fill($('micSel'), 'audioinput');
+}
+async function startCam() {
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { toast('الكاميرا تحتاج https أو localhost — شغّل: node engine/serve.js', 6000); return; }
+  try {
+    stopStream(state.cam.stream); stopStream(state.mic.stream);
+    const camId = $('camSel').value, micId = $('micSel').value;
+    state.cam.stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: camId ? { exact: camId } : undefined, width: { ideal: 1920 }, height: { ideal: 1080 } } });
+    state.mic.stream = await navigator.mediaDevices.getUserMedia({ audio: { deviceId: micId ? { exact: micId } : undefined, echoCancellation: true, noiseSuppression: true } });
+    state.cam.video.srcObject = state.cam.stream; await state.cam.video.play();
+    const ac = new AudioContext(); const src = ac.createMediaStreamSource(state.mic.stream);
+    state.mic.analyser = ac.createAnalyser(); state.mic.analyser.fftSize = 512; src.connect(state.mic.analyser);
+    $('camBtn').textContent = '✅ الكاميرا شغّالة';
+    await listDevices();
+  } catch (e) { toast('ما اشتغلت الكاميرا/المايك: ' + e.message, 5000); }
+}
+function stopStream(s) { if (s) s.getTracks().forEach((t) => t.stop()); }
+function drawMeter() {
+  const m = $('meter'), c = m.getContext('2d');
+  c.clearRect(0, 0, m.width, m.height);
+  if (!state.mic.analyser) return;
+  const a = new Uint8Array(state.mic.analyser.fftSize); state.mic.analyser.getByteTimeDomainData(a);
+  let peak = 0; for (const v of a) peak = Math.max(peak, Math.abs(v - 128) / 128);
+  c.fillStyle = peak > 0.9 ? '#E5484D' : peak > 0.6 ? '#E8A33A' : '#3FAE6A';
+  c.fillRect(m.width - m.width * Math.min(1, peak * 1.3), 0, m.width * Math.min(1, peak * 1.3), m.height);
+}
+
+// ------------------------------------------------------------------ compositor
+function drawSource(x, y, w, h) {
+  ctx.save();
+  ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+  ctx.fillStyle = state.theme.bg; ctx.fillRect(x, y, w, h);
+  let src = null, sw = 0, sh = 0;
+  if (state.source === 'slides') {
+    const s = state.slides[Math.min(state.idx, state.slides.length - 1)];
+    if (s) { src = s.img; sw = s.img.naturalWidth; sh = s.img.naturalHeight; }
+  } else if (state.source === 'screen' && state.screen.stream) {
+    src = state.screen.video; sw = src.videoWidth; sh = src.videoHeight;
+  } else if (state.source === 'scene' && state.scene) {
+    const sc = state.sceneCanvas;
+    SS.drawScene(sc.getContext('2d'), state.scene, state.sceneT, { timeline: state.sceneTl, handle: '' });
+    src = sc; sw = sc.width; sh = sc.height;
+  }
+  if (src && sw) {
+    const f = SC.fit(sw, sh, w, h, 'contain');
+    // A wide slide in a tall frame: lift it to the top of the safe area so the
+    // camera bubble has room underneath instead of covering it.
+    if (h > w * 1.2 && f.h < h * 0.6 && state.layout === 'corner') f.y = window.IoPlatforms.safeArea().y * (h / 1920) + h * 0.04;
+    ctx.drawImage(src, x + f.x, y + f.y, f.w, f.h);
+  } else {
+    ctx.fillStyle = state.theme.ink; ctx.globalAlpha = 0.5; ctx.textAlign = 'center'; ctx.direction = 'rtl';
+    ctx.font = `700 ${Math.round(Math.min(w, h) / 18)}px ${state.theme.font}, sans-serif`;
+    ctx.fillText(state.source === 'screen' ? 'اختر «شاشة» حتى تشاركها' : 'افتح مجلد الدرس', x + w / 2, y + h / 2);
+  }
+  ctx.restore();
+}
+function drawCamFill(x, y, w, h) {
+  const v = state.cam.video;
+  ctx.save(); ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+  ctx.fillStyle = '#111'; ctx.fillRect(x, y, w, h);
+  if (state.cam.stream && v.videoWidth) {
+    const f = SC.fit(v.videoWidth, v.videoHeight, w, h, 'cover');
+    if (state.cam.mirror) { ctx.translate(x + w, y); ctx.scale(-1, 1); ctx.drawImage(v, w - f.x - f.w, f.y, f.w, f.h); }
+    else ctx.drawImage(v, x + f.x, y + f.y, f.w, f.h);
+  }
+  ctx.restore();
+}
+function drawCamBubble() {
+  const v = state.cam.video;
+  if (!state.cam.stream || !v.videoWidth) return;
+  const W = out.width, H = out.height;
+  const portrait = H > W;
+  const d = Math.round(Math.min(W, H) * state.cam.size * (portrait ? 1.25 : 1));
+  // keep the bubble inside the area platform UI doesn't cover
+  const safe = portrait ? window.IoPlatforms.safeArea() : { x: 40, y: 40, w: W - 80, h: H - 80 };
+  const m = Math.round(Math.min(W, H) * 0.03);
+  const pos = state.cam.pos;
+  const x = pos.endsWith('r') ? safe.x + safe.w - d - m : safe.x + m;
+  const y = pos.startsWith('t') ? safe.y + m : safe.y + safe.h - d - m;
+  ctx.save();
+  ctx.beginPath();
+  if (state.cam.circle) ctx.arc(x + d / 2, y + d / 2, d / 2, 0, Math.PI * 2); else ctx.roundRect(x, y, d, d * 1.15, d * 0.12);
+  ctx.save(); ctx.clip();
+  const h = state.cam.circle ? d : d * 1.15;
+  const f = SC.fit(v.videoWidth, v.videoHeight, d, h, 'cover');
+  if (state.cam.mirror) { ctx.translate(x + d, y); ctx.scale(-1, 1); ctx.drawImage(v, d - f.x - f.w, f.y, f.w, f.h); }
+  else ctx.drawImage(v, x + f.x, y + f.y, f.w, f.h);
+  ctx.restore();
+  ctx.lineWidth = Math.max(4, d * 0.025); ctx.strokeStyle = state.theme.accent; ctx.stroke();
+  ctx.restore();
+}
+function drawHandle() {
+  if (!state.handle) return;
+  const W = out.width, H = out.height;
+  ctx.save();
+  ctx.font = `700 ${Math.round(Math.min(W, H) * 0.028)}px ${state.theme.font}, sans-serif`;
+  ctx.textAlign = 'center'; ctx.direction = 'ltr';
+  ctx.fillStyle = 'rgba(0,0,0,.35)';
+  const tw = ctx.measureText(state.handle).width + 30, th = Math.min(W, H) * 0.05;
+  const y = H > W ? window.IoPlatforms.safeArea().y + 10 : 24;
+  ctx.beginPath(); ctx.roundRect(W / 2 - tw / 2, y, tw, th, th / 2); ctx.fill();
+  ctx.fillStyle = '#fff'; ctx.textBaseline = 'middle'; ctx.fillText(state.handle, W / 2, y + th / 2 + 2);
+  ctx.restore();
+}
+function compose() {
+  const W = out.width, H = out.height;
+  ctx.fillStyle = state.theme.bg; ctx.fillRect(0, 0, W, H);
+  const L = state.layout;
+  if (L === 'camera') drawCamFill(0, 0, W, H);
+  else if (L === 'split' && state.cam.stream) {
+    if (H > W) { drawSource(0, 0, W, H / 2); drawCamFill(0, H / 2, W, H / 2); }
+    else { drawSource(W * 0.36, 0, W * 0.64, H); drawCamFill(0, 0, W * 0.36, H); }
+  } else {
+    drawSource(0, 0, W, H);
+    if (L === 'corner') drawCamBubble();
+  }
+  drawHandle();
+}
+
+function tick(now) {
+  if (state.scene && !state.scenePaused && state.source === 'scene') {
+    state.sceneT = (now - state.sceneStart) / 1000;
+    const total = SS.totalDuration(state.scene);
+    if (state.sceneT >= total) { state.sceneT = total; state.scenePaused = true; if (state.rec && state.rec.autoStop) stopRec(); }
+    let k = 0; for (let i = 0; i < state.sceneTl.length; i++) if (state.sceneT >= state.sceneTl[i].start) k = i;
+    if (k !== state.idx) { state.idx = k; document.querySelectorAll('#thumbs > *').forEach((el, j) => el.classList.toggle('cur', j === k)); updatePrompter(); if (state.rec) state.rec.markers.push({ t: recTime(), type: 'beat', index: k }); }
+  }
+  compose();
+  drawMeter();
+  autoScroll(now);
+  if (state.rec) $('timer').textContent = fmt(recTime());
+  requestAnimationFrame(tick);
+}
+function fmt(s) { s = Math.floor(s); return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`; }
+
+// ------------------------------------------------------------------ recording
+function recTime() {
+  const r = state.rec; if (!r) return 0;
+  return ((r.pausedAt || performance.now()) - r.t0 - r.pausedMs) / 1000;
+}
+async function startRec() {
+  if (state.rec) return;
+  const stream = out.captureStream(30);
+  if (state.mic.stream) state.mic.stream.getAudioTracks().forEach((t) => stream.addTrack(t));
+  else toast('تنبيه: المايك مو شغّال — التسجيل بدون صوت', 4000);
+  const { mime, ext } = SC.pickMime((m) => window.MediaRecorder && MediaRecorder.isTypeSupported(m));
+  const portrait = out.height > out.width;
+  const rec = new MediaRecorder(stream, { mimeType: mime || undefined, videoBitsPerSecond: portrait ? 12e6 : 14e6, audioBitsPerSecond: 192e3 });
+  const chunks = [];
+  rec.ondataavailable = (e) => { if (e.data && e.data.size) chunks.push(e.data); };
+  rec.onstop = () => saveRecording(new Blob(chunks, { type: mime || 'video/webm' }), ext, state._lastRec);
+  state.rec = { rec, chunks, t0: performance.now(), pausedMs: 0, pausedAt: 0, markers: [{ t: 0, type: state.source === 'scene' ? 'beat' : 'slide', index: state.idx }], ext, autoStop: false, name: SC.stamp() };
+  if (state.source === 'scene' && state.scene) { go(0); playScene(); state.rec.autoStop = true; }
+  rec.start(1000);
+  $('recDot').classList.add('on'); $('recBtn').textContent = '⏹ أوقف وسجّل'; $('pauseBtn').disabled = false; $('markBtn').disabled = false;
+}
+function stopRec() {
+  const r = state.rec; if (!r) return;
+  state._lastRec = { name: r.name, markers: r.markers, duration: recTime(), source: state.source, format: state.format };
+  r.rec.stop();
+  state.rec = null;
+  $('recDot').classList.remove('on'); $('recBtn').textContent = '⏺ سجّل'; $('pauseBtn').disabled = true; $('markBtn').disabled = true; $('pauseBtn').textContent = '⏸ إيقاف مؤقت';
+}
+function togglePause() {
+  const r = state.rec; if (!r) return;
+  if (r.rec.state === 'recording') { r.rec.pause(); r.pausedAt = performance.now(); $('pauseBtn').textContent = '▶ كمّل'; $('recDot').classList.remove('on'); if (state.source === 'scene') state.scenePaused = true; }
+  else { r.pausedMs += performance.now() - r.pausedAt; r.pausedAt = 0; r.rec.resume(); $('pauseBtn').textContent = '⏸ إيقاف مؤقت'; $('recDot').classList.add('on'); if (state.source === 'scene') playScene(); }
+}
+async function saveRecording(blob, ext, meta) {
+  const base = `${meta.name}_${state.format}`;
+  const markers = JSON.stringify({ file: `${base}.${ext}`, duration: meta.duration, source: meta.source, format: meta.format, markers: meta.markers }, null, 2);
+  if (state.dir) {
+    try {
+      if ((await state.dir.queryPermission({ mode: 'readwrite' })) !== 'granted') await state.dir.requestPermission({ mode: 'readwrite' });
+      const recDir = await state.dir.getDirectoryHandle('recordings', { create: true });
+      await writeFile(recDir, `${base}.${ext}`, blob);
+      await writeFile(recDir, `${base}.markers.json`, new Blob([markers], { type: 'application/json' }));
+      $('saveStatus').textContent = `✅ انحفظ: recordings/${base}.${ext}`;
+      toast(`انحفظ التسجيل بمجلد الدرس: recordings/${base}.${ext}`, 5000);
+      return;
+    } catch (e) { toast('ما گدرت أحفظ بالمجلد، راح أنزّله: ' + e.message, 5000); }
+  }
+  download(blob, `${base}.${ext}`);
+  download(new Blob([markers], { type: 'application/json' }), `${base}.markers.json`);
+  $('saveStatus').textContent = `⬇️ نزل: ${base}.${ext}`;
+}
+async function writeFile(dir, name, blob) {
+  const fh = await dir.getFileHandle(name, { create: true });
+  const w = await fh.createWritable(); await w.write(blob); await w.close();
+}
+function download(blob, name) {
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 10000);
+}
+
+// ------------------------------------------------------------------ HTML deck → images
+async function importDeck(file) {
+  toast('أحوّل العرض لصور…', 8000);
+  let html = await file.text();
+  // inline local images so the snapshot can see them
+  const toData = (f) => new Promise((res) => { const r = new FileReader(); r.onload = () => res(r.result); r.readAsDataURL(f); });
+  const refs = new Set([...html.matchAll(/(?:src=["']|url\(["']?)([^"')]+\.(?:png|jpe?g|webp|gif|svg))/gi)].map((m) => m[1]));
+  for (const ref of refs) {
+    const f = state.fileMap.get(ref.replace(/^\.\//, ''));
+    if (f) html = html.split(ref).join(await toData(f));
+  }
+  const frame = $('deckFrame');
+  await new Promise((res) => { frame.onload = res; frame.srcdoc = html; });
+  const doc = frame.contentDocument;
+  try { await doc.fonts.ready; } catch (e) { /* ignore */ }
+  await new Promise((r) => setTimeout(r, 400));
+  let cands = [...doc.querySelectorAll('[data-slide], .slide, section')];
+  cands = cands.filter((el) => !cands.some((o) => o !== el && o.contains(el)));
+  if (!cands.length) { toast('ما لگيت شرائح بالعرض (section أو ‎.slide)', 6000); return; }
+  const style = doc.createElement('style');
+  style.textContent = '.__sf-hide{display:none!important}.__sf-on{display:block!important;visibility:visible!important;opacity:1!important;transform:none!important;position:relative!important;inset:auto!important}';
+  doc.head.appendChild(style);
+  const css = [...doc.querySelectorAll('style')].map((s) => s.textContent).join('\n');
+  const bodyCS = doc.defaultView.getComputedStyle(doc.body);
+  const blobs = [];
+  for (let i = 0; i < cands.length; i++) {
+    cands.forEach((el, k) => { el.classList.toggle('__sf-on', k === i); el.classList.toggle('__sf-hide', k !== i); });
+    await new Promise((r) => setTimeout(r, 60));
+    const el = cands[i];
+    const r = el.getBoundingClientRect();
+    const w = Math.round(r.width) || 1920, h = Math.round(r.height) || 1080;
+    const clone = el.cloneNode(true);
+    clone.classList.remove('__sf-hide'); clone.classList.add('__sf-on');
+    const xhtml = new XMLSerializer().serializeToString(clone);
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><foreignObject width="100%" height="100%"><div xmlns="http://www.w3.org/1999/xhtml" style="width:${w}px;height:${h}px;overflow:hidden;background:${bodyCS.backgroundColor};color:${bodyCS.color};font-family:${bodyCS.fontFamily.replace(/"/g, "'")}"><style>${css.replace(/</g, '\\3c ')}</style>${xhtml}</div></foreignObject></svg>`;
+    const img = await new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg); });
+    const scale = 1920 / Math.max(w, h);
+    const c = Object.assign(document.createElement('canvas'), { width: Math.round(w * scale), height: Math.round(h * scale) });
+    const cx = c.getContext('2d'); cx.scale(scale, scale); cx.drawImage(img, 0, 0);
+    blobs.push(await new Promise((res) => c.toBlob(res, 'image/png')));
+  }
+  if (state.dir) {
+    const sd = await state.dir.getDirectoryHandle('slides', { create: true });
+    for (let i = 0; i < blobs.length; i++) await writeFile(sd, `p-${String(i + 1).padStart(2, '0')}.png`, blobs[i]);
+    await loadLesson(await readDir(state.dir), state.dir.name);
+  } else {
+    state.slides = await Promise.all(blobs.map(async (b, i) => ({ name: `p-${i + 1}.png`, img: await loadImage(b) })));
+    blobs.forEach((b, i) => download(b, `p-${String(i + 1).padStart(2, '0')}.png`));
+  }
+  state.source = 'slides'; syncSource(); go(0);
+  toast(`✅ ${blobs.length} شريحة. لو الخطوط أو الصور الخارجية ما طلعت صح، استخدم: node engine/shoot.js`, 7000);
+}
+
+// ------------------------------------------------------------------ keys & wiring
+function onKey(e) {
+  if (e.target && /INPUT|SELECT|TEXTAREA/.test(e.target.tagName)) return;
+  const k = e.key;
+  if (k === ' ' || k === 'ArrowLeft' || k === 'PageDown') { e.preventDefault(); next(); }
+  else if (k === 'ArrowRight' || k === 'PageUp') { e.preventDefault(); prev(); }
+  else if (k === 'r' || k === 'R') state.rec ? stopRec() : startRec();
+  else if (k === 'p' || k === 'P') togglePause();
+  else if (k === 't' || k === 'T') $('promptBtn').click();
+  else if ((k === 'm' || k === 'M') && state.rec) { state.rec.markers.push({ t: recTime(), type: 'mark' }); toast('🔖 علامة'); }
+}
+
+function wire() {
+  loadPrefs();
+  fillFormats(); applyFormat();
+  seg('layoutSeg', () => state.layout, (v) => { state.layout = v; });
+  seg('posSeg', () => state.cam.pos, (v) => { state.cam.pos = v; });
+  $('sourceSeg').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) setSource(b.dataset.v); });
+  $('pickDir').onclick = openFolder;
+  $('pickFiles').onclick = () => $('filesInput').click();
+  $('filesInput').onchange = async (e) => {
+    const files = new Map();
+    for (const f of e.target.files) { const rel = (f.webkitRelativePath || f.name).split('/').slice(1).join('/') || f.name; files.set(rel, f); }
+    state.dir = null;
+    await loadLesson(files, (e.target.files[0] && e.target.files[0].webkitRelativePath.split('/')[0]) || 'الدرس');
+  };
+  $('importDeck').onclick = () => $('deckInput').click();
+  $('deckInput').onchange = (e) => { if (e.target.files[0]) importDeck(e.target.files[0]).catch((er) => toast('فشل الاستيراد: ' + er.message, 6000)); };
+  $('camBtn').onclick = startCam;
+  $('camSel').onchange = () => state.cam.stream && startCam();
+  $('micSel').onchange = () => state.mic.stream && startCam();
+  $('camSize').value = state.cam.size; $('camSizeV').textContent = Math.round(state.cam.size * 100) + '%';
+  $('camSize').oninput = (e) => { state.cam.size = +e.target.value; $('camSizeV').textContent = Math.round(state.cam.size * 100) + '%'; savePrefs(); };
+  const toggle = (id, get, set) => { const b = $(id); b.setAttribute('aria-pressed', String(get())); b.onclick = () => { set(!get()); b.setAttribute('aria-pressed', String(get())); savePrefs(); }; };
+  toggle('shapeBtn', () => state.cam.circle, (v) => { state.cam.circle = v; });
+  toggle('mirrorBtn', () => state.cam.mirror, (v) => { state.cam.mirror = v; });
+  toggle('promptBtn', () => $('prompter').classList.contains('on'), (v) => $('prompter').classList.toggle('on', v));
+  toggle('promptMirror', () => $('prompter').classList.contains('mirror'), (v) => $('prompter').classList.toggle('mirror', v));
+  $('promptPop').onclick = openPopup;
+  $('promptSize').oninput = () => { updatePrompter(); savePrefs(); };
+  $('promptSpeed').oninput = savePrefs;
+  $('handle').value = state.handle;
+  $('handle').oninput = (e) => { state.handle = e.target.value.trim(); savePrefs(); };
+  $('themeBtn').onclick = () => $('themeInput').click();
+  $('themeInput').onchange = async (e) => { try { applyTheme(JSON.parse(await e.target.files[0].text())); toast('✅ انطبقت الهوية'); } catch (er) { toast('theme.json مو صالح'); } };
+  $('recBtn').onclick = () => (state.rec ? stopRec() : startRec());
+  $('pauseBtn').onclick = togglePause;
+  $('markBtn').onclick = () => { if (state.rec) { state.rec.markers.push({ t: recTime(), type: 'mark' }); toast('🔖 علامة'); } };
+  $('nextBtn').onclick = next; $('prevBtn').onclick = prev;
+  document.addEventListener('keydown', onKey);
+  window.addEventListener('beforeunload', (e) => { if (state.rec) { e.preventDefault(); e.returnValue = ''; } });
+  if (!hasFS) $('dirStatus').textContent = 'متصفحك ما يدعم الحفظ المباشر بالمجلد — التسجيل راح ينزل كملف. (الأفضل Chrome أو Edge)';
+  if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) listDevices().catch(() => {});
+  syncSource();
+  requestAnimationFrame(tick);
+}
+wire();
+</script>
+</body>
+</html>

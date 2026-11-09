@@ -1,0 +1,125 @@
+{
+  "meta": {
+    "id": "geo-arab-world",
+    "subject": "geography",
+    "subjectLabel": "جغرافيا",
+    "level": "ابتدائي ٥–٦",
+    "stage": "primary"
+  },
+  "title": "الوطن العربي",
+  "format": "16:9",
+  "style": "paper",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّمة",
+    "gender": "female",
+    "shirt": "#2A64AA",
+    "hijab": "#2E8B57"
+  },
+  "beats": [
+    {
+      "say": "يمتد الوطن العربي في قارتين: آسيا وأفريقيا.",
+      "geography": {
+        "preset": "world"
+      }
+    },
+    {
+      "say": "يطل غربًا على المحيط الأطلسي، وشرقًا على الخليج العربي وبحر العرب.",
+      "erase": true,
+      "geography": {
+        "preset": "world",
+        "pins": [
+          {
+            "lonlat": [
+              -30,
+              12
+            ],
+            "label": "الأطلسي",
+            "side": "left",
+            "color": "blue"
+          },
+          {
+            "lonlat": [
+              62,
+              18
+            ],
+            "label": "بحر العرب",
+            "color": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "say": "ومن مدنه: القاهرة على نهر النيل، وبغداد على نهر دجلة.",
+      "erase": true,
+      "geography": {
+        "preset": "world",
+        "pins": [
+          {
+            "lonlat": [
+              31.2,
+              30
+            ],
+            "color": "red"
+          },
+          {
+            "lonlat": [
+              44.4,
+              33.3
+            ],
+            "color": "blue"
+          }
+        ]
+      },
+      "write": [
+        {
+          "text": "القاهرة: على نهر النيل",
+          "at": [
+            740,
+            790
+          ],
+          "size": 46,
+          "color": "red"
+        },
+        {
+          "text": "بغداد: على نهر دجلة",
+          "at": [
+            260,
+            790
+          ],
+          "size": 46,
+          "color": "blue"
+        }
+      ]
+    },
+    {
+      "say": "ويضم اثنتين وعشرين دولة، كلها أعضاء في جامعة الدول العربية.",
+      "write": {
+        "text": "٢٢ دولة عربية",
+        "at": [
+          500,
+          910
+        ],
+        "size": 60,
+        "color": "green",
+        "box": "green"
+      }
+    },
+    {
+      "say": "في أي قارتين يقع الوطن العربي؟",
+      "quiz": {
+        "options": [
+          "آسيا وأفريقيا",
+          "أوروبا وآسيا",
+          "أفريقيا وأوروبا"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "say": "آسيا وأفريقيا! أحسنتم يا مستكشفين.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

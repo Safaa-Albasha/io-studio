@@ -1,0 +1,428 @@
+{
+  "meta": {
+    "id": "sci-states-of-matter",
+    "subject": "science",
+    "subjectLabel": "علوم",
+    "level": "ابتدائي ٣–٤",
+    "stage": "primary"
+  },
+  "title": "حالات المادة",
+  "format": "9:16",
+  "style": "cartoon",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّمة",
+    "shirt": "#2E9B5B",
+    "hijab": "#2F7FBF"
+  },
+  "beats": [
+    {
+      "say": "المادة إلها ثلاث حالات: صلبة، وسائلة، وغازية.",
+      "show": "🧊",
+      "bounce": true,
+      "label": "ثلج"
+    },
+    {
+      "say": "الصلب: الجزيئات متراصة، فشكله وحجمه ثابتين.",
+      "draw": {
+        "shape": "rect",
+        "x": 250,
+        "y": 120,
+        "w": 500,
+        "h": 500,
+        "color": "ink"
+      },
+      "grid": {
+        "cols": 6,
+        "rows": 6,
+        "cell": 76,
+        "dots": true,
+        "fill": "all",
+        "lines": false,
+        "at": [
+          500,
+          370
+        ],
+        "color": "blue"
+      },
+      "write": {
+        "text": "صلب",
+        "at": [
+          500,
+          760
+        ],
+        "size": 90,
+        "color": "blue"
+      }
+    },
+    {
+      "say": "السائل: الجزيئات تتحرك وتنزلق، يأخذ شكل الإناء.",
+      "erase": true,
+      "draw": [
+        {
+          "shape": "path",
+          "d": "M 250 120 L 250 620 L 750 620 L 750 120"
+        },
+        {
+          "shape": "circle",
+          "center": [
+            310,
+            580
+          ],
+          "r": 26,
+          "fill": "accent2",
+          "color": "accent2",
+          "time": 0.25,
+          "with": false
+        },
+        {
+          "shape": "circle",
+          "center": [
+            390,
+            575
+          ],
+          "r": 26,
+          "fill": "accent2",
+          "color": "accent2",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            470,
+            585
+          ],
+          "r": 26,
+          "fill": "accent2",
+          "color": "accent2",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            550,
+            570
+          ],
+          "r": 26,
+          "fill": "accent2",
+          "color": "accent2",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            630,
+            580
+          ],
+          "r": 26,
+          "fill": "accent2",
+          "color": "accent2",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            700,
+            575
+          ],
+          "r": 26,
+          "fill": "accent2",
+          "color": "accent2",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            340,
+            505
+          ],
+          "r": 26,
+          "fill": "accent2",
+          "color": "accent2",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            430,
+            515
+          ],
+          "r": 26,
+          "fill": "accent2",
+          "color": "accent2",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            520,
+            500
+          ],
+          "r": 26,
+          "fill": "accent2",
+          "color": "accent2",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            610,
+            512
+          ],
+          "r": 26,
+          "fill": "accent2",
+          "color": "accent2",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            690,
+            505
+          ],
+          "r": 26,
+          "fill": "accent2",
+          "color": "accent2",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            380,
+            440
+          ],
+          "r": 26,
+          "fill": "accent2",
+          "color": "accent2",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            470,
+            445
+          ],
+          "r": 26,
+          "fill": "accent2",
+          "color": "accent2",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            565,
+            438
+          ],
+          "r": 26,
+          "fill": "accent2",
+          "color": "accent2",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            655,
+            450
+          ],
+          "r": 26,
+          "fill": "accent2",
+          "color": "accent2",
+          "time": 0.25,
+          "with": true
+        }
+      ],
+      "write": {
+        "text": "سائل",
+        "at": [
+          500,
+          760
+        ],
+        "size": 90,
+        "color": "accent2"
+      }
+    },
+    {
+      "say": "الغاز: الجزيئات متباعدة وتنتشر بكل المكان.",
+      "erase": true,
+      "draw": [
+        {
+          "shape": "rect",
+          "x": 250,
+          "y": 120,
+          "w": 500,
+          "h": 500
+        },
+        {
+          "shape": "circle",
+          "center": [
+            320,
+            190
+          ],
+          "r": 22,
+          "fill": "red",
+          "color": "red",
+          "time": 0.25,
+          "with": false
+        },
+        {
+          "shape": "circle",
+          "center": [
+            610,
+            170
+          ],
+          "r": 22,
+          "fill": "red",
+          "color": "red",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            470,
+            300
+          ],
+          "r": 22,
+          "fill": "red",
+          "color": "red",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            680,
+            380
+          ],
+          "r": 22,
+          "fill": "red",
+          "color": "red",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            300,
+            430
+          ],
+          "r": 22,
+          "fill": "red",
+          "color": "red",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            530,
+            520
+          ],
+          "r": 22,
+          "fill": "red",
+          "color": "red",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            400,
+            580
+          ],
+          "r": 22,
+          "fill": "red",
+          "color": "red",
+          "time": 0.25,
+          "with": true
+        },
+        {
+          "shape": "circle",
+          "center": [
+            690,
+            560
+          ],
+          "r": 22,
+          "fill": "red",
+          "color": "red",
+          "time": 0.25,
+          "with": true
+        }
+      ],
+      "write": {
+        "text": "غاز",
+        "at": [
+          500,
+          760
+        ],
+        "size": 90,
+        "color": "red"
+      }
+    },
+    {
+      "say": "الماء يتجمد بصفر درجة مئوية، ويغلي بمية.",
+      "erase": true,
+      "numberline": {
+        "from": 0,
+        "to": 100,
+        "step": 10,
+        "y": 450,
+        "size": 34,
+        "mark": [
+          0,
+          100
+        ]
+      },
+      "write": [
+        {
+          "text": "تجمد ٠°",
+          "at": [
+            140,
+            320
+          ],
+          "size": 54,
+          "color": "blue"
+        },
+        {
+          "text": "غليان ١٠٠°",
+          "at": [
+            840,
+            320
+          ],
+          "size": 54,
+          "color": "red"
+        }
+      ]
+    },
+    {
+      "say": "البخار حالة شنو؟",
+      "erase": true,
+      "quiz": {
+        "options": [
+          "صلبة",
+          "سائلة",
+          "غازية"
+        ],
+        "answer": 2
+      }
+    },
+    {
+      "say": "غازية! عاشت إيدكم.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

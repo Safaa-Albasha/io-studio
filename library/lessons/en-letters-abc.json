@@ -1,0 +1,177 @@
+{
+  "meta": {
+    "id": "en-letters-abc",
+    "subject": "english",
+    "subjectLabel": "الإنجليزي",
+    "level": "روضة ٤–٥",
+    "stage": "kindergarten"
+  },
+  "title": "الحروف الإنجليزية: A B C",
+  "format": "9:16",
+  "style": "cartoon",
+  "numerals": "western",
+  "character": {
+    "name": "المعلّمة",
+    "gender": "female",
+    "shirt": "#D9568E",
+    "hijab": "#7E57C2"
+  },
+  "beats": [
+    {
+      "say": "هيا نتعلم أول ثلاثة حروف في اللغة الإنجليزية.",
+      "write": {
+        "text": "A  B  C",
+        "at": [
+          500,
+          420
+        ],
+        "size": 200,
+        "dir": "ltr",
+        "color": "blue"
+      }
+    },
+    {
+      "say": "حرف A، وينطق: إيه. مثل كلمة Apple، ومعناها تفاحة.",
+      "erase": true,
+      "write": [
+        {
+          "text": "A a",
+          "at": [
+            500,
+            220
+          ],
+          "size": 190,
+          "dir": "ltr",
+          "color": "red"
+        },
+        {
+          "text": "Apple",
+          "at": [
+            500,
+            820
+          ],
+          "size": 100,
+          "dir": "ltr"
+        }
+      ],
+      "draw": {
+        "shape": "emoji",
+        "value": "🍎",
+        "at": [
+          500,
+          540
+        ],
+        "size": 230
+      }
+    },
+    {
+      "say": "حرف B، وينطق: بي. مثل كلمة Ball، ومعناها كرة.",
+      "erase": true,
+      "write": [
+        {
+          "text": "B b",
+          "at": [
+            500,
+            220
+          ],
+          "size": 190,
+          "dir": "ltr",
+          "color": "blue"
+        },
+        {
+          "text": "Ball",
+          "at": [
+            500,
+            820
+          ],
+          "size": 100,
+          "dir": "ltr"
+        }
+      ],
+      "draw": {
+        "shape": "emoji",
+        "value": "⚽",
+        "at": [
+          500,
+          540
+        ],
+        "size": 230
+      }
+    },
+    {
+      "say": "حرف C، وينطق: سي. مثل كلمة Cat، ومعناها قطة.",
+      "erase": true,
+      "write": [
+        {
+          "text": "C c",
+          "at": [
+            500,
+            220
+          ],
+          "size": 190,
+          "dir": "ltr",
+          "color": "green"
+        },
+        {
+          "text": "Cat",
+          "at": [
+            500,
+            820
+          ],
+          "size": 100,
+          "dir": "ltr"
+        }
+      ],
+      "draw": {
+        "shape": "emoji",
+        "value": "🐱",
+        "at": [
+          500,
+          540
+        ],
+        "size": 230
+      }
+    },
+    {
+      "say": "انتبهوا: الإنجليزية تكتب من اليسار إلى اليمين، عكس العربية.",
+      "erase": true,
+      "write": {
+        "text": "A  B  C",
+        "at": [
+          500,
+          380
+        ],
+        "size": 150,
+        "dir": "ltr"
+      },
+      "draw": {
+        "shape": "arrow",
+        "from": [
+          180,
+          600
+        ],
+        "to": [
+          820,
+          600
+        ],
+        "color": "orange"
+      }
+    },
+    {
+      "say": "أي صورة تبدأ بحرف C؟",
+      "quiz": {
+        "options": [
+          "🍎",
+          "🐱",
+          "⚽"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "say": "القطة بالإنجليزية Cat، وتبدأ بحرف C. أحسنتم!",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

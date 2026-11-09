@@ -1,0 +1,81 @@
+{
+  "meta": {
+    "id": "ar-seen-sheen",
+    "subject": "arabic",
+    "subjectLabel": "العربي",
+    "level": "أطفال ٥–٧",
+    "stage": "kindergarten"
+  },
+  "title": "السين والشين",
+  "format": "9:16",
+  "style": "cartoon",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّمة",
+    "shirt": "#7E57C2",
+    "hijab": "#E8A90C"
+  },
+  "beats": [
+    {
+      "say": "هلا! هذا حرف السين، عنده ثلاث سنون صغيرة.",
+      "mood": "happy",
+      "show": "س",
+      "bounce": true
+    },
+    {
+      "say": "نتتبع السين: سن، سن، سن، وبعدين بطن.",
+      "alphabet": {
+        "letter": "س",
+        "at": [
+          500,
+          470
+        ],
+        "size": 820
+      }
+    },
+    {
+      "say": "نحط ثلاث نقاط فوق السنون، يصير شين!",
+      "erase": true,
+      "alphabet": {
+        "letter": "ش",
+        "at": [
+          500,
+          500
+        ],
+        "size": 820
+      }
+    },
+    {
+      "say": "سمكة تبدي بالسين، وشمس تبدي بالشين.",
+      "compare": {
+        "a": "🐟",
+        "b": "☀️",
+        "labelA": "سمكة",
+        "labelB": "شمس"
+      }
+    },
+    {
+      "say": "يلا نحسب السمكات: وحدة، ثنتين، ثلاثة، أربعة!",
+      "count": {
+        "item": "🐟",
+        "n": 4,
+        "label": "سمكات"
+      }
+    },
+    {
+      "say": "شمس تبدي بأي حرف؟",
+      "quiz": {
+        "options": [
+          "س",
+          "ش"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "say": "صح! نشوفكم بالحرف الجاي.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

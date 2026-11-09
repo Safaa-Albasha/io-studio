@@ -1,0 +1,1162 @@
+{
+ "version": 1,
+ "note": "بنك الحركات 101–150 (I/O Studio) — الدوال بـmotion/moves-plus-a.js (تمدّ نفس FX). نفس حقول catalog.json؛ الكل يشتغل بلا قصّ ولا وجه ولا كف. ينقرا مع catalog.json مدموج بالرقم n (35_moves.py · 00_onboard.py · index.html).",
+ "moves": [
+  {
+   "n": 101,
+   "id": "inkBrush",
+   "cat": "text",
+   "name": "حبر الفرشاة",
+   "sub": "كشف بالحبر",
+   "desc": "فرشاة حبر تمشي من اليمين وتكشف الجملة بحافة خشنة، ووراها نقط حبر، وتحتها ضربة فرشاة بلونك.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/101.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "emphasis",
+    "reveal"
+   ]
+  },
+  {
+   "n": 102,
+   "id": "stampSlam",
+   "cat": "text",
+   "name": "ختم",
+   "sub": "كلمة تنطبع",
+   "desc": "الكلمة تنزل كبيرة وتنطبع مثل الختم بإطار وحبر مو كامل، مع موجة صدمة وغبار.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/102.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "price",
+    "emphasis"
+   ]
+  },
+  {
+   "n": 103,
+   "id": "splitFlap",
+   "cat": "text",
+   "name": "لوحة المطار",
+   "sub": "بلاطات تقلب",
+   "desc": "كل كلمة على بلاطة تقلب كم مرة مثل لوحة المطار، وتوقف على كلمتها.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/103.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "reveal",
+    "list"
+   ]
+  },
+  {
+   "n": 104,
+   "id": "neonSign",
+   "cat": "text",
+   "name": "نيون",
+   "sub": "لافتة تولّع",
+   "desc": "الكلام أنبوب نيون يرمش ويولّع فوق لوحة غامقة، والسطر الثاني يولّع بعده.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/104.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "calm",
+    "punch"
+   ],
+   "cues": [
+    "emphasis",
+    "cta"
+   ]
+  },
+  {
+   "n": 105,
+   "id": "wordStack",
+   "cat": "text",
+   "name": "بوستر كلمات",
+   "sub": "كل كلمة سطر",
+   "desc": "كل كلمة سطر بنفس العرض (الصغيرة تكبر)، تدخل من جهة وعكسها، وتصير بوستر.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/105.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 3,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "emphasis",
+    "hit"
+   ]
+  },
+  {
+   "n": 106,
+   "id": "zoomThrough",
+   "cat": "text",
+   "name": "كلمات من العمق",
+   "sub": "تجي من بعيد",
+   "desc": "كل كلمة تجي من بعيد لين تصير بوجهك وتعدّي الكاميرا، مع خطوط سرعة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/106.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 3,
+   "families": [
+    "punch",
+    "onetake"
+   ],
+   "cues": [
+    "hit",
+    "reveal"
+   ]
+  },
+  {
+   "n": 107,
+   "id": "glitchText",
+   "cat": "text",
+   "name": "نص قلتش",
+   "sub": "انقسام ألوان",
+   "desc": "النص يرجف بألوان منقسمة وشرايح تنزاح بدفعات قصيرة، ثم يستقر نظيف.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/107.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "tech",
+    "hit"
+   ]
+  },
+  {
+   "n": 108,
+   "id": "strikeReplace",
+   "cat": "text",
+   "name": "تصحيح",
+   "sub": "شطب وبدّل",
+   "desc": "كلمة بالجملة تنشطب بخربشة، وفوقها تطلع الكلمة الصح بخط اليد.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/108.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "contrast",
+    "emphasis"
+   ]
+  },
+  {
+   "n": 109,
+   "id": "blindsText",
+   "cat": "text",
+   "name": "شرائح النص",
+   "sub": "ستارة تنفتح",
+   "desc": "السطر ينفتح من شرائح أفقية تلف بالتتابع، مثل الستارة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/109.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 1,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 110,
+   "id": "marquee",
+   "cat": "text",
+   "name": "شريط يلف",
+   "sub": "شريطين متقاطعين",
+   "desc": "شريطين متقاطعين يدخلون من الجهتين والكلام يمشي عليهم بلا وقفة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/110.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "price",
+    "cta"
+   ]
+  },
+  {
+   "n": 111,
+   "id": "wordPop",
+   "cat": "text",
+   "name": "كلمة وحدة",
+   "sub": "كابشن كلمة كلمة",
+   "desc": "كابشن كلمة كلمة بنص الشاشة، كل كلمة تفرقع لحالها، والمهمة بلونك.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/111.mp4",
+   "bonus": false,
+   "role": "caption",
+   "energy": 3,
+   "families": [],
+   "cues": []
+  },
+  {
+   "n": 112,
+   "id": "boldCaption",
+   "cat": "text",
+   "name": "كابشن عريض",
+   "sub": "مقاطع قصيرة",
+   "desc": "الكابشن مقاطع 2–3 كلمات بخط عريض وحدّ غامق، والكلمة الحالية تكبر وتتلوّن.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/112.mp4",
+   "bonus": false,
+   "role": "caption",
+   "energy": 2,
+   "families": [],
+   "cues": []
+  },
+  {
+   "n": 113,
+   "id": "markerCircle",
+   "cat": "card",
+   "name": "دائرة بالقلم",
+   "sub": "تحديد بخط اليد",
+   "desc": "دائرة بخط اليد ترتسم حول كلمة، وجنبها شرطات تنبيه.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/113.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 114,
+   "id": "underlineStyles",
+   "cat": "card",
+   "name": "خط تحت",
+   "sub": "موجة · مزدوج · فرشاة",
+   "desc": "خط تحت الكلمة يرتسم من اليمين بستايل تختاره: موجة، مزدوج، فرشاة، زقزاق، نقاط.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/114.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 115,
+   "id": "boxInvert",
+   "cat": "card",
+   "name": "صندوق يقلب اللون",
+   "sub": "كلمة بصندوق",
+   "desc": "صندوق بلونك يمسح الكلمة من اليمين، والكلمة داخله ينقلب لونها.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/115.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "emphasis",
+    "contrast"
+   ]
+  },
+  {
+   "n": 116,
+   "id": "arrowPoint",
+   "cat": "card",
+   "name": "سهم يأشر",
+   "sub": "شوف هني",
+   "desc": "تعليق صغير ومنه سهم بخط اليد ينحني لين يوصل نقطة، وحولها دائرة تنبض.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/116.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "editorial",
+    "onetake"
+   ],
+   "cues": [
+    "emphasis",
+    "reveal"
+   ]
+  },
+  {
+   "n": 117,
+   "id": "followButton",
+   "cat": "card",
+   "name": "زر المتابعة",
+   "sub": "كرت حساب",
+   "desc": "كرت حسابك وزر «متابعة» ينضغط ويصير «تتابعه» والعدد يزيد. بلا شعار أي منصة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/117.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "calm",
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "cta"
+   ]
+  },
+  {
+   "n": 118,
+   "id": "subscribeBell",
+   "cat": "card",
+   "name": "اشترك والجرس",
+   "sub": "زر وجرس",
+   "desc": "زر «اشترك» ينضغط ويصير «مشترك»، والجرس جنبه يرن. بلا شعار أي منصة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/118.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "cta"
+   ]
+  },
+  {
+   "n": 119,
+   "id": "actionRow",
+   "cat": "card",
+   "name": "لايك وتعليق وحفظ",
+   "sub": "صف أيقونات",
+   "desc": "قلب وتعليق ومشاركة وحفظ، كل وحدة تفرقع وتتلوّن والعدّاد يعد.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/119.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch",
+    "calm"
+   ],
+   "cues": [
+    "cta",
+    "number"
+   ]
+  },
+  {
+   "n": 120,
+   "id": "linkInBio",
+   "cat": "card",
+   "name": "الرابط بالبايو",
+   "sub": "كبسولة وأسهم",
+   "desc": "كبسولة «الرابط بالبايو» بلمعة تمر، وفوقها أسهم تنط لفوق.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/120.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial",
+    "onetake"
+   ],
+   "cues": [
+    "cta"
+   ]
+  },
+  {
+   "n": 121,
+   "id": "commentPrompt",
+   "cat": "card",
+   "name": "اكتب بالتعليقات",
+   "sub": "كلمة السر",
+   "desc": "خانة تعليق تنكتب فيها الكلمة، تنرسل، والتعليق يطلع فوقها بقلب.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/121.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "cta"
+   ]
+  },
+  {
+   "n": 122,
+   "id": "stickerPop",
+   "cat": "card",
+   "name": "ستيكرات تفرقع",
+   "sub": "قلب · نجمة · نار",
+   "desc": "ستيكرات مرسومة بإطار أبيض تفرقع حول الكلام بالتتابع.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/122.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "emphasis"
+   ]
+  },
+  {
+   "n": 123,
+   "id": "heartsFloat",
+   "cat": "card",
+   "name": "قلوب تطير",
+   "sub": "مثل البث",
+   "desc": "قلوب تطلع من نقطة وتتمايل لفوق وتختفي، مثل البث المباشر.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/123.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "onetake"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 124,
+   "id": "confetti",
+   "cat": "card",
+   "name": "كونفيتي",
+   "sub": "احتفال",
+   "desc": "قصاصات ملوّنة تنفجر من نقطة أو مدفعين من تحت وتطيح بهدوء.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/124.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "number"
+   ]
+  },
+  {
+   "n": 125,
+   "id": "countdown",
+   "cat": "card",
+   "name": "عد تنازلي",
+   "sub": "٣ ٢ ١",
+   "desc": "كل رقم داخل حلقة تنقص، وبالآخر الكلمة تطلع بحلقة صدمة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/125.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "reveal"
+   ]
+  },
+  {
+   "n": 126,
+   "id": "pieChart",
+   "cat": "card",
+   "name": "دائرة النسب",
+   "sub": "دونات",
+   "desc": "دونات تتعبّى قطعة قطعة، ولكل قطعة اسمها ونسبتها.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/126.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "number",
+    "contrast"
+   ]
+  },
+  {
+   "n": 127,
+   "id": "compareBars",
+   "cat": "card",
+   "name": "مقارنة أعمدة",
+   "sub": "أفقية من اليمين",
+   "desc": "أعمدة أفقية تكبر من اليمين وأرقامها تعد، والفايز بلونك مع شارة الفرق.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/127.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "number",
+    "contrast"
+   ]
+  },
+  {
+   "n": 128,
+   "id": "iconArray",
+   "cat": "card",
+   "name": "٧ من ١٠",
+   "sub": "أشخاص يتلوّنون",
+   "desc": "صفوف أشخاص، أول كم واحد يتلوّنون بالتتابع، وتحتها «٧ من ١٠».",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/128.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "number"
+   ]
+  },
+  {
+   "n": 129,
+   "id": "gauge",
+   "cat": "card",
+   "name": "عداد سرعة",
+   "sub": "إبرة تطير",
+   "desc": "نص دائرة بشرطات، والإبرة تطير للقيمة وتنط، والرقم يعد.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/129.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "number"
+   ]
+  },
+  {
+   "n": 130,
+   "id": "rankSwap",
+   "cat": "card",
+   "name": "ترتيب يتبدل",
+   "sub": "يطلع للأول",
+   "desc": "قائمة مرتبة وعنصر يطلع ويتخطى اللي فوقه لمكانه الجديد.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/130.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "list",
+    "contrast"
+   ]
+  },
+  {
+   "n": 131,
+   "id": "loadingBar",
+   "cat": "card",
+   "name": "تحميل",
+   "sub": "يعلق على ٩٩",
+   "desc": "شريط تحميل يتعبّى من اليمين، يعلق على ٩٩٪ ويرجف، ثم يكمل ويطلع «تم».",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/131.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "tech",
+    "reveal"
+   ]
+  },
+  {
+   "n": 132,
+   "id": "numberedList",
+   "cat": "card",
+   "name": "قائمة مرقمة",
+   "sub": "رقم كبير لكل نقطة",
+   "desc": "كل نقطة تطلع برقم كبير، الحالية واضحة واللي قبلها تخف.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/132.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "list"
+   ]
+  },
+  {
+   "n": 133,
+   "id": "quoteCard",
+   "cat": "card",
+   "name": "اقتباس",
+   "sub": "كرت بعلامات تنصيص",
+   "desc": "كرت اقتباس: علامات تنصيص تفرقع، والكلام يطلع كلمة كلمة، واسم القائل تحت.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/133.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 134,
+   "id": "mapPin",
+   "cat": "card",
+   "name": "دبوس الخريطة",
+   "sub": "وين المكان",
+   "desc": "خريطة مرسومة، والدبوس يطيح وينط، وفوقه كرت باسم المكان.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/134.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "onetake"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 135,
+   "id": "chatThread",
+   "cat": "card",
+   "name": "محادثة",
+   "sub": "فقاعات رسايل",
+   "desc": "فقاعات رسايل تطلع وحدة وحدة، وقبل ردّهم «يكتب…».",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/135.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "contrast",
+    "list"
+   ]
+  },
+  {
+   "n": 136,
+   "id": "incomingCall",
+   "cat": "card",
+   "name": "مكالمة واردة",
+   "sub": "رد ولا لا؟",
+   "desc": "شاشة مكالمة واردة بنبض، ولما ترد تتقلص لكبسولة فوق بعدّاد.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/136.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "cta"
+   ]
+  },
+  {
+   "n": 137,
+   "id": "handleTag",
+   "cat": "card",
+   "name": "تعريف بكبسولة",
+   "sub": "اسمك ومعرّفك",
+   "desc": "كبسولة فيها صورتك تتمدد لاسمك ومعرّفك وشارة صغيرة، تحت يمين.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/137.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": []
+  },
+  {
+   "n": 138,
+   "id": "toggleSwitch",
+   "cat": "card",
+   "name": "مفاتيح تشتغل",
+   "sub": "إعدادات",
+   "desc": "قائمة إعدادات، كل سطر مفتاح يشتغل بلونك.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/138.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "list",
+    "tech"
+   ]
+  },
+  {
+   "n": 139,
+   "id": "mythFact",
+   "cat": "card",
+   "name": "خرافة وحقيقة",
+   "sub": "الكرت يقلب",
+   "desc": "كرت «خرافة» ينشطب، ثم يقلب ويطلع «حقيقة» بالجملة الصح.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/139.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "contrast",
+    "reveal"
+   ]
+  },
+  {
+   "n": 140,
+   "id": "pollVote",
+   "cat": "card",
+   "name": "تصويت",
+   "sub": "اختار وشوف النسب",
+   "desc": "سؤال بخيارات، نقرة على خيار والأعمدة تتعبّى بالنسب.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/140.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "contrast",
+    "number",
+    "cta"
+   ]
+  },
+  {
+   "n": 141,
+   "id": "parallaxCards",
+   "cat": "card",
+   "name": "كروت بعمق",
+   "sub": "بارالاكس",
+   "desc": "ثلاث كروت على أعماق مختلفة تطفو وتتحرك بسرعات مختلفة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/141.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "onetake",
+    "editorial"
+   ],
+   "cues": [
+    "list",
+    "reveal"
+   ]
+  },
+  {
+   "n": 142,
+   "id": "splitScreen",
+   "cat": "transition",
+   "name": "شاشة مقسومة",
+   "sub": "نص ونص",
+   "desc": "المشهد يتقلص لنص الشاشة والجديد يدخل للنص الثاني بفاصل ولافتات.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/142.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "onetake"
+   ],
+   "cues": [
+    "contrast"
+   ]
+  },
+  {
+   "n": 143,
+   "id": "tornPaper",
+   "cat": "transition",
+   "name": "ورق ينشق",
+   "sub": "نصين يطيرون",
+   "desc": "المشهد ورقة تنشق نصين بحافة مسننة، ويطيرون ويكشفون الجديد.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/143.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "punch",
+    "calm"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 144,
+   "id": "whipUp",
+   "cat": "transition",
+   "name": "سحبة لفوق",
+   "sub": "سحبة طولية",
+   "desc": "المشهد ينسحب لفوق بسرعة مع غباش وخطوط، والجديد يطلع من تحت.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/144.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": []
+  },
+  {
+   "n": 145,
+   "id": "shapeWipe",
+   "cat": "transition",
+   "name": "مسحة أشكال",
+   "sub": "دواير تكبر",
+   "desc": "شبكة أشكال تكبر بالتتابع من فوق يمين وتكشف المشهد الجديد.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/145.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "list"
+   ]
+  },
+  {
+   "n": 146,
+   "id": "starIris",
+   "cat": "transition",
+   "name": "فتحة نجمة",
+   "sub": "نجمة ثمانية",
+   "desc": "نجمة ثمانية (أو قلب) تطلع صغيرة وتلف وتكبر لين تبلع الشاشة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/146.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "calm",
+    "onetake"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 147,
+   "id": "inkBleed",
+   "cat": "transition",
+   "name": "حبر ينتشر",
+   "sub": "بقع تتلاصق",
+   "desc": "بقع حبر تكبر وتتلاصق، والمشهد الجديد يطلع من داخلها.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/147.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 148,
+   "id": "rgbSplit",
+   "cat": "camera",
+   "name": "انقسام الألوان",
+   "sub": "ضربة RGB",
+   "desc": "على الضربة الصورة تنقسم لألوانها وتنزاح مع نفضة زوم وترجع.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/148.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "tech"
+   ]
+  },
+  {
+   "n": 149,
+   "id": "flashFrame",
+   "cat": "camera",
+   "name": "فلاش",
+   "sub": "ومضة",
+   "desc": "ومضة بيضا على الضربة: الصورة تولّع وتنفض وترجع بنعومة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/149.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit"
+   ]
+  },
+  {
+   "n": 150,
+   "id": "letterbox",
+   "cat": "camera",
+   "name": "شريط سينمائي",
+   "sub": "لقطة فيلم",
+   "desc": "شريطين أسود يدخلون من فوق وتحت والصورة تقرب شوي، مع عنوان اختياري.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/150.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 1,
+   "families": [
+    "calm",
+    "onetake"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  }
+ ]
+}

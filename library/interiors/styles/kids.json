@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "id": "kids",
+  "name_ar": "غرفة أطفال",
+  "name_en": "Kids room",
+  "description_ar": "ألوان مرحة بس هادئة (باستيل)، أثاث آمن بزوايا مدوّرة، مساحة لعب على الأرض، وتخزين للألعاب.",
+  "palette": [
+    "#f6efe4",
+    "#9cc9c1",
+    "#f2b5a0",
+    "#f5d27a",
+    "#8aa6d6"
+  ],
+  "materials": {
+    "wall": {
+      "kind": "plaster",
+      "color": "#f3ece0",
+      "roughness": 0.9
+    },
+    "floor": "light-ash",
+    "main": {
+      "kind": "plain",
+      "color": "#9cc9c1",
+      "roughness": 0.7
+    },
+    "cushion": {
+      "kind": "fabric",
+      "color": "#f5d27a",
+      "roughness": 0.9
+    },
+    "accent": {
+      "kind": "plain",
+      "color": "#f2b5a0",
+      "roughness": 0.6
+    },
+    "wood": "light-ash",
+    "metal": {
+      "kind": "metal",
+      "color": "#e5e1d8",
+      "roughness": 0.4
+    },
+    "fabric": {
+      "kind": "fabric",
+      "color": "#8aa6d6",
+      "roughness": 0.95
+    },
+    "rug": {
+      "kind": "fabric",
+      "color": "#f2d9c7",
+      "roughness": 1
+    },
+    "rug2": {
+      "kind": "fabric",
+      "color": "#9cc9c1",
+      "roughness": 1
+    },
+    "frame": "light-ash",
+    "paper": {
+      "kind": "plain",
+      "color": "#ffffff",
+      "roughness": 0.8
+    },
+    "art": {
+      "kind": "plain",
+      "color": "#8aa6d6",
+      "roughness": 0.7
+    }
+  },
+  "swaps": {
+    "bed-double": "bed-single",
+    "desk": "kids-desk",
+    "office-chair": "kids-chair",
+    "armchair": "beanbag",
+    "dining-chair": "kids-chair"
+  },
+  "recommended": [
+    "bed-single",
+    "bunk-bed",
+    "toy-box",
+    "kids-desk",
+    "kids-chair",
+    "rug-round",
+    "cube-shelf",
+    "beanbag"
+  ],
+  "lighting": {
+    "time_of_day": "noon",
+    "lamp_color": "#fff0d6"
+  },
+  "tips_ar": [
+    "خلي الأرض فاضية بالنص للعب.",
+    "صوّر من مستوى عيون الطفل (حوالي متر)."
+  ]
+}

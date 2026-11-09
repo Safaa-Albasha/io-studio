@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>خطوات — موشن I/O Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;800&display=swap">
+<style>
+/* الهوية من .io/theme.json — بدّل هذي القيم بس */
+:root{--bg:#FFF7EC;--ink:#2A2622;--accent:#E0663A;--accent2:#2F7FBF;--soft:#F3E3CF;--font:"Cairo",sans-serif;--W:1080px;--H:1920px}
+*{box-sizing:border-box;margin:0}
+html,body{width:var(--W);height:var(--H);overflow:hidden;background:var(--bg);font-family:var(--font);color:var(--ink)}
+#stage{position:relative;width:var(--W);height:var(--H);overflow:hidden}
+.el{position:absolute;will-change:transform,opacity}
+#title{top:280px;right:140px;left:140px;font-size:84px;font-weight:800}
+#rail{top:480px;right:178px;width:8px;background:var(--soft);border-radius:4px;height:880px}
+#prog{top:480px;right:178px;width:8px;background:var(--accent);border-radius:4px}
+.dot{right:160px;width:44px;height:44px;border-radius:50%;background:var(--bg);border:8px solid var(--soft)}
+.step{right:240px;left:120px;font-size:56px;font-weight:800;line-height:1.25}
+.step small{display:block;font-size:36px;font-weight:500;opacity:.65;margin-top:6px}
+</style>
+</head>
+<body>
+<div id="stage">
+<div class="el" id="title">تبدي قناة من الصفر؟</div>
+<div class="el" id="rail"></div><div class="el" id="prog"></div>
+<div id="steps"></div>
+</div>
+<script>
+// ── عقد الموشن: __duration بالثواني، و__seek(t) يرسم اللقطة عند t بدون مؤقتات ──
+// خط زمني عمودي، نقطة تمشي وتفتح كل خطوة. غيّر STEPS.
+window.__duration = 8;
+const $ = (id) => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const p = (t, a, d) => clamp((t - a) / d);                       // تقدّم 0→1
+const outCubic = (x) => 1 - Math.pow(1 - x, 3);
+const inOut = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+const outBack = (x) => 1 + 2.7 * Math.pow(x - 1, 3) + 1.7 * Math.pow(x - 1, 2);
+const outElastic = (x) => (x === 0 || x === 1 ? x : Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * (2 * Math.PI / 3)) + 1);
+const lerp = (a, b, k) => a + (b - a) * k;
+function rise(el, k, dist) { el.style.opacity = k; el.style.transform = `translateY(${(1 - outCubic(k)) * (dist || 60)}px)`; }
+function pop(el, k) { el.style.opacity = clamp(k * 2); el.style.transform = `scale(${k ? outBack(k) : 0})`; }
+function fmt(n, dec) { return Number(n).toLocaleString('en-US', { minimumFractionDigits: dec || 0, maximumFractionDigits: dec || 0 }); }
+/** يقسم نص العنصر لكلمات <span> حتى تتحرك كلمة كلمة. */
+function words(el) { if (!el.dataset.split) { el.innerHTML = el.textContent.trim().split(/\s+/).map((w) => `<span class="w">${w}</span>`).join(' '); el.dataset.split = 1; } return [...el.querySelectorAll('.w')]; }
+const STEPS = [['حدد جمهورك', 'مَن بالضبط؟ وشنو يحتاج؟'], ['اختار 3 مواضيع ثابتة', 'أعمدة المحتوى'], ['انشر بالتساوي', 'إنستقرام · يوتيوب · تيك توك'], ['راقب الأرقام كل أسبوع', 'وغيّر حسبها']];
+const GAP = 220, TOP = 480;
+if (!$('steps').children.length) $('steps').innerHTML = STEPS.map((s, i) => `<div class="el dot" style="top:${TOP + i * GAP}px"></div><div class="el step" style="top:${TOP + i * GAP - 14}px">${s[0]}<small>${s[1]}</small></div>`).join('');
+window.__seek = function (t) {
+  rise($('title'), p(t, 0.1, 0.5), 40);
+  const per = 1.3, start = 0.8;
+  const pr = clamp((t - start) / (per * (STEPS.length - 1) + 0.4));
+  $('prog').style.height = `${inOut(pr) * GAP * (STEPS.length - 1) + 22}px`;
+  const dots = $('steps').querySelectorAll('.dot'), steps = $('steps').querySelectorAll('.step');
+  STEPS.forEach((s, i) => {
+    const k = p(t, start + i * per, 0.4);
+    dots[i].style.borderColor = k > 0 ? 'var(--accent)' : 'var(--soft)';
+    dots[i].style.transform = `scale(${1 + 0.4 * Math.sin(k * Math.PI)})`;
+    steps[i].style.opacity = 0.15 + 0.85 * k; steps[i].style.transform = `translateX(${(1 - outCubic(k)) * -60}px)`;
+  });
+  $('stage').style.opacity = 1 - p(t, window.__duration - 0.4, 0.4);
+};
+// المعاينة بالمتصفح: يشتغل لوحده. وضع التصدير (?render=1): الرسّام يتحكم بالوقت.
+if (!/render=1/.test(location.search)) {
+  const t0 = performance.now();
+  (function loop(now) { window.__seek(((now - t0) / 1000) % (window.__duration + 1)); requestAnimationFrame(loop); })(t0);
+} else window.__seek(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+{
+  "meta": {
+    "id": "math-fractions",
+    "subject": "math",
+    "subjectLabel": "رياضيات",
+    "level": "ابتدائي ٣–٤",
+    "stage": "primary"
+  },
+  "title": "الكسور",
+  "format": "16:9",
+  "style": "chalkboard",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّمة",
+    "shirt": "#E0663A",
+    "hijab": "#2F7FBF"
+  },
+  "beats": [
+    {
+      "say": "عدنا بيتزا وحدة، قسمناها لقسمين متساويين.",
+      "fraction": {
+        "n": 1,
+        "d": 2,
+        "at": [
+          500,
+          380
+        ],
+        "size": 440,
+        "color": "yellow"
+      }
+    },
+    {
+      "say": "أكلنا قسم واحد من اثنين: يعني نص.",
+      "write": {
+        "text": "نصف",
+        "at": [
+          500,
+          930
+        ],
+        "size": 60,
+        "color": "yellow"
+      }
+    },
+    {
+      "say": "هسه نقسمها أربع قطع ونأخذ قطعتين.",
+      "erase": true,
+      "fraction": [
+        {
+          "n": 1,
+          "d": 2,
+          "at": [
+            270,
+            360
+          ],
+          "size": 340,
+          "color": "yellow"
+        },
+        {
+          "n": 2,
+          "d": 4,
+          "at": [
+            730,
+            360
+          ],
+          "size": 340,
+          "color": "pink"
+        }
+      ]
+    },
+    {
+      "say": "نفس الكمية بالضبط! نصف يساوي اثنين من أربعة.",
+      "write": [
+        {
+          "text": "=",
+          "at": [
+            500,
+            360
+          ],
+          "size": 120,
+          "color": "white"
+        },
+        {
+          "text": "1/2 = 2/4",
+          "at": [
+            500,
+            880
+          ],
+          "size": 80,
+          "dir": "ltr",
+          "color": "yellow",
+          "box": true
+        }
+      ]
+    },
+    {
+      "say": "والكسر بالشريط: ثلاثة أرباع، يعني ثلاث قطع من أربعة.",
+      "erase": true,
+      "fraction": {
+        "n": 3,
+        "d": 4,
+        "kind": "bar",
+        "at": [
+          500,
+          350
+        ],
+        "size": 640,
+        "color": "blue"
+      },
+      "write": {
+        "text": "ثلاثة أرباع",
+        "at": [
+          790,
+          560
+        ],
+        "size": 50,
+        "color": "blue"
+      }
+    },
+    {
+      "say": "الرقم الفوق البسط، والجوه المقام.",
+      "label": [
+        {
+          "text": "البسط: كم قطعة أخذنا",
+          "at": [
+            465,
+            521
+          ],
+          "from": [
+            240,
+            470
+          ],
+          "size": 38,
+          "color": "yellow"
+        },
+        {
+          "text": "المقام: كم قطعة بالكل",
+          "at": [
+            465,
+            595
+          ],
+          "from": [
+            240,
+            760
+          ],
+          "size": 38,
+          "color": "pink"
+        }
+      ]
+    },
+    {
+      "say": "سؤال: أي كسر أكبر؟",
+      "erase": true,
+      "quiz": {
+        "options": [
+          "½",
+          "¼"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "say": "النص أكبر من الربع. أحسنتم!",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

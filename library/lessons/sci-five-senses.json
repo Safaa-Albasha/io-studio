@@ -1,0 +1,155 @@
+{
+  "meta": {
+    "id": "sci-five-senses",
+    "subject": "science",
+    "subjectLabel": "علوم",
+    "level": "روضة ٥–٦",
+    "stage": "kindergarten"
+  },
+  "title": "الحواس الخمس",
+  "format": "9:16",
+  "style": "paper",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّمة",
+    "gender": "female",
+    "shirt": "#DD7A1E",
+    "hijab": "#2E8B57"
+  },
+  "beats": [
+    {
+      "say": "لدينا خمس حواس، نتعرف بها على العالم من حولنا.",
+      "write": {
+        "text": "نتعرف على العالم بحواسنا",
+        "at": [
+          500,
+          120
+        ],
+        "size": 64,
+        "color": "blue",
+        "underline": true
+      }
+    },
+    {
+      "say": "بالعين نرى الألوان والأشكال.",
+      "draw": {
+        "shape": "emoji",
+        "value": "👁️",
+        "at": [
+          820,
+          270
+        ],
+        "size": 110
+      },
+      "write": {
+        "text": "العين: البصر",
+        "at": [
+          720,
+          270
+        ],
+        "size": 58,
+        "align": "right"
+      }
+    },
+    {
+      "say": "وبالأذن نسمع الأصوات.",
+      "draw": {
+        "shape": "emoji",
+        "value": "👂",
+        "at": [
+          820,
+          410
+        ],
+        "size": 110
+      },
+      "write": {
+        "text": "الأذن: السمع",
+        "at": [
+          720,
+          410
+        ],
+        "size": 58,
+        "align": "right"
+      }
+    },
+    {
+      "say": "وبالأنف نشم الروائح.",
+      "draw": {
+        "shape": "emoji",
+        "value": "👃",
+        "at": [
+          820,
+          550
+        ],
+        "size": 110
+      },
+      "write": {
+        "text": "الأنف: الشم",
+        "at": [
+          720,
+          550
+        ],
+        "size": 58,
+        "align": "right"
+      }
+    },
+    {
+      "say": "وباللسان نتذوق الطعام: الحلو والمالح والحامض.",
+      "draw": {
+        "shape": "emoji",
+        "value": "👅",
+        "at": [
+          820,
+          690
+        ],
+        "size": 110
+      },
+      "write": {
+        "text": "اللسان: التذوق",
+        "at": [
+          720,
+          690
+        ],
+        "size": 58,
+        "align": "right"
+      }
+    },
+    {
+      "say": "وبالجلد نلمس الأشياء، فنعرف الناعم والخشن والساخن والبارد.",
+      "draw": {
+        "shape": "emoji",
+        "value": "✋",
+        "at": [
+          820,
+          830
+        ],
+        "size": 110
+      },
+      "write": {
+        "text": "الجلد: اللمس",
+        "at": [
+          720,
+          830
+        ],
+        "size": 58,
+        "align": "right"
+      }
+    },
+    {
+      "say": "بأي عضو نشم رائحة الورد؟",
+      "quiz": {
+        "options": [
+          "👂",
+          "👃",
+          "👅"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "say": "بالأنف! أحسنتم.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

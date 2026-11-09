@@ -1,0 +1,941 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>إنستقرام — I/O Studio</title>
+<link rel="icon" href="lib/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="lib/brand.css">
+<script src="lib/ls-migrate.js"></script>
+<style>
+/* I/O Studio's Instagram page: a familiar profile/reels/insights layout, painted with I/O Studio's own
+   sky + charcoal tokens (lib/brand.css). Generic stroke icons only — no platform logo or gradient. */
+:root{--ring:conic-gradient(from 200deg,var(--accent),var(--accent-strong),var(--sky-soft-ink),var(--accent));--tile-gap:2px;--col:600px}
+*{box-sizing:border-box}
+html,body{overflow-x:hidden}
+body{margin:0;color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.55;-webkit-tap-highlight-color:transparent}
+a{color:var(--accent)}
+button{font-family:inherit;font-size:14px;color:var(--ink);cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ic{width:22px;height:22px;flex:none;display:inline-block;vertical-align:middle;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ic.sm{width:16px;height:16px}.ic.xs{width:13px;height:13px;stroke-width:2.2}
+.num{font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate}
+.muted{color:var(--muted)}
+.shell{display:flex;justify-content:center;gap:28px;padding:0 0 60px;max-width:1240px;margin:0 auto;align-items:flex-start}
+.col{width:100%;max-width:var(--col);min-width:0}
+.side{display:none}
+
+/* top bar */
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:10px;padding:10px 16px;background:color-mix(in srgb,var(--page) 86%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topbar .sf-mark{width:32px;height:32px;border-radius:10px}
+.topbar .who{font-weight:800;font-size:18px;direction:ltr;unicode-bidi:isolate;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.topbar .grow{flex:1}
+.iconbtn{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;border:0;background:none;color:var(--ink);text-decoration:none}
+.iconbtn:hover{background:var(--card-2)}
+
+.banner{margin:10px 16px 0;border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:13px;background:var(--card);display:flex;gap:8px;align-items:flex-start}
+.banner.demo{border-color:color-mix(in srgb,var(--warn) 55%,var(--line));background:color-mix(in srgb,var(--warn) 9%,var(--card))}
+.banner b{white-space:nowrap}
+.banner code{direction:ltr;unicode-bidi:isolate;background:var(--card-2);border-radius:6px;padding:0 6px;font-size:12px}
+
+/* profile header */
+.profile{padding:16px 16px 6px}
+.prow{display:flex;align-items:center;gap:22px}
+.avatar{width:86px;height:86px;border-radius:50%;padding:3px;background:var(--ring);flex:none}
+.avatar>div{width:100%;height:100%;border-radius:50%;border:3px solid var(--page);background:var(--sky-soft);display:grid;place-items:center;font-size:34px;font-weight:800;color:var(--sky-soft-ink);overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.counts{flex:1;display:grid;grid-template-columns:repeat(3,1fr);text-align:center}
+.counts b{display:block;font-size:19px;font-weight:800;line-height:1.2}
+.counts span{font-size:13px;color:var(--ink-2)}
+.pname{font-weight:800;margin-top:10px;font-size:15px}
+.pniche{color:var(--muted);font-size:13px}
+.pbio{white-space:pre-line;font-size:14px;margin-top:2px}
+.syncline{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:8px;font-size:12.5px;color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line);border-radius:999px;padding:1px 9px;font-size:12px;color:var(--ink-2);white-space:nowrap;background:var(--card)}
+.chip.live{border-color:color-mix(in srgb,var(--ok) 60%,var(--line));color:var(--ok)}
+.chip.manual{border-color:color-mix(in srgb,var(--accent) 50%,var(--line));color:var(--accent)}
+.chip.demo{border-color:color-mix(in srgb,var(--warn) 60%,var(--line));color:var(--warn)}
+.pbtns{display:flex;gap:8px;margin-top:12px}
+.btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;border-radius:10px;border:0;background:var(--card-2);color:var(--ink);font-weight:700;font-size:14px;text-decoration:none;padding:0 12px;white-space:nowrap}
+.btn:hover{filter:brightness(1.12)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:none;border:1px solid var(--line)}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.flex0{flex:none}
+.qline{font-size:12.5px;color:var(--sky-soft-ink);margin-top:6px;min-height:0}
+
+/* highlights = KPI rings */
+.hl{display:flex;gap:14px;overflow-x:auto;padding:12px 16px 10px;scrollbar-width:none;scroll-snap-type:x proximity}
+.hl::-webkit-scrollbar{display:none}
+.hlb{flex:none;display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:0;padding:0;width:70px;scroll-snap-align:start}
+.hlb .rg{position:relative;width:66px;height:66px}
+.hlb svg.r{position:absolute;inset:0;transform:rotate(-90deg)}
+.hlb .in{position:absolute;inset:6px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;align-content:center;gap:0;line-height:1.05}
+.hlb .in .ic{width:16px;height:16px;color:var(--ink-2)}
+.hlb .in b{font-size:12.5px;font-weight:800}
+.hlb .lb{font-size:11.5px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:72px}
+.hlb .tr{font-size:10.5px;line-height:1}
+.up{color:var(--ok)}.down{color:var(--bad)}.flat{color:var(--muted)}
+
+/* tabs */
+.tabs{display:flex;border-top:1px solid var(--line);position:sticky;top:58px;z-index:15;background:var(--page)}
+.tabs button{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:46px;background:none;border:0;border-bottom:1.5px solid transparent;color:var(--muted);font-size:13px;font-weight:700}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.tabs button .t{display:none}
+.panel[hidden]{display:none}
+
+/* sort bar */
+.sortbar{display:flex;gap:6px;padding:8px 12px;overflow-x:auto;scrollbar-width:none;align-items:center}
+.sortbar::-webkit-scrollbar{display:none}
+.sortbar .lbl{font-size:12px;color:var(--muted);margin-inline-end:2px;white-space:nowrap}
+.pill{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 12px;font-size:13px;white-space:nowrap}
+.pill[aria-pressed="true"]{background:var(--ink);color:var(--page);border-color:var(--ink);font-weight:700}
+
+/* grids */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--tile-gap)}
+.tile{position:relative;display:block;border:0;padding:0;background:var(--card-2);overflow:hidden;color:#fff;aspect-ratio:9/16;text-align:start}
+.grid.sq .tile{aspect-ratio:1/1}
+.tile img,.tile .cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cover{display:flex;align-items:center;padding:12px 10px;font-weight:800;font-size:14px;line-height:1.45;color:#F4F8FB;overflow:hidden;text-shadow:0 1px 8px rgba(0,0,0,.35)}
+.cover span{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.grid.sq .cover{font-size:13px}
+.tile::after{content:"";position:absolute;inset:auto 0 0 0;height:38%;background:linear-gradient(transparent,rgba(0,0,0,.55));pointer-events:none}
+.tile .plays{position:absolute;left:7px;bottom:6px;z-index:2;display:flex;align-items:center;gap:3px;font-size:12.5px;font-weight:700;direction:ltr;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.tile .plays .ic{width:15px;height:15px;fill:#fff;stroke:#fff}
+.tile .gd{position:absolute;top:6px;right:6px;z-index:2;display:flex;align-items:center;gap:4px;background:rgba(10,14,18,.62);backdrop-filter:blur(4px);border-radius:999px;padding:1px 7px 1px 6px;font-size:11.5px;font-weight:800;direction:ltr}
+.tile .gd i{width:8px;height:8px;border-radius:50%;display:inline-block}
+.tile .kind{position:absolute;top:7px;left:7px;z-index:2}
+.tile .kind .ic{width:17px;height:17px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.6))}
+.tile .hov{position:absolute;inset:0;z-index:3;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;gap:16px;font-weight:800;direction:ltr}
+.tile .hov span{display:flex;align-items:center;gap:4px}
+.tile .hov .ic{fill:#fff;stroke:#fff}
+@media (hover:hover){.tile:hover .hov{display:flex}}
+.g-strong{background:var(--ok)}.g-mid{background:var(--warn)}.g-weak{background:var(--bad)}.g-none{background:var(--muted)}
+.empty{padding:40px 24px;text-align:center;color:var(--muted)}
+.empty .ic{width:46px;height:46px;stroke-width:1.2;color:var(--ink-2);display:block;margin:0 auto 8px}
+.empty b{display:block;color:var(--ink);font-size:17px;margin-bottom:4px}
+
+/* cards (audience / analysis) */
+.cards{padding:12px 12px 0;display:grid;gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px}
+.card h3{margin:0 0 2px;font-size:15px;display:flex;align-items:center;gap:6px}
+.card .sub{margin:0 0 10px;font-size:12.5px;color:var(--muted)}
+.bars{display:grid;gap:7px}
+.bar{display:grid;grid-template-columns:minmax(64px,auto) 1fr 52px;gap:8px;align-items:center;font-size:13px}
+.bar .tr{height:10px;border-radius:6px;background:var(--card-2);overflow:hidden}
+.bar .tr i{display:block;height:100%;border-radius:6px;background:var(--accent)}
+.bar .v{text-align:left;font-weight:700}
+.bar .n{color:var(--muted);font-size:11.5px}
+.hours{display:grid;grid-template-columns:repeat(24,1fr);gap:2px;align-items:end;height:96px;direction:ltr}
+.hours i{display:block;background:var(--accent);border-radius:3px 3px 0 0;opacity:.35;min-height:3px}
+.hours i.top{opacity:1}
+.hlabels{display:grid;grid-template-columns:repeat(4,1fr);direction:ltr;font-size:10.5px;color:var(--muted);margin-top:4px}
+.hm{display:grid;grid-template-columns:44px repeat(8,1fr);gap:3px;font-size:10.5px;align-items:center}
+.hm .c{aspect-ratio:1.5/1;border-radius:4px;background:var(--card-2);display:grid;place-items:center;font-weight:700;font-size:10px}
+.hm .h{color:var(--muted);text-align:center}
+.hm .d{color:var(--ink-2);font-size:11px}
+.hlabels span,.hm .h{direction:rtl;unicode-bidi:isolate}
+.gender{display:flex;height:14px;border-radius:8px;overflow:hidden;gap:2px;margin:6px 0}
+.gender i{display:block;height:100%}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.sw{width:10px;height:10px;border-radius:3px;display:inline-block}
+.lines{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.lines li{display:flex;gap:8px;align-items:flex-start;font-size:14px}
+.lines li .ic{margin-top:2px;color:var(--accent)}
+.weak li .ic{color:var(--bad)}
+.fix{display:block;color:var(--muted);font-size:12.5px}
+.plan{display:grid;gap:10px}
+.idea{border:1px solid var(--line);border-radius:14px;padding:12px;background:var(--card-2)}
+.idea .top{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.idea .hook{font-weight:800;font-size:15.5px;line-height:1.5}
+.idea .why{font-size:12.5px;color:var(--muted);margin:4px 0 8px}
+.idea .row{display:flex;gap:8px;align-items:center}
+
+/* sheet */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:40;opacity:0;pointer-events:none;transition:opacity .2s}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;z-index:41;left:0;right:0;bottom:0;max-height:92vh;max-height:92dvh;background:var(--card);border-radius:20px 20px 0 0;border:1px solid var(--line);border-bottom:0;transform:translateY(105%);transition:transform .26s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.sheet.on{transform:none;visibility:visible}
+.sheet:not(.on){visibility:hidden;transition:transform .26s cubic-bezier(.2,.8,.2,1),visibility 0s .26s}
+.sheet .grab{width:40px;height:4px;border-radius:4px;background:var(--line);margin:8px auto 0;flex:none}
+.sheet .sh{display:flex;align-items:center;gap:8px;padding:6px 10px 8px 14px;border-bottom:1px solid var(--line);flex:none}
+.sheet .sh h2{margin:0;font-size:16px;flex:1;text-align:center}
+.sheet .body{overflow-y:auto;overscroll-behavior:contain;padding:0 0 calc(24px + env(safe-area-inset-bottom))}
+.sec{padding:14px 16px;border-bottom:1px solid var(--line)}
+.sec:last-child{border-bottom:0}
+.sec h3{margin:0 0 10px;font-size:15px;display:flex;align-items:center;gap:6px}
+.sec h3 .grow{flex:1}
+.prev{display:flex;gap:14px;padding:14px 16px;border-bottom:1px solid var(--line);align-items:flex-start}
+.prev .pv{width:112px;flex:none;aspect-ratio:9/16;border-radius:12px;overflow:hidden;position:relative;background:var(--card-2)}
+.prev .pv.sq{aspect-ratio:1/1}
+.prev .pv img,.prev .pv video,.prev .pv .cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.prev .pv .cover{font-size:11px;padding:8px}
+.playbtn{position:absolute;inset:0;margin:auto;width:46px;height:46px;border-radius:50%;border:0;background:rgba(10,14,18,.55);color:#fff;display:grid;place-items:center;z-index:2}
+.playbtn .ic{fill:#fff;stroke:#fff;width:20px;height:20px;margin-inline-start:3px}
+.prev .meta{min-width:0;flex:1}
+.prev .cap{font-size:14px;font-weight:700;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.prev .dt{font-size:12.5px;color:var(--muted);margin:3px 0 8px}
+.acts{display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:12px 8px;border-bottom:1px solid var(--line)}
+.acts div{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:14px;font-weight:800}
+.acts .ic{width:24px;height:24px}
+.kv{display:grid;grid-template-columns:1fr auto;gap:8px 12px;font-size:14px}
+.kv>span:nth-child(odd){color:var(--ink-2)}
+.kv>span:nth-child(even){font-weight:800;text-align:left}
+.kv .src{font-size:10.5px;color:var(--muted);font-weight:600;margin-inline-start:4px}
+.big{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
+.big b{font-size:30px;font-weight:800;line-height:1}
+.split{display:flex;height:10px;border-radius:6px;overflow:hidden;background:var(--card-2);margin:8px 0 4px}
+.split i{display:block;height:100%}
+.wbar{position:relative;height:12px;border-radius:7px;background:var(--card-2);margin:8px 0 4px;overflow:hidden}
+.wbar i{position:absolute;inset-block:0;right:0;border-radius:7px;background:var(--accent)}
+.ret svg{display:block;width:100%;height:auto;direction:ltr}
+.note{font-size:12px;color:var(--muted);margin-top:6px}
+.score{display:flex;gap:14px;align-items:center;margin-bottom:10px}
+.score .ring{position:relative;width:76px;height:76px;flex:none}
+.score .ring svg{transform:rotate(-90deg)}
+.score .ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:22px;font-weight:800;line-height:1}
+.score .ring b small{display:block;font-size:10px;color:var(--muted);font-weight:600}
+.gchip{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:1px 10px;font-weight:800;font-size:13px;color:#0B0F13}
+.reasons{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.reasons li{border-inline-start:3px solid var(--line);padding-inline-start:9px;font-size:14px}
+.reasons li.r-bad{border-color:var(--bad)}.reasons li.r-good{border-color:var(--ok)}.reasons li.r-info{border-color:var(--line);color:var(--ink-2)}
+.ev{list-style:none;margin:6px 0 0;padding:0;font-size:12.5px;color:var(--ink-2);display:grid;gap:3px}
+.ev li::before{content:"• ";color:var(--accent)}
+.deep{background:var(--sky-soft);border-radius:14px;padding:12px;margin-top:12px}
+.deep h4{margin:0 0 6px;font-size:14px;display:flex;gap:6px;align-items:center;color:var(--sky-soft-ink)}
+.deep dl{margin:0;display:grid;gap:6px;font-size:14px}
+.deep dt{font-size:12px;color:var(--muted);font-weight:700}
+.deep dd{margin:0}
+.deep ol{margin:0;padding-inline-start:20px}
+.newhook{font-weight:800;font-size:15.5px;border:1px dashed var(--accent);border-radius:10px;padding:8px 10px;margin-top:2px;background:var(--card)}
+.sbtns{display:grid;gap:8px;padding:14px 16px}
+.sbtns .row{display:flex;gap:8px}
+.spark svg{display:block;width:100%;height:auto;direction:ltr}
+.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,30px);background:var(--ink);color:var(--page);padding:9px 16px;border-radius:12px;font-size:14px;font-weight:700;opacity:0;pointer-events:none;transition:.2s;z-index:60;max-width:calc(100vw - 32px);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (min-width:700px){
+  .tabs button .t{display:inline}
+  .counts b{font-size:21px}
+  .avatar{width:110px;height:110px}
+  .prow{gap:40px}
+  :root{--tile-gap:4px}
+}
+@media (min-width:1100px){
+  .shell{padding-top:0}
+  .col{border-inline:1px solid var(--line);min-height:100vh;background:color-mix(in srgb,var(--page) 70%,var(--card))}
+  .side{display:block;width:380px;flex:none;position:sticky;top:0;max-height:100vh;overflow-y:auto;padding:16px 0 40px;scrollbar-width:thin}
+  .side .cards{padding:0}
+  .side .shead{display:flex;align-items:center;gap:8px;margin:4px 2px 12px;font-weight:800;font-size:16px}
+  .tabs [data-tab="an"]{display:none}
+  .sheet{left:50%;right:auto;bottom:auto;top:50%;width:min(560px,94vw);max-height:88vh;border-radius:20px;border:1px solid var(--line);transform:translate(-50%,-46%) scale(.97);opacity:0;pointer-events:none;transition:transform .2s,opacity .2s}
+  .sheet.on{transform:translate(-50%,-50%);opacity:1;pointer-events:auto}
+  .sheet .grab{display:none}
+}
+@media (prefers-reduced-motion:reduce){.sheet,.scrim,.toast{transition:none}}
+</style>
+</head>
+<body class="sf-page">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- generic stroke icons (drawn here, no platform marks) -->
+  <defs>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.6 7.7 3.8 4.5 7.1 4.5c2 0 3.5 1.1 4.9 2.9 1.4-1.8 2.9-2.9 4.9-2.9 3.3 0 5.5 3.2 4.3 6.6-1.7 4.8-9.2 9.4-9.2 9.4z"/></symbol>
+    <symbol id="i-comment" viewBox="0 0 24 24"><path d="M20.5 12a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.2-4.1A8.5 8.5 0 1 1 20.5 12z"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><path d="M21.5 3 10.2 13.3"/><path d="M21.5 3 15 21l-4.8-7.7L2.5 9.5z"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><path d="M18.5 21 12 15.6 5.5 21V4.5A1.5 1.5 0 0 1 7 3h10a1.5 1.5 0 0 1 1.5 1.5z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M1.8 12S5.5 5 12 5s10.2 7 10.2 7-3.7 7-10.2 7S1.8 12 1.8 12z"/><circle cx="12" cy="12" r="3.2"/></symbol>
+    <symbol id="i-reach" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.2"/><path d="M7.5 7.5a6.4 6.4 0 0 0 0 9M16.5 7.5a6.4 6.4 0 0 1 0 9M4.6 4.6a10.5 10.5 0 0 0 0 14.8M19.4 4.6a10.5 10.5 0 0 1 0 14.8"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></symbol>
+    <symbol id="i-swipe" viewBox="0 0 24 24"><path d="M9 11.5V5.8a1.6 1.6 0 0 1 3.2 0v5"/><path d="M12.2 10.5V9.4a1.6 1.6 0 0 1 3.2 0v1.8"/><path d="M15.4 10.6a1.6 1.6 0 0 1 3.2 0v3.8a6.5 6.5 0 0 1-6.5 6.6h-.5a6 6 0 0 1-4.6-2.2L4.3 15a1.6 1.6 0 0 1 2.4-2.1L9 15"/><path d="M3 5h3.5M3 5l1.6-1.6M3 5l1.6 1.6"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></symbol>
+    <symbol id="i-reels" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 8.2h18M8.5 3l2.6 5.2M14.4 3l2.6 5.2"/><path d="M10 11.6v5.6l4.8-2.8z"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.6"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M15.5 4.6a3.6 3.6 0 0 1 0 6.9M18 13.6a6.5 6.5 0 0 1 3.5 6.4"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20.5 12a8.5 8.5 0 1 1-2.5-6"/><path d="M20.5 3.5V8H16"/></symbol>
+    <symbol id="i-theme" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17z" fill="currentColor"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="2.5"/><path d="M16 8V5.5A2.5 2.5 0 0 0 13.5 3h-8A2.5 2.5 0 0 0 3 5.5v8A2.5 2.5 0 0 0 5.5 16H8"/></symbol>
+    <symbol id="i-wand" viewBox="0 0 24 24"><path d="M4 20 16 8M14 6l4 4"/><path d="M18 2.5v3M16.5 4h3M7 3v2M6 4h2M20 13v2M19 14h2"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8"/></symbol>
+    <symbol id="i-stack" viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="13" rx="2"/><path d="M8 4h11a2 2 0 0 1 2 2v11"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-hook" viewBox="0 0 24 24"><path d="M13.5 2.5 4.5 13.5h6.5l-1 8 9-11h-6.5z"/></symbol>
+    <symbol id="i-out" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 4 18.5v-11A1.5 1.5 0 0 1 5.5 6H10"/></symbol>
+    <symbol id="i-follow" viewBox="0 0 24 24"><circle cx="9.5" cy="8" r="4"/><path d="M2.5 21a7 7 0 0 1 14 0M19 8v6M16 11h6"/></symbol>
+  </defs>
+</svg>
+
+<div class="shell">
+  <main class="col" id="col">
+    <div class="topbar">
+      <a class="sf-mark" href="index.html" title="كل الصفحات" aria-label="I/O Studio · كل الصفحات"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#5CB8F0"/><path d="M10.5 17h11.5v4.6h-2.6v20.8h2.6V47H10.5v-4.6h2.6V21.6h-2.6z" fill="#14181D"/><ellipse cx="47.4" cy="32" rx="8.6" ry="12.2" fill="none" stroke="#14181D" stroke-width="5.6"/><path d="M22 32h14.2" stroke="#F2FAFF" stroke-width="1.6" stroke-linecap="round"/><path d="M29.1 26.4Q30.1 31.0 34.7 32Q30.1 33.0 29.1 37.6Q28.1 33.0 23.5 32Q28.1 31.0 29.1 26.4z" fill="#FFFFFF"/></svg></a>
+      <span class="who" id="topHandle">@—</span>
+      <span class="grow"></span>
+      <a class="iconbtn" href="dashboard.html" title="كل المنصات — الإحصائيات" aria-label="كل المنصات — الإحصائيات"><svg class="ic" data-icon="chart"><use href="#i-chart"/></svg></a>
+      <button class="iconbtn" id="themeT" title="فاتح / داكن" aria-label="فاتح أو داكن"><svg class="ic" data-icon="theme"><use href="#i-theme"/></svg></button>
+    </div>
+    <div id="banners"></div>
+
+    <section class="profile" aria-label="الحساب">
+      <div class="prow">
+        <div class="avatar"><div id="avatar">؟</div></div>
+        <div class="counts">
+          <div><b class="num" id="cPosts">—</b><span>منشورات</span></div>
+          <div><b class="num" id="cFollowers">—</b><span>متابعين</span></div>
+          <div><b class="num" id="cFollows">—</b><span>يتابع</span></div>
+        </div>
+      </div>
+      <div class="pname" id="pName"></div>
+      <div class="pniche" id="pNiche"></div>
+      <div class="pbio" id="pBio"></div>
+      <div class="syncline"><span id="srcChip" class="chip"></span><span id="lastSync"></span></div>
+      <div class="pbtns">
+        <button class="btn primary" id="syncNow"><svg class="ic sm" data-icon="refresh"><use href="#i-refresh"/></svg>اسحب الآن</button>
+        <a class="btn" href="dashboard.html"><svg class="ic sm"><use href="#i-chart"/></svg>كل المنصات</a>
+      </div>
+      <div class="qline" id="qline" aria-live="polite"></div>
+    </section>
+
+    <section class="hl" id="hl" aria-label="هايلايت — مؤشراتك"></section>
+
+    <nav class="tabs" role="tablist" aria-label="الأقسام">
+      <button role="tab" data-tab="reels" aria-selected="true"><svg class="ic" data-icon="reels"><use href="#i-reels"/></svg><span class="t">ريلز</span></button>
+      <button role="tab" data-tab="posts" aria-selected="false"><svg class="ic" data-icon="grid"><use href="#i-grid"/></svg><span class="t">منشورات</span></button>
+      <button role="tab" data-tab="aud" aria-selected="false"><svg class="ic" data-icon="users"><use href="#i-users"/></svg><span class="t">الجمهور</span></button>
+      <button role="tab" data-tab="an" aria-selected="false"><svg class="ic" data-icon="spark"><use href="#i-spark"/></svg><span class="t">تحليل</span></button>
+    </nav>
+
+    <section class="panel" id="tab-reels" role="tabpanel" aria-label="ريلز">
+      <div class="sortbar" id="sortbar">
+        <span class="lbl">رتّب:</span>
+        <button class="pill" data-sort="date" aria-pressed="true">الأحدث</button>
+        <button class="pill" data-sort="score" aria-pressed="false">الدرجة</button>
+        <button class="pill" data-sort="views" aria-pressed="false">المشاهدات</button>
+        <button class="pill" data-sort="hook" aria-pressed="false">الهوك</button>
+      </div>
+      <div class="grid" id="reelGrid"></div>
+    </section>
+    <section class="panel" id="tab-posts" role="tabpanel" aria-label="منشورات" hidden><div class="grid sq" id="postGrid"></div></section>
+    <section class="panel" id="tab-aud" role="tabpanel" aria-label="الجمهور" hidden><div class="cards" id="audBody"></div></section>
+    <section class="panel" id="tab-an" role="tabpanel" aria-label="تحليل" hidden><div class="cards" id="anBody"></div></section>
+  </main>
+  <aside class="side" id="side" aria-label="تحليل آي أو استوديو">
+    <div class="shead"><svg class="ic"><use href="#i-spark"/></svg>تحليل آي أو استوديو لحسابك</div>
+    <div class="cards" id="sideBody"></div>
+  </aside>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" aria-hidden="true">
+  <div class="grab"></div>
+  <div class="sh">
+    <button class="iconbtn" id="sheetX" aria-label="سكّر"><svg class="ic"><use href="#i-x"/></svg></button>
+    <h2 id="sheetTitle">الإحصائيات</h2>
+    <span style="width:38px"></span>
+  </div>
+  <div class="body" id="sheetBody"></div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="lib/stats-core.js"></script>
+<script src="lib/content-eval.js"></script>
+<script>
+'use strict';
+const S = window.IoStats, E = window.IoEval;
+const $ = (id) => document.getElementById(id);
+const STORE = 'io-dashboard-stats';        // same browser copy as dashboard.html
+const LS = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* blocked */ } } };
+const ST = { server: false, file: location.protocol === 'file:', demo: false, stats: null, ev: null, profile: null, status: null, queue: [], sort: LS.get('io-ig-sort') || 'date', tab: 'reels', openKey: null, ringOpen: null };
+const nf = new Intl.NumberFormat('en-US');
+const MONTHS = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
+const DAYS = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
+const GRADE = { strong: 'قوي', mid: 'متوسط', weak: 'ضعيف' };
+const SRC_AR = { official: 'رسمي', manual: 'يدوي', file: 'ملف' };
+
+const has = (v) => v !== null && v !== undefined && isFinite(v);
+function num(n) {
+  if (!has(n)) return '—';
+  const a = Math.abs(n);
+  if (a >= 1e6) return (n / 1e6).toFixed(a >= 1e7 ? 0 : 1).replace(/\.0$/, '') + 'M';
+  if (a >= 1e4) return (n / 1e3).toFixed(a >= 1e5 ? 0 : 1).replace(/\.0$/, '') + 'K';
+  return nf.format(Math.round(n));
+}
+const pct = (x, d = 1) => (has(x) ? (x * 100).toFixed(d) + '%' : '—');
+const secs = (s) => (has(s) ? (s >= 60 ? `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}` : s.toFixed(s < 10 ? 1 : 0) + 'ث') : '—');
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+const safeUrl = (u) => (/^https?:\/\//i.test(String(u || '')) ? String(u) : '');
+const icon = (n, cls) => `<svg class="ic ${cls || ''}" data-icon="${n}"><use href="#i-${n}"/></svg>`;
+const median = (a) => E.median(a);
+function dateTxt(d) { if (!d) return ''; const [y, m, dd] = d.slice(0, 10).split('-').map(Number); const t = d.length > 10 && !/T00:00$/.test(d) ? ' · ' + d.slice(11, 16) : ''; return `${dd} ${MONTHS[m - 1]} ${y}${t}`; }
+function ago(iso) {
+  const t = Date.parse(iso || ''); if (!t) return 'ما صارت بعد';
+  const m = Math.round((Date.now() - t) / 6e4);
+  if (m < 2) return 'هسه'; if (m < 60) return `قبل ${m} دقيقة`; const h = Math.round(m / 60); if (h < 24) return `قبل ${h} ساعة`; const d = Math.round(h / 24); return `قبل ${d} ${d === 1 ? 'يوم' : 'أيام'}`;
+}
+let toastT;
+function toast(t) { const el = $('toast'); el.textContent = t; el.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('on'), 3200); }
+async function copyText(t, msg) { try { await navigator.clipboard.writeText(t); } catch (e) { const a = document.createElement('textarea'); a.value = t; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); } catch (er) { /* ignore */ } a.remove(); } toast(msg || 'انسخ ✓'); }
+/** A deterministic text cover (no thumbnail / expired CDN link): I/O Studio's charcoal + sky hues. */
+function hue(s) { let h = 0; for (const c of String(s)) h = (h * 31 + c.codePointAt(0)) >>> 0; return h; }
+function coverHtml(p) {
+  const h = hue(p.id || p.title), a = 186 + (h % 48), b = 200 + ((h >> 5) % 40), l = 20 + ((h >> 9) % 16), sat = 38 + ((h >> 13) % 30);
+  return `<div class="cover" style="background:linear-gradient(${150 + (h % 60)}deg,hsl(${a} ${sat + 20}% ${l + 18}%),hsl(${b} ${sat}% ${l}%) 70%,#14181D)"><span>${esc(p.title || '—')}</span></div>`;
+}
+function thumbHtml(p) { const u = safeUrl(p.thumb); return u ? `<img class="th" loading="lazy" alt="" src="${esc(u)}" data-id="${esc(p.id)}">` : coverHtml(p); }
+document.addEventListener('error', (e) => {
+  const t = e.target;
+  if (t && t.tagName === 'IMG' && t.classList.contains('th')) { const p = postByKey('instagram-' + t.dataset.id) || { id: t.dataset.id, title: '' }; t.outerHTML = coverHtml(p); }
+  if (t && t.tagName === 'IMG' && t.id === 'avImg') t.parentNode.textContent = initial();
+}, true);
+
+// ------------------------------------------------------------ data
+async function api(path, body) {
+  const r = await fetch(path, body === undefined ? { cache: 'no-store' } : { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok || j.ok === false) throw new Error((j.errors || [j.error || r.status]).join('، '));
+  return j;
+}
+const igOf = (st) => (st && st.accounts && st.accounts.instagram) || null;
+async function boot() {
+  const qs = new URLSearchParams(location.search);
+  let st = null;
+  if (!ST.file) {
+    try {
+      const j = await api('/api/stats'); st = j.stats; ST.status = j.status; ST.server = true;
+      try { ST.profile = await api('/api/stats/profile'); } catch (e) { ST.profile = null; }
+    } catch (e) { ST.server = false; }
+  }
+  if (!ST.server) { try { const s = JSON.parse(LS.get(STORE) || 'null'); if (s && s.accounts) st = s; } catch (e) { /* ignore */ } }
+  const ig = igOf(st);
+  ST.demo = qs.get('demo') === '1' || !ig || !(ig.posts || []).length;
+  if (ST.demo) { st = demoStats(); ST.profile = demoProfile(); }
+  ST.stats = st;
+  if (ST.server && !ST.demo) { try { ST.ev = await api('/api/stats/eval?platform=instagram'); } catch (e) { ST.ev = null; } }
+  if (!ST.ev) ST.ev = E.evaluate(st, { platform: 'instagram', analyses: ST.demo ? demoAnalyses() : {} });
+  renderAll();
+  const open = qs.get('open'); if (open) { const p = open === 'top' ? [...reels()].sort((a, b) => (b.score || 0) - (a.score || 0))[0] : postByKey('instagram-' + open); if (p) openPost(p.key); }
+  if (ST.server) { pollQueue(); setInterval(pollQueue, 6000); }
+}
+function posts() { return (ST.ev && ST.ev.posts || []).filter((p) => p.platform === 'instagram'); }
+const isReel = (p) => p.type === 'video' || p.type === 'reel';
+function reels() { return posts().filter(isReel); }
+function feed() { return posts().filter((p) => !isReel(p)); }
+function postByKey(k) { return posts().find((p) => p.key === k); }
+function rawPost(id) { const ig = igOf(ST.stats); return ig && (ig.posts || []).find((p) => p.id === id); }
+function base() { return (ST.ev && ST.ev.baseline && ST.ev.baseline.instagram) || {}; }
+
+// ------------------------------------------------------------ render
+function renderAll() { renderBanners(); renderProfile(); renderRings(); renderGrid(); renderFeed(); renderAudience(); renderAnalysis(); }
+function renderBanners() {
+  const b = [];
+  if (ST.demo) b.push(`<div class="banner demo" role="note">${icon('spark', 'sm')}<div><b>بيانات تجريبية</b> — هذي أرقام وهمية حتى تشوف شكل الصفحة. ${ST.server ? 'اضغط «اسحب الآن» حتى يسحب Claude أرقامك من إنستقرام (Composio)، أو افتح <a href="dashboard.html">صفحة الإحصائيات</a> وأضفها يدوياً.' : 'أضف أرقامك من <a href="dashboard.html">صفحة الإحصائيات</a>.'}</div></div>`);
+  if (ST.file) b.push(`<div class="banner" role="note">${icon('out', 'sm')}<div>الصفحة مفتوحة كملف — تقرا الأرقام المحفوظة بهالمتصفح بس، وما تقدر ترسل طلبات لـ Claude. شغّل <code>node engine/serve.js --open instagram.html</code> من مجلد مشروعك وافتح الرابط.</div></div>`);
+  else if (!ST.server) b.push(`<div class="banner" role="note">${icon('out', 'sm')}<div>السيرفر المحلي طافي — الأرقام من هالمتصفح بس. شغّل <code>node engine/serve.js --open instagram.html</code>.</div></div>`);
+  $('banners').innerHTML = b.join('');
+}
+function initial() { const pr = ST.profile || {}; const s = (pr.name || pr.handle || '').replace(/^@/, '').trim(); return s ? [...s][0].toUpperCase() : '؟'; }
+function renderProfile() {
+  const ig = igOf(ST.stats) || {}, pr = ST.profile || {};
+  const handle = ig.handle || pr.handle || '@حسابك';
+  $('topHandle').textContent = handle;
+  const pic = safeUrl(pr.picture);
+  $('avatar').innerHTML = pic ? `<img id="avImg" alt="" src="${esc(pic)}">` : esc(initial());
+  $('cPosts').textContent = num(has(pr.mediaCount) ? pr.mediaCount : (ig.posts || []).length);
+  $('cFollowers').textContent = num(ig.followers || pr.followers || null);
+  $('cFollows').textContent = num(has(pr.follows) ? pr.follows : null);
+  $('pName').textContent = pr.name || handle.replace(/^@/, '');
+  $('pNiche').textContent = pr.niche || '';
+  $('pBio').textContent = pr.bio || (ST.server ? 'ما فيه سطر تعريف — يطلع من ملف صانع المحتوى (.io/creator-profile.md).' : '');
+  const src = ST.demo ? 'demo' : ig.sync && ig.sync.source === 'composio' ? 'live' : 'manual';
+  $('srcChip').className = 'chip ' + src;
+  $('srcChip').innerHTML = { demo: `${icon('spark', 'xs')} تجريبي`, live: `${icon('reach', 'xs')} رسمي · Composio`, manual: `${icon('user', 'xs')} يدوي / ملف` }[src];
+  const at = ST.demo ? null : (ST.status && ST.status.instagram && ST.status.instagram.at) || (ig.sync && ig.sync.at);
+  $('lastSync').textContent = ST.demo ? 'آخر مزامنة: —' : `آخر مزامنة: ${ago(at)}`;
+}
+
+// ---- KPI rings (هايلايت)
+const RINGS = [
+  { id: 'views', label: 'المشاهدات', icon: 'eye', v: (p) => p.metrics.views, fmt: num, rel: true, what: 'متوسط مشاهدات آخر ٦ ريلز مقارنة بالوسيط (المعتاد) لحسابك. الدائرة نص مليانة = نفس عادتك، مليانة تقريباً = ضعف عادتك.' },
+  { id: 'reach', label: 'الوصول', icon: 'reach', v: (p) => p.metrics.reachRatio, fmt: (x) => pct(x, 0), target: 0.3, what: 'الوصول (حسابات فريدة شافته) مقسوم على عدد متابعينك. الهدف ٣٠٪ لكل ريل؛ فوق ١٠٠٪ يعني أكيد طلع لغير المتابعين.' },
+  { id: 'er', label: 'التفاعل', icon: 'heart', v: (p) => p.metrics.er, fmt: (x) => pct(x, 1), target: 0.06, what: '(لايكات + تعليقات + مشاركات + حفظ) ÷ المشاهدات. الهدف ٦٪ للريلز.' },
+  { id: 'save', label: 'الحفظ', icon: 'save', v: (p) => (has(p.metrics.saves) && p.metrics.views ? p.metrics.saves / p.metrics.views : null), fmt: (x) => pct(x, 2), target: 0.02, what: 'الحفظ ÷ المشاهدات. الحفظ يعني «هذا ينفعني» — أقوى إشارة للخوارزمية بعد المشاهدة الكاملة. الهدف ٢٪.' },
+  { id: 'share', label: 'المشاركة', icon: 'share', v: (p) => (has(p.metrics.shares) && p.metrics.views ? p.metrics.shares / p.metrics.views : null), fmt: (x) => pct(x, 2), target: 0.015, what: 'المشاركات (إرسال بالخاص أو ستوري) ÷ المشاهدات. هي اللي توصلك لناس جدد. الهدف ١٫٥٪.' },
+  { id: 'watch', label: 'متوسط المشاهدة', icon: 'clock', v: (p) => (has(p.metrics.watchRatio) ? p.metrics.watchRatio : null), fmt: (x) => pct(x, 0), target: 0.6, alt: (p) => p.metrics.avgWatchSec, what: 'متوسط وقت المشاهدة ÷ طول الريل. إذا ما نعرف الطول نعرض الثواني بس. الهدف ٦٠٪ من الطول.' },
+  { id: 'skip', label: 'نسبة السحب', icon: 'swipe', v: (p) => p.metrics.skipRate, fmt: (x) => Math.round(x) + '%', target: 30, lower: true, what: 'نسبة اللي سحبوا (تخطّوا) الريل بأول ٣ ثواني — رقم رسمي من إنستقرام. كل ما أقل أحسن؛ الهدف ٣٠٪ أو أقل. هذا أصدق مقياس للهوك.' },
+];
+function ringData(r) {
+  const list = reels().slice().sort((a, b) => String(a.date).localeCompare(String(b.date)));
+  let vals = list.map((p) => ({ p, v: r.v(p) })).filter((x) => has(x.v));
+  let fmt = r.fmt, target = r.target, alt = false;
+  if (!vals.length && r.alt) { vals = list.map((p) => ({ p, v: r.alt(p) })).filter((x) => has(x.v)); fmt = (x) => secs(x); target = null; alt = true; }
+  if (!vals.length) return { none: true };
+  const recent = median(vals.slice(-6).map((x) => x.v)), all = median(vals.slice(-30).map((x) => x.v));
+  let fill;
+  if (r.rel || alt || !target) fill = all ? E.comp(recent / all) / 100 : 0.5;
+  else if (r.lower) fill = Math.max(0, Math.min(1, (100 - recent) / (100 - target)));
+  else fill = Math.max(0, Math.min(1, recent / target));
+  const ratio = all ? recent / all : 1;
+  const better = r.lower ? ratio < 0.95 : ratio > 1.05, worse = r.lower ? ratio > 1.05 : ratio < 0.95;
+  return { vals, recent, all, fill, fmt, target, alt, trend: better ? 'up' : worse ? 'down' : 'flat', ratio };
+}
+function ringSvg(fill, size, stroke, cls) {
+  const r = (size - stroke) / 2, c = 2 * Math.PI * r;
+  return `<svg class="${cls || ''}" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="var(--line)" stroke-width="${stroke}"/><circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="var(--accent)" stroke-width="${stroke}" stroke-linecap="round" stroke-dasharray="${(c * Math.max(0.02, fill)).toFixed(1)} ${c.toFixed(1)}"/></svg>`;
+}
+function renderRings() {
+  $('hl').innerHTML = RINGS.map((r) => {
+    const d = ringData(r);
+    const arrow = d.none ? '' : d.trend === 'up' ? '▲ أحسن' : d.trend === 'down' ? '▼ أقل' : '● ثابت';
+    return `<button class="hlb" data-ring="${r.id}" aria-label="${esc(r.label)}: ${d.none ? 'ما فيه رقم' : esc(d.fmt(d.recent))}">
+      <span class="rg">${ringSvg(d.none ? 0 : d.fill, 66, 4, 'r')}<span class="in">${icon(r.icon)}<b class="num">${d.none ? '—' : esc(d.fmt(d.recent))}</b></span></span>
+      <span class="lb">${esc(r.label)}</span><span class="tr ${d.none ? 'flat' : d.trend}">${d.none ? 'ما متوفر' : arrow}</span></button>`;
+  }).join('');
+}
+function sparkSvg(vals, mid, fmt) {
+  const W = 320, H = 86, P = 8;
+  if (vals.length < 2) return '<div class="note">نحتاج ريلين على الأقل للخط.</div>';
+  const lo = Math.min(...vals, mid || Infinity), hi = Math.max(...vals, mid || -Infinity);
+  const y = (v) => H - P - ((v - lo) / ((hi - lo) || 1)) * (H - 2 * P);
+  const x = (i) => P + (i / (vals.length - 1)) * (W - 2 * P);
+  const pts = vals.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="الخط عبر آخر ${vals.length} ريل">
+    <polygon points="${P},${H - P} ${pts} ${W - P},${H - P}" fill="var(--accent)" opacity=".12"/>
+    ${has(mid) ? `<line x1="${P}" x2="${W - P}" y1="${y(mid)}" y2="${y(mid)}" stroke="var(--muted)" stroke-dasharray="4 4" stroke-width="1"/>` : ''}
+    <polyline points="${pts}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="${x(vals.length - 1)}" cy="${y(vals[vals.length - 1])}" r="3.5" fill="var(--accent)"/>
+    ${has(mid) ? `<text x="${W - P}" y="${y(mid) - 4}" font-size="10" fill="var(--muted)" direction="rtl" text-anchor="start">الوسيط ${esc(fmt(mid))}</text>` : ''}</svg>`;
+}
+function openRing(id) {
+  const r = RINGS.find((x) => x.id === id), d = ringData(r);
+  const body = d.none
+    ? `<div class="sec"><p>${esc(r.what)}</p><p class="note">هالرقم ما وصلنا لحسابك بعد — ${id === 'skip' || id === 'watch' ? 'إنستقرام يعطيه للريلز بالسحب الرسمي (Composio)، أو اكتبه يدوياً بصفحة الإحصائيات.' : 'أضفه بصفحة الإحصائيات.'}</p></div>`
+    : `<div class="sec"><div class="score"><span class="ring">${ringSvg(d.fill, 76, 6)}<b class="num">${esc(d.fmt(d.recent))}</b></span>
+        <div><div class="kv"><span>آخر ٦ ريلز (الوسيط)</span><span class="num">${esc(d.fmt(d.recent))}</span><span>عادتك (آخر ٣٠)</span><span class="num">${esc(d.fmt(d.all))}</span>${has(d.target) && !r.rel && !d.alt ? `<span>الهدف</span><span class="num">${r.lower ? '≤ ' : ''}${esc(r.fmt(d.target))}</span>` : ''}</div></div></div>
+        <p style="margin:0 0 6px">${esc(r.what)}</p>
+        <p class="${d.trend}" style="margin:0;font-weight:700">${d.trend === 'up' ? 'ماشي أحسن من عادتك ▲' : d.trend === 'down' ? 'أقل من عادتك ▼ — شوف تبويب «تحليل»' : 'قريب من عادتك'}</p></div>
+      <div class="sec spark"><h3>${icon('chart', 'sm')} الخط — آخر ${Math.min(20, d.vals.length)} ريل</h3>${sparkSvg(d.vals.slice(-20).map((x) => x.v), d.all, d.fmt)}</div>`;
+  showSheet(r.label, body);
+}
+
+// ---- grids
+function gradeBadge(p) { return `<span class="gd"><i class="g-${p.grade || 'none'}"></i>${p.score === null ? '—' : p.score}</span>`; }
+function sortReels(list) {
+  const k = ST.sort, v = (p) => (k === 'score' ? p.score : k === 'views' ? p.metrics.views : k === 'hook' ? p.hookScore : null);
+  if (k === 'date') return list.slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  return list.slice().sort((a, b) => (has(v(b)) ? v(b) : -1) - (has(v(a)) ? v(a) : -1));
+}
+function renderGrid() {
+  document.querySelectorAll('#sortbar [data-sort]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.sort === ST.sort)));
+  const list = sortReels(reels());
+  $('reelGrid').innerHTML = list.length ? list.map((p) => `<button class="tile" data-key="${esc(p.key)}" aria-label="${esc(p.title || 'ريل')} — ${num(p.metrics.views)} مشاهدة، الدرجة ${p.score === null ? 'غير متوفرة' : p.score}">
+      ${thumbHtml(p)}${gradeBadge(p)}<span class="plays">${icon('play')}${num(p.metrics.views)}</span>
+      <span class="hov"><span>${icon('heart', 'sm')}${num(p.metrics.likes)}</span><span>${icon('comment', 'sm')}${num(p.metrics.comments)}</span></span></button>`).join('')
+    : `<div class="empty" style="grid-column:1/-1">${icon('reels')}<b>ما فيه ريلز بعد</b>اسحب أرقامك أو أضفها من صفحة الإحصائيات.</div>`;
+}
+function renderFeed() {
+  const list = feed().slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  $('postGrid').innerHTML = list.length ? list.map((p) => `<button class="tile" data-key="${esc(p.key)}" aria-label="${esc(p.title || 'منشور')}">
+      ${thumbHtml(p)}${gradeBadge(p)}${p.type === 'carousel' ? `<span class="kind">${icon('stack')}</span>` : ''}
+      <span class="hov"><span>${icon('heart', 'sm')}${num(p.metrics.likes)}</span><span>${icon('comment', 'sm')}${num(p.metrics.comments)}</span></span></button>`).join('')
+    : `<div class="empty" style="grid-column:1/-1">${icon('grid')}<b>ما فيه صور ولا كاروسيل</b>هنا تطلع منشوراتك غير الريلز.</div>`;
+}
+
+// ---- audience
+const COUNTRY = { IQ: 'العراق', SA: 'السعودية', KW: 'الكويت', AE: 'الإمارات', QA: 'قطر', BH: 'البحرين', OM: 'عُمان', JO: 'الأردن', EG: 'مصر', SY: 'سوريا', LB: 'لبنان', PS: 'فلسطين', YE: 'اليمن', MA: 'المغرب', DZ: 'الجزائر', TN: 'تونس', LY: 'ليبيا', SD: 'السودان', TR: 'تركيا', DE: 'ألمانيا', US: 'أمريكا', GB: 'بريطانيا', SE: 'السويد', NL: 'هولندا', FR: 'فرنسا', CA: 'كندا', AU: 'أستراليا', IR: 'إيران' };
+const GENDER = { F: 'إناث', M: 'ذكور', U: 'غير محدد' };
+function bars(rows, fmt) {
+  const max = Math.max(...rows.map((r) => r.v), 0) || 1;
+  return `<div class="bars">${rows.map((r) => `<div class="bar"><span>${esc(r.k)}${r.n !== undefined ? ` <span class="n">(${r.n})</span>` : ''}</span><span class="tr"><i style="width:${Math.max(2, (r.v / max) * 100).toFixed(1)}%;${r.c ? 'background:' + r.c : ''}"></i></span><span class="v num">${esc(fmt ? fmt(r.v, r) : num(r.v))}</span></div>`).join('')}</div>`;
+}
+const hourTxt = (h) => `${h % 12 || 12}${h < 12 ? 'ص' : 'م'}`;
+function renderAudience() {
+  const ig = igOf(ST.stats) || {}, x = ig.extra || {}, out = [];
+  if (Array.isArray(x.onlineHours) && x.onlineHours.some((v) => v > 0)) {
+    const h = x.onlineHours, max = Math.max(...h), top = h.map((v, i) => [v, i]).sort((a, b) => b[0] - a[0]).slice(0, 3).map((t) => t[1]);
+    out.push(`<div class="card"><h3>${icon('clock', 'sm')} متى متابعينك أونلاين</h3><p class="sub">من إنستقرام (online_followers) — بتوقيت حسابك. الأعلى: ${top.map(hourTxt).join('، ')}</p>
+      <div class="hours" role="img" aria-label="متابعين أونلاين حسب الساعة">${h.map((v, i) => `<i class="${top.includes(i) ? 'top' : ''}" style="height:${Math.max(3, (v / max) * 100)}%" title="${hourTxt(i)}: ${num(v)}"></i>`).join('')}</div>
+      <div class="hlabels"><span>12ص</span><span style="text-align:center">6ص</span><span style="text-align:center">12م</span><span style="text-align:end">6م</span></div></div>`);
+  }
+  // own posting heatmap: weekday × 3-hour block, average views
+  const timed = posts().filter((p) => p.date && !/T00:00$/.test(p.date) && has(p.metrics.views));
+  if (timed.length >= 6) {
+    const cells = Array.from({ length: 7 }, () => Array.from({ length: 8 }, () => ({ n: 0, v: 0 })));
+    for (const p of timed) { const d = new Date(p.date.slice(0, 10) + 'T12:00:00').getDay(), b = Math.floor(+p.date.slice(11, 13) / 3); cells[d][b].n++; cells[d][b].v += p.metrics.views; }
+    const avg = cells.map((r) => r.map((c) => (c.n ? c.v / c.n : null)));
+    const mx = Math.max(...avg.flat().filter(has));
+    let html = '<div class="hm" role="img" aria-label="متوسط المشاهدات حسب يوم وساعة النشر"><span></span>' + [0, 3, 6, 9, 12, 15, 18, 21].map((hh) => `<span class="h">${hourTxt(hh)}</span>`).join('');
+    for (let d = 0; d < 7; d++) { html += `<span class="d">${DAYS[d]}</span>` + avg[d].map((v) => `<span class="c" style="${has(v) ? `background:color-mix(in srgb,var(--accent) ${Math.round(18 + 82 * (v / mx))}%,var(--card-2));color:${v / mx > 0.55 ? 'var(--accent-ink)' : 'var(--ink-2)'}` : ''}">${has(v) ? num(v) : ''}</span>`).join(''); }
+    out.push(`<div class="card"><h3>${icon('chart', 'sm')} أوقات نشرك اللي تشتغل</h3><p class="sub">متوسط المشاهدات حسب يوم وساعة النشر (${timed.length} منشور)${base().bestHour !== null && base().bestHour !== undefined ? ` — أفضل ساعة: ${hourTxt(base().bestHour)}` : ''}</p>${html}</div></div>`);
+  }
+  const A = x.audience || {};
+  if (A.gender && A.gender.length) {
+    const tot = A.gender.reduce((s, g) => s + g.v, 0) || 1, cols = { F: 'var(--accent)', M: 'var(--sky-soft-ink)', U: 'var(--muted)' };
+    out.push(`<div class="card"><h3>${icon('users', 'sm')} الجنس</h3><div class="gender">${A.gender.map((g) => `<i style="width:${(g.v / tot) * 100}%;background:${cols[g.k] || 'var(--muted)'}"></i>`).join('')}</div>
+      <div class="legend">${A.gender.map((g) => `<span><i class="sw" style="background:${cols[g.k] || 'var(--muted)'}"></i>${esc(GENDER[g.k] || g.k)} <b class="num">${Math.round((g.v / tot) * 100)}%</b></span>`).join('')}</div></div>`);
+  }
+  if (A.age && A.age.length) {
+    const tot = A.age.reduce((s, g) => s + g.v, 0) || 1;
+    out.push(`<div class="card"><h3>${icon('user', 'sm')} الأعمار</h3>${bars(A.age.slice().sort((a, b) => String(a.k).localeCompare(String(b.k))).map((g) => ({ k: g.k, v: g.v })), (v) => Math.round((v / tot) * 100) + '%')}</div>`);
+  }
+  if (A.country && A.country.length) {
+    const tot = A.country.reduce((s, g) => s + g.v, 0) || 1;
+    out.push(`<div class="card"><h3>${icon('reach', 'sm')} الدول</h3>${bars(A.country.slice(0, 7).map((g) => ({ k: COUNTRY[g.k] || g.k, v: g.v })), (v) => Math.round((v / tot) * 100) + '%')}</div>`);
+  }
+  if (A.city && A.city.length) out.push(`<div class="card"><h3>${icon('reach', 'sm')} المدن</h3>${bars(A.city.slice(0, 6).map((g) => ({ k: g.k, v: g.v })))}</div>`);
+  if (!out.length) out.push(`<div class="empty">${icon('users')}<b>ما عندنا بيانات جمهور بعد</b>الساعات والأعمار والدول تجي من السحب الرسمي (Composio) لحساب بزنس/صانع محتوى فيه ١٠٠+ متابع.</div>`);
+  else if (!A.age && !A.country && !A.gender) out.push(`<p class="note" style="padding:0 4px">الأعمار والجنس والدول تطلع بعد السحب الرسمي (Composio) إذا إنستقرام يعطيها لحسابك.</p>`);
+  $('audBody').innerHTML = out.join('');
+}
+
+// ---- analysis
+function groupScore(list, keyFn) {
+  const g = {};
+  for (const p of list) { const k = keyFn(p); if (k === null || k === undefined || p.score === null) continue; (g[k] = g[k] || []).push(p.score); }
+  return Object.entries(g).filter(([, a]) => a.length >= 2).map(([k, a]) => ({ k, v: median(a), n: a.length })).sort((a, b) => b.v - a.v);
+}
+const LEN = [[0, 15, 'أقل من ١٥ث'], [15, 30, '١٥–٣٠ث'], [30, 60, '٣٠–٦٠ث'], [60, 1e9, 'أكثر من دقيقة']];
+const TIMES = [[5, 12, 'صباح'], [12, 17, 'ظهر/عصر'], [17, 22, 'مساء'], [22, 29, 'ليل']];
+function timeBucket(p) { if (!p.date || /T00:00$/.test(p.date)) return null; let h = +p.date.slice(11, 13); if (h < 5) h += 24; const t = TIMES.find(([a, b]) => h >= a && h < b); return t ? t[2] : null; }
+const BAD_TXT = { 'hook-weak': 'الهوك ضعيف — الناس تسحب بأول ٣ ثواني', 'drop-mid': 'الناس تطلع بالنص — الريل فيه حشو', 'too-long': 'أطول من اللي يتحمله جمهورك', 'dead-time': 'نشر بأوقات ميتة', cover: 'الغلاف/أول فريم ما يجذب رغم إن المحتوى ينحفظ', 'low-views': 'مشاهدات أقل من نص عادتك', 'low-eng': 'تفاعل أقل من عادتك', 'late-word': 'أول كلمة متأخرة' };
+function topicWords(list) {
+  const STOP = new Set('من في على عن الى إلى هذا هذه هاي اللي الي مع بس كل شي شيء ما لا هو هي انت أنت انا أنا عند كان حتى لو او أو ثم ليش شلون كيف قبل بعد'.split(' '));
+  const c = {};
+  for (const p of list) for (const w of new Set(String(p.title || '').replace(/[^\p{L}\s]/gu, ' ').split(/\s+/).filter((w) => w.length >= 4 && !STOP.has(w)))) c[w] = (c[w] || 0) + 1;
+  return Object.entries(c).sort((a, b) => b[1] - a[1]).map(([w]) => w);
+}
+const HOOKS = {
+  'سؤال': (t) => `ليش ${t} ما يشتغل عندك؟ (الجواب بـ ٣ ثواني)`,
+  'رقم/قائمة': (t) => `٣ أشياء عن ${t} محد يگلك عليها`,
+  'تحذير/خطأ': (t) => `لا تسوي هالغلط بـ${t} — خسرني نص مشاهداتي`,
+  'فضول/سر': (t) => `السر اللي غيّر ${t} عندي بأسبوع`,
+  'قصة': (t) => `جربت ${t} ٧ أيام… وهذا اللي صار`,
+  'جملة مباشرة': (t) => `${t}: الطريقة اللي تشتغل فعلاً بـ ٣٠ ثانية`,
+  'بلا نص': (t) => `${t}: النتيجة أول، والشرح بعدين`,
+};
+function weekPlan() {
+  const rs = reels().filter((p) => p.score !== null).sort((a, b) => b.score - a.score);
+  if (rs.length < 3) return [];
+  const b = base(), best = rs.slice(0, Math.max(3, Math.floor(rs.length / 4)));
+  const types = groupScore(rs, (p) => E.hookType(p.title));
+  const topType = (types[0] && types[0].k) || E.hookType(best[0].title);
+  const nicheWord = ((ST.profile && ST.profile.niche) || '').split(/[،,\s]+/).filter((w) => w.length >= 3)[0];
+  const niche = ((ST.profile && ST.profile.niche) || '').split(/[،,]/)[0].trim().split(/\s+/).slice(0, 3).join(' ');
+  const words = (niche ? [niche, niche] : []).concat(topicWords(best), nicheWord ? [nicheWord] : [], ['محتواك', 'محتواك']);
+  const len = groupScore(rs.filter((p) => p.durationSec), (p) => (LEN.find(([a, c]) => p.durationSec >= a && p.durationSec < c) || [])[2]);
+  const lenTxt = (len[0] && len[0].k) || b.sweet || '٢٠–٣٠ث';
+  // best weekdays by median views
+  const byDay = {};
+  for (const p of rs) if (p.date) { const d = new Date(p.date.slice(0, 10) + 'T12:00:00').getDay(); (byDay[d] = byDay[d] || []).push(p.metrics.views || 0); }
+  let days = Object.entries(byDay).filter(([, a]) => a.length >= 1).map(([d, a]) => [+d, median(a)]).sort((x, y) => y[1] - x[1]).map((x) => x[0]);
+  for (const d of [4, 0, 2]) if (!days.includes(d)) days.push(d);
+  const hour = has(b.bestHour) ? hourTxt(b.bestHour) : '٩م';
+  const top = best[0], an = top.analysis;
+  const plan = [
+    { kind: 'جزء ثاني من أقوى ريل', hook: an && an.hook && an.hook.rewritten ? an.hook.rewritten : `جزء ٢: ${top.title}`, from: top, why: `«${top.title}» أخذ ${num(top.metrics.views)} مشاهدة (درجة ${top.score}) — الجمهور يريد تكملة.` },
+    { kind: `نفس نوع الهوك «${topType}»`, hook: (HOOKS[topType] || HOOKS['جملة مباشرة'])(words[0]), from: best[1] || top, why: `بداياتك من نوع «${topType}» هي الأعلى درجة عندك${types[0] ? ` (وسيط ${Math.round(types[0].v)})` : ''}.` },
+    { kind: 'زاوية جديدة', hook: (HOOKS[(types[1] && types[1].k) || 'رقم/قائمة'] || HOOKS['رقم/قائمة'])(words[1] || words[0]), from: best[2] || top, why: `زاوية جديدة على مجالك بنوع هوك ثاني ناجح عندك${types[1] ? ` («${types[1].k}»)` : ''} — مبنية على «${(best[2] || top).title}».` },
+  ];
+  return plan.map((x, i) => Object.assign(x, { day: DAYS[days[i % days.length]], hour, len: lenTxt }));
+}
+function analysisHtml() {
+  const rs = reels(), pt = (ST.ev && ST.ev.patterns) || { lines: [] }, out = [];
+  out.push(`<div class="card"><h3>${icon('spark', 'sm')} شنو يشتغل عندك</h3><p class="sub">أقوى ربع منشوراتك مقابل أضعف ربع — مقارنة بعادة حسابك نفسه</p>
+    <ul class="lines">${(pt.lines || []).map((l) => `<li>${icon('spark', 'sm')}<span>${esc(l)}</span></li>`).join('')}</ul></div>`);
+  const types = groupScore(rs, (p) => E.hookType(p.title));
+  const lens = groupScore(rs.filter((p) => p.durationSec), (p) => (LEN.find(([a, c]) => p.durationSec >= a && p.durationSec < c) || [])[2]);
+  const times = groupScore(rs, timeBucket);
+  const sc = (v) => Math.round(v) + '';
+  if (types.length || lens.length || times.length) {
+    out.push(`<div class="card"><h3>${icon('chart', 'sm')} الدرجة حسب…</h3><p class="sub">وسيط درجة الريلز (٠–١٠٠) — الرقم بين القوسين عدد الريلز</p>
+      ${types.length ? `<h4 style="margin:6px 0;font-size:13px">${icon('hook', 'xs')} نوع الهوك</h4>${bars(types.slice(0, 5), sc)}` : ''}
+      ${lens.length ? `<h4 style="margin:12px 0 6px;font-size:13px">${icon('clock', 'xs')} الطول</h4>${bars(lens, sc)}` : ''}
+      ${times.length ? `<h4 style="margin:12px 0 6px;font-size:13px">${icon('eye', 'xs')} وقت النشر</h4>${bars(times, sc)}` : ''}</div>`);
+  }
+  const cnt = {}, fixes = {};
+  for (const p of rs) for (const r of p.reasons || []) if (r.kind === 'bad') { cnt[r.code] = (cnt[r.code] || 0) + 1; fixes[r.code] = fixes[r.code] || r.fix; }
+  const weak = Object.entries(cnt).sort((a, b) => b[1] - a[1]).slice(0, 3);
+  if (weak.length) out.push(`<div class="card"><h3>${icon('swipe', 'sm')} أكثر شي يضعّفك</h3><p class="sub">أكثر الأسباب تكراراً بالريلز الضعيفة</p>
+    <ul class="lines weak">${weak.map(([c, n]) => `<li>${icon('x', 'sm')}<span><b>${esc(BAD_TXT[c] || c)}</b> <span class="muted num">(${n} ريل)</span><span class="fix">← ${esc(fixes[c] || '')}</span></span></li>`).join('')}</ul></div>`);
+  const plan = weekPlan();
+  out.push(`<div class="card"><h3>${icon('plus', 'sm')} خطة الأسبوع الجاي</h3><p class="sub">٣ ريلز مبنية على أرقامك — «أضف للأفكار» يرسلها لـ Claude يكتبها بخطتك</p>
+    ${plan.length ? `<div class="plan">${plan.map((x, i) => `<div class="idea"><div class="top"><span class="chip">${esc(x.day)} · ${esc(x.hour)}</span><span class="chip">${icon('clock', 'xs')} ${esc(x.len)}</span><span class="chip manual">${esc(x.kind)}</span></div>
+      <div class="hook">«${esc(x.hook)}»</div><div class="why">${esc(x.why)}</div>
+      <div class="row"><button class="btn primary flex0" data-plan="${i}">${icon('plus', 'sm')} أضف للأفكار</button><button class="btn ghost flex0" data-copyhook="${i}">${icon('copy', 'sm')} انسخ الهوك</button></div></div>`).join('')}</div>`
+      : '<p class="note">نحتاج ٣ ريلز بدرجات على الأقل.</p>'}</div>`);
+  return out.join('');
+}
+const wide = matchMedia('(min-width:1100px)');
+function renderAnalysis() {
+  const h = analysisHtml();
+  if (wide.matches) { $('sideBody').innerHTML = h; $('anBody').innerHTML = ''; if (ST.tab === 'an') setTab('reels'); }
+  else { $('anBody').innerHTML = h; $('sideBody').innerHTML = ''; }
+}
+wide.addEventListener('change', renderAnalysis);
+
+// ------------------------------------------------------------ the post sheet («الإحصائيات»)
+function srcTag(p, k) { const s = p.sources && p.sources[k]; return s ? `<span class="src">${esc(SRC_AR[s] || s)}</span>` : ''; }
+function kvRow(label, val, tag) { return `<span>${label}</span><span>${String(val).includes('<') ? val : `<span class="num">${val}</span>`}${tag || ''}</span>`; }
+/** seconds as html: the number isolated LTR, the Arabic unit outside it */
+function secsH(s) { if (!has(s)) return '—'; return s >= 60 ? `<span class="num">${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}</span> د` : `<span class="num">${s.toFixed(s < 10 ? 1 : 0)}</span>ث`; }
+function retentionSvg(p) {
+  const M = p.metrics, D = p.durationSec;
+  let pts = null, approx = false;
+  if (Array.isArray(p.retention) && p.retention.length >= 2) pts = p.retention.map(([x, v]) => [x, v > 1.5 ? v / 100 : v]);
+  else if (has(M.hold3) && D) {
+    approx = true;
+    const h3 = M.hold3 / 100, x3 = Math.min(0.5, 3 / D), w = has(M.watchRatio) ? M.watchRatio : h3 * 0.55;
+    // decay after 3 s so the area under the curve ≈ average watch ratio
+    const tail = Math.max(0.02, Math.min(h3, (w - (1 + h3) / 2 * x3) / Math.max(0.05, 1 - x3)));
+    const k = tail >= h3 * 0.98 ? 0.01 : Math.log(h3 / Math.max(0.01, 2 * tail - h3 * 0.6));
+    pts = [[0, 1], [x3, h3]];
+    for (let i = 1; i <= 12; i++) { const x = x3 + (1 - x3) * (i / 12); pts.push([x, Math.max(0.01, h3 * Math.exp(-Math.max(0.05, k) * (i / 12)))]); }
+  }
+  if (!pts) return '';
+  const W = 320, H = 110, P = 6;
+  const X = (x) => P + x * (W - 2 * P), Y = (v) => P + (1 - Math.min(1, v)) * (H - 2 * P - 12);
+  const line = pts.map(([x, v]) => `${X(x).toFixed(1)},${Y(v).toFixed(1)}`).join(' ');
+  return `<div class="ret"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="منحنى البقاء ${approx ? '(تقريبي)' : ''}">
+    <polygon points="${X(0)},${Y(0)} ${line} ${X(1)},${Y(0)}" fill="var(--accent)" opacity=".14"/>
+    <polyline points="${line}" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linejoin="round"/>
+    ${has(M.hold3) && D ? `<line x1="${X(Math.min(0.5, 3 / D))}" x2="${X(Math.min(0.5, 3 / D))}" y1="${P}" y2="${H - 14}" stroke="var(--muted)" stroke-dasharray="3 3"/><text x="${X(Math.min(0.5, 3 / D)) + 5}" y="${P + 11}" font-size="11" font-weight="700" fill="var(--ink)">${Math.round(M.hold3)}%</text><text x="${X(Math.min(0.5, 3 / D)) + 5}" y="${P + 24}" font-size="10" fill="var(--muted)" >بعد ٣ث</text>` : ''}
+    <text x="${P}" y="${H - 1}" font-size="10" fill="var(--muted)">0:00</text><text x="${W - P}" y="${H - 1}" font-size="10" fill="var(--muted)" text-anchor="end">${D ? secs(D) : 'النهاية'}</text></svg>
+    <div class="note">${approx ? 'شكل تقريبي مرسوم من نسبة السحب ومتوسط المشاهدة — إنستقرام ما يعطي المنحنى الكامل بالـ API.' : 'منحنى البقاء الكامل.'}</div></div>`;
+}
+function postSheetHtml(p, a) {
+  const M = p.metrics, b = base(), reel = isReel(p), ig = igOf(ST.stats) || {}, raw = rawPost(p.id) || {};
+  const video = thumbHtml(p) + (safeUrl(p.videoUrl) && !ST.demo ? `<button class="playbtn" data-play="${esc(p.videoUrl)}" aria-label="شغّل الفيديو">${icon('play')}</button>` : '');
+  const grade = p.grade ? `<span class="gchip g-${p.grade}">${esc(GRADE[p.grade])}</span>` : '<span class="chip">بلا درجة</span>';
+  const fol = ig.followers || 0;
+  const nonF = has(raw.nonFollowerPct) ? raw.nonFollowerPct / 100 : null;
+  let s = `<div class="prev"><div class="pv ${reel ? '' : 'sq'}">${video}</div><div class="meta"><div class="cap">${esc(p.title || '—')}</div>
+    <div class="dt">${esc(dateTxt(p.date))}${p.durationSec ? ' · ' + secs(p.durationSec) : ''}</div>${grade}
+    ${safeUrl(p.url) ? ` <a class="chip" href="${esc(p.url)}" target="_blank" rel="noopener">${icon('out', 'xs')} افتح المنشور</a>` : ''}</div></div>
+  <div class="acts">
+    <div title="لايكات">${icon('heart')}<span class="num">${num(M.likes)}</span></div>
+    <div title="تعليقات">${icon('comment')}<span class="num">${num(M.comments)}</span></div>
+    <div title="مشاركات">${icon('share')}<span class="num">${num(M.shares)}</span></div>
+    <div title="حفظ">${icon('save')}<span class="num">${num(M.saves)}</span></div>
+  </div>
+  <div class="sec"><h3>${icon('eye', 'sm')} نظرة عامة</h3>
+    <div class="big"><b class="num">${num(M.views)}</b><span class="muted">مشاهدة${p.index && has(p.index.views) ? ` · <span class="${p.index.views >= 1 ? 'up' : 'down'}">${p.index.views.toFixed(1)}× عادتك</span>` : ''}</span></div>
+    <div class="kv">${kvRow('الحسابات اللي وصلها (الوصول)', num(M.reach), srcTag(p, 'reach'))}${kvRow('الوصول ÷ المتابعين', has(M.reachRatio) ? pct(M.reachRatio, 0) : '—')}${has(raw.follows) ? kvRow('متابعين جدد من هالريل', num(raw.follows)) : ''}</div>`;
+  if (nonF !== null) s += `<div class="split"><i style="width:${(1 - nonF) * 100}%;background:var(--sky-soft-ink)"></i><i style="width:${nonF * 100}%;background:var(--accent)"></i></div><div class="legend"><span><i class="sw" style="background:var(--sky-soft-ink)"></i>متابعين ${pct(1 - nonF, 0)}</span><span><i class="sw" style="background:var(--accent)"></i>غير متابعين ${pct(nonF, 0)}</span></div>`;
+  else if (has(M.reach) && fol) { const out = Math.max(0, Math.min(1, 1 - fol * 0.35 / M.reach)); s += `<div class="note">متابعين مقابل غير متابعين: إنستقرام ما يعطيها بالـ API. تقدير: الوصول ${pct(M.reach / fol, 0)} من حجم متابعينك${M.reach > fol ? ' — أكيد طلع لغير المتابعين' : ''}${M.reach > fol * 0.35 ? ` (تقريباً ${pct(out, 0)} منهم غير متابعين إذا شافه ٣٥٪ من متابعينك)` : ''}.</div>`; }
+  s += '</div>';
+  if (reel) {
+    const wr = M.watchRatio;
+    s += `<div class="sec"><h3>${icon('clock', 'sm')} الاحتفاظ</h3>
+      <div class="kv">${kvRow('متوسط وقت المشاهدة', secsH(M.avgWatchSec), srcTag(p, 'avgWatchSec'))}${kvRow('طول الريل', p.durationSec ? secsH(p.durationSec) : '<span>غير معروف</span>')}${kvRow('نسبة السحب (أول ٣ث)', has(M.skipRate) ? Math.round(M.skipRate) + '%' : '—', srcTag(p, 'skipRate'))}${kvRow('ظلوا بعد ٣ث', has(M.hold3) ? Math.round(M.hold3) + '%' : '—')}</div>
+      ${has(wr) ? `<div class="wbar" aria-label="شاهدوا ${pct(wr, 0)} من الطول"><i style="width:${Math.min(100, wr * 100)}%"></i></div><div class="legend"><span>شاهدوا <b class="num">${pct(wr, 0)}</b> من الطول</span>${has(b.watchRatio) ? `<span class="muted">عادتك ${pct(b.watchRatio, 0)}</span>` : ''}</div>` : (has(M.avgWatchSec) && !p.durationSec ? '<div class="note">نعرف متوسط المشاهدة بس مو طول الريل (إنستقرام ما يعطيه) — «حلّل بعمق» يقيسه من الملف.</div>' : '')}
+      ${retentionSvg(p)}</div>`;
+  }
+  s += `<div class="sec"><h3>${icon('heart', 'sm')} التفاعل</h3><div class="kv">
+      ${kvRow('نسبة التفاعل', pct(M.er, 1), has(b.er) ? `<span class="src">عادتك <span class="num">${pct(b.er, 1)}</span></span>` : '')}
+      ${kvRow('حفظ ÷ مشاهدات', has(M.saves) && M.views ? pct(M.saves / M.views, 2) : '—', srcTag(p, 'saves'))}
+      ${kvRow('مشاركة ÷ مشاهدات', has(M.shares) && M.views ? pct(M.shares / M.views, 2) : '—', srcTag(p, 'shares'))}
+      ${kvRow('تعليق لكل ١٠٠ لايك', has(M.comments) && M.likes ? (M.comments / M.likes * 100).toFixed(1) : '—')}</div></div>`;
+  // I/O Studio's analysis
+  s += `<div class="sec"><h3>${icon('spark', 'sm')} تحليل آي أو استوديو <span class="grow"></span>${grade}</h3>
+    <div class="score"><span class="ring">${ringSvg(p.score === null ? 0 : p.score / 100, 76, 6)}<b class="num">${p.score === null ? '—' : p.score}<small>/100</small></b></span>
+      <div><div style="font-weight:800">${icon('hook', 'sm')} الهوك: <span class="num">${p.hookScore === null ? '—' : p.hookScore}/100</span> ${p.hookEstimated ? '<span class="chip demo">تقديري</span>' : '<span class="chip live">من أرقام رسمية</span>'}</div>
+      <ul class="ev">${(p.hookEvidence || []).map((t) => `<li>${esc(t)}</li>`).join('') || '<li>ما فيه أرقام كافية</li>'}</ul></div></div>
+    <ul class="reasons">${(p.reasons || []).map((r) => `<li class="r-${r.kind}">${esc(r.text)}${r.fix ? `<span class="fix">← ${esc(r.fix)}</span>` : ''}</li>`).join('')}</ul>`;
+  if (a) {
+    s += `<div class="deep"><h4>${icon('wand', 'sm')} تحليل Claude العميق ${a.at ? `<span class="muted num" style="font-weight:500">${esc(String(a.at).slice(0, 10))}</span>` : ''}</h4><dl>
+      ${a.verdict ? `<dd>${esc(a.verdict)}</dd>` : ''}
+      ${a.promised ? `<dt>الهوك وعد بـ</dt><dd>${esc(a.promised)}</dd>` : ''}
+      ${a.leftAt ? `<dt>وين طلعوا الناس</dt><dd>${esc(a.leftAt)}</dd>` : ''}
+      ${a.why ? `<dt>ليش</dt><dd>${esc(a.why)}</dd>` : ''}
+      ${(a.fixes || []).length ? `<dt>٣ إصلاحات</dt><dd><ol>${a.fixes.slice(0, 3).map((f) => `<li>${esc(f)}</li>`).join('')}</ol></dd>` : ''}
+      ${a.hook && a.hook.rewritten ? `<dt>الهوك الجديد</dt><dd>${a.hook.original ? `<div class="muted" style="text-decoration:line-through;font-size:13px">«${esc(a.hook.original)}»</div>` : ''}<div class="newhook">«${esc(a.hook.rewritten)}»</div></dd>` : ''}
+    </dl></div>`;
+  } else s += `<div class="note" style="margin-top:10px">${icon('wand', 'xs')} ما فيه تحليل عميق لهالريل بعد — «حلّل هالريل بعمق» يخلي Claude يشوف الفيديو نفسه: شنو وعد الهوك، وين طلع الناس، و٣ إصلاحات وهوك جديد.</div>`;
+  s += '</div>';
+  const q = ST.queue.filter((x) => x.type === 'analyze-post' && x.postId === p.id).slice(-1)[0];
+  s += `<div class="sbtns">
+    <button class="btn primary" data-act="analyze">${icon('search', 'sm')} حلّل هالريل بعمق</button>
+    <div class="row"><button class="btn" data-act="better">${icon('wand', 'sm')} سو نسخة محسّنة</button><button class="btn" data-act="copyhook" ${a && a.hook && a.hook.rewritten ? '' : 'disabled title="يطلع بعد التحليل العميق"'}>${icon('copy', 'sm')} انسخ الهوك الجديد</button></div>
+    <div class="qline" id="postQ">${q ? qState(q) : ''}</div></div>`;
+  return s;
+}
+async function openPost(key) {
+  const p = postByKey(key); if (!p) return;
+  ST.openKey = key;
+  showSheet('الإحصائيات', postSheetHtml(p, p.analysis));
+  if (ST.server && !ST.demo) {
+    try {
+      const j = await api('/api/stats/analysis/' + encodeURIComponent(key));
+      if (ST.openKey === key && j.analysis && JSON.stringify(j.analysis) !== JSON.stringify(p.analysis)) { p.analysis = j.analysis; $('sheetBody').innerHTML = postSheetHtml(p, p.analysis); }
+    } catch (e) { /* no analysis yet */ }
+  }
+}
+let lastFocus = null;
+function showSheet(title, html) {
+  lastFocus = document.activeElement;
+  $('sheetTitle').textContent = title; $('sheetBody').innerHTML = html; $('sheetBody').scrollTop = 0;
+  $('sheet').classList.add('on'); $('scrim').classList.add('on'); $('sheet').setAttribute('aria-hidden', 'false');
+  setTimeout(() => $('sheetX').focus(), 30);
+}
+function closeSheet() {
+  $('sheet').classList.remove('on'); $('scrim').classList.remove('on'); $('sheet').setAttribute('aria-hidden', 'true');
+  const v = $('sheetBody').querySelector('video'); if (v) v.pause();
+  ST.openKey = null; if (lastFocus) try { lastFocus.focus(); } catch (e) { /* gone */ }
+}
+
+// ------------------------------------------------------------ requests for Claude (engine/queue.js)
+const QST = { pending: 'بالانتظار عند Claude', working: 'Claude يشتغل عليه', done: 'خلص ✓', error: 'ما تم' };
+function qState(q) { return `${QST[q.status] || q.status}${q.progress && q.progress.msg ? ' — ' + esc(q.progress.msg) : ''}`; }
+function metricsFor(p) {
+  const o = { score: p.score, hookScore: p.hookScore, durationSec: p.durationSec };
+  for (const k of ['views', 'reach', 'likes', 'comments', 'shares', 'saves', 'avgWatchSec', 'hold3', 'skipRate', 'er', 'watchRatio']) if (has(p.metrics[k])) o[k] = p.metrics[k];
+  if (p.index && has(p.index.views)) o.viewsVsMedian = p.index.views;
+  for (const k of Object.keys(o)) if (!has(o[k])) delete o[k];
+  return o;
+}
+async function enqueue(body, prompt) {
+  if (ST.demo) { toast('هذي بيانات تجريبية — اسحب أرقامك الحقيقية أول'); return null; }
+  if (!ST.server) { copyText(prompt, 'انسخ الطلب ✓ — الصقه بـ Claude'); return null; }
+  try {
+    const j = await api('/api/queue', body);
+    ST.queue.push(j.item); toast('انرسل لـ Claude ✓ — يستلمه وهو شغّال');
+    renderQ(); setTimeout(pollQueue, 1500);
+    return j.item;
+  } catch (e) { toast('ما انرسل: ' + e.message); return null; }
+}
+function renderQ() {
+  const open = ST.queue.filter((x) => x.status === 'pending' || x.status === 'working');
+  const s = ST.queue.filter((x) => x.type === 'sync-stats').slice(-1)[0];
+  $('qline').innerHTML = (s && (s.status === 'pending' || s.status === 'working') ? 'السحب: ' + qState(s) + ' · ' : '') + (open.length ? `طلبات مفتوحة عند Claude: ${open.length} — ما استلمها؟ گله بالشات «شغّل الطيار الآلي».` : '');
+  if (ST.openKey && $('postQ')) { const p = postByKey(ST.openKey); const q = p && ST.queue.filter((x) => x.type === 'analyze-post' && x.postId === p.id).slice(-1)[0]; $('postQ').innerHTML = q ? qState(q) : ''; }
+}
+async function pollQueue() {
+  if (!ST.server || document.hidden) return;
+  try {
+    const r = await api('/api/queue');
+    const was = Object.fromEntries(ST.queue.map((x) => [x.id, x.status]));
+    ST.queue = (r.items || []).filter((x) => ['analyze-post', 'sync-stats', 'stats-ideas', 'script'].includes(x.type));
+    const finished = ST.queue.some((x) => x.status === 'done' && was[x.id] && was[x.id] !== 'done' && ['analyze-post', 'sync-stats'].includes(x.type));
+    if (finished) { toast('Claude خلّص ✓ — حدّثت الأرقام'); await reload(); }
+    renderQ();
+  } catch (e) { /* server went away */ }
+}
+async function reload() {
+  try {
+    const j = await api('/api/stats'); ST.status = j.status;
+    const ig = igOf(j.stats);
+    if (ig && (ig.posts || []).length) { ST.stats = j.stats; ST.demo = false; ST.ev = await api('/api/stats/eval?platform=instagram'); try { ST.profile = await api('/api/stats/profile'); } catch (e) { /* keep */ } }
+    renderAll();
+    if (ST.openKey) openPost(ST.openKey);
+  } catch (e) { /* ignore */ }
+}
+
+// ------------------------------------------------------------ events
+function setTab(t) {
+  ST.tab = t;
+  document.querySelectorAll('.tabs [data-tab]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === t)));
+  for (const id of ['reels', 'posts', 'aud', 'an']) $('tab-' + id).hidden = id !== t;
+}
+document.querySelector('.tabs').addEventListener('click', (e) => { const b = e.target.closest('[data-tab]'); if (b) setTab(b.dataset.tab); });
+$('sortbar').addEventListener('click', (e) => { const b = e.target.closest('[data-sort]'); if (!b) return; ST.sort = b.dataset.sort; LS.set('io-ig-sort', ST.sort); renderGrid(); });
+$('hl').addEventListener('click', (e) => { const b = e.target.closest('[data-ring]'); if (b) openRing(b.dataset.ring); });
+document.addEventListener('click', (e) => {
+  const t = e.target.closest('.tile[data-key]'); if (t) return openPost(t.dataset.key);
+  const pl = e.target.closest('[data-plan]'), ch = e.target.closest('[data-copyhook]');
+  if (pl || ch) {
+    const x = weekPlan()[+(pl || ch).dataset[pl ? 'plan' : 'copyhook']]; if (!x) return;
+    if (ch) return copyText(x.hook, 'انسخ الهوك ✓');
+    const f = x.from;
+    return enqueue({ type: 'stats-ideas', platform: 'instagram', top: [{ title: f.title, url: safeUrl(f.url), platform: 'instagram', metrics: metricsFor(f) }], note: `خطة الأسبوع (صفحة إنستقرام): ${x.kind}. الهوك: «${x.hook}». الطول ${x.len}، النشر ${x.day} ${x.hour}. اكتبها فكرة بخطتي.` },
+      `من صفحة إنستقرام بآي أو استوديو: أضف لخطتي فكرة ريل — ${x.kind}. الهوك: «${x.hook}». الطول ${x.len}، النشر ${x.day} ${x.hour}. مبنية على «${f.title}» (${num(f.metrics.views)} مشاهدة).`);
+  }
+  const pb = e.target.closest('[data-play]');
+  if (pb) {
+    const v = document.createElement('video');
+    v.src = pb.dataset.play; v.controls = true; v.playsInline = true; v.autoplay = true;
+    v.onerror = () => { v.remove(); toast('رابط الفيديو انتهى — «اسحب الآن» يجيب رابط جديد'); };
+    pb.replaceWith(v); v.play().catch(() => {});
+    return;
+  }
+  const act = e.target.closest('[data-act]');
+  if (act && ST.openKey) {
+    const p = postByKey(ST.openKey); if (!p) return;
+    const a = p.analysis;
+    if (act.dataset.act === 'analyze') return enqueue({ type: 'analyze-post', platform: 'instagram', postId: p.id, title: p.title, url: safeUrl(p.url), videoUrl: safeUrl(p.videoUrl), metrics: metricsFor(p), reason: p.topReason ? p.topReason.text : '' },
+      `حلّل ريل إنستقرام هذا بعمق (سكل io-dashboard): «${p.title}» ${safeUrl(p.url)} — رقم المنشور ${p.id}. الأرقام: ${JSON.stringify(metricsFor(p))}`).then((q) => { if (q) renderQ(); });
+    if (act.dataset.act === 'better') {
+      const fixes = (a && a.fixes && a.fixes.length ? a.fixes : p.fixes) || [];
+      const hook = a && a.hook && a.hook.rewritten;
+      const text = `نسخة محسّنة من ريل إنستقرام «${p.title}»${safeUrl(p.url) ? ' (' + p.url + ')' : ''} — درجته ${p.score === null ? '—' : p.score}/100، الهوك ${p.hookScore === null ? '—' : p.hookScore}/100.\n${hook ? `الهوك الجديد: «${hook}»\n` : ''}${fixes.length ? 'الإصلاحات:\n' + fixes.map((f, i) => `${i + 1}. ${f}`).join('\n') : ''}\nاكتب سكربت ريل جديد بنفس الفكرة يطبّق هالإصلاحات.`;
+      return enqueue({ type: 'script', format: 'reel', title: `نسخة محسّنة: ${p.title}`.slice(0, 200), text }, text);
+    }
+    if (act.dataset.act === 'copyhook' && a && a.hook && a.hook.rewritten) return copyText(a.hook.rewritten, 'انسخ الهوك الجديد ✓');
+  }
+});
+$('scrim').onclick = closeSheet; $('sheetX').onclick = closeSheet;
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && $('sheet').classList.contains('on')) closeSheet(); });
+$('syncNow').onclick = () => enqueue({ type: 'sync-stats', platform: 'instagram' }, 'اسحب إحصائيات إنستقرام عبر Composio (سكل io-dashboard) وحدّث .io/stats.json').then((q) => { if (q) renderQ(); });
+$('themeT').onclick = () => {
+  const r = document.documentElement;
+  const dark = r.dataset.theme ? r.dataset.theme === 'dark' : !matchMedia('(prefers-color-scheme: light)').matches;
+  r.dataset.theme = dark ? 'light' : 'dark';
+  LS.set('io-theme', r.dataset.theme);
+};
+// swipe the sheet down to close (mobile)
+(() => { let y0 = null; const sh = $('sheet'); sh.addEventListener('touchstart', (e) => { y0 = $('sheetBody').scrollTop <= 0 ? e.touches[0].clientY : null; }, { passive: true }); sh.addEventListener('touchend', (e) => { if (y0 !== null && e.changedTouches[0].clientY - y0 > 90) closeSheet(); y0 = null; }, { passive: true }); })();
+
+// ------------------------------------------------------------ demo (never saved; clearly labelled «بيانات تجريبية»)
+function demoProfile() { return { name: 'سما — صانعة محتوى (تجريبي)', bio: 'أعلّمك تصوير ومونتاج الريلز بالموبايل 🎬\nفيديو جديد كل أحد وثلاثاء وخميس', niche: 'تصوير ومونتاج بالموبايل', handle: '@io.demo', follows: 312, mediaCount: 148, picture: '' }; }
+function demoStats() {
+  let seed = 11;
+  const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+  const st = S.emptyStats();
+  const titles = ['ليش ريلزك ما توصل؟ السبب مو اللي تتوقعه', '٣ أخطاء بالإضاءة تخرب فيديوك', 'جربت أصور ريل كامل بالموبايل بس', 'لا تشتري مايك قبل ما تشوف هذا', 'شلون أكتب سكربت ريل بدقيقة', 'يوم كامل وياي بالاستوديو', 'السر اللي ضاعف مشاهداتي بشهر', '٥ ترانزشن بالموبايل بدون برامج', 'ليش الهوك أهم من الفيديو كله؟', 'أسوأ نصيحة سمعتها عن الريلز', 'مونتاج ريل بـ ١٠ دقايق — خطوة بخطوة', 'شلون تختار موسيقى ما تنحذف', 'إضاءة بـ ٥ دولار تفرق بالتصوير', '٣ زوايا تصوير تخلي الريل سينمائي', 'قصة أول ريل نجح عندي', 'لا تبدي ريلك بـ «هلا شباب»', 'شنو أصور إذا ما عندي أفكار؟', 'الفرق بين ريل ١٥ ثانية و٦٠ ثانية', 'إعدادات الكاميرا اللي محد يگلك عليها', 'تحدي: ريل بدون مونتاج', '٤ تطبيقات مونتاج مجانية', 'شلون أخلي النص على الشاشة يشد'];
+  const end = new Date(); end.setHours(0, 0, 0, 0);
+  const posts = []; const snaps = [];
+  let f = 38200;
+  for (let d = 89; d >= 0; d--) { const day = new Date(end); day.setDate(day.getDate() - d); f += Math.round(45 * (0.4 + rnd() * 1.4)); snaps.push({ date: day.toISOString().slice(0, 10), followers: f, newFollowers: 0 }); }
+  let ti = 0;
+  for (let d = 88; d >= 1; d -= 3 + Math.floor(rnd() * 2)) {
+    const day = new Date(end); day.setDate(day.getDate() - d);
+    const reel = ti % 5 !== 3;
+    const hour = [13, 18, 20, 21, 21, 22, 1][Math.floor(rnd() * 7)];
+    const title = titles[ti % titles.length]; ti++;
+    const dur = [11, 18, 24, 29, 38, 52, 74][Math.floor(rnd() * 7)];
+    const skip = Math.max(14, Math.min(68, 22 + rnd() * 34 + (dur > 45 ? 8 : 0) - (/[؟?]|^[٣٤٥]/.test(title) ? 9 : 0)));
+    const v = Math.round(5200 * (0.35 + rnd() * rnd() * 3.6) * (1.4 - skip / 100) * (hour === 1 ? 0.5 : 1) * (reel ? 1 : 0.35));
+    const id = 'd' + (1000 + ti);
+    const p = { id, date: day.toISOString().slice(0, 10) + 'T' + String(hour).padStart(2, '0') + ':' + String(Math.floor(rnd() * 59)).padStart(2, '0'), title, type: reel ? 'video' : (ti % 2 ? 'carousel' : 'image'), url: '', thumb: '', views: v, reach: Math.round(v * (0.62 + rnd() * 0.25)), likes: Math.round(v * (0.035 + rnd() * 0.04)), comments: Math.round(v * (0.002 + rnd() * 0.006)), shares: Math.round(v * (0.004 + rnd() * 0.016)), saves: Math.round(v * (0.006 + rnd() * 0.024)), src: {} };
+    if (reel) { p.durationSec = dur; p.skipRate = Math.round(skip * 10) / 10; p.hold3 = 100 - p.skipRate; p.avgWatchSec = Math.round(dur * (0.75 - skip / 100) * (0.8 + rnd() * 0.4) * 10) / 10; }
+    for (const k of ['views', 'reach', 'likes', 'comments', 'shares', 'saves', 'skipRate', 'avgWatchSec', 'hold3']) if (p[k] !== undefined) p.src[k] = 'official';
+    posts.push(p);
+  }
+  S.merge(st, 'instagram', { posts, snapshots: snaps }, { handle: '@io.demo', followers: f });
+  st.accounts.instagram.sync = { source: 'manual', at: null };
+  st.accounts.instagram.extra = {
+    onlineHours: Array.from({ length: 24 }, (_, h) => Math.round(f * 0.04 * (0.25 + Math.max(0, Math.sin((h - 6) / 24 * Math.PI * 2)) * 0.6 + (h >= 19 && h <= 23 ? 0.5 : 0)))),
+    audience: { gender: [{ k: 'F', v: 58 }, { k: 'M', v: 40 }, { k: 'U', v: 2 }], age: [{ k: '18-24', v: 31 }, { k: '25-34', v: 44 }, { k: '35-44', v: 15 }, { k: '13-17', v: 4 }, { k: '45-54', v: 6 }], country: [{ k: 'IQ', v: 41 }, { k: 'SA', v: 18 }, { k: 'KW', v: 9 }, { k: 'AE', v: 7 }, { k: 'JO', v: 5 }, { k: 'DE', v: 4 }, { k: 'SE', v: 3 }] },
+  };
+  return st;
+}
+function demoAnalyses() {
+  const ev = E.evaluate(ST.stats || demoStats(), { platform: 'instagram' });
+  const top = ev.posts.filter((p) => p.type === 'video' && p.score !== null).sort((a, b) => b.score - a.score);
+  const out = {};
+  const pick = (p, good) => { if (p) out[p.key] = good
+    ? { at: new Date().toISOString().slice(0, 10), verdict: 'هوك واضح بأول ثانية والنتيجة على الشاشة قبل الشرح — لهذا السحب قليل.', promised: 'سبب محدد ليش الريلز ما توصل، بدون مقدمة', leftAt: 'أغلب اللي طلعوا طلعوا عند الثانية ١٤ لما بدأ شرح الإعدادات', why: 'الوعد انوفى بسرعة، بس النص الثاني بطيء وبلا قطعات', fixes: ['قص من ١٢ث لـ ١٨ث (إعادة نفس الفكرة)', 'حط نص على الشاشة لكل خطوة', 'اختم بسؤال «جربتها؟ اكتب جربت»'], hook: { original: p.title, rewritten: 'ريلزك ما توصل بسبب ثانية وحدة — هاي هي' } }
+    : { at: new Date().toISOString().slice(0, 10), verdict: 'البداية تحية وتعريف — الوعد ما يوصل إلا بعد ٤ ثواني.', promised: 'نتيجة ما تبين إلا متأخر', leftAt: 'نص الناس سحبوا قبل الثانية ٣', why: 'ما فيه سبب يخليهم يوقفون بأول ثانية', fixes: ['ابدأ بالنتيجة النهائية', 'شيل «هلا شباب» والتعريف', 'نص كبير على الشاشة يكمل الوعد'], hook: { original: p.title, rewritten: 'هالغلط بأول ثانية يخلي نص الناس تسحب' } }; };
+  pick(top[0], true); pick(top[top.length - 1], false);
+  return out;
+}
+
+const t0 = LS.get('io-theme'); if (t0) document.documentElement.dataset.theme = t0;
+boot();
+</script>
+</body>
+</html>

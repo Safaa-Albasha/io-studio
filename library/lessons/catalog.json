@@ -1,0 +1,1073 @@
+{
+  "version": 1,
+  "count": 56,
+  "stages": {
+    "kindergarten": "روضة وأطفال",
+    "primary": "ابتدائي",
+    "middle": "متوسط",
+    "secondary": "إعدادي",
+    "adults": "كبار وصنّاع محتوى"
+  },
+  "lessons": [
+    {
+      "id": "ar-alif-baa",
+      "file": "ar-alif-baa.json",
+      "title": "حرف الألف والباء",
+      "subject": "arabic",
+      "subjectLabel": "العربي",
+      "level": "أطفال ٤–٦",
+      "stage": "kindergarten",
+      "stageLabel": "روضة وأطفال",
+      "style": "whiteboard",
+      "format": "9:16",
+      "duration": 25.5,
+      "beats": 7,
+      "kinds": [
+        "write",
+        "alphabet",
+        "draw"
+      ]
+    },
+    {
+      "id": "ar-fael-mafool",
+      "file": "ar-fael-mafool.json",
+      "title": "الفاعل والمفعول به",
+      "subject": "arabic",
+      "subjectLabel": "العربي",
+      "level": "ابتدائي ٥–٦",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "whiteboard",
+      "format": "9:16",
+      "duration": 35,
+      "beats": 8,
+      "kinds": [
+        "write"
+      ]
+    },
+    {
+      "id": "ar-jeem-haa-khaa",
+      "file": "ar-jeem-haa-khaa.json",
+      "title": "الجيم والحاء والخاء",
+      "subject": "arabic",
+      "subjectLabel": "العربي",
+      "level": "أطفال ٥–٧",
+      "stage": "kindergarten",
+      "stageLabel": "روضة وأطفال",
+      "style": "paper",
+      "format": "9:16",
+      "duration": 34.8,
+      "beats": 7,
+      "kinds": [
+        "write",
+        "alphabet",
+        "draw"
+      ]
+    },
+    {
+      "id": "ar-mubtada-khabar",
+      "file": "ar-mubtada-khabar.json",
+      "title": "المبتدأ والخبر",
+      "subject": "arabic",
+      "subjectLabel": "العربي",
+      "level": "متوسط ١",
+      "stage": "middle",
+      "stageLabel": "متوسط",
+      "style": "paper",
+      "format": "16:9",
+      "duration": 33.7,
+      "beats": 8,
+      "kinds": [
+        "write",
+        "table"
+      ]
+    },
+    {
+      "id": "ar-seen-sheen",
+      "file": "ar-seen-sheen.json",
+      "title": "السين والشين",
+      "subject": "arabic",
+      "subjectLabel": "العربي",
+      "level": "أطفال ٥–٧",
+      "stage": "kindergarten",
+      "stageLabel": "روضة وأطفال",
+      "style": "cartoon",
+      "format": "9:16",
+      "duration": 30.1,
+      "beats": 7,
+      "kinds": [
+        "alphabet"
+      ]
+    },
+    {
+      "id": "ar-taa-thaa",
+      "file": "ar-taa-thaa.json",
+      "title": "التاء والثاء",
+      "subject": "arabic",
+      "subjectLabel": "العربي",
+      "level": "أطفال ٤–٦",
+      "stage": "kindergarten",
+      "stageLabel": "روضة وأطفال",
+      "style": "chalkboard",
+      "format": "9:16",
+      "duration": 29.6,
+      "beats": 7,
+      "kinds": [
+        "alphabet",
+        "draw",
+        "write",
+        "table"
+      ]
+    },
+    {
+      "id": "bio-cells",
+      "file": "bio-cells.json",
+      "title": "الخلية الحيوانية والنباتية",
+      "subject": "biology",
+      "subjectLabel": "أحياء",
+      "level": "متوسط ١",
+      "stage": "middle",
+      "stageLabel": "متوسط",
+      "style": "whiteboard",
+      "format": "16:9",
+      "duration": 33.7,
+      "beats": 7,
+      "kinds": [
+        "biology",
+        "highlight",
+        "table"
+      ]
+    },
+    {
+      "id": "bio-photosynthesis",
+      "file": "bio-photosynthesis.json",
+      "title": "البناء الضوئي",
+      "subject": "biology",
+      "subjectLabel": "أحياء",
+      "level": "متوسط ١",
+      "stage": "middle",
+      "stageLabel": "متوسط",
+      "style": "paper",
+      "format": "16:9",
+      "duration": 31.8,
+      "beats": 8,
+      "kinds": [
+        "draw",
+        "write",
+        "chemistry"
+      ]
+    },
+    {
+      "id": "chem-combustion",
+      "file": "chem-combustion.json",
+      "title": "تفاعل الاحتراق",
+      "subject": "chemistry",
+      "subjectLabel": "كيمياء",
+      "level": "إعدادي",
+      "stage": "secondary",
+      "stageLabel": "إعدادي",
+      "style": "chalkboard",
+      "format": "9:16",
+      "duration": 40.9,
+      "beats": 8,
+      "kinds": [
+        "draw",
+        "write",
+        "chemistry",
+        "table"
+      ]
+    },
+    {
+      "id": "chem-molecules",
+      "file": "chem-molecules.json",
+      "title": "جزيئات حولنا",
+      "subject": "chemistry",
+      "subjectLabel": "كيمياء",
+      "level": "متوسط ٢",
+      "stage": "middle",
+      "stageLabel": "متوسط",
+      "style": "chalkboard",
+      "format": "9:16",
+      "duration": 31.9,
+      "beats": 7,
+      "kinds": [
+        "chemistry",
+        "highlight"
+      ]
+    },
+    {
+      "id": "creators-editing-rhythm",
+      "file": "creators-editing-rhythm.json",
+      "title": "إيقاع المونتاج",
+      "subject": "creators",
+      "subjectLabel": "صناعة المحتوى",
+      "level": "صنّاع محتوى",
+      "stage": "adults",
+      "stageLabel": "كبار وصنّاع محتوى",
+      "style": "chalkboard",
+      "format": "16:9",
+      "duration": 43.3,
+      "beats": 8,
+      "kinds": [
+        "write",
+        "draw"
+      ]
+    },
+    {
+      "id": "creators-hook",
+      "file": "creators-hook.json",
+      "title": "شلون تكتب هوك؟",
+      "subject": "creators",
+      "subjectLabel": "صناعة المحتوى",
+      "level": "صنّاع محتوى",
+      "stage": "adults",
+      "stageLabel": "كبار وصنّاع محتوى",
+      "style": "chalkboard",
+      "format": "9:16",
+      "duration": 34.4,
+      "beats": 8,
+      "kinds": [
+        "write",
+        "draw",
+        "highlight"
+      ]
+    },
+    {
+      "id": "creators-lighting",
+      "file": "creators-lighting.json",
+      "title": "أساسيات الإضاءة",
+      "subject": "creators",
+      "subjectLabel": "صناعة المحتوى",
+      "level": "صنّاع محتوى",
+      "stage": "adults",
+      "stageLabel": "كبار وصنّاع محتوى",
+      "style": "whiteboard",
+      "format": "9:16",
+      "duration": 34.4,
+      "beats": 7,
+      "kinds": [
+        "write",
+        "draw"
+      ]
+    },
+    {
+      "id": "creators-phone-filming",
+      "file": "creators-phone-filming.json",
+      "title": "التصوير بالهاتف",
+      "subject": "creators",
+      "subjectLabel": "صناعة المحتوى",
+      "level": "صنّاع محتوى",
+      "stage": "adults",
+      "stageLabel": "كبار وصنّاع محتوى",
+      "style": "cartoon",
+      "format": "9:16",
+      "duration": 34.8,
+      "beats": 8,
+      "kinds": [
+        "write",
+        "draw",
+        "grid"
+      ]
+    },
+    {
+      "id": "en-basic-words",
+      "file": "en-basic-words.json",
+      "title": "كلمات إنجليزية أساسية",
+      "subject": "english",
+      "subjectLabel": "الإنجليزي",
+      "level": "ابتدائي ١–٣",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "chalkboard",
+      "format": "16:9",
+      "duration": 26.7,
+      "beats": 6,
+      "kinds": [
+        "write",
+        "table",
+        "highlight",
+        "draw"
+      ]
+    },
+    {
+      "id": "en-letters-abc",
+      "file": "en-letters-abc.json",
+      "title": "الحروف الإنجليزية: A B C",
+      "subject": "english",
+      "subjectLabel": "الإنجليزي",
+      "level": "روضة ٤–٥",
+      "stage": "kindergarten",
+      "stageLabel": "روضة وأطفال",
+      "style": "cartoon",
+      "format": "9:16",
+      "duration": 30.4,
+      "beats": 7,
+      "kinds": [
+        "write",
+        "draw"
+      ]
+    },
+    {
+      "id": "geo-arab-world",
+      "file": "geo-arab-world.json",
+      "title": "الوطن العربي",
+      "subject": "geography",
+      "subjectLabel": "جغرافيا",
+      "level": "ابتدائي ٥–٦",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "paper",
+      "format": "16:9",
+      "duration": 36.3,
+      "beats": 6,
+      "kinds": [
+        "geography",
+        "write"
+      ]
+    },
+    {
+      "id": "geo-continents",
+      "file": "geo-continents.json",
+      "title": "قارات العالم ومحيطاته",
+      "subject": "geography",
+      "subjectLabel": "جغرافيا",
+      "level": "ابتدائي ٤–٦",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "cartoon",
+      "format": "16:9",
+      "duration": 24.7,
+      "beats": 6,
+      "kinds": [
+        "geography",
+        "highlight"
+      ]
+    },
+    {
+      "id": "hist-ancient-egypt",
+      "file": "hist-ancient-egypt.json",
+      "title": "حضارة مصر القديمة",
+      "subject": "history",
+      "subjectLabel": "تاريخ",
+      "level": "ابتدائي ٦",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "whiteboard",
+      "format": "16:9",
+      "duration": 41,
+      "beats": 7,
+      "kinds": [
+        "draw",
+        "write",
+        "timeline"
+      ]
+    },
+    {
+      "id": "hist-baghdad",
+      "file": "hist-baghdad.json",
+      "title": "محطات من تاريخ بغداد",
+      "subject": "history",
+      "subjectLabel": "تاريخ",
+      "level": "متوسط",
+      "stage": "middle",
+      "stageLabel": "متوسط",
+      "style": "paper",
+      "format": "16:9",
+      "duration": 28.4,
+      "beats": 6,
+      "kinds": [
+        "write",
+        "timeline",
+        "highlight"
+      ]
+    },
+    {
+      "id": "hist-sumer-writing",
+      "file": "hist-sumer-writing.json",
+      "title": "أول كتابة: المسمارية",
+      "subject": "history",
+      "subjectLabel": "تاريخ",
+      "level": "ابتدائي ٦",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "chalkboard",
+      "format": "9:16",
+      "duration": 33.7,
+      "beats": 6,
+      "kinds": [
+        "write",
+        "draw",
+        "timeline"
+      ]
+    },
+    {
+      "id": "life-budgeting",
+      "file": "life-budgeting.json",
+      "title": "ميزانيتك الشخصية",
+      "subject": "life",
+      "subjectLabel": "مهارات حياتية",
+      "level": "عام",
+      "stage": "adults",
+      "stageLabel": "كبار وصنّاع محتوى",
+      "style": "paper",
+      "format": "9:16",
+      "duration": 35.4,
+      "beats": 8,
+      "kinds": [
+        "write",
+        "table",
+        "highlight"
+      ]
+    },
+    {
+      "id": "life-time-management",
+      "file": "life-time-management.json",
+      "title": "إدارة الوقت: المهم والعاجل",
+      "subject": "life",
+      "subjectLabel": "مهارات حياتية",
+      "level": "إعدادي وما فوق",
+      "stage": "secondary",
+      "stageLabel": "إعدادي",
+      "style": "chalkboard",
+      "format": "16:9",
+      "duration": 41.4,
+      "beats": 9,
+      "kinds": [
+        "write",
+        "table",
+        "highlight"
+      ]
+    },
+    {
+      "id": "math-addition",
+      "file": "math-addition.json",
+      "title": "الجمع والطرح بخط الأعداد",
+      "subject": "math",
+      "subjectLabel": "رياضيات",
+      "level": "ابتدائي ١–٢",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "paper",
+      "format": "9:16",
+      "duration": 30.7,
+      "beats": 7,
+      "kinds": [
+        "write",
+        "numberline"
+      ]
+    },
+    {
+      "id": "math-angles",
+      "file": "math-angles.json",
+      "title": "أنواع الزوايا",
+      "subject": "math",
+      "subjectLabel": "رياضيات",
+      "level": "ابتدائي ٥",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "whiteboard",
+      "format": "16:9",
+      "duration": 33.4,
+      "beats": 7,
+      "kinds": [
+        "draw",
+        "label",
+        "write"
+      ]
+    },
+    {
+      "id": "math-area",
+      "file": "math-area.json",
+      "title": "مساحة المستطيل والمثلث",
+      "subject": "math",
+      "subjectLabel": "رياضيات",
+      "level": "ابتدائي ٤–٥",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "whiteboard",
+      "format": "16:9",
+      "duration": 35.6,
+      "beats": 8,
+      "kinds": [
+        "grid",
+        "write",
+        "geometry",
+        "draw"
+      ]
+    },
+    {
+      "id": "math-coordinates",
+      "file": "math-coordinates.json",
+      "title": "المستوى الإحداثي",
+      "subject": "math",
+      "subjectLabel": "رياضيات",
+      "level": "متوسط ١",
+      "stage": "middle",
+      "stageLabel": "متوسط",
+      "style": "whiteboard",
+      "format": "16:9",
+      "duration": 35.9,
+      "beats": 7,
+      "kinds": [
+        "axes",
+        "plot",
+        "draw",
+        "highlight"
+      ]
+    },
+    {
+      "id": "math-counting",
+      "file": "math-counting.json",
+      "title": "نعد من ١ إلى ٥",
+      "subject": "math",
+      "subjectLabel": "رياضيات",
+      "level": "أطفال ٤–٦",
+      "stage": "kindergarten",
+      "stageLabel": "روضة وأطفال",
+      "style": "cartoon",
+      "format": "9:16",
+      "duration": 24.5,
+      "beats": 6,
+      "kinds": [
+        "numberline",
+        "highlight"
+      ]
+    },
+    {
+      "id": "math-equations",
+      "file": "math-equations.json",
+      "title": "حل المعادلة خطوة بخطوة",
+      "subject": "math",
+      "subjectLabel": "رياضيات",
+      "level": "متوسط ١",
+      "stage": "middle",
+      "stageLabel": "متوسط",
+      "style": "whiteboard",
+      "format": "9:16",
+      "duration": 30.3,
+      "beats": 8,
+      "kinds": [
+        "equation",
+        "write"
+      ]
+    },
+    {
+      "id": "math-fractions",
+      "file": "math-fractions.json",
+      "title": "الكسور",
+      "subject": "math",
+      "subjectLabel": "رياضيات",
+      "level": "ابتدائي ٣–٤",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "chalkboard",
+      "format": "16:9",
+      "duration": 37.3,
+      "beats": 8,
+      "kinds": [
+        "fraction",
+        "write",
+        "label"
+      ]
+    },
+    {
+      "id": "math-linear-function",
+      "file": "math-linear-function.json",
+      "title": "الدالة الخطية ورسمها",
+      "subject": "math",
+      "subjectLabel": "رياضيات",
+      "level": "متوسط ٣",
+      "stage": "middle",
+      "stageLabel": "متوسط",
+      "style": "paper",
+      "format": "16:9",
+      "duration": 30.6,
+      "beats": 8,
+      "kinds": [
+        "table",
+        "axes",
+        "plot",
+        "draw",
+        "write",
+        "highlight"
+      ]
+    },
+    {
+      "id": "math-mean-median",
+      "file": "math-mean-median.json",
+      "title": "الوسط الحسابي والوسيط",
+      "subject": "math",
+      "subjectLabel": "رياضيات",
+      "level": "متوسط ١",
+      "stage": "middle",
+      "stageLabel": "متوسط",
+      "style": "paper",
+      "format": "16:9",
+      "duration": 38.7,
+      "beats": 8,
+      "kinds": [
+        "table",
+        "equation",
+        "write",
+        "highlight"
+      ]
+    },
+    {
+      "id": "math-multiplication",
+      "file": "math-multiplication.json",
+      "title": "الضرب: صفوف وأعمدة",
+      "subject": "math",
+      "subjectLabel": "رياضيات",
+      "level": "ابتدائي ٢–٣",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "paper",
+      "format": "16:9",
+      "duration": 28.3,
+      "beats": 7,
+      "kinds": [
+        "grid",
+        "write"
+      ]
+    },
+    {
+      "id": "math-percentages",
+      "file": "math-percentages.json",
+      "title": "النسبة المئوية",
+      "subject": "math",
+      "subjectLabel": "رياضيات",
+      "level": "ابتدائي ٦",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "chalkboard",
+      "format": "9:16",
+      "duration": 36.6,
+      "beats": 7,
+      "kinds": [
+        "write",
+        "grid",
+        "equation"
+      ]
+    },
+    {
+      "id": "math-probability",
+      "file": "math-probability.json",
+      "title": "مبادئ الاحتمال",
+      "subject": "math",
+      "subjectLabel": "رياضيات",
+      "level": "متوسط ٢",
+      "stage": "middle",
+      "stageLabel": "متوسط",
+      "style": "cartoon",
+      "format": "9:16",
+      "duration": 39.9,
+      "beats": 7,
+      "kinds": [
+        "write",
+        "draw",
+        "fraction"
+      ]
+    },
+    {
+      "id": "math-pythagoras",
+      "file": "math-pythagoras.json",
+      "title": "مبرهنة فيثاغورس",
+      "subject": "math",
+      "subjectLabel": "رياضيات",
+      "level": "متوسط ٢–٣",
+      "stage": "middle",
+      "stageLabel": "متوسط",
+      "style": "chalkboard",
+      "format": "16:9",
+      "duration": 36.3,
+      "beats": 8,
+      "kinds": [
+        "geometry",
+        "write",
+        "label",
+        "equation"
+      ]
+    },
+    {
+      "id": "math-quadratic",
+      "file": "math-quadratic.json",
+      "title": "الدالة التربيعية",
+      "subject": "math",
+      "subjectLabel": "رياضيات",
+      "level": "إعدادي ٤",
+      "stage": "secondary",
+      "stageLabel": "إعدادي",
+      "style": "paper",
+      "format": "16:9",
+      "duration": 34.3,
+      "beats": 7,
+      "kinds": [
+        "axes",
+        "plot"
+      ]
+    },
+    {
+      "id": "math-shapes",
+      "file": "math-shapes.json",
+      "title": "الأشكال: دائرة ومربع ومثلث",
+      "subject": "math",
+      "subjectLabel": "رياضيات",
+      "level": "روضة ٤–٥",
+      "stage": "kindergarten",
+      "stageLabel": "روضة وأطفال",
+      "style": "cartoon",
+      "format": "16:9",
+      "duration": 28.9,
+      "beats": 6,
+      "kinds": [
+        "draw",
+        "write"
+      ]
+    },
+    {
+      "id": "math-sine-wave",
+      "file": "math-sine-wave.json",
+      "title": "دالة الجيب",
+      "subject": "math",
+      "subjectLabel": "رياضيات",
+      "level": "إعدادي",
+      "stage": "secondary",
+      "stageLabel": "إعدادي",
+      "style": "chalkboard",
+      "format": "16:9",
+      "duration": 26.8,
+      "beats": 6,
+      "kinds": [
+        "axes",
+        "plot",
+        "draw",
+        "write",
+        "highlight"
+      ]
+    },
+    {
+      "id": "phys-circuits",
+      "file": "phys-circuits.json",
+      "title": "الدائرة الكهربائية",
+      "subject": "physics",
+      "subjectLabel": "فيزياء",
+      "level": "ابتدائي ٦ / متوسط",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "chalkboard",
+      "format": "16:9",
+      "duration": 34.6,
+      "beats": 7,
+      "kinds": [
+        "circuit",
+        "highlight"
+      ]
+    },
+    {
+      "id": "phys-freefall",
+      "file": "phys-freefall.json",
+      "title": "السقوط الحر",
+      "subject": "physics",
+      "subjectLabel": "فيزياء",
+      "level": "متوسط ٢",
+      "stage": "middle",
+      "stageLabel": "متوسط",
+      "style": "paper",
+      "format": "9:16",
+      "duration": 34.1,
+      "beats": 7,
+      "kinds": [
+        "freefall",
+        "highlight",
+        "write"
+      ]
+    },
+    {
+      "id": "phys-light-lenses",
+      "file": "phys-light-lenses.json",
+      "title": "الضوء والمرايا والعدسات",
+      "subject": "physics",
+      "subjectLabel": "فيزياء",
+      "level": "متوسط ٣",
+      "stage": "middle",
+      "stageLabel": "متوسط",
+      "style": "whiteboard",
+      "format": "16:9",
+      "duration": 44.5,
+      "beats": 8,
+      "kinds": [
+        "ray",
+        "lens",
+        "highlight",
+        "write"
+      ]
+    },
+    {
+      "id": "phys-newton-laws",
+      "file": "phys-newton-laws.json",
+      "title": "قوانين نيوتن الثلاثة",
+      "subject": "physics",
+      "subjectLabel": "فيزياء",
+      "level": "متوسط ٢",
+      "stage": "middle",
+      "stageLabel": "متوسط",
+      "style": "whiteboard",
+      "format": "16:9",
+      "duration": 51.9,
+      "beats": 9,
+      "kinds": [
+        "write",
+        "draw",
+        "label",
+        "equation",
+        "incline"
+      ]
+    },
+    {
+      "id": "phys-pendulum",
+      "file": "phys-pendulum.json",
+      "title": "البندول البسيط",
+      "subject": "physics",
+      "subjectLabel": "فيزياء",
+      "level": "متوسط ٣",
+      "stage": "middle",
+      "stageLabel": "متوسط",
+      "style": "whiteboard",
+      "format": "16:9",
+      "duration": 40.1,
+      "beats": 7,
+      "kinds": [
+        "pendulum",
+        "write",
+        "highlight"
+      ]
+    },
+    {
+      "id": "phys-projectile",
+      "file": "phys-projectile.json",
+      "title": "حركة المقذوفات",
+      "subject": "physics",
+      "subjectLabel": "فيزياء",
+      "level": "إعدادي",
+      "stage": "secondary",
+      "stageLabel": "إعدادي",
+      "style": "chalkboard",
+      "format": "16:9",
+      "duration": 45.6,
+      "beats": 7,
+      "kinds": [
+        "projectile",
+        "write",
+        "highlight"
+      ]
+    },
+    {
+      "id": "phys-sound",
+      "file": "phys-sound.json",
+      "title": "الصوت وانتقاله",
+      "subject": "physics",
+      "subjectLabel": "فيزياء",
+      "level": "متوسط ٢",
+      "stage": "middle",
+      "stageLabel": "متوسط",
+      "style": "whiteboard",
+      "format": "16:9",
+      "duration": 43.9,
+      "beats": 7,
+      "kinds": [
+        "draw",
+        "write",
+        "wave",
+        "table"
+      ]
+    },
+    {
+      "id": "phys-waves-springs",
+      "file": "phys-waves-springs.json",
+      "title": "الموجات والاهتزاز",
+      "subject": "physics",
+      "subjectLabel": "فيزياء",
+      "level": "متوسط ٣",
+      "stage": "middle",
+      "stageLabel": "متوسط",
+      "style": "chalkboard",
+      "format": "16:9",
+      "duration": 37.3,
+      "beats": 7,
+      "kinds": [
+        "wave",
+        "write",
+        "spring"
+      ]
+    },
+    {
+      "id": "sci-electric-safety",
+      "file": "sci-electric-safety.json",
+      "title": "السلامة من الكهرباء",
+      "subject": "science",
+      "subjectLabel": "علوم",
+      "level": "ابتدائي ١–٣",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "cartoon",
+      "format": "9:16",
+      "duration": 37.5,
+      "beats": 8,
+      "kinds": [
+        "write",
+        "draw"
+      ]
+    },
+    {
+      "id": "sci-five-senses",
+      "file": "sci-five-senses.json",
+      "title": "الحواس الخمس",
+      "subject": "science",
+      "subjectLabel": "علوم",
+      "level": "روضة ٥–٦",
+      "stage": "kindergarten",
+      "stageLabel": "روضة وأطفال",
+      "style": "paper",
+      "format": "9:16",
+      "duration": 28.9,
+      "beats": 8,
+      "kinds": [
+        "write",
+        "draw"
+      ]
+    },
+    {
+      "id": "sci-food-chain",
+      "file": "sci-food-chain.json",
+      "title": "السلسلة الغذائية",
+      "subject": "science",
+      "subjectLabel": "علوم",
+      "level": "ابتدائي ٣–٤",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "paper",
+      "format": "9:16",
+      "duration": 36.1,
+      "beats": 8,
+      "kinds": [
+        "write",
+        "draw"
+      ]
+    },
+    {
+      "id": "sci-human-organs",
+      "file": "sci-human-organs.json",
+      "title": "أعضاء جسم الإنسان",
+      "subject": "science",
+      "subjectLabel": "علوم",
+      "level": "ابتدائي ٣–٤",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "cartoon",
+      "format": "16:9",
+      "duration": 30.7,
+      "beats": 7,
+      "kinds": [
+        "draw",
+        "label"
+      ]
+    },
+    {
+      "id": "sci-magnetism",
+      "file": "sci-magnetism.json",
+      "title": "المغناطيس",
+      "subject": "science",
+      "subjectLabel": "علوم",
+      "level": "ابتدائي ٤–٥",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "chalkboard",
+      "format": "16:9",
+      "duration": 43.2,
+      "beats": 7,
+      "kinds": [
+        "draw",
+        "write"
+      ]
+    },
+    {
+      "id": "sci-plant-parts",
+      "file": "sci-plant-parts.json",
+      "title": "أجزاء النبات",
+      "subject": "science",
+      "subjectLabel": "علوم",
+      "level": "ابتدائي ١–٢",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "whiteboard",
+      "format": "9:16",
+      "duration": 29.3,
+      "beats": 7,
+      "kinds": [
+        "write",
+        "draw",
+        "label"
+      ]
+    },
+    {
+      "id": "sci-solar-system",
+      "file": "sci-solar-system.json",
+      "title": "المجموعة الشمسية",
+      "subject": "science",
+      "subjectLabel": "علوم",
+      "level": "ابتدائي ٥–٦",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "chalkboard",
+      "format": "16:9",
+      "duration": 47.8,
+      "beats": 8,
+      "kinds": [
+        "orbit",
+        "highlight",
+        "write",
+        "draw"
+      ]
+    },
+    {
+      "id": "sci-states-of-matter",
+      "file": "sci-states-of-matter.json",
+      "title": "حالات المادة",
+      "subject": "science",
+      "subjectLabel": "علوم",
+      "level": "ابتدائي ٣–٤",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "cartoon",
+      "format": "9:16",
+      "duration": 36.4,
+      "beats": 7,
+      "kinds": [
+        "draw",
+        "grid",
+        "write",
+        "numberline"
+      ]
+    },
+    {
+      "id": "sci-water-cycle",
+      "file": "sci-water-cycle.json",
+      "title": "دورة الماء في الطبيعة",
+      "subject": "science",
+      "subjectLabel": "علوم",
+      "level": "ابتدائي ٤–٥",
+      "stage": "primary",
+      "stageLabel": "ابتدائي",
+      "style": "whiteboard",
+      "format": "16:9",
+      "duration": 32.6,
+      "beats": 8,
+      "kinds": [
+        "draw",
+        "write",
+        "label",
+        "highlight"
+      ]
+    }
+  ]
+}

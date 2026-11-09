@@ -1,0 +1,199 @@
+{
+  "meta": {
+    "id": "creators-lighting",
+    "subject": "creators",
+    "subjectLabel": "صناعة المحتوى",
+    "level": "صنّاع محتوى",
+    "stage": "adults"
+  },
+  "title": "أساسيات الإضاءة",
+  "format": "9:16",
+  "style": "whiteboard",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّمة",
+    "gender": "female",
+    "shirt": "#E0701A",
+    "hijab": "#1C5FAD"
+  },
+  "beats": [
+    {
+      "say": "الإضاءة الجيدة تجعل الفيديو احترافيًا، حتى لو صورت بهاتف بسيط.",
+      "write": {
+        "text": "الإضاءة الثلاثية",
+        "at": [
+          500,
+          100
+        ],
+        "size": 76,
+        "color": "blue",
+        "underline": true
+      },
+      "draw": [
+        {
+          "shape": "emoji",
+          "value": "🙂",
+          "at": [
+            500,
+            430
+          ],
+          "size": 150
+        },
+        {
+          "shape": "emoji",
+          "value": "📱",
+          "at": [
+            500,
+            860
+          ],
+          "size": 110
+        }
+      ]
+    },
+    {
+      "say": "الضوء الرئيسي هو أقوى ضوء، ونضعه أمام الشخص بزاوية خمس وأربعين درجة تقريبًا.",
+      "draw": [
+        {
+          "shape": "emoji",
+          "value": "💡",
+          "at": [
+            800,
+            690
+          ],
+          "size": 120
+        },
+        {
+          "shape": "arrow",
+          "from": [
+            740,
+            630
+          ],
+          "to": [
+            590,
+            500
+          ],
+          "color": "orange"
+        }
+      ],
+      "write": {
+        "text": "رئيسي",
+        "at": [
+          800,
+          800
+        ],
+        "size": 50,
+        "color": "orange"
+      }
+    },
+    {
+      "say": "ضوء التعبئة أضعف، نضعه في الجهة الأخرى ليخفف الظلال.",
+      "draw": [
+        {
+          "shape": "emoji",
+          "value": "💡",
+          "at": [
+            200,
+            690
+          ],
+          "size": 90
+        },
+        {
+          "shape": "arrow",
+          "from": [
+            250,
+            630
+          ],
+          "to": [
+            410,
+            500
+          ],
+          "color": "yellow",
+          "dash": true
+        }
+      ],
+      "write": {
+        "text": "تعبئة",
+        "at": [
+          200,
+          800
+        ],
+        "size": 50,
+        "color": "yellow"
+      }
+    },
+    {
+      "say": "والضوء الخلفي يكون خلف الشخص، فيفصله عن الخلفية.",
+      "draw": [
+        {
+          "shape": "emoji",
+          "value": "💡",
+          "at": [
+            760,
+            230
+          ],
+          "size": 90
+        },
+        {
+          "shape": "arrow",
+          "from": [
+            710,
+            260
+          ],
+          "to": [
+            580,
+            360
+          ],
+          "color": "purple"
+        }
+      ],
+      "write": {
+        "text": "خلفي",
+        "at": [
+          880,
+          230
+        ],
+        "size": 50,
+        "color": "purple"
+      }
+    },
+    {
+      "say": "وإن لم تملك أضواء، فقف أمام نافذة في النهار، وتجنب ضوء السقف المباشر فوق رأسك.",
+      "erase": true,
+      "draw": {
+        "shape": "emoji",
+        "value": "🪟",
+        "at": [
+          500,
+          420
+        ],
+        "size": 260
+      },
+      "write": {
+        "text": "النافذة أمامك = ضوء ناعم",
+        "at": [
+          500,
+          760
+        ],
+        "size": 58,
+        "color": "green",
+        "box": "green"
+      }
+    },
+    {
+      "say": "أي ضوء هو الأقوى في الإضاءة الثلاثية؟",
+      "quiz": {
+        "options": [
+          "الرئيسي",
+          "التعبئة",
+          "الخلفي"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "say": "الضوء الرئيسي! الآن جرّبوا ترتيب أضوائكم.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

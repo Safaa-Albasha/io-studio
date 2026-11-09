@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "id": "math-equations",
+    "subject": "math",
+    "subjectLabel": "رياضيات",
+    "level": "متوسط ١",
+    "stage": "middle"
+  },
+  "title": "حل المعادلة خطوة بخطوة",
+  "format": "9:16",
+  "style": "whiteboard",
+  "numerals": "western",
+  "character": {
+    "name": "المعلّمة",
+    "shirt": "#1C5FAD",
+    "hijab": "#D7263D"
+  },
+  "beats": [
+    {
+      "say": "عدنا معادلة: اثنين س زائد ثلاثة يساوي احدعش.",
+      "mood": "thinking",
+      "equation": {
+        "lines": [
+          "2x + 3 = 11"
+        ],
+        "at": [
+          500,
+          140
+        ],
+        "size": 90
+      }
+    },
+    {
+      "say": "نطرح ثلاثة من الطرفين حتى نتخلص منها.",
+      "equation": {
+        "lines": [
+          "2x + 3 − 3 = 11 − 3"
+        ],
+        "at": [
+          500,
+          330
+        ],
+        "size": 70,
+        "color": "blue"
+      }
+    },
+    {
+      "say": "صار اثنين س يساوي ثمانية.",
+      "equation": {
+        "lines": [
+          "2x = 8"
+        ],
+        "at": [
+          500,
+          500
+        ],
+        "size": 90
+      }
+    },
+    {
+      "say": "نقسم الطرفين على اثنين.",
+      "equation": {
+        "lines": [
+          "2x ÷ 2 = 8 ÷ 2"
+        ],
+        "at": [
+          500,
+          670
+        ],
+        "size": 70,
+        "color": "blue"
+      }
+    },
+    {
+      "say": "والجواب: س يساوي أربعة!",
+      "write": {
+        "text": "x = 4",
+        "at": [
+          500,
+          860
+        ],
+        "size": 110,
+        "color": "red",
+        "dir": "ltr",
+        "box": "green"
+      }
+    },
+    {
+      "say": "نتأكد: اثنين ضرب أربعة زائد ثلاثة يساوي احدعش. صح!",
+      "erase": true,
+      "equation": {
+        "lines": [
+          "2 × 4 + 3",
+          "8 + 3",
+          "11 ✓"
+        ],
+        "at": [
+          500,
+          220
+        ],
+        "size": 90
+      }
+    },
+    {
+      "say": "جربوا: س زائد خمسة يساوي تسعة. س كم؟",
+      "erase": true,
+      "quiz": {
+        "options": [
+          "4",
+          "5",
+          "14"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "say": "أربعة! عاشت إيدكم.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

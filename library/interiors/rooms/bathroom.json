@@ -1,0 +1,184 @@
+{
+  "id": "bathroom",
+  "version": 1,
+  "name": "Bathroom",
+  "name_ar": "حمّام",
+  "style": "minimal",
+  "description_ar": "حمام ٢٫٦×٢٫٤ م: بانيو، مغسلة مع كبت ومراية، تواليت، أرضية وجدار سيراميك.",
+  "room": {
+    "width": 2.6,
+    "depth": 2.4,
+    "height": 2.7
+  },
+  "walls": [
+    {
+      "side": "north",
+      "material": "tile-white",
+      "openings": [
+        {
+          "type": "window",
+          "offset": 0.3,
+          "width": 0.5,
+          "height": 0.5,
+          "sill": 1.7
+        }
+      ]
+    },
+    {
+      "side": "south",
+      "openings": [
+        {
+          "type": "door",
+          "offset": 1.5,
+          "width": 0.8,
+          "height": 2.05
+        }
+      ]
+    },
+    {
+      "side": "east"
+    },
+    {
+      "side": "west"
+    }
+  ],
+  "floor": {
+    "material": "tile-grey"
+  },
+  "lighting": {
+    "time_of_day": "noon",
+    "lamps": [
+      {
+        "type": "area",
+        "position": [
+          1.3,
+          1.2,
+          2.66
+        ],
+        "power": 120,
+        "size": 0.5
+      }
+    ]
+  },
+  "furniture": [
+    {
+      "id": "tub",
+      "type": "bathtub",
+      "wall": "north",
+      "at": 1.72
+    },
+    {
+      "id": "vanity",
+      "type": "vanity",
+      "wall": "west",
+      "at": 0.75
+    },
+    {
+      "id": "toilet",
+      "type": "toilet",
+      "wall": "west",
+      "at": 1.72,
+      "gap": 0.05
+    }
+  ],
+  "decor": [
+    {
+      "id": "mirror",
+      "type": "mirror-round",
+      "wall": "west",
+      "at": 0.75,
+      "elevation": 1.2,
+      "size": [
+        0.6,
+        0.04,
+        0.6
+      ]
+    },
+    {
+      "id": "towel",
+      "type": "towel-rail",
+      "wall": "east",
+      "at": 0.9,
+      "elevation": 1
+    },
+    {
+      "id": "candles",
+      "type": "candles",
+      "position": [
+        2.4,
+        1.85
+      ],
+      "elevation": 0.58
+    },
+    {
+      "id": "plant",
+      "type": "plant-small",
+      "position": [
+        0.18,
+        0.5
+      ],
+      "elevation": 0.85
+    },
+    {
+      "id": "basket",
+      "type": "basket",
+      "position": [
+        2.3,
+        0.35
+      ]
+    }
+  ],
+  "cameras": {
+    "stills": [
+      {
+        "name": "wide",
+        "position": [
+          2.3,
+          0.2,
+          1.6
+        ],
+        "target": [
+          0.8,
+          1.9,
+          0.8
+        ]
+      },
+      {
+        "name": "tub",
+        "position": [
+          1.4,
+          0.25,
+          1.2
+        ],
+        "target": [
+          1.9,
+          2.2,
+          0.5
+        ]
+      }
+    ],
+    "walkthrough": {
+      "points": [
+        [
+          1.9,
+          0.2
+        ],
+        [
+          1.7,
+          0.6
+        ]
+      ],
+      "seconds": 5,
+      "target": [
+        0.9,
+        1.8,
+        0.9
+      ]
+    }
+  },
+  "outputs": [
+    "9:16",
+    "16:9",
+    "3:4"
+  ]
+}

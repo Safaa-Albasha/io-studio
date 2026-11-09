@@ -1,0 +1,742 @@
+{
+ "version": 1,
+ "note": "حركات 201–232 — الدوال بـmotion/moves-plus-c.js، المعاينات بـmotion/moves/render-preview-c.js، الشرح بـreferences/reel-studio-visuals.md. 201–227 منقولة ومكتوبة من جديد على الكانفس من Reel Studio (MIT، © 2026 Mohamed Abdou)؛ 228–232 ستايل «لقطة» (تصميم أصلي). نفس مخطط catalog.json.",
+ "moves": [
+  {
+   "n": 201,
+   "id": "kashidaLive",
+   "cat": "text",
+   "name": "كشيدة حية",
+   "sub": "الكلمة تتمدد وجيرانها يفسحون",
+   "desc": "لحظة نطق الكلمة المهمة تتمدد على وصلة حروفها بكشيدة حقيقية بموضع صالح ثم ترجع، والكلمات حولها تنزاح والسطر ما ينكسر. عنوان أو كابشن.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/201.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "calm",
+    "punch"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 202,
+   "id": "stampHide",
+   "cat": "text",
+   "name": "ختم يحجب الكلمة",
+   "sub": "حبر يغطي وختم «محذوف»",
+   "desc": "السطر يطلع، وشريط حبر خشن يغطي الكلمة المحجوبة على وقتها، وبعده ختم مايل ينطبع برجّة. عكس «الحقيقة تنكشف».",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/202.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "contrast",
+    "hit"
+   ]
+  },
+  {
+   "n": 203,
+   "id": "keyhole",
+   "cat": "transition",
+   "name": "ثقب المفتاح",
+   "sub": "فتحة تكبر وتكشف",
+   "desc": "المشهد الجديد يطلع من فتحة على شكل ثقب مفتاح تكبر من نقطة لين تغطي الشاشة، بحافة بلون الهوية.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/203.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 204,
+   "id": "inkSlab",
+   "cat": "transition",
+   "name": "لوح حبر",
+   "sub": "مسحة حبر سريعة",
+   "desc": "لوح حبر غامق بحافة لون الهوية يمسح الشاشة من اليمين لليسار بسرعة، ووراه يطلع المشهد الجديد.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/204.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "reveal"
+   ]
+  },
+  {
+   "n": 205,
+   "id": "paperPull",
+   "cat": "transition",
+   "name": "سحب الورقة",
+   "sub": "ورقة تنسحب لفوق",
+   "desc": "المشهد القديم ورقة تنسحب لفوق وتميل بحافة تحتية ممزقة وظل، وتكشف الجديد تحتها.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/205.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 206,
+   "id": "magazineFlip",
+   "cat": "transition",
+   "name": "قلب صفحة مجلة",
+   "sub": "صفحة تنقلب بمنظور",
+   "desc": "المشهد القديم صفحة مجلة تنقلب على مفصلها بمنظور ثلاثي الأبعاد (مفصل يمين = اتجاه الكتاب العربي) وظلها يطيح على الجديد.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/206.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "reveal",
+    "list"
+   ]
+  },
+  {
+   "n": 207,
+   "id": "paperSwap",
+   "cat": "transition",
+   "name": "تبديل الورقة",
+   "sub": "ورقة ملوّنة تعبر",
+   "desc": "ورقة ملوّنة ضخمة بحواف مقصوصة وشريط لاصق تعبر الشاشة من اليمين لليسار وتغطيها بالنص ثم تكشف الجديد.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/207.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 208,
+   "id": "pixelCurtain",
+   "cat": "transition",
+   "name": "ستارة بكسلات",
+   "sub": "مربعات تغطي وتتفكك",
+   "desc": "مربعات صغيرة بلون الخلفية تتكوّن لين تغطي الشاشة، ثم تتفكك مربع مربع وتكشف المشهد الجديد.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/208.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "tech",
+    "reveal"
+   ]
+  },
+  {
+   "n": 209,
+   "id": "sceneCam",
+   "cat": "camera",
+   "name": "كاميرا المشهد",
+   "sub": "زوم · دوران · اقتراب · يد",
+   "desc": "أربع حركات كاميرا بقوة ناعمة/عادية/قوية: ضربة زوم على لحظة، دوران بمنظور، اقتراب بطيء، كاميرا باليد — للإطار كامل أو لنص الرسوم بالمشهد المقسوم، وتكبر بالقدر اللي يغطي بلا حواف.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/209.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 2,
+   "families": [
+    "calm",
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "emphasis",
+    "hit"
+   ],
+   "fallback": "بلا area تشتغل على الإطار كامل"
+  },
+  {
+   "n": 210,
+   "id": "risoLook",
+   "cat": "camera",
+   "name": "طباعة ريزو",
+   "sub": "حبرين على ورق",
+   "desc": "الفيديو يصير مطبوع بحبرين (أزرق ووردي فسفوري أو ألوانك) بحبيبات طباعة وانزياح تسجيل خفيف على ورق دافي. الكابشن ينرسم بعده فيبقى واضح.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/210.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": []
+  },
+  {
+   "n": 211,
+   "id": "blueprintLook",
+   "cat": "camera",
+   "name": "بلوبرنت",
+   "sub": "مخطط أزرق بخطوط بيضا",
+   "desc": "الفيديو يصير مخطط هندسي أزرق: إضاءة بين أزرقين وخطوط بيضا على الحواف، وشبكة وزوايا وخطوط قياس.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/211.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "tech"
+   ]
+  },
+  {
+   "n": 212,
+   "id": "paperLook",
+   "cat": "camera",
+   "name": "ورق مطبوع",
+   "sub": "كأنه مطبوع على ورقة",
+   "desc": "ملمس ورق بالضرب فوق الفيديو بنص القوة فالبشرة تبقى طبيعية؛ وبلا فيديو يصير خلفية ورق لمشاهد العناوين.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/212.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": []
+  },
+  {
+   "n": 213,
+   "id": "sunburst",
+   "cat": "card",
+   "name": "شمس تدور",
+   "sub": "أشعة خلف العنوان",
+   "desc": "خلفية عنوان: 16 شعاع بدرجتين من لون الخلفية مايلين للون الهوية تلف ببطء، والكلام فوقها يبقى مقروء.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/213.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "punch",
+    "calm"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 214,
+   "id": "mapRoute",
+   "cat": "card",
+   "name": "خريطة بمسار",
+   "sub": "خط أحمر بين الأماكن",
+   "desc": "خريطة ورقية (بحر ويابسة وحدود — فلسطين دولة) وخط أحمر يمشي بين الأماكن اللي تحددها، وكل مكان يطلع بدبوس واسم لما يوصله الخط.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/214.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "list",
+    "reveal"
+   ]
+  },
+  {
+   "n": 215,
+   "id": "mapFocus",
+   "cat": "card",
+   "name": "تقريب على بلد",
+   "sub": "الخريطة تقرّب وتلوّن",
+   "desc": "الخريطة الورقية تقرّب من المنطقة على بلد واحد، يتلوّن ويطلع اسمه من البيانات. الافتراضي فلسطين.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/215.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 216,
+   "id": "tornPhoto",
+   "cat": "card",
+   "name": "صورة ممزقة الحواف",
+   "sub": "بطاقة وثائقية",
+   "desc": "على ورق الوثائقي: بطاقة صورة من فيديوك بحواف ممزقة وألوان باهتة شوي ومايلة، تحتها سطر المصدر وشريط تعليق ممزق وحبيبات أرشيفية.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/216.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 217,
+   "id": "layeredSpeaker",
+   "cat": "card",
+   "name": "حوالين المتكلم",
+   "sub": "كلمة وراك وكلمات حول راسك",
+   "desc": "كلمة كبيرة وراك تتمدد بالكشيدة، وكلمات تطلع يمين ويسار وفوق راسك بحد عريض، وعلامة يد (دائرة/خط/تظليل/شطب/سهم) على الكلمة المهمة.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/217.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "emphasis",
+    "contrast"
+   ],
+   "mask": "optional",
+   "face": "optional",
+   "fallback": "الكلمة الكبيرة فوق الراس (ما تغطي الوجه) والكلمات حوله"
+  },
+  {
+   "n": 218,
+   "id": "proofScreen",
+   "cat": "card",
+   "name": "صفحة تنبني من كلامك",
+   "sub": "ويب · لوحة أرقام · محادثة",
+   "desc": "نافذة متصفح أو لوحة أرقام أو محادثة تنبني بلوك بلوك من نصوصك وأرقامك، ثم الكاميرا تقترب من البلوك المهم ويخفت الباقي.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/218.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "tech",
+    "number",
+    "reveal"
+   ]
+  },
+  {
+   "n": 219,
+   "id": "barsToLine",
+   "cat": "card",
+   "name": "أعمدة تصير خط",
+   "sub": "نفس الأرقام كاتجاه",
+   "desc": "أعمدة تكبر بأرقامك، ثم تنكمش لنقاط على رؤوسها ويرتسم خط الاتجاه ومساحة تحته.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/219.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "number"
+   ]
+  },
+  {
+   "n": 220,
+   "id": "automationFlow",
+   "cat": "card",
+   "name": "نبض الأتمتة",
+   "sub": "من المحفّز للنتيجة",
+   "desc": "كروت خطوات موصولة بخط من فوق لتحت، نبضة ضوء تمشي وتولّع كل خطوة، وكرت النتيجة ينط.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/220.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "tech",
+    "list"
+   ]
+  },
+  {
+   "n": 221,
+   "id": "branchPath",
+   "cat": "card",
+   "name": "مسار بشرط",
+   "sub": "نعم أو لا",
+   "desc": "كرت المدخل، معيّن الشرط، وفرعين؛ النبضة تختار فرع واحد والثاني يخفت.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/221.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "contrast",
+    "tech"
+   ]
+  },
+  {
+   "n": 222,
+   "id": "identityFilter",
+   "cat": "card",
+   "name": "فلترة الكروت",
+   "sub": "الشروط تصفّي",
+   "desc": "شبكة كروت بوسوم، والشروط تطلع وحدة وحدة؛ اللي ما يطابق يبهت بعلامة ✕ والباقين يتلوّنون.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/222.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "list",
+    "contrast"
+   ]
+  },
+  {
+   "n": 223,
+   "id": "promptCards",
+   "cat": "card",
+   "name": "طلب واحد وكروت كثيرة",
+   "sub": "سطر يطلع نتائج",
+   "desc": "صندوق طلب ينكتب فيه سطر، زر إرسال ينضغط، وبعده كروت نتائج تنفتح تحت.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/223.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "tech",
+    "list"
+   ]
+  },
+  {
+   "n": 224,
+   "id": "chaosToBrand",
+   "cat": "card",
+   "name": "فوضى تصير علامة",
+   "sub": "الأشياء تتجمع",
+   "desc": "كلمات وأشكال متناثرة تطفو بفوضى، ثم تنجذب للنص وتصير دائرة العلامة ويطلع الاسم جنبها.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/224.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 225,
+   "id": "systemLayers",
+   "cat": "card",
+   "name": "طبقات النظام",
+   "sub": "ألواح فوق بعض",
+   "desc": "ألواح متساوية القياس تنبني من تحت لفوق كل لوح باسمه، وبعدها تنفصل شوي عن بعض.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/225.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "tech",
+    "list"
+   ]
+  },
+  {
+   "n": 226,
+   "id": "buttonWindow",
+   "cat": "card",
+   "name": "زر يصير نافذة",
+   "sub": "نقرة تفتح العرض",
+   "desc": "مؤشر ينقر زر، والزر نفسه يتمدد ويصير نافذة كبيرة فيها العنوان والسطور.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/226.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "cta",
+    "tech"
+   ]
+  },
+  {
+   "n": 227,
+   "id": "magneticDock",
+   "cat": "card",
+   "name": "شريط الأدوات",
+   "sub": "تعرّف على الأدوات",
+   "desc": "شريط أدوات مثل الماك؛ المؤشر يمر على الأيقونات وحدة وحدة، الأيقونة تكبر وفوقها اسم الأداة.",
+   "source": {
+    "label": "Reel Studio (MIT, Mohamed Abdou) — adapted",
+    "url": "https://github.com/mohamedabdou-ai/reel-studio"
+   },
+   "preview": "previews/227.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "tech",
+    "list"
+   ]
+  },
+  {
+   "n": 228,
+   "id": "questionCard",
+   "cat": "text",
+   "name": "كرت السؤال",
+   "sub": "لوح غامق وسؤال عريض",
+   "desc": "ستايل «لقطة»: لوح غامق يطلع من تحت، علامة بأقواس، شرطة بلون الهوية، والسؤال بخط عريض سطرين كلمة كلمة.",
+   "source": {
+    "label": "I/O Studio — ستايل «لقطة» (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/228.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 229,
+   "id": "iconPop",
+   "cat": "card",
+   "name": "أيقونة تطفو",
+   "sub": "؟ · ! · zZz · لمبة",
+   "desc": "فقاعة بيضا فيها ؟ أو ! أو zZz أو لمبة تفرقع جنب الراس وتتمايل. تلحق الوجه لو فيه تتبع.",
+   "source": {
+    "label": "I/O Studio — ستايل «لقطة» (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/229.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "punch"
+   ],
+   "cues": [
+    "emphasis"
+   ],
+   "face": "optional",
+   "fallback": "مكان ثابت (o.x, o.y)"
+  },
+  {
+   "n": 230,
+   "id": "kenBurns25D",
+   "cat": "camera",
+   "name": "صورة بعمق",
+   "sub": "زوم بطبقتين 2.5D",
+   "desc": "صورة ثابتة تتحرك ببطء بطبقتين: الشخص أو المقدمة تتحرك أكثر من الخلفية مع نَفَس خفيف.",
+   "source": {
+    "label": "I/O Studio — ستايل «لقطة» (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/230.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [],
+   "mask": "optional",
+   "fallback": "المقدمة = النص التحتاني من الصورة بحافة ناعمة"
+  },
+  {
+   "n": 231,
+   "id": "brandBracket",
+   "cat": "card",
+   "name": "علامة بأقواس",
+   "sub": "اسمك بين زوايا",
+   "desc": "علامتك بين أقواس زوايا ترتسم وتحتها معرّف صغير — ختم ثابت بزاوية الشاشة.",
+   "source": {
+    "label": "I/O Studio — ستايل «لقطة» (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/231.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "cta"
+   ]
+  },
+  {
+   "n": 232,
+   "id": "seriesEndCard",
+   "cat": "card",
+   "name": "كرت الحلقة الجاية",
+   "sub": "«الحلقة الجاية: …»",
+   "desc": "نفس شكل «لقطة»: الصورة تغمق، لوح غامق، علامة وشرطة، «الحلقة الجاية» وعنوانها كسؤال، وكبسولة «تابع عشان ما تفوتك».",
+   "source": {
+    "label": "I/O Studio — ستايل «لقطة» (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/232.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "cta"
+   ]
+  }
+ ]
+}

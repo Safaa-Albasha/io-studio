@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I/O Studio · آي أو استوديو</title>
+<link rel="icon" href="lib/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="lib/brand.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--font);line-height:1.7}
+.wrap{max-width:960px;margin:0 auto;padding:40px 16px}
+.logo.sf-mark{width:64px;height:64px;border-radius:20px;font-size:36px}
+.head{padding-bottom:18px;margin-bottom:24px}
+h1{font-size:36px;margin:14px 0 4px}
+.sub{color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+a.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;color:inherit;text-decoration:none}
+a.card:hover{border-color:var(--accent)}
+a.hero{display:flex;gap:16px;align-items:center;background:linear-gradient(160deg,var(--accent),var(--accent-strong));color:var(--accent-ink);box-shadow:var(--shadow);border-radius:20px;padding:20px 22px;margin:0 0 18px;text-decoration:none}
+a.hero b{font-size:22px;display:block}a.hero p{margin:0;opacity:.92}a.hero .icon{font-size:40px}
+.card b{font-size:20px;display:block;margin:6px 0}
+.card p{margin:0;color:var(--muted)}
+.icon{font-size:32px}
+.pl{display:flex;gap:8px;margin:22px 0 0;flex-wrap:wrap}
+.pl span{border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:14px}
+footer{margin-top:40px;color:var(--muted);font-size:14px}
+code{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1px 6px;direction:ltr;display:inline-block}
+</style>
+</head>
+<body class="sf-page">
+<div class="wrap">
+  <div class="head sf-letterbox">
+  <div class="logo sf-mark"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#5CB8F0"/><path d="M10.5 17h11.5v4.6h-2.6v20.8h2.6V47H10.5v-4.6h2.6V21.6h-2.6z" fill="#14181D"/><ellipse cx="47.4" cy="32" rx="8.6" ry="12.2" fill="none" stroke="#14181D" stroke-width="5.6"/><path d="M22 32h14.2" stroke="#F2FAFF" stroke-width="1.6" stroke-linecap="round"/><path d="M29.1 26.4Q30.1 31.0 34.7 32Q30.1 33.0 29.1 37.6Q28.1 33.0 23.5 32Q28.1 31.0 29.1 26.4z" fill="#FFFFFF"/></svg></div>
+  <h1>I/O Studio <span class="sf-ar">· آي أو استوديو</span></h1>
+  <div class="sf-io" role="group" aria-label="I/O Studio — Input · Output"><b aria-hidden="true">I</b><span class="sf-io-line spark" aria-hidden="true"></span><div class="sf-io-mid"><p class="sf-slogan">«فكرتك تدخل… والذكاء يكمّل الإبداع»<span class="sf-slogan-en" lang="en">Idea in. Story out.</span><span class="sf-slogan-sub" lang="en">AI does the in-between.</span></p></div><span class="sf-io-line" aria-hidden="true"></span><b aria-hidden="true">O</b></div>
+  <p class="sub">أدوات عربية مجانية لصنّاع المحتوى — تشتغل داخل Claude Code، وهنا صفحاته بالمتصفح.</p>
+  </div>
+  <a class="hero" href="app.html"><span class="icon">🧩</span><span><b>برنامج آي أو استوديو — من الفكرة للجدول للبناء</b><p>أفكار من مصادرك، تقويم للمنصات الثلاث، خطوات البناء، وكل المكتبات (حركات، أصوات، ألوان، دروس) بمكان واحد.</p></span></a>
+  <div class="grid">
+    <a class="card" href="studio.html"><span class="icon">🎙️</span><b>استوديو التسجيل</b><p>شرائح أو شاشة أو مشهد متحرك، والكاميرا بالزاوية، وملقّن يقرا نص كل شريحة.</p></a>
+    <a class="card" href="course-studio/studio.html"><span class="icon">🎬</span><b>استوديو الكورسات</b><p>استوديو أكبر: PDF، شاشتين، ميني بار، MP4 جاهز للمونتاج.</p></a>
+    <a class="card" href="dashboard.html"><span class="icon">📊</span><b>الإحصائيات وتقييم المحتوى</b><p>إنستقرام (سحب يومي عبر Claude + Composio) ويوتيوب وتيك توك جنب بعض، وتقييم كل ريل: الهوك وليش نجح أو فشل.</p></a>
+    <a class="card" href="instagram.html"><span class="icon">📱</span><b>إنستقرام — حسابك وتحليل كل ريل</b><p>صفحة بشكل التطبيق: مؤشراتك بدوائر، شبكة الريلز بدرجة كل ريل، جمهورك، وشاشة إحصائيات لكل ريل مع تحليل الهوك وخطة الأسبوع.</p></a>
+    <a class="card" href="lessons.html"><span class="icon">🧑‍🏫</span><b>مكتبة الدروس</b><p>29 درس: سبورة طبشور، رياضيات، فيزياء، حروف، علوم.</p></a>
+    <a class="card" href="sfx.html"><span class="icon">🔊</span><b>المؤثرات الصوتية</b><p>104 صوت: ووش، بوب، ضربات، عدّ تنازلي، كرتون.</p></a>
+    <a class="card" href="looks.html"><span class="icon">🎨</span><b>الألوان والفلاتر</b><p>60 لوك سينمائي وفلتر، قبل وبعد، وملفات LUT.</p></a>
+    <a class="card" href="interior.html"><span class="icon">🛋️</span><b>التصميم الداخلي</b><p>غرف وستايلات وأثاث ثلاثي الأبعاد، ويتصدّر لـ Blender.</p></a>
+    <a class="card" href="content-guide.html"><span class="icon">📘</span><b>دليل الكاروسيل</b><p>شلون تطلع كاروسيل احترافي بهويتك من أي خبر.</p></a>
+  </div>
+  <div class="pl"><span>إنستقرام</span><span>يوتيوب</span><span>تيك توك</span></div>
+  <footer>
+    الكاميرا والحفظ بالمجلد يحتاجون <code>https</code> أو <code>localhost</code>: شغّل <code>node engine/serve.js</code> وافتح الرابط اللي يطلع.<br>
+    من صفاء البشا — <a href="https://instagram.com/safaaio" style="color:inherit">@safaaio</a> · مجاني ومفتوح المصدر (MIT)
+  </footer>
+</div>
+</body>
+</html>

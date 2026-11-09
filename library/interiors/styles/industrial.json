@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "id": "industrial",
+  "name_ar": "إندستريال (صناعي)",
+  "name_en": "Industrial",
+  "description_ar": "طابوق مكشوف، كونكريت، حديد أسود، خشب غامق وجلد. يناسب الاستوديوهات والكافيهات وغرف الشباب.",
+  "palette": [
+    "#9b4a32",
+    "#2a2a2c",
+    "#6e4a31",
+    "#9a9894",
+    "#8b4a24"
+  ],
+  "materials": {
+    "wall": "brick-red",
+    "floor": "concrete",
+    "ceiling": "concrete",
+    "main": "leather-cognac",
+    "cushion": {
+      "kind": "fabric",
+      "color": "#6d6a64",
+      "roughness": 0.95
+    },
+    "accent": {
+      "kind": "fabric",
+      "color": "#3e4a3d",
+      "roughness": 0.9
+    },
+    "wood": "walnut",
+    "metal": "black-steel",
+    "fabric": {
+      "kind": "fabric",
+      "color": "#5e5b55",
+      "roughness": 0.95
+    },
+    "rug": {
+      "kind": "fabric",
+      "color": "#5b4d42",
+      "roughness": 1
+    },
+    "rug2": {
+      "kind": "fabric",
+      "color": "#77665a",
+      "roughness": 1
+    },
+    "stone": "concrete",
+    "frame": "matte-black",
+    "door": "matte-black",
+    "trim": "matte-black",
+    "paper": {
+      "kind": "plain",
+      "color": "#e8dfcf",
+      "roughness": 0.8
+    }
+  },
+  "swaps": {
+    "pendant-lamp": "pendant-lamp"
+  },
+  "recommended": [
+    "sofa",
+    "coffee-table",
+    "bookshelf",
+    "pendant-lamp",
+    "plant-tall",
+    "bar-stool"
+  ],
+  "lighting": {
+    "time_of_day": "golden",
+    "lamp_color": "#ffc27a"
+  },
+  "tips_ar": [
+    "الضوء الأصفر الدافئ يطلّع ملمس الطابوق.",
+    "صور بزاوية جانبية حتى يبين عمق الجدار."
+  ]
+}

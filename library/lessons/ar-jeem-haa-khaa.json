@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "id": "ar-jeem-haa-khaa",
+    "subject": "arabic",
+    "subjectLabel": "العربي",
+    "level": "أطفال ٥–٧",
+    "stage": "kindergarten"
+  },
+  "title": "الجيم والحاء والخاء",
+  "format": "9:16",
+  "style": "paper",
+  "board": {
+    "paper": "lined"
+  },
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّمة",
+    "shirt": "#2E8B57",
+    "hijab": "#C2417F",
+    "position": "left"
+  },
+  "beats": [
+    {
+      "say": "ثلاث حروف أخوات، نفس الشكل بس النقطة تفرق.",
+      "mood": "happy",
+      "write": {
+        "text": "ج  ح  خ",
+        "at": [
+          500,
+          480
+        ],
+        "size": 200,
+        "color": "blue"
+      }
+    },
+    {
+      "say": "نبدأ بالحاء: بدون نقطة. نتتبع الخط سوا.",
+      "erase": true,
+      "alphabet": {
+        "letter": "ح",
+        "at": [
+          500,
+          470
+        ],
+        "size": 760
+      }
+    },
+    {
+      "say": "نحط نقطة جوه البطن، يصير جيم.",
+      "erase": true,
+      "alphabet": {
+        "letter": "ج",
+        "at": [
+          500,
+          470
+        ],
+        "size": 760
+      }
+    },
+    {
+      "say": "ونقطة فوق راسه، يصير خاء.",
+      "erase": true,
+      "alphabet": {
+        "letter": "خ",
+        "at": [
+          500,
+          520
+        ],
+        "size": 760
+      }
+    },
+    {
+      "say": "جمل، حصان، خروف!",
+      "erase": true,
+      "draw": [
+        {
+          "shape": "emoji",
+          "value": "🐪",
+          "at": [
+            800,
+            380
+          ],
+          "size": 170
+        },
+        {
+          "shape": "emoji",
+          "value": "🐴",
+          "at": [
+            500,
+            380
+          ],
+          "size": 170
+        },
+        {
+          "shape": "emoji",
+          "value": "🐑",
+          "at": [
+            200,
+            380
+          ],
+          "size": 170
+        }
+      ],
+      "write": [
+        {
+          "text": "جمل",
+          "at": [
+            800,
+            600
+          ],
+          "size": 80,
+          "color": "red"
+        },
+        {
+          "text": "حصان",
+          "at": [
+            500,
+            600
+          ],
+          "size": 80,
+          "color": "red"
+        },
+        {
+          "text": "خروف",
+          "at": [
+            200,
+            600
+          ],
+          "size": 80,
+          "color": "red"
+        }
+      ]
+    },
+    {
+      "say": "أي حرف بيه نقطة جوّه؟",
+      "erase": true,
+      "quiz": {
+        "options": [
+          "خ",
+          "ح",
+          "ج"
+        ],
+        "answer": 2
+      }
+    },
+    {
+      "say": "عاشت إيدكم! تمرنوا بالدفتر.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

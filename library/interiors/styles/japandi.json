@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "id": "japandi",
+  "name_ar": "جاباندي",
+  "name_en": "Japandi",
+  "description_ar": "خليط ياباني وإسكندنافي: أثاث واطي، خشب طبيعي، ألوان هادئة (بيج، رمادي، أسود خفيف)، خطوط بسيطة وهدوء.",
+  "palette": [
+    "#ebe5da",
+    "#b59a78",
+    "#6f6457",
+    "#2e2b28",
+    "#a3a58c"
+  ],
+  "materials": {
+    "wall": {
+      "kind": "plaster",
+      "color": "#e7e0d4",
+      "roughness": 0.95
+    },
+    "floor": "oak",
+    "main": {
+      "kind": "fabric",
+      "color": "#cbbfae",
+      "roughness": 0.95
+    },
+    "cushion": {
+      "kind": "fabric",
+      "color": "#a3a58c",
+      "roughness": 0.95
+    },
+    "accent": {
+      "kind": "fabric",
+      "color": "#6f6457",
+      "roughness": 0.9
+    },
+    "wood": "oak",
+    "metal": "matte-black",
+    "fabric": "linen",
+    "rug": {
+      "kind": "fabric",
+      "color": "#d8cfc0",
+      "roughness": 1
+    },
+    "rug2": {
+      "kind": "fabric",
+      "color": "#cdc3b2",
+      "roughness": 1
+    },
+    "stone": "travertine",
+    "frame": "dark-wood",
+    "pot": {
+      "kind": "plain",
+      "color": "#3a3632",
+      "roughness": 0.8
+    }
+  },
+  "swaps": {
+    "coffee-table": "coffee-table-low",
+    "coffee-table-round": "coffee-table-low",
+    "armchair": "floor-cushion"
+  },
+  "recommended": [
+    "loveseat",
+    "coffee-table-low",
+    "floor-cushion",
+    "bench",
+    "plant-tall",
+    "vase"
+  ],
+  "lighting": {
+    "time_of_day": "morning",
+    "lamp_color": "#ffe7c4"
+  },
+  "tips_ar": [
+    "خلي الأثاث واطي والجدران فاضية.",
+    "حركة كاميرا بطيئة جداً تناسب هالستايل."
+  ]
+}

@@ -1,0 +1,516 @@
+<!doctype html>
+<!--
+  I/O Studio · استوديو الكورسات: user guide.
+  Original work: BStudio © Kondratev Alexander, released under the MIT License (see LICENSE).
+  Arabic (RTL) localization for I/O Studio.
+-->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>دليل استوديو الكورسات</title>
+<link rel="icon" href="../lib/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="../lib/brand.css">
+<style>
+/* identity = ../lib/brand.css (sky + cinematic charcoal) */
+:root{--bar:var(--card);--btn:var(--card-2);--btn2:var(--line);--acc:var(--accent);--txt:var(--ink);
+  --sub:var(--muted);--mute:var(--muted);--rec:var(--bad);--err:var(--bad);}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;min-height:100vh;color:var(--txt);background:var(--vignette),var(--page);background-attachment:fixed;
+  font:16px/1.7 var(--font);overflow-wrap:break-word;}
+a{color:var(--acc);}
+.wrap{width:min(960px,100%);margin:0 auto;padding:0 16px 64px;}
+header.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:22px 0 16px;margin-bottom:12px;}
+header.top h1{margin:0;font-size:26px;line-height:1.25;}
+a.tostudio{display:inline-block;padding:9px 14px;border-radius:10px;background:var(--btn);color:var(--txt);text-decoration:none;font-size:15px;}
+a.tostudio:hover{background:var(--btn2);}
+header.top .brand{display:flex;align-items:center;gap:12px;}
+header.top small{display:block;font-size:13px;font-weight:500;color:var(--muted);}
+.downloads{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0;}
+.downloads>div{padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--card-2);}
+.downloads p{margin:10px 0 0;font-size:14px;color:var(--sub);}
+.downloads a{font-weight:600;}
+h2{font-size:24px;line-height:1.3;margin:6px 0 10px;}
+h3{font-size:19px;line-height:1.35;margin:30px 0 8px;}
+p,li{color:var(--ink-2);}
+.lead{color:var(--sub);font-size:16px;margin:0 0 18px;}
+/* choice cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:8px 0 14px;}
+a.pick{display:block;padding:22px 20px;border-radius:18px;background:var(--card);border:1px solid var(--line);
+  color:var(--txt);text-decoration:none;box-shadow:var(--shadow);transition:border-color .15s,transform .15s;}
+a.pick:hover{border-color:var(--acc);transform:translateY(-2px);}
+a.pick .ic{display:block;font-size:34px;line-height:1;margin-bottom:10px;}
+a.pick b{display:block;font-size:18px;line-height:1.3;}
+a.pick span.d{display:block;margin-top:6px;color:var(--sub);font-size:14px;line-height:1.45;}
+a.pick.gen{background:var(--card-2);border-style:dashed;border-color:var(--line);}
+/* covers: compact 16:9 in cards, large at the start of a section */
+img.thumb,img.cover{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;
+  border:1px solid var(--line);background:var(--card-2);}
+a.pick img.thumb{border-radius:12px;margin:0 0 14px;}
+figure.cover{padding:0;overflow:hidden;}
+figure.cover img.cover{border:0;border-radius:0;}
+@media(min-width:520px){
+  a.pick.gen{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:20px;align-items:center;}
+  a.pick.gen img.thumb{margin:0;}
+}
+a.pick.gen b{color:var(--acc);}
+.genrow{grid-column:1/-1;}
+/* sections */
+section.sec{margin-top:34px;padding:26px 22px;border-radius:18px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);}
+a.back{display:inline-block;margin-bottom:12px;color:var(--sub);text-decoration:none;font-size:14px;}
+a.back:hover{color:var(--acc);}
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:14px 0;}
+ol.steps>li{counter-increment:s;position:relative;padding-block:4px 10px;padding-inline:44px 0;}
+ol.steps>li::before{content:counter(s);position:absolute;inset-inline-start:0;top:3px;width:30px;height:30px;border-radius:50%;
+  background:var(--acc);color:var(--accent-ink);font-weight:700;font-size:15px;line-height:30px;text-align:center;}
+ul{padding-inline-start:22px;padding-inline-end:0;}
+.tip{margin:14px 0;padding-block:12px;padding-inline:16px 14px;border-inline-start:3px solid var(--acc);background:var(--sky-soft);border-radius:12px;border-start-start-radius:0;border-end-start-radius:0;}
+.tip.warn{border-inline-start-color:var(--rec);background:color-mix(in srgb,var(--bad) 12%,var(--card));}
+.tip.ok{border-inline-start-color:var(--ok);}
+.tip p{margin:4px 0;}
+figure{margin:18px 0;padding:10px;background:var(--card-2);border:1px solid var(--line);border-radius:14px;}
+figure img{display:block;width:100%;height:auto;border-radius:8px;}
+figcaption{margin-top:8px;color:var(--mute);font-size:13.5px;line-height:1.45;}
+/* button labels and keys */
+.ui{display:inline-block;padding:0 7px;border-radius:7px;background:var(--btn);border:1px solid var(--line);color:var(--txt);
+  font-weight:600;font-size:.92em;line-height:1.55;white-space:nowrap;}
+.ui.go{background:var(--acc);border-color:var(--acc);color:var(--accent-ink);}
+.ui.rec{background:color-mix(in srgb,var(--bad) 18%,var(--card));border-color:var(--bad);color:var(--ink);}
+kbd{display:inline-block;min-width:1.7em;padding:0 6px;border-radius:6px;background:var(--card-2);border:1px solid var(--line);
+  border-bottom-width:3px;color:var(--txt);font:600 .88em/1.55 ui-monospace,Menlo,monospace;text-align:center;white-space:nowrap;}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--card-2);border:1px solid var(--line);border-radius:5px;padding:0 4px;overflow-wrap:anywhere;}
+pre{margin:12px 0;padding:14px;background:var(--card-2);border:1px solid var(--line);border-radius:12px;overflow-x:auto;
+  font:14px/1.55 ui-monospace,Menlo,monospace;color:var(--ink-2);white-space:pre-wrap;}
+pre .h{color:var(--acc);}
+pre .c{color:var(--mute);}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:15px;}
+th,td{text-align:start;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line);}
+th{color:var(--sub);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:0;}
+td:first-child{white-space:nowrap;}
+.grpname{display:inline-block;font-size:12px;letter-spacing:0;text-transform:uppercase;color:var(--muted);
+  border:1px solid var(--line);border-radius:7px;padding:1px 7px;background:var(--card-2);}
+/* general section: sub-section menu */
+.gen-layout{display:block;}
+nav.gnav{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px;padding:10px 0;position:sticky;top:0;z-index:2;background:var(--card);border-bottom:1px solid var(--line);}
+nav.gnav a{padding:6px 11px;border-radius:9px;background:var(--btn);color:var(--txt);text-decoration:none;font-size:14px;}
+nav.gnav a:hover{background:var(--btn2);}
+nav.gnav a.cur{background:var(--acc);color:var(--accent-ink);}
+.sub-sec{scroll-margin-top:110px;}
+.sub-sec>h3{border-top:1px solid var(--line);padding-top:24px;}
+.sub-sec:first-child>h3{border-top:0;padding-top:0;margin-top:12px;}
+/* three ways to provide slides */
+.sources{scroll-margin-top:110px;margin:22px 0;padding:18px 16px;border:1px solid var(--acc);border-radius:16px;background:var(--card-2);}
+.sources h4{margin:0 0 6px;font-size:18px;line-height:1.35;color:var(--acc);}
+.srcs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:12px 0;}
+.srcs>div{padding:14px 14px 10px;border-radius:12px;background:var(--card-2);border:1px solid var(--line);}
+.srcs b.t{display:block;font-size:17px;line-height:1.35;margin-bottom:4px;}
+.srcs p{margin:6px 0;font-size:14.5px;line-height:1.5;}
+@media(min-width:900px){
+  .gen-layout{display:grid;grid-template-columns:210px minmax(0,1fr);gap:26px;}
+  nav.gnav{flex-direction:column;align-self:start;top:16px;border-bottom:0;padding:0;}
+  .sub-sec,.sources{scroll-margin-top:20px;}
+}
+@media(max-width:560px){
+  section.sec{padding:20px 14px;}
+  header.top h1{font-size:22px;}
+  td:first-child{white-space:normal;}
+  th,td{padding:8px 6px;overflow-wrap:anywhere;}
+  .ui{white-space:normal;}
+}
+/* with JS: show either the home page or a single section */
+.js section.sec{display:none;}
+.js section.sec.on{display:block;margin-top:6px;}
+.js body.insec #home{display:none;}
+footer{margin-top:40px;color:var(--mute);font-size:13px;text-align:center;line-height:1.9;}
+pre[dir=rtl]{font-family:Cairo,Tajawal,"Noto Naskh Arabic",ui-monospace,monospace;font-size:15px;}
+kbd{font-family:Cairo,Tajawal,ui-monospace,Menlo,monospace;}
+code{unicode-bidi:plaintext;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top sf-letterbox">
+  <div class="brand"><a class="sf-mark" href="../index.html" title="كل الصفحات" aria-label="I/O Studio · كل الصفحات"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#5CB8F0"/><path d="M10.5 17h11.5v4.6h-2.6v20.8h2.6V47H10.5v-4.6h2.6V21.6h-2.6z" fill="#14181D"/><ellipse cx="47.4" cy="32" rx="8.6" ry="12.2" fill="none" stroke="#14181D" stroke-width="5.6"/><path d="M22 32h14.2" stroke="#F2FAFF" stroke-width="1.6" stroke-linecap="round"/><path d="M29.1 26.4Q30.1 31.0 34.7 32Q30.1 33.0 29.1 37.6Q28.1 33.0 23.5 32Q28.1 31.0 29.1 26.4z" fill="#FFFFFF"/></svg></a>
+  <h1>دليل استوديو الكورسات<small>I/O Studio · استوديو الكورسات</small></h1></div>
+  <a class="tostudio" href="studio.html">→ إلى الاستوديو</a>
+</header>
+
+<!-- ================= HOME ================= -->
+<div id="home">
+  <h2>ماذا تريد أن تفعل؟</h2>
+  <p class="lead">استوديو الكورسات استوديو لتسجيل الدروس المرئية داخل المتصفح مباشرة: الشرائح والكاميرا والملقّن والتسجيل في نافذة واحدة. اختر ما تحتاجه، وسنريك الخطوات واحدة واحدة.</p>
+  <div class="cards">
+    <a class="pick" href="#screen"><img class="thumb" src="docs/img/hero-screen.webp" alt="شخص يعمل على الحاسوب: على الشاشة برنامج فيه رسم بياني، وفي زاوية الشاشة نافذة صغيرة لكاميرته" width="1280" height="720" loading="lazy"><span class="ic">🖥</span><b>تسجيل الشاشة</b><span class="d">اعرض عملك على الحاسوب، برنامجًا أو موقعًا أو شيفرة، مع الكاميرا في الزاوية.</span></a>
+    <a class="pick" href="#slides"><img class="thumb" src="docs/img/hero-slides.webp" alt="فتاة تشرح من الشرائح: على الشاشة عرض تقديمي فيه مخططات، وفي الزاوية كاميرتها" width="1280" height="720" loading="lazy"><span class="ic">🖼</span><b>تسجيل عرض تقديمي بلا ملقّن</b><span class="d">لديك شرائح، وتتحدث بكلماتك.</span></a>
+    <a class="pick" href="#prompter"><img class="thumb" src="docs/img/hero-prompter.webp" alt="شخص يتحدث إلى الكاميرا، وفوق الشاشة يمرّ نص الملقّن مع سطر مُضاء" width="1280" height="720" loading="lazy"><span class="ic">📜</span><b>تسجيل درس مع الملقّن</b><span class="d">شرائح ومعها نص يمرّ في الأعلى بينما تقرأ.</span></a>
+    <div class="genrow"><a class="pick gen" href="#general"><img class="thumb" src="docs/img/hero-general.webp" alt="لوحة تحكم الاستوديو بأزرار التشغيل والتسجيل والإيقاف والكاميرا، وبجانبها ميكروفون وكاميرا ويب" width="1280" height="720" loading="lazy"><span class="txt"><span class="ic">🧭</span><b>الوظائف العامة</b><span class="d">ما يستطيعه الاستوديو، ولوحة التحكم، واختصارات لوحة المفاتيح، وأين يُحفظ التسجيل، وماذا تفعل إن لم يعمل شيء ما.</span></span></a></div>
+  </div>
+  <div class="tip ok"><p>تحتاج إلى <b>Chrome</b> أو <b>Edge</b> على الحاسوب. Safari لا يصلح. لا حاجة لتثبيت أي شيء، فالاستوديو يُفتح من رابط.</p></div>
+</div>
+
+<!-- ================= SCREEN ================= -->
+<section class="sec" id="screen">
+  <a class="back" href="#home">→ العودة إلى كل الأقسام</a>
+  <h2>🖥 تسجيل الشاشة</h2>
+  <p class="lead">لا تحتاج إلى شرائح: يعرض الاستوديو ما على الشاشة، ويضيف الكاميرا، ويسجّل كل ذلك في فيديو واحد.</p>
+
+  <figure class="cover"><img class="cover" src="docs/img/hero-screen.webp" alt="شخص يعمل على الحاسوب: على الشاشة برنامج فيه رسم بياني، وفي زاوية الشاشة نافذة صغيرة لكاميرته" width="1280" height="720" loading="lazy"></figure>
+
+  <figure><img src="docs/img/start-screen.svg" alt="شاشة البداية في الاستوديو: أزرار «📁 اختر مجلدًا» و«▶ لنبدأ» و«🖥 مشاركة الشاشة» و«📖 الدليل»" loading="lazy"></figure>
+
+  <ol class="steps">
+    <li>افتح الاستوديو في Chrome أو Edge. إن أردت أن يُحفظ الفيديو مباشرة في مجلد معيّن فاضغط <b class="ui">«📁 اختر مجلدًا»</b>. ويمكنك ألّا تختار، فيُنزَّل الملف ببساطة بعد الإيقاف.</li>
+    <li>اضغط <b class="ui">«🖥 مشاركة الشاشة»</b>.</li>
+    <li>سيسألك Chrome عمّا تريد مشاركته: علامة تبويب أو نافذة أو الشاشة كاملة. اختر وأكّد.</li>
+    <li>إن أردت أن تظهر في الإطار فاضغط <b class="ui">«📷 تشغيل»</b> واسمح بالوصول إلى الكاميرا.</li>
+    <li>اضغط <b class="ui rec">«⏺ تسجيل»</b> أو المفتاح <kbd>R</kbd>. يبدأ العدّ التنازلي 3-2-1 ثم يبدأ التسجيل.</li>
+    <li>عند الانتهاء اضغط <b class="ui">«⏹»</b>. يُحفظ الفيديو في المجلد (أو يُنزَّل).</li>
+  </ol>
+
+  <figure><img src="docs/img/share-picker.svg" alt="نافذة Chrome «ماذا تريد أن تشارك؟»: علامة تبويب أو نافذة أو الشاشة كاملة؛ الشاشة مختارة وخانة الصوت محددة" loading="lazy">
+    <figcaption>نافذة الاختيار يرسمها Chrome نفسه. إن أردت تسجيل صوت الشاشة فحدّد خانة الصوت هنا.</figcaption></figure>
+
+  <h3>تحتاج إلى صوت الشاشة (فيديو، موسيقى، صوت برنامج)</h3>
+  <ol class="steps">
+    <li><b>قبل</b> بدء المشاركة، في مجموعة <span class="grpname">التسجيل</span> اضغط زر <b class="ui">«صوت الشاشة»</b> حتى يظهر عليه «مع الميكروفون» (أو «يسار: ميكروفون · يمين: شاشة»، أي الميكروفون والشاشة في قناتين منفصلتين).</li>
+    <li>شغّل المشاركة، وفي نافذة Chrome حدّد خانة الصوت.</li>
+  </ol>
+  <p>إن رأيت <b class="ui">«⚠ الشاشة بلا صوت»</b> فأوقف <b class="ui">«🖥 الشاشة»</b> ثم شغّلها من جديد وحدّد خانة الصوت.</p>
+
+  <h3>أفضل طريقة: شاشتان</h3>
+  <figure class="cover"><img class="cover" src="docs/img/two-monitors.webp" alt="شخص أمام شاشتين: على اليسرى شاشة العمل وعليها شريحة، وعلى اليمنى الاستوديو بالصورة نفسها وكاميرته وإطار أصفر بسهم" width="1280" height="720" loading="lazy"></figure>
+  <figure><img src="docs/img/two-monitors.svg" alt="شاشتان: على اليسار شاشة العمل التي تُسجَّل؛ وعلى اليمين نافذة الاستوديو بصورة تلك الشاشة والكاميرا وسهم أصفر مرسوم" loading="lazy">
+    <figcaption>المخطط: على اليسار ما تعرضه. وعلى اليمين الاستوديو: ترى نفسك والكاميرا، ويمكنك الرسم فوق الصورة.</figcaption></figure>
+  <ol class="steps">
+    <li>اسحب نافذة الاستوديو إلى الشاشة الثانية.</li>
+    <li>شارك الشاشة <b>الأولى</b>، أي التي تعمل عليها.</li>
+    <li>اعمل كالمعتاد: شاشة العمل تذهب إلى التسجيل، وأنت ترى نفسك والصورة في الاستوديو.</li>
+    <li>تريد أن تشير إلى شيء؟ فعّل <b class="ui">«🔴 المؤشر»</b> (<kbd>L</kbd>) أو <b class="ui">«✏️ الرسم»</b> (<kbd>D</kbd>) وحرّك الفأرة فوق صورة الشاشة <b>داخل نافذة الاستوديو</b>. يظهر المؤشر والرسم في الفيديو.</li>
+  </ol>
+
+  <div class="tip warn"><p><b>لا تشارك الشاشة التي فُتح عليها الاستوديو</b>، وإلا ستحصل على «ممر المرايا»: صورة داخل صورة إلى ما لا نهاية.</p>
+    <p>الرسم ممكن داخل نافذة الاستوديو فقط. لن يظهر الرسم فوق سطح المكتب نفسه أو فوق برنامج آخر.</p></div>
+  <div class="tip"><p><b>macOS:</b> عند التشغيل الأول اسمح لـ Chrome بتسجيل الشاشة: إعدادات النظام ← الخصوصية والأمن ← تسجيل الشاشة وصوت النظام. ثم أعد تشغيل Chrome.</p>
+    <p><b>في منتصف درس بالشرائح</b> يمكنك أيضًا عرض الشاشة: زر <b class="ui">«🖥 الشاشة»</b> أو المفتاح <kbd>S</kbd>. اضغط مرة أخرى لتعود الشريحة.</p></div>
+</section>
+
+<!-- ================= SLIDES WITHOUT PROMPTER ================= -->
+<section class="sec" id="slides">
+  <a class="back" href="#home">→ العودة إلى كل الأقسام</a>
+  <h2>🖼 تسجيل عرض تقديمي بلا ملقّن</h2>
+  <p class="lead">لديك شرائح على شكل صور، وتتحدث بكلماتك. يعرض الاستوديو الشريحة، ويضعك في الزاوية، ويسجّل.</p>
+
+  <figure class="cover"><img class="cover" src="docs/img/hero-slides.webp" alt="فتاة تشرح من الشرائح: على الشاشة عرض تقديمي فيه مخططات، وفي الزاوية كاميرتها" width="1280" height="720" loading="lazy"></figure>
+
+  <figure><img src="docs/img/lesson-folder.svg" alt="مجلد الدرس: مجلد deck_frames فيه الصور p-01.png و p-02.png…، والملف prompt.txt، وبعد التسجيل الفيديو lecture-….mp4" loading="lazy">
+    <figcaption>مجلد الدرس. للتسجيل بلا ملقّن تكفي الصور وحدها، ولا حاجة إلى الملف <code>prompt.txt</code>.</figcaption></figure>
+
+  <ol class="steps">
+    <li>ضع الشرائح في مجلد الدرس: صورًا أو PDF أو عرض HTML؛ انظر <a href="#g-sources">«ثلاث طرق لتقديم الشرائح»</a>.</li>
+    <li>افتح الاستوديو واضغط <b class="ui">«📁 اختر مجلدًا»</b>. اسمح لـ Chrome بالوصول إلى المجلد، ففيه سيُحفظ التسجيل أيضًا.</li>
+    <li>من قائمة <b class="ui">«الدرس»</b> اختر الدرس، ومن قائمة <b class="ui">«الشرائح»</b> اختر مصدر الشرائح.</li>
+    <li>اضغط <b class="ui go">«▶ لنبدأ»</b>.</li>
+    <li>شغّل الكاميرا: <b class="ui">«📷 تشغيل»</b>.</li>
+    <li>اضغط <b class="ui rec">«⏺ تسجيل»</b> (أو <kbd>R</kbd>) وتنقّل بين الشرائح بالزرين <b class="ui">«◀»</b> (التالية) و<b class="ui">«▶»</b> (السابقة) أو بالسهمين <kbd>←</kbd> (التالية) و<kbd>→</kbd> (السابقة)، باتجاه القراءة العربية.</li>
+    <li>عند الانتهاء: <b class="ui">«⏹»</b>.</li>
+  </ol>
+
+  <figure><img src="docs/img/record-flow.svg" alt="التسجيل في ثلاث خطوات: «⏺ تسجيل»، ثم العدّ التنازلي 3-2-1، ثم «⏹»، والملف في مجلد الدرس" loading="lazy"></figure>
+
+  <div class="tip"><p>إن كان في الدرس نص للملقّن ولا تحتاجه الآن، فأخفِ الملقّن بالزر <b class="ui">«👁»</b>.</p>
+    <p>أخطأت؟ اضغط <b class="ui">«⚑ علامة»</b>: سيظهر التوقيت في ملف العلامات، ويسهل إيجاد هذا الموضع عند المونتاج.</p></div>
+</section>
+
+<!-- ================= WITH PROMPTER ================= -->
+<section class="sec" id="prompter">
+  <a class="back" href="#home">→ العودة إلى كل الأقسام</a>
+  <h2>📜 تسجيل درس مع الملقّن</h2>
+  <p class="lead">مثل تسجيل العرض التقديمي، لكن نصك يمرّ في الأعلى، فتقرأ وأنت تنظر تقريبًا إلى الكاميرا.</p>
+
+  <figure class="cover"><img class="cover" src="docs/img/hero-prompter.webp" alt="شخص يتحدث إلى الكاميرا، وفوق الشاشة يمرّ نص الملقّن مع سطر مُضاء" width="1280" height="720" loading="lazy"></figure>
+
+  <div class="downloads" aria-label="قوالب نص الملقّن">
+    <div><a class="tostudio" href="docs/templates/prompt.txt" download>⬇ نزّل القالب prompt.txt</a><p>ملف نصي عادي. اختره إن لم تكن تعرف Markdown: يُفتح بالمفكرة (Notepad) أو TextEdit</p></div>
+    <div><a class="tostudio" href="docs/templates/prompt.md" download>⬇ prompt.md</a><p>الشيء نفسه لمن يكتب بصيغة Markdown (Obsidian و Typora و VS&nbsp;Code)</p></div>
+  </div>
+  <p class="lead"><small>يعثر الاستوديو بنفسه في مجلد الدرس على الملف <code>prompt.txt</code> أو <code>prompt.md</code> أو <code>03-script.md</code>. احفظه في مجلد الدرس نفسه، لا في مجلد الدورة العام.</small></p>
+
+  <div class="tip"><p><b>كيف تحرّره.</b> نزّل القالب ← ضعه في مجلد الدرس بجانب الشرائح ← افتحه بنقرة مزدوجة في المفكرة (Windows) أو TextEdit (Mac) ← استبدل النص واترك أسطر «### شريحة…» كما هي ← احفظه دون تغيير اسمه.</p>
+    <p>الملف الجديد في TextEdit ليس نصًا عاديًا افتراضيًا. اختر من القائمة «تنسيق ← تحويل إلى نص عادي». الأسهل أن تبدأ من القالب المُنزَّل.</p>
+    <p>احفظ الملف بترميز UTF-8 (وهو الافتراضي في المحررات الحديثة) حتى يظهر النص العربي صحيحًا.</p></div>
+
+  <ol class="steps">
+    <li>ضع الشرائح في مجلد الدرس؛ انظر <a href="#g-sources">«ثلاث طرق لتقديم الشرائح»</a>.</li>
+    <li>بجانب الشرائح ضع القالب <code>prompt.txt</code> بعد ملئه.</li>
+    <li>اكتب نص الصورة الأولى (شريحة العنوان) تحت السطر <code>## شريحة العنوان</code>. ولكل صورة تالية سطر عنوان <code>### شريحة 1.1 — …</code> ثم <code>### شريحة 1.2 — …</code> وهكذا (الرقم عددان بينهما نقطة)، وتحته ما ستقوله. الكتل تأتي بالترتيب: الأولى للصورة الأولى، والثانية للثانية. المثال أدناه.</li>
+    <li>ثم كالمعتاد: <b class="ui">«📁 اختر مجلدًا»</b> ← <b class="ui">«الدرس»</b> ← <b class="ui">«الشرائح»</b> ← تحقّق من الملف في خانة <b class="ui">«نص الملقّن»</b> ← <b class="ui go">«▶ لنبدأ»</b> ← <b class="ui">«📷 تشغيل»</b>.</li>
+    <li>اضغط <b class="ui rec">«⏺ تسجيل»</b>، ثم شغّل النص: <kbd>مسافة</kbd> أو انقر على نص الملقّن.</li>
+    <li>سرعة النص: <kbd>Shift</kbd>+<kbd>↑</kbd> / <kbd>Shift</kbd>+<kbd>↓</kbd>. الإيقاف المؤقت: <kbd>مسافة</kbd> مرة أخرى.</li>
+    <li>انتقل بين الشرائح بـ <kbd>←</kbd>، وفي النهاية <b class="ui">«⏹»</b>.</li>
+  </ol>
+
+  <div class="tip"><p>النص محفوظ باسم آخر؟ لا حاجة لإعادة التسمية: في شاشة البداية، في خانة <b class="ui">«نص الملقّن»</b> اختره من القائمة أو اختر <b class="ui">«📄 اختر ملفًا من القرص…»</b>. سيتذكر الاستوديو اختيارك.</p>
+    <p>تريد التسجيل بلا ملقّن؟ اختر <b class="ui">«— بلا نص —»</b>.</p></div>
+
+  <h3>الملقّن فارغ: ماذا تتحقق منه</h3>
+  <ul>
+    <li>في خانة <b class="ui">«نص الملقّن»</b> اختير الملف الصحيح، لا <b class="ui">«— بلا نص —»</b>.</li>
+    <li>في الملف أسطر مثل <code>### شريحة 1.1</code> وتحتها نص؛ ابدأ من القالب أعلاه.</li>
+    <li>الملف محفوظ كنص عادي: <code>.txt</code> أو <code>.md</code>، لا <code>.rtf</code> ولا <code>.docx</code>.</li>
+  </ul>
+
+  <h3>كيف يبدو ملف النص</h3>
+<pre dir="rtl"><span class="h">## شريحة العنوان</span>
+مرحبًا! سنتعلم اليوم كيف نسجّل درسًا.
+
+<span class="h">### شريحة 1.1 — ما نحتاجه</span>
+نحتاج إلى شيئين: صور الشرائح وهذا النص.
+
+السطر الفارغ يبدأ فقرة جديدة. [P] وهذه وقفة قصيرة.
+
+<span class="h">### شريحة 1.2 — كيف نرتّب الملفات</span>
+نص الصورة الثالثة.</pre>
+  <p>الأسطر التي تبدأ بـ <code>#</code> أو <code>&gt;</code> لا تظهر في الملقّن، فهي عناوين وملاحظات لك. في هذا المثال ثلاث كتل، أي تحتاج إلى ثلاث صور: العنوان واثنتين بعده. يمكن كتابة رقم الشريحة بالأرقام العربية أيضًا (<code>### شريحة ١٫٢</code>)، وتبقى العناوين القديمة بالروسية مدعومة أيضًا. يوجد مثال جاهز لدرس من 4 شرائح في المجلد <code>example/</code> في المستودع الأصلي؛ نزّله وجرّبه.</p>
+
+  <figure><img src="docs/img/script-to-slides.svg" alt="كتل النص «### شريحة 1.1» و«### شريحة 1.2» موصولة بأسهم بالصورتين الثانية والثالثة من الشرائح" loading="lazy">
+    <figcaption>تُوزَّع الكتل على الصور بالترتيب. الصورة الأولى هي العنوان (<code>## شريحة العنوان</code>)، لذا فإن <code>### شريحة 1.1</code> هي الصورة الثانية، و <code>### شريحة 1.2</code> هي الثالثة.</figcaption></figure>
+
+  <figure><img src="docs/img/prompter.svg" alt="الملقّن مكبّرًا: النص، وسطر القراءة المُضاء، والزر ▶/⏸، وتلميحات «مسافة» و«Shift+↑↓ السرعة»" loading="lazy">
+    <figcaption>الشريط المُضاء هو السطر الذي تقرؤه الآن. الملقّن لا يظهر في الفيديو.</figcaption></figure>
+
+  <h3>أدوات مساعدة</h3>
+  <ul>
+    <li><b class="ui">«تلقائي»</b>: بعد تغيير الشريحة يبدأ النص بالمرور وحده بعد ثانية.</li>
+    <li><b class="ui">«شريحة تلقائية»</b>: عندما ينتهي نص الشريحة يظهر عدّ تنازلي أصفر 5…1 وينتقل الاستوديو وحده إلى التالية.</li>
+  </ul>
+
+  <div class="tip"><p><b>النظر إلى العدسة.</b> ضع الكاميرا تحت الملقّن مباشرة (زر النجمة في مجموعة <span class="grpname">الكاميرا</span> ينقلها حول الإطار)، فتنظر وأنت تقرأ تقريبًا إلى الكاميرا.</p>
+    <p>النص صغير أو كبير؟ استخدم <b class="ui" dir="ltr">«A−»</b> / <b class="ui" dir="ltr">«A+»</b> في مجموعة <span class="grpname">الملقّن</span>. تأخرت قليلًا؟ <kbd>↑</kbd> / <kbd>↓</kbd> يحرّكان النص.</p></div>
+</section>
+
+<!-- ================= GENERAL ================= -->
+<section class="sec" id="general">
+  <a class="back" href="#home">→ العودة إلى كل الأقسام</a>
+  <h2>🧭 الوظائف العامة</h2>
+  <figure class="cover"><img class="cover" src="docs/img/hero-general.webp" alt="لوحة تحكم الاستوديو بأزرار التشغيل والتسجيل والإيقاف والكاميرا، وبجانبها ميكروفون وكاميرا ويب" width="1280" height="720" loading="lazy"></figure>
+  <div class="gen-layout">
+    <nav class="gnav" aria-label="الأقسام الفرعية">
+      <a href="#g-about">ما يستطيعه الاستوديو</a>
+      <a href="#g-prep">تجهيز الدرس</a>
+      <a href="#g-sources">ثلاث طرق لتقديم الشرائح</a>
+      <a href="#g-panel">لوحة التحكم</a>
+      <a href="#g-mini">اللوحة المصغّرة</a>
+      <a href="#g-keys">اختصارات لوحة المفاتيح</a>
+      <a href="#g-save">أين يُحفظ التسجيل</a>
+      <a href="#g-help">إن لم يعمل شيء ما</a>
+    </nav>
+    <div>
+
+    <div class="sub-sec" id="g-about">
+      <h3>ما يستطيعه الاستوديو</h3>
+      <figure><img src="docs/img/studio-overview.svg" alt="منظر عام للاستوديو: الشريحة في الوسط، والكاميرا في الزاوية، والملقّن في الأعلى، ولوحة التحكم في الأسفل" loading="lazy"></figure>
+      <ul>
+        <li>يعرض الشرائح أو شاشة الحاسوب ويسجّلها معك من الكاميرا.</li>
+        <li>الملقّن: نصك يمرّ في الأعلى ولا يظهر في الفيديو.</li>
+        <li>مؤشر ليزر ورسم فوق الشريحة، ويظهران في الفيديو.</li>
+        <li>مؤقتات في الزاوية العلوية: مدة التسجيل، ومدة بقائك على هذه الشريحة. لا تظهر في الفيديو.</li>
+        <li>التسجيل مباشرة في مجلد الدرس بصيغة MP4 (أو WebM). كل شيء يعمل في المتصفح، ولا يُرفع أي شيء إلى أي مكان.</li>
+      </ul>
+    </div>
+
+    <div class="sub-sec" id="g-prep">
+      <h3>تجهيز الدرس</h3>
+      <figure><img src="docs/img/lesson-folder.svg" alt="مجلد الدرس: deck_frames فيه الصور p-01.png…، والملف prompt.txt، والفيديو الجاهز lecture-….mp4" loading="lazy"></figure>
+      <ol class="steps">
+        <li>أنشئ مجلدًا للدرس (عدة دروس = عدة مجلدات داخل مجلد واحد للدورة).</li>
+        <li>ضع فيه الشرائح: صورًا أو PDF أو عرض HTML من Claude Design (التفاصيل أدناه في <a href="#g-sources">«ثلاث طرق لتقديم الشرائح»</a>).</li>
+        <li>إن احتجت إلى الملقّن فأضف <code>prompt.txt</code> (طريقة الكتابة في قسم <a href="#prompter">«درس مع الملقّن»</a>).</li>
+        <li>في شاشة البداية اختر الصيغة: <b class="ui">«MP4»</b> (تعمل في كل مكان، اخترها) أو <b class="ui">«WebM»</b>. وهناك أيضًا جودة التسجيل: <b class="ui">«Native»</b> (مثل الشاشة)، أو <b class="ui">«1080p»</b>، أو <b class="ui">«720p»</b>، أو <b class="ui">«360p»</b>، أو <b class="ui">«حسب الشرائح»</b>. تحت كل خيار حجم تقريبي لساعة التسجيل: 1080p نحو <span dir="ltr">0.4–1.1</span> GB، و720p نحو <span dir="ltr">0.2–0.7</span> GB، و360p نحو <span dir="ltr">0.1–0.4</span> GB. الكاميرا والصور المعقدة والحركة في الإطار تقرّب الحجم من الرقم الأعلى، وقد يتجاوزه الفيديو أو العرض التوضيحي. إن لم تكن متأكدًا فاترك 1080p.</li>
+      </ol>
+      <div class="tip"><p>الشرائح ضرورية، والنص اختياري. المجلد الذي فيه <code>prompt.txt</code> فقط دون شرائح لن يظهر في قائمة الدروس.</p>
+        <p>الدرس الذي لم يجد فيه الاستوديو <code>prompt.txt</code> يُعلَّم في القائمة بعبارة «— بلا prompt.txt». بدون نص لن يكون هناك ملقّن، وكل شيء آخر يعمل؛ ويمكنك اختيار ملفك في خانة «نص الملقّن».</p>
+        <p>في المرة التالية لا حاجة للبحث عن المجلد: ستجد في شاشة البداية <b class="ui">«↪ افتح آخر مجلد»</b>.</p></div>
+
+      <div class="sources" id="g-sources">
+        <h4>ثلاث طرق لتقديم الشرائح</h4>
+        <p>الشرائح دائمًا في مجلد الدرس. وما يُعرض تحديدًا تختاره في شاشة البداية من قائمة <b class="ui">«الشرائح»</b>.</p>
+        <figure><img src="docs/img/slide-sources.svg" alt="ثلاث طرق لتقديم الشرائح: الصور و PDF وعرض HTML من Claude Design، توضع في مجلد الدرس وتُختار من قائمة «الشرائح»" loading="lazy"></figure>
+        <div class="srcs">
+          <div>
+            <b class="t">🖼 صور</b>
+            <p>ضع الصور في مجلد الدرس (PNG أو JPG أو WebP…)، والترتيب حسب أسماء الملفات. أو مجلد <code>deck_frames/</code> فيه <code>p-01.png</code> و <code>p-02.png</code>…</p>
+            <p>لا حاجة إلى الإنترنت.</p>
+            <p>في القائمة: «deck_frames — إطارات، N صورة» أو «… — صور، N صورة».</p>
+          </div>
+          <div>
+            <b class="t">📄 PDF</b>
+            <p>ضع ملف PDF في مجلد الدرس. إن كانت الشريحة على صفحة A4 أو Letter بهوامش، فسيقصّ الاستوديو الهوامش بنفسه.</p>
+            <p>يلزم الإنترنت، فبدونه لن يُفتح ملف PDF.</p>
+            <p>في القائمة: «الاسم.pdf — PDF».</p>
+          </div>
+          <div>
+            <b class="t">🧩 عرض HTML من Claude Design</b>
+            <p>احفظ العرض كملف HTML واحد وضعه في مجلد الدرس. في القائمة: «الاسم.html — عرض HTML، يُستورد إلى إطارات».</p>
+            <p>اضغط <b class="ui go">«▶ لنبدأ»</b>. سيسألك Chrome عمّا تريد عرضه، فاختر <b class="ui">«علامة التبويب هذه»</b> ← <b class="ui">«مشاركة»</b> ولا تلمس النافذة بينما يتنقّل الاستوديو بين الشرائح.</p>
+            <p>تُحفظ الإطارات في <code>deck_frames/</code> بجانب العرض. وبعدها تصبح صورًا عادية، بلا إنترنت وبلا التقاط من جديد.</p>
+          </div>
+        </div>
+        <p>قبل استيراد عرض HTML على شاشة كبيرة فعّل وضع ملء الشاشة في Chrome لتخرج الشرائح واضحة. على شاشة صغيرة ستخرج الشرائح أقل حدّة قليلًا، وسينبّهك الاستوديو إلى ذلك.</p>
+        <p>يظهر PowerPoint (PPTX) في القائمة مع ملاحظة «يحتاج إلى تحويل» لكنه لا يُختار؛ احفظه أولًا بصيغة PDF.</p>
+      </div>
+    </div>
+
+    <div class="sub-sec" id="g-panel">
+      <h3>لوحة التحكم</h3>
+      <figure><img src="docs/img/control-panel.svg" alt="اللوحة السفلية للاستوديو بمجموعاتها «الملقّن» و«الكاميرا» و«الرسم» و«التسجيل» و«الشريحة» و«المزيد»" loading="lazy">
+        <figcaption>النقر على اسم المجموعة يطويها. اسحب من الاسم لتنقل المجموعة إلى أي مكان في الشاشة.</figcaption></figure>
+
+      <h3><span class="grpname">الشريحة</span> (بلا شرائح: <span class="grpname">الشاشة</span>)</h3>
+      <ul>
+        <li><b class="ui">«▶»</b> <b class="ui" dir="ltr">«N / M»</b> <b class="ui">«◀»</b>: التنقل بين الشرائح باتجاه القراءة العربية: <b class="ui">«◀»</b> على اليسار للشريحة التالية، و<b class="ui">«▶»</b> على اليمين للسابقة.</li>
+        <li><b class="ui">«⏮ من البداية»</b>: إلى الشريحة الأولى وتصفير المؤقتات. إن كان التسجيل جاريًا فسيسألك الاستوديو ثم يتجاهله.</li>
+        <li><b class="ui">«🖥 الشاشة»</b>: عرض الشاشة بدل الشريحة؛ واضغط مرة أخرى لإعادة الشريحة.</li>
+      </ul>
+
+      <h3><span class="grpname">التسجيل</span></h3>
+      <ul>
+        <li><b class="ui rec">«⏺ تسجيل»</b>: البدء. أثناء التسجيل: <b class="ui">«⏸»</b> إيقاف مؤقت / <b class="ui">«▶»</b> متابعة، و<b class="ui">«⏹»</b> إيقاف.</li>
+        <li><b class="ui">«⚑ علامة»</b>: وضع علامة زمنية للمونتاج. تعمل أثناء التسجيل فقط.</li>
+        <li><b class="ui">«🎙»</b> وشريط المستوى: الميكروفون يسمعك. <b class="ui">«⚠ لا صوت»</b>: الصوت لا يُسجَّل. وبجانبه قائمة الميكروفونات.</li>
+        <li><b class="ui">«صوت الشاشة»</b>: «لا تسجيل» أو «مع الميكروفون» أو «يسار: ميكروفون · يمين: شاشة».</li>
+        <li><b class="ui">«Native»</b> / <b class="ui">«1080p»</b> / <b class="ui">«720p»</b> / <b class="ui">«360p»</b>: جودة التسجيل، كما في شاشة البداية؛ تتبدّل بالضغط. Native هو حجم الشاشة نفسها: مفيد لمشاركة الشاشة، ولن يزيد وضوح شرائح PDF وعرض HTML. كلما صغر الإطار صغر الملف. وهناك خيار آخر هو «حسب الشرائح»: الحجم مثل الصور نفسها، وتظهر على الزر أرقام مثل <span dir="ltr">«1920×1080»</span>.</li>
+        <li><b class="ui">«دمج النص»</b>: نص الملقّن كشريط أسفل الفيديو (مثل الترجمة).</li>
+        <li><b class="ui">«📂 أظهر في المجلد»</b>: فتح مجلد الدرس الذي فيه التسجيلات. يظهر الزر بعد التسجيل فقط، إن كان المجلد مختارًا.</li>
+      </ul>
+
+      <h3><span class="grpname">الكاميرا</span></h3>
+      <ul>
+        <li><b class="ui">«📷 تشغيل»</b>: تشغيل/إيقاف؛ وبجانبه اختيار الكاميرا.</li>
+        <li>زر النجمة: نقل الكاميرا إلى زاوية أخرى؛ زر المرآة؛ وزر «شخص في إطار»: الكاميرا بملء الشاشة.</li>
+        <li><b class="ui">«▭»</b> / <b class="ui">«◯»</b>: مستطيل أو دائرة.</li>
+        <li>أشرطة التمرير <b class="ui">«الحجم»</b> و<b class="ui">«تكبير»</b> و<b class="ui">«↔ إزاحة»</b> و<b class="ui">«↕ إزاحة»</b>؛ و<b class="ui">«إعادة ضبط الكاميرا»</b> لإرجاعها كما كانت.</li>
+        <li><b class="ui">«📷←النص»</b>: تذكّر وضع الكاميرا على هذه الشريحة (يُكتب في ملف نص الملقّن المختار).</li>
+      </ul>
+
+      <h3><span class="grpname">الملقّن</span></h3>
+      <ul>
+        <li><b class="ui">«👁»</b>: إظهار/إخفاء؛ <b class="ui">«▶»</b> / <b class="ui">«⏸»</b>: تشغيل/إيقاف مؤقت.</li>
+        <li><b class="ui">«السرعة N»</b>: السرعة، <b class="ui" dir="ltr">«A−»</b> <b class="ui" dir="ltr">«A+»</b>: حجم الخط، <b class="ui">«الإيقاع N»</b>: إيقاع القراءة (الأخضر مريح).</li>
+        <li><b class="ui">«تلقائي»</b> و<b class="ui">«شريحة تلقائية»</b>: انظر <a href="#prompter">الدرس مع الملقّن</a>.</li>
+        <li><b class="ui">«العرض»</b> و<b class="ui">«الارتفاع»</b>: عرض نافذة الملقّن وارتفاعها، و<b class="ui">«الخلفية»</b>: مدى شفافيتها؛ وزر منفصل يضع الملقّن في الأعلى أو الأسفل.</li>
+      </ul>
+
+      <h3><span class="grpname">الرسم</span></h3>
+      <ul>
+        <li><b class="ui">«🔴 المؤشر»</b>: مؤشر ليزر، <b class="ui">«✏️ الرسم»</b>: الرسم بالفأرة.</li>
+        <li>الأدوات: <b class="ui">«✏️»</b> قلم، <b class="ui">«🖍»</b> قلم تحديد، <b class="ui">«↗»</b> سهم، <b class="ui">«🩹»</b> ممحاة؛ 5 ألوان و<b class="ui">«السُّمك»</b>.</li>
+        <li><b class="ui">«↶»</b>: التراجع عن خط، <b class="ui">«🧹»</b>: مسح كل شيء على الشريحة.</li>
+        <li><b class="ui">«عند تغيير الشريحة: مسح / احتفاظ»</b>: ماذا يحدث للرسم عند الانتقال.</li>
+      </ul>
+
+      <h3><span class="grpname">المزيد</span></h3>
+      <ul>
+        <li><b class="ui">«☰»</b>: العودة إلى اختيار الدرس (سيتوقف التسجيل).</li>
+        <li><b class="ui">«💾»</b>: حفظ الإعدادات كإعداداتك، <b class="ui">«↺»</b>: استرجاعها.</li>
+        <li><b class="ui">«إعادة ضبط مواضع القوائم»</b>: إعادة المجموعات المنقولة إلى اللوحة.</li>
+        <li><b class="ui">«⌄ طيّ»</b>: إخفاء اللوحة وإبقاء اللوحة المصغّرة. <b class="ui">«⛶»</b>: ملء الشاشة. <b class="ui">«?»</b>: هذا الدليل.</li>
+      </ul>
+      <div class="tip"><p>لا ترى <b class="ui">«☰»</b> و<b class="ui">«⛶»</b> و<b class="ui">«?»</b>؟ إذن مجموعة <span class="grpname">المزيد</span> مطويّة في ملصق. انقر على اسمها فتعود الأزرار (ومعها <b class="ui">«💾»</b> و<b class="ui">«↺»</b> و<b class="ui">«⌄ طيّ»</b>).</p></div>
+    </div>
+
+    <div class="sub-sec" id="g-mini">
+      <h3>اللوحة المصغّرة</h3>
+      <figure><img src="docs/img/minibar.svg" alt="اللوحة المصغّرة: ▶ ◀ الشريحة (السابقة/التالية)، ▶ الملقّن، ⏺ ⚑ التسجيل، 📷 الكاميرا، 🖥 الشاشة، ⌃ اللوحة" loading="lazy"></figure>
+      <p>اضغط <b class="ui">«⌄ طيّ»</b>، فتختفي اللوحة وتبقى في الأسفل في المنتصف لوحة صغيرة: الأهم فقط، ولا تحجب شيئًا.</p>
+      <ul>
+        <li><b class="ui">«◀»</b> التالية و<b class="ui">«▶»</b> السابقة: الشرائح؛ <b class="ui">«▶»</b> في مجموعة الملقّن: تشغيل الملقّن.</li>
+        <li><b class="ui">«⏺»</b> (أثناء التسجيل <b class="ui">«⏸»</b> <b class="ui">«⏹»</b>) و<b class="ui">«⚑»</b>: التسجيل والعلامة.</li>
+        <li><b class="ui">«📷»</b>: الكاميرا والكاميرا بملء الشاشة؛ <b class="ui">«🖥»</b>: الشاشة.</li>
+        <li><b class="ui">«⌃»</b>: إعادة اللوحة كاملة.</li>
+      </ul>
+    </div>
+
+    <div class="sub-sec" id="g-keys">
+      <h3>اختصارات لوحة المفاتيح</h3>
+      <figure><img src="docs/img/keyboard.svg" alt="لوحة مفاتيح عليها المفاتيح المُضاءة ← (التالية) → (السابقة) مسافة ↑ ↓ R S L D F مع شرح لعمل كل منها" loading="lazy"></figure>
+      <table>
+        <tr><th>المفتاح</th><th>ماذا يفعل</th></tr>
+        <tr><td><kbd>←</kbd> / <kbd>PageDown</kbd></td><td>الشريحة التالية (باتجاه القراءة العربية)</td></tr>
+        <tr><td><kbd>→</kbd> / <kbd>PageUp</kbd></td><td>الشريحة السابقة</td></tr>
+        <tr><td><kbd>مسافة</kbd></td><td>الملقّن: تشغيل / إيقاف مؤقت</td></tr>
+        <tr><td><kbd>↑</kbd> / <kbd>↓</kbd></td><td>تحريك نص الملقّن إلى الخلف / إلى الأمام</td></tr>
+        <tr><td><kbd>Shift</kbd>+<kbd>↑</kbd> / <kbd>↓</kbd></td><td>الملقّن أسرع / أبطأ</td></tr>
+        <tr><td><kbd>R</kbd></td><td>بدء التسجيل (مع العدّ التنازلي 3-2-1)؛ وأثناء التسجيل: إيقافه</td></tr>
+        <tr><td><kbd>S</kbd></td><td>الشاشة بدل الشريحة / والعودة</td></tr>
+        <tr><td><kbd>L</kbd></td><td>مؤشر الليزر «🔴 المؤشر»</td></tr>
+        <tr><td><kbd>D</kbd></td><td>الرسم «✏️ الرسم»</td></tr>
+        <tr><td><kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>Z</kbd></td><td>التراجع عن خط (في وضع الرسم)</td></tr>
+        <tr><td><kbd>F</kbd></td><td>ملء الشاشة</td></tr>
+      </table>
+      <div class="tip"><p>لا تعمل الاختصارات في شاشة البداية، ولا حين يكون المؤشر داخل شريط تمرير أو قائمة؛ انقر على الشريحة. الإيقاف المؤقت للتسجيل ووضع العلامة بالأزرار فقط: <b class="ui">«⏸»</b> و<b class="ui">«⚑ علامة»</b>.</p>
+        <p>اختصارات الأحرف (R و S و L و D و F) تعتمد على المفتاح نفسه؛ إن كانت لوحة المفاتيح على التخطيط العربي فبدّلها إلى الإنجليزية إن لم يستجب المفتاح.</p></div>
+    </div>
+
+    <div class="sub-sec" id="g-save">
+      <h3>أين يُحفظ التسجيل</h3>
+      <ul>
+        <li>في مجلد الدرس، بملف اسمه على شكل <code>lecture-YYYY-MM-DD-HH-MM-SS.mp4</code> (أو <code>.webm</code>).</li>
+        <li>وبجانبه <code>….markers.txt</code> فيه العلامات والإيقافات المؤقتة وتغييرات الشرائح: مفيد للمونتاج.</li>
+        <li>إن لم تختر مجلدًا فسينزّل المتصفح الملف كأي تنزيل عادي.</li>
+      </ul>
+      <div class="tip warn"><p>بعد <b class="ui">«⏹»</b> سيظهر على الزر <b class="ui">«⏳ جارٍ الحفظ»</b>، وتحته «أجهّز الملف للمونتاج…». <b>لا تغلق علامة التبويب</b> حتى تظهر عبارة «حُفظ».</p></div>
+      <p>إن لم يكتمل تجهيز الملف فسيظهر <b class="ui">«🔁 تجهيز للمونتاج (N)»</b>؛ اضغطه ليُكمل الاستوديو العمل. ولإيجاد التسجيلات: <b class="ui">«📂 أظهر في المجلد»</b> (يظهر الزر بعد التسجيل، إن كان المجلد مختارًا).</p>
+    </div>
+
+    <div class="sub-sec" id="g-help">
+      <h3>إن لم يعمل شيء ما</h3>
+      <table>
+        <tr><th>ماذا حدث</th><th>ماذا تفعل</th></tr>
+        <tr><td>«يلزم Chrome (أو Edge)…»، وزر المجلد لا يُضغط</td><td>افتح الاستوديو في Chrome أو Edge. Safari و Firefox لا يصلحان.</td></tr>
+        <tr><td>الكاميرا لا تعمل</td><td>اسمح بالوصول إلى الكاميرا في نافذة المتصفح (الأيقونة في شريط العنوان). أغلق البرامج الأخرى التي تستخدم الكاميرا (Zoom و Teams). افتح الاستوديو عبر رابط https، لا كملف من القرص.</td></tr>
+        <tr><td>«⚠ لا صوت»</td><td>اسمح باستخدام الميكروفون، واختر الصحيح من قائمة الميكروفونات في مجموعة <span class="grpname">التسجيل</span>.</td></tr>
+        <tr><td>الشاشة لا تُشارَك، وخطأ على macOS</td><td>إعدادات النظام ← الخصوصية والأمن ← تسجيل الشاشة وصوت النظام ← فعّل Chrome ثم أعد تشغيله.</td></tr>
+        <tr><td>«⚠ الشاشة بلا صوت»</td><td>أوقف <b class="ui">«🖥 الشاشة»</b>، وتحقق من <b class="ui">«صوت الشاشة»</b>، ثم شغّل المشاركة من جديد وحدّد خانة الصوت.</td></tr>
+        <tr><td>صورة داخل صورة إلى ما لا نهاية</td><td>أنت تشارك الشاشة التي فُتح عليها الاستوديو. اختر شاشة أخرى أو نافذة.</td></tr>
+        <tr><td>المفاتيح لا تستجيب</td><td>انقر على الشريحة: بقي المؤشر داخل شريط تمرير أو قائمة.</td></tr>
+        <tr><td>لا يوجد ملقّن</td><td>في خانة <b class="ui">«نص الملقّن»</b> اختر الملف الصحيح بدل <b class="ui">«— بلا نص —»</b>. تحقق من أن فيه أسطرًا مثل <code>### شريحة 1.1</code> وأنه محفوظ كنص عادي (<code>.txt</code>/<code>.md</code>، لا <code>.rtf</code>/<code>.docx</code>). انظر <a href="#prompter">القالب والتحقق من الملقّن</a>. أو أن الملقّن مخفي، فاضغط <b class="ui">«👁»</b>.</td></tr>
+        <tr><td>PPTX في القائمة لكنه لا يُختار</td><td>احفظ العرض بصيغة PDF أو كصور وضعها في مجلد الدرس.</td></tr>
+      </table>
+    </div>
+
+    </div>
+  </div>
+</section>
+
+<footer><a href="#home">↑ العودة إلى كل الأقسام</a> · <a href="studio.html">→ إلى الاستوديو</a><br><small>استوديو الكورسات — مبني على مشروع مفتوح المصدر (MIT). العمل الأصلي © Kondratev Alexander، مرخّص بموجب MIT (انظر <a href="LICENSE">LICENSE</a>).</small></footer>
+</div>
+
+
+<script>
+(function(){
+  var root=document.documentElement;
+  root.classList.add('js');
+  function route(){
+    var id=decodeURIComponent(location.hash.slice(1));
+    var el=id?document.getElementById(id):null;
+    var sec=el&&el.closest?el.closest('section.sec'):null;
+    var all=document.querySelectorAll('section.sec');
+    for(var i=0;i<all.length;i++) all[i].classList.toggle('on',all[i]===sec);
+    document.body.classList.toggle('insec',!!sec);
+    var links=document.querySelectorAll('nav.gnav a');
+    for(var j=0;j<links.length;j++) links[j].classList.toggle('cur',links[j].getAttribute('href')==='#'+id);
+    if(sec&&el!==sec) el.scrollIntoView();
+    else window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange',route);
+  route();
+})();
+</script>
+</body>
+</html>

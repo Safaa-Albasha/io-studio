@@ -1,0 +1,168 @@
+{
+  "meta": {
+    "id": "en-basic-words",
+    "subject": "english",
+    "subjectLabel": "الإنجليزي",
+    "level": "ابتدائي ١–٣",
+    "stage": "primary"
+  },
+  "title": "كلمات إنجليزية أساسية",
+  "format": "16:9",
+  "style": "chalkboard",
+  "numerals": "western",
+  "character": {
+    "name": "المعلّم",
+    "gender": "male",
+    "shirt": "#2F7FBF",
+    "beard": true
+  },
+  "beats": [
+    {
+      "say": "نتعلم اليوم كلمات إنجليزية نستعملها كل يوم.",
+      "write": {
+        "text": "My first words",
+        "at": [
+          500,
+          120
+        ],
+        "size": 84,
+        "dir": "ltr",
+        "color": "yellow",
+        "underline": true
+      }
+    },
+    {
+      "say": "Hello تعني مرحبًا، وThank you تعني شكرًا.",
+      "table": {
+        "rows": [
+          [
+            "العربية",
+            "English"
+          ],
+          [
+            "مرحبًا",
+            "Hello"
+          ],
+          [
+            "شكرًا",
+            "Thank you"
+          ],
+          [
+            "نعم",
+            "Yes"
+          ],
+          [
+            "لا",
+            "No"
+          ]
+        ],
+        "at": [
+          500,
+          240
+        ],
+        "size": 50,
+        "colW": [
+          300,
+          340
+        ]
+      }
+    },
+    {
+      "say": "وYes تعني نعم، وNo تعني لا.",
+      "highlight": {
+        "box": [
+          180,
+          525,
+          640,
+          190
+        ],
+        "kind": "box",
+        "color": "yellow"
+      }
+    },
+    {
+      "say": "والألوان: Red يعني أحمر، وBlue يعني أزرق، وGreen يعني أخضر.",
+      "erase": true,
+      "draw": [
+        {
+          "shape": "circle",
+          "center": [
+            780,
+            420
+          ],
+          "r": 110,
+          "fill": "red",
+          "color": "red"
+        },
+        {
+          "shape": "circle",
+          "center": [
+            500,
+            420
+          ],
+          "r": 110,
+          "fill": "blue",
+          "color": "blue"
+        },
+        {
+          "shape": "circle",
+          "center": [
+            220,
+            420
+          ],
+          "r": 110,
+          "fill": "green",
+          "color": "green"
+        }
+      ],
+      "write": [
+        {
+          "text": "Red",
+          "at": [
+            780,
+            640
+          ],
+          "size": 66,
+          "dir": "ltr",
+          "color": "red"
+        },
+        {
+          "text": "Blue",
+          "at": [
+            500,
+            640
+          ],
+          "size": 66,
+          "dir": "ltr",
+          "color": "blue"
+        },
+        {
+          "text": "Green",
+          "at": [
+            220,
+            640
+          ],
+          "size": 66,
+          "dir": "ltr",
+          "color": "green"
+        }
+      ]
+    },
+    {
+      "say": "ما معنى Thank you؟",
+      "quiz": {
+        "options": [
+          "شكرًا",
+          "مرحبًا",
+          "نعم"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "say": "شكرًا! وأحسنتم بالإنجليزية: Great job.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

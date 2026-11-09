@@ -1,0 +1,1110 @@
+{
+ "version": 1,
+ "note": "حركات 151–200 (I/O Studio) — الدوال بـmotion/moves-plus-b.js، المعاينات بـmotion/moves/render-preview-b.js. نفس مخطط catalog.json.",
+ "moves": [
+  {
+   "n": 151,
+   "id": "sparkBurst",
+   "cat": "card",
+   "name": "شرر الضربة",
+   "sub": "انفجار شرر",
+   "desc": "شرر ملوّن ينطلق من نقطة بذيول وجاذبية، مع حلقة صدمة وكلمة تطلع بالنص. للحظة الإعلان أو الرقم القوي.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/151.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "reveal"
+   ]
+  },
+  {
+   "n": 152,
+   "id": "balloonRise",
+   "cat": "card",
+   "name": "بالونات",
+   "sub": "بالونة تنفقع وتكشف",
+   "desc": "بالونات ملوّنة تطلع من تحت وتتمايل، والبالونة اللي بالنص تنفقع وتطلع منها الكلمة. للتهنئة والمفاجأة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/152.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "reveal",
+    "cta"
+   ]
+  },
+  {
+   "n": 153,
+   "id": "dustLight",
+   "cat": "card",
+   "name": "غبار بالضوء",
+   "sub": "شعاع ضوء وذرات",
+   "desc": "شعاع ضوء دافي يدخل من فوق، وذرات غبار تسبح وتلمع داخله. جو هادي فوق أي لقطة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/153.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "onetake"
+   ],
+   "cues": []
+  },
+  {
+   "n": 154,
+   "id": "bokehDrift",
+   "cat": "card",
+   "name": "بوكيه",
+   "sub": "دواير ضوء ناعمة",
+   "desc": "دواير ضوء ناعمة من ألوان الهوية تسبح لفوق بعمق، ورا الكلام. للجمل الهادية والليلية.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/154.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm"
+   ],
+   "cues": []
+  },
+  {
+   "n": 155,
+   "id": "iconRain",
+   "cat": "card",
+   "name": "مطر أيقونات",
+   "sub": "قلوب ونجوم تنزل",
+   "desc": "قلوب ونجوم ولمعات مرسومة تنزل من فوق وتتمايل. لطلب التفاعل أو لحظة فرح.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/155.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "cta"
+   ]
+  },
+  {
+   "n": 156,
+   "id": "likeBurst",
+   "cat": "card",
+   "name": "قلب اللايك",
+   "sub": "دبل تاب",
+   "desc": "قلب كبير ينط مكان الضغطة مع حلقة ونقاط تنفجر، وقلوب صغيرة تطير، والعدّاد يزيد.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/156.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "cta"
+   ]
+  },
+  {
+   "n": 157,
+   "id": "blobMorph",
+   "cat": "transition",
+   "name": "فقاعة سائلة",
+   "sub": "بقعة تبلع الشاشة",
+   "desc": "بقعة سائلة بحافة تتموّج تكبر من زاوية وتبلع المشهد، والمشهد الجديد داخلها.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/157.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "punch",
+    "onetake"
+   ],
+   "cues": []
+  },
+  {
+   "n": 158,
+   "id": "rippleWater",
+   "cat": "transition",
+   "name": "تموّج الماي",
+   "sub": "موجة دواير",
+   "desc": "موجة دواير تطلع من نقطة وتهز الصورة مثل سطح ماي، والمشهد الجديد يطلع من داخل الموجة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/158.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 1,
+   "families": [
+    "calm",
+    "onetake"
+   ],
+   "cues": []
+  },
+  {
+   "n": 159,
+   "id": "inkWater",
+   "cat": "transition",
+   "name": "حبر بالماي",
+   "sub": "سحب حبر تنزل",
+   "desc": "خيوط حبر تنزل من فوق وتتفتح سحب، والمشهد الجديد يظهر داخل الحبر.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/159.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 1,
+   "families": [
+    "calm"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 160,
+   "id": "cubeTurn",
+   "cat": "transition",
+   "name": "مكعب يلف",
+   "sub": "وجهين مكعب",
+   "desc": "الشاشة وجه مكعب يلف، والمشهد الجديد على الوجه الثاني يجي من اليسار. للمقارنة أو تغيير الفكرة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/160.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "contrast"
+   ]
+  },
+  {
+   "n": 161,
+   "id": "cornerPeel",
+   "cat": "transition",
+   "name": "زاوية تنقشر",
+   "sub": "ستيكر ينقشر",
+   "desc": "زاوية الشاشة تنقشر مثل ستيكر وتنطوي، وتكشف المشهد الجديد تحتها.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/161.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 162,
+   "id": "pixelMosaic",
+   "cat": "transition",
+   "name": "بكسلة",
+   "sub": "مربعات وتصفى",
+   "desc": "المشهد يتبكسل لمربعات كبيرة، وبالذروة يتبدل للجديد اللي يرجع يصفى. للتقنية والألعاب.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/162.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "tech"
+   ]
+  },
+  {
+   "n": 163,
+   "id": "kaleido",
+   "cat": "transition",
+   "name": "مشكال",
+   "sub": "مرايا تلف",
+   "desc": "المشهد يصير مشكال مرايا تلف، وبالنص يتبدل للجديد ثم ينفك.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/163.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": []
+  },
+  {
+   "n": 164,
+   "id": "filmBurn",
+   "cat": "transition",
+   "name": "حرق فيلم",
+   "sub": "بقع حرق دافية",
+   "desc": "بقع حرق بحافة صفرا وبرتقالي تاكل المشهد وتكشف الجديد، مع وهج دافي مثل الأفلام القديمة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/164.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "calm",
+    "onetake"
+   ],
+   "cues": []
+  },
+  {
+   "n": 165,
+   "id": "vhsRewind",
+   "cat": "transition",
+   "name": "ترجيع VHS",
+   "sub": "شريط يترجع",
+   "desc": "خطوط تشويش وشريط يلف لفوق مع «REW»، ثم المشهد الجديد يشتغل «PLAY». للرجوع بالزمن والنوستالجيا.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/165.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "tech"
+   ]
+  },
+  {
+   "n": 166,
+   "id": "paperFold",
+   "cat": "transition",
+   "name": "طي الورقة",
+   "sub": "أكورديون",
+   "desc": "المشهد ينطوي مثل ورقة رسالة بثلاث طيات وظلال، ثم المشهد الجديد ينفرد بنفس الطريقة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/166.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 167,
+   "id": "brushReveal",
+   "cat": "transition",
+   "name": "ضربة فرشاة",
+   "sub": "مسحة فرشاة",
+   "desc": "ضربات فرشاة عريضة بلون الهوية تمسح من اليمين لليسار، والمشهد الجديد مرسوم داخلها.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/167.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": []
+  },
+  {
+   "n": 168,
+   "id": "tvOff",
+   "cat": "transition",
+   "name": "تلفزيون ينطفي",
+   "sub": "طفية التلفزيون القديم",
+   "desc": "المشهد ينضغط لخط ثم نقطة بيضا مثل التلفزيون القديم، والجديد يشتغل بالعكس بنطّة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/168.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit"
+   ]
+  },
+  {
+   "n": 169,
+   "id": "spotlight",
+   "cat": "camera",
+   "name": "كشّاف",
+   "sub": "الضوء على نقطة",
+   "desc": "الشاشة تظلم وكشّاف ضوء يدوّر ثم يثبت على النقطة المهمة، وحلقة تنبض وملصق.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/169.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "reveal",
+    "emphasis"
+   ]
+  },
+  {
+   "n": 170,
+   "id": "zoomWord",
+   "cat": "text",
+   "name": "زوم على الكلمة",
+   "sub": "كلمة تملى الشاشة",
+   "desc": "الجملة تطلع، والكاميرا تدخل على كلمة وحدة لين تملى الشاشة وتتلوّن، والباقي يبهت.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/170.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 171,
+   "id": "dutchTilt",
+   "cat": "camera",
+   "name": "ميلان الكاميرا",
+   "sub": "زاوية مايلة",
+   "desc": "الكاميرا تميل بزاوية مع زوم يغطي الحواف — توتر أو مفاجأة — وترجع مستقيمة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/171.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "contrast"
+   ]
+  },
+  {
+   "n": 172,
+   "id": "barrelRoll",
+   "cat": "camera",
+   "name": "لفّة برميل",
+   "sub": "دورة كاملة",
+   "desc": "الكاميرا تلف دورة كاملة بسرعة مع غباش حركة وترجع ثابتة. ضربة قوية مرة وحدة بالفيديو.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/172.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit"
+   ]
+  },
+  {
+   "n": 173,
+   "id": "waveLine",
+   "cat": "text",
+   "name": "موجة الكلام",
+   "sub": "كلمات على موجة",
+   "desc": "الكلمات تنزل وحدة وحدة وتركب على خط موجة يتمايل، وكل كلمة تميل مع الموجة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/173.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 1,
+   "families": [
+    "calm"
+   ],
+   "cues": []
+  },
+  {
+   "n": 174,
+   "id": "longShadow",
+   "cat": "text",
+   "name": "ظل طويل",
+   "sub": "كلمة بعمق",
+   "desc": "الكلمة ترتفع ويطلع وراها ظل طويل مكدّس مثل الحروف المجسمة، ولمعة تعبرها.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/174.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 175,
+   "id": "magnifier",
+   "cat": "camera",
+   "name": "عدسة مكبّرة",
+   "sub": "تكبير التفصيلة",
+   "desc": "عدسة مكبّر تدخل وتمشي على المشهد وتكبّر اللي تحتها، وتوقف على التفصيلة المهمة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/175.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "reveal",
+    "emphasis"
+   ]
+  },
+  {
+   "n": 176,
+   "id": "textCircle",
+   "cat": "text",
+   "name": "نص على دايرة",
+   "sub": "كلمات تلف",
+   "desc": "كلمات على دايرة تلف ببطء مثل ختم الستوري، وبالنص كلمة كبيرة أو زر تشغيل.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/176.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "cta"
+   ]
+  },
+  {
+   "n": 177,
+   "id": "wordDrum",
+   "cat": "text",
+   "name": "أسطوانة الكلمات",
+   "sub": "كلمة تتبدل",
+   "desc": "كلمة ثابتة وجنبها أسطوانة تدوّر كلمات بدالها بنطّة: «نبي: سرعة ← جودة ← سعر».",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/177.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "list",
+    "contrast"
+   ]
+  },
+  {
+   "n": 178,
+   "id": "newsTicker",
+   "cat": "card",
+   "name": "شريط الأخبار",
+   "sub": "عاجل",
+   "desc": "شريط «عاجل» يدخل، العنوان يطلع فوقه، والأخبار تمشي مثل القنوات العربية.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/178.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 179,
+   "id": "timelineRoad",
+   "cat": "card",
+   "name": "خط زمني",
+   "sub": "محطات بالسنين",
+   "desc": "خط ينرسم من اليمين لليسار، ومحطات تنط وحدة ورا وحدة: سنة ووصف قصير.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/179.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "list",
+    "number"
+   ]
+  },
+  {
+   "n": 180,
+   "id": "ratingStars",
+   "cat": "card",
+   "name": "نجوم التقييم",
+   "sub": "تقييم من 5",
+   "desc": "خمس نجوم تتعبّى من اليمين وحدة وحدة (والكسر نص نجمة) مع لمعة، والرقم يعدّ فوقها.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/180.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "number"
+   ]
+  },
+  {
+   "n": 181,
+   "id": "burstBadge",
+   "cat": "card",
+   "name": "ختم الخصم",
+   "sub": "شارة نجمية",
+   "desc": "شارة مسننة تلف وتنط بنسبة الخصم، ولمعة تعبرها. للعروض والأسعار.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/181.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "price"
+   ]
+  },
+  {
+   "n": 182,
+   "id": "liquidFill",
+   "cat": "text",
+   "name": "كلمة تتعبّى",
+   "sub": "سائل داخل الحروف",
+   "desc": "كلمة كبيرة مفرّغة تتعبّى من تحت بسائل يتموّج وفقاعات لين المستوى المطلوب، والنسبة تحتها.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/182.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "number"
+   ]
+  },
+  {
+   "n": 183,
+   "id": "podcastMic",
+   "cat": "card",
+   "name": "ميكروفون البودكاست",
+   "sub": "على الهواء",
+   "desc": "مايك بالنص وموجة صوت حيّة على الجنبين، ولمبة «ON AIR» ترمش. لبداية حلقة أو مقطع صوتي.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/183.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": []
+  },
+  {
+   "n": 184,
+   "id": "radialEq",
+   "cat": "card",
+   "name": "معادل دايري",
+   "sub": "أعمدة صوت تنبض",
+   "desc": "أعمدة صوت حول دايرة تنبض على إيقاع (من الوقت، بلا صوت حقيقي)، وبالنص كلمة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/184.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "tech"
+   ]
+  },
+  {
+   "n": 185,
+   "id": "clockSpin",
+   "cat": "card",
+   "name": "الساعة تلف",
+   "sub": "الوقت يمر",
+   "desc": "ساعة حائط عقاربها تلف بسرعة لين الوقت المطلوب ثم ترن. لجمل مثل «بعد 3 ساعات».",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/185.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "number"
+   ]
+  },
+  {
+   "n": 186,
+   "id": "calendarTear",
+   "cat": "card",
+   "name": "تقويم ينشق",
+   "sub": "الأيام تطير",
+   "desc": "تقويم مكتبي أوراقه تنشق وتطير يوم ورا يوم لين اليوم المطلوب، وينحط حوله دايرة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/186.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "number"
+   ]
+  },
+  {
+   "n": 187,
+   "id": "routeLine",
+   "cat": "card",
+   "name": "خط المشوار",
+   "sub": "من نقطة لنقطة",
+   "desc": "خريطة مبسطة، دبوسين ينزلون، وخط المشوار ينرسم ونقطة تمشي عليه، وملصق المدة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/187.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": []
+  },
+  {
+   "n": 188,
+   "id": "envelopeOpen",
+   "cat": "card",
+   "name": "ظرف ينفتح",
+   "sub": "رسالة تطلع",
+   "desc": "ظرف يطلع من تحت، الختم ينط، الغطا ينفتح، وبطاقة الرسالة تطلع وتكبر. للدعوات والإعلانات.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/188.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "reveal",
+    "cta"
+   ]
+  },
+  {
+   "n": 189,
+   "id": "ribbonBanner",
+   "cat": "card",
+   "name": "شريط الراية",
+   "sub": "راية تنفرد",
+   "desc": "راية بأطراف مطوية تنفرد من النص للجنبين، والكلام يطلع عليها.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/189.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 190,
+   "id": "ornateFrame",
+   "cat": "card",
+   "name": "إطار مزخرف",
+   "sub": "حدود وزوايا",
+   "desc": "إطار خطين ينرسم حول الشاشة، وزخارف بالزوايا ومعيّنات بنص الحواف. للاقتباسات والجمل الهادية.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/190.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm"
+   ],
+   "cues": []
+  },
+  {
+   "n": 191,
+   "id": "lanternFrame",
+   "cat": "card",
+   "name": "إطار رمضان والعيد",
+   "sub": "فوانيس وهلال",
+   "desc": "قوس إسلامي ينرسم حول المحتوى، فوانيس تنزل وتتمرجح، وهلال ونجوم تلمع. لمحتوى رمضان والعيد بس.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/191.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm"
+   ],
+   "cues": [],
+   "manual": true
+  },
+  {
+   "n": 192,
+   "id": "mashrabiya",
+   "cat": "transition",
+   "name": "مشربية",
+   "sub": "بابين شبك",
+   "desc": "بابين مشربية بنقش نجوم ينسكرون على المشهد، وينفتحون على المشهد الجديد.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/192.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 193,
+   "id": "endScreen",
+   "cat": "card",
+   "name": "شاشة النهاية",
+   "sub": "خانتين فيديو",
+   "desc": "آخر الفيديو: عنوان، خانتين فيديو تدخل من الجنبين، ودايرة القناة. حط فوقها روابط يوتيوب.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/193.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "cta"
+   ]
+  },
+  {
+   "n": 194,
+   "id": "polaroidDrop",
+   "cat": "card",
+   "name": "صورة بولارويد",
+   "sub": "صورة تتحمض",
+   "desc": "صورة بولارويد تطيح وتتمرجح وتستقر، والصورة تتحمض من غامق لواضح، والتعليق ينكتب.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/194.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 195,
+   "id": "scrapTape",
+   "cat": "card",
+   "name": "قصاصة بشريط لاصق",
+   "sub": "ملاحظة ملزوقة",
+   "desc": "ورقة ملاحظة تنلزق على الشاشة، وقطع شريط لاصق تنحط على زواياها وحدة ورا وحدة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/195.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 196,
+   "id": "oldFilm",
+   "cat": "camera",
+   "name": "فيلم قديم",
+   "sub": "سيبيا وخدوش",
+   "desc": "المشهد يصير فيلم قديم: سيبيا، رجفة، وميض، خدوش وغبار. للذكريات وزمان.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/196.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 1,
+   "families": [
+    "calm"
+   ],
+   "cues": []
+  },
+  {
+   "n": 197,
+   "id": "flipCards",
+   "cat": "card",
+   "name": "بطاقات تنقلب",
+   "sub": "نصيحة ورا نصيحة",
+   "desc": "بطاقة بالنص تنقلب (ثلاثي الأبعاد) وتكشف اللي بعدها، مع رقم ونقاط تبين وين وصلنا.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/197.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "list"
+   ]
+  },
+  {
+   "n": 198,
+   "id": "heartbeat",
+   "cat": "card",
+   "name": "نبض القلب",
+   "sub": "خط النبض",
+   "desc": "شاشة جهاز نبض، الخط يمشي ويرسم نبضات، والكلمة فوقه تنبض مع كل دقة.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/198.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "emphasis",
+    "number"
+   ]
+  },
+  {
+   "n": 199,
+   "id": "fireworks",
+   "cat": "card",
+   "name": "ألعاب نارية",
+   "sub": "احتفال",
+   "desc": "صواريخ تطلع وتنفجر كرات شرر ملوّنة تنزل وتلمع. للعيد والإنجازات.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/199.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "reveal"
+   ]
+  },
+  {
+   "n": 200,
+   "id": "warpSpeed",
+   "cat": "transition",
+   "name": "قفزة الضوء",
+   "sub": "نجوم تتمدد",
+   "desc": "نجوم تتمدد خطوط من النص، المشهد ينسحب لقدّام، وميض، والمشهد الجديد يطلع.",
+   "source": {
+    "label": "I/O Studio",
+    "url": ""
+   },
+   "preview": "previews/200.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit"
+   ]
+  }
+ ]
+}

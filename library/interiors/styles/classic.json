@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "id": "classic",
+  "name_ar": "كلاسيك",
+  "name_en": "Classic",
+  "description_ar": "خشب غامق، قماش مخمل، تفاصيل ذهبية خفيفة، ثريا، وتناظر بالترتيب. فخم وهادئ.",
+  "palette": [
+    "#efe6d6",
+    "#5b3a29",
+    "#6b1f2a",
+    "#c9a24a",
+    "#2f2a26"
+  ],
+  "materials": {
+    "wall": {
+      "kind": "plaster",
+      "color": "#efe6d6",
+      "roughness": 0.9
+    },
+    "floor": "walnut",
+    "main": "velvet-burgundy",
+    "cushion": {
+      "kind": "fabric",
+      "color": "#e8dcc4",
+      "roughness": 0.85
+    },
+    "accent": {
+      "kind": "fabric",
+      "color": "#c9a24a",
+      "roughness": 0.7
+    },
+    "wood": "dark-wood",
+    "metal": "brass",
+    "fabric": {
+      "kind": "fabric",
+      "color": "#a28466",
+      "roughness": 0.85
+    },
+    "rug": {
+      "kind": "fabric",
+      "color": "#7e2f2c",
+      "roughness": 1
+    },
+    "rug2": {
+      "kind": "fabric",
+      "color": "#c9a77c",
+      "roughness": 1
+    },
+    "stone": "marble-white",
+    "frame": "brass",
+    "trim": {
+      "kind": "plain",
+      "color": "#f3ece0",
+      "roughness": 0.5
+    },
+    "door": "walnut"
+  },
+  "swaps": {
+    "pendant-lamp": "chandelier",
+    "coffee-table": "coffee-table-round"
+  },
+  "recommended": [
+    "sofa",
+    "armchair",
+    "chandelier",
+    "sideboard",
+    "mirror-round",
+    "wall-sconce",
+    "rug"
+  ],
+  "lighting": {
+    "time_of_day": "evening",
+    "lamp_color": "#ffd08a"
+  },
+  "tips_ar": [
+    "رتّب القطع بشكل متناظر حول نقطة وحدة (ثريا أو مراية).",
+    "شغّل الإضاءات الجدارية بالمسا."
+  ]
+}

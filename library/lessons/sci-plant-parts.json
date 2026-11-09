@@ -1,0 +1,224 @@
+{
+  "meta": {
+    "id": "sci-plant-parts",
+    "subject": "science",
+    "subjectLabel": "علوم",
+    "level": "ابتدائي ١–٢",
+    "stage": "primary"
+  },
+  "title": "أجزاء النبات",
+  "format": "9:16",
+  "style": "whiteboard",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّم",
+    "gender": "male",
+    "shirt": "#1F8A4C"
+  },
+  "beats": [
+    {
+      "say": "للنبات أجزاء، ولكل جزء وظيفة.",
+      "write": {
+        "text": "لكل جزء وظيفة",
+        "at": [
+          500,
+          90
+        ],
+        "size": 70,
+        "color": "green",
+        "underline": true
+      },
+      "draw": {
+        "shape": "line",
+        "from": [
+          120,
+          680
+        ],
+        "to": [
+          880,
+          680
+        ],
+        "color": "brown",
+        "width": 10
+      }
+    },
+    {
+      "say": "الجذور تحت التربة: تثبت النبات، وتمتص الماء والأملاح.",
+      "draw": [
+        {
+          "shape": "curve",
+          "points": [
+            [
+              500,
+              680
+            ],
+            [
+              470,
+              760
+            ],
+            [
+              420,
+              830
+            ]
+          ],
+          "color": "brown"
+        },
+        {
+          "shape": "curve",
+          "points": [
+            [
+              500,
+              680
+            ],
+            [
+              505,
+              780
+            ],
+            [
+              500,
+              870
+            ]
+          ],
+          "color": "brown"
+        },
+        {
+          "shape": "curve",
+          "points": [
+            [
+              500,
+              680
+            ],
+            [
+              540,
+              760
+            ],
+            [
+              590,
+              820
+            ]
+          ],
+          "color": "brown"
+        }
+      ],
+      "label": {
+        "text": "الجذور",
+        "at": [
+          560,
+          790
+        ],
+        "from": [
+          740,
+          860
+        ],
+        "color": "brown"
+      }
+    },
+    {
+      "say": "الساق تحمل النبات، وتنقل الماء من الجذور إلى الأوراق.",
+      "draw": {
+        "shape": "line",
+        "from": [
+          500,
+          680
+        ],
+        "to": [
+          500,
+          300
+        ],
+        "color": "green",
+        "width": 12
+      },
+      "label": {
+        "text": "الساق",
+        "at": [
+          505,
+          560
+        ],
+        "from": [
+          260,
+          600
+        ],
+        "color": "green"
+      }
+    },
+    {
+      "say": "الأوراق خضراء، وفيها يصنع النبات غذاءه بمساعدة ضوء الشمس.",
+      "draw": [
+        {
+          "shape": "ellipse",
+          "center": [
+            600,
+            460
+          ],
+          "rx": 90,
+          "ry": 38,
+          "fill": "green",
+          "color": "green"
+        },
+        {
+          "shape": "ellipse",
+          "center": [
+            400,
+            400
+          ],
+          "rx": 90,
+          "ry": 38,
+          "fill": "green",
+          "color": "green"
+        }
+      ],
+      "label": {
+        "text": "الأوراق",
+        "at": [
+          680,
+          450
+        ],
+        "from": [
+          780,
+          330
+        ],
+        "color": "green"
+      }
+    },
+    {
+      "say": "والزهرة تكوّن البذور، ومن البذور تنمو نباتات جديدة.",
+      "draw": {
+        "shape": "emoji",
+        "value": "🌼",
+        "at": [
+          500,
+          250
+        ],
+        "size": 170
+      },
+      "label": {
+        "text": "الزهرة",
+        "at": [
+          420,
+          250
+        ],
+        "from": [
+          200,
+          200
+        ],
+        "color": "orange"
+      }
+    },
+    {
+      "say": "أي جزء يمتص الماء من التربة؟",
+      "quiz": {
+        "options": [
+          "الأوراق",
+          "الجذور",
+          "الزهرة"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "say": "الجذور! أحسنتم يا مزارعين صغار.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

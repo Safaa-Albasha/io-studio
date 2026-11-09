@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>أهلاً بك — I/O Studio</title>
+<link rel="icon" href="lib/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="lib/brand.css">
+<style>
+:root{--bg:var(--card-2);--on:var(--accent-ink);--soft:var(--sky-soft)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--font);line-height:1.7}
+.wrap{max-width:760px;margin:0 auto;padding:28px 16px 60px}
+.mark.sf-mark{width:56px;height:56px;border-radius:16px;font-size:30px}
+.head{padding-bottom:14px}
+h1{font-size:30px;margin:12px 0 2px}.muted{color:var(--muted)}
+.steps{display:flex;gap:6px;margin:18px 0}.steps span{flex:1;height:6px;border-radius:3px;background:var(--line)}.steps span.on{background:var(--accent)}
+section{display:none;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}section.on{display:block}
+h2{font-size:21px;margin:0 0 4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:12px}
+.opt{border:2px solid var(--line);border-radius:14px;padding:10px 12px;cursor:pointer;background:transparent;color:inherit;font:inherit;text-align:right}
+.opt b{display:block}.opt small{color:var(--muted)}
+.opt[aria-pressed="true"]{border-color:var(--accent);background:var(--soft)}
+label{display:block;font-weight:600;margin:12px 0 4px}
+input,select{width:100%;font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.ltr{direction:ltr;text-align:left}
+.row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.nav{display:flex;justify-content:space-between;gap:8px;margin-top:18px}
+button.go{font:inherit;font-weight:800;border:0;border-radius:12px;padding:10px 22px;background:var(--accent);color:var(--on);cursor:pointer}
+button.back{font:inherit;border:1px solid var(--line);border-radius:12px;padding:10px 18px;background:transparent;color:inherit;cursor:pointer}
+.err{color:var(--bad);font-weight:600;min-height:1.6em}
+.ids{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}
+.idc{border:2px solid var(--line);border-radius:14px;padding:12px;cursor:pointer;min-height:150px}
+.idc[aria-pressed="true"]{border-color:var(--accent)}
+.sw{display:flex;gap:4px;margin-bottom:8px}.sw i{width:22px;height:22px;border-radius:6px;display:block;border:1px solid rgba(127,127,127,.3)}
+.drop{border:2px dashed var(--line);border-radius:14px;padding:22px;text-align:center;margin-top:12px;cursor:pointer}
+.types{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.types .opt .ic{font-size:26px;line-height:1.2;display:block}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:6px}
+.seg button{font:inherit;border:0;background:transparent;color:inherit;padding:8px 18px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--on);font-weight:800}
+.src{display:grid;grid-template-columns:140px minmax(0,1fr) auto;gap:8px;margin-top:8px}
+.src button{font:inherit;border:1px solid var(--line);border-radius:10px;background:transparent;color:inherit;padding:0 12px;cursor:pointer}
+.add{font:inherit;border:1px dashed var(--line);border-radius:10px;background:transparent;color:inherit;padding:6px 14px;margin-top:8px;cursor:pointer}
+textarea{width:100%;font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 12px;min-height:80px;resize:vertical}
+.hint{background:var(--soft);border-radius:12px;padding:8px 12px;margin-top:10px;font-size:14px}
+.done{text-align:center}.done .big{font-size:48px}
+button:focus-visible,.opt:focus-visible,.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:560px){.row,.ids{grid-template-columns:1fr}.src{grid-template-columns:110px minmax(0,1fr) auto}}
+</style>
+</head>
+<body class="sf-page">
+<div class="wrap">
+  <div class="head sf-letterbox">
+  <div class="mark sf-mark"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#5CB8F0"/><path d="M10.5 17h11.5v4.6h-2.6v20.8h2.6V47H10.5v-4.6h2.6V21.6h-2.6z" fill="#14181D"/><ellipse cx="47.4" cy="32" rx="8.6" ry="12.2" fill="none" stroke="#14181D" stroke-width="5.6"/><path d="M22 32h14.2" stroke="#F2FAFF" stroke-width="1.6" stroke-linecap="round"/><path d="M29.1 26.4Q30.1 31.0 34.7 32Q30.1 33.0 29.1 37.6Q28.1 33.0 23.5 32Q28.1 31.0 29.1 26.4z" fill="#FFFFFF"/></svg></div>
+  <p class="sf-slogan sf-slogan-sm">«فكرتك تدخل… والذكاء يكمّل الإبداع»</p>
+  <h1 id="hello">أهلاً بك في آي أو استوديو</h1>
+  <p class="muted">خمس خطوات وتخلص: لهجتك، اسمك وحساباتك، نوع حسابك، شكل هويتك، وتحفظ. بعدها ارجع لـ Claude وكمّل.</p>
+  </div>
+  <div class="steps" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span><span></span></div>
+
+  <section class="on" data-step="1">
+    <h2>١. بأي لهجة نحچي وياك؟</h2>
+    <p class="muted">كل كلام Claude ومحتواك ينكتب بيها. تگدر تغيّرها بعدين.</p>
+    <div class="grid" id="dialects"></div>
+  </section>
+
+  <section data-step="2">
+    <h2>٢. اسمك وحساباتك</h2>
+    <label for="name">اسمك</label><input id="name" autocomplete="name">
+    <label for="brand">اسم البراند أو الحساب (اختياري)</label><input id="brand">
+    <label>حساباتك</label>
+    <div class="row">
+      <input id="h-instagram" class="ltr" placeholder="@instagram" aria-label="حساب إنستقرام">
+      <input id="h-youtube" class="ltr" placeholder="@youtube" aria-label="حساب يوتيوب">
+      <input id="h-tiktok" class="ltr" placeholder="@tiktok" aria-label="حساب تيك توك">
+    </div>
+    <label for="niche">مجالك</label><input id="niche" placeholder="مثلاً: تقنية، طبخ، تعليم أطفال، ديكور…">
+    <label for="lessonChar">شخصية الدروس المتحركة</label>
+    <select id="lessonChar"><option value="">بعدين</option><option value="female">أنثى</option><option value="male">ذكر</option></select>
+  </section>
+
+  <section data-step="3">
+    <h2>٣. نوع حسابك</h2>
+    <p class="muted">النوع يغيّر الأدوات المقترحة: أنواع شرائح الكاروسيل، الحركات، الأصوات، الألوان والقواعد. تگدر تغيّره بعدين.</p>
+    <div class="grid types" id="types"></div>
+    <label>شكل المحتوى</label>
+    <div class="seg" id="formats" role="group" aria-label="شكل المحتوى"></div>
+    <p class="muted" id="formatDesc"></p>
+
+    <h2 style="margin-top:18px">الحسابات اللي تتابعها بمجالك</h2>
+    <p class="muted">حسابات ومواقع تتابعها وتحب تعرف شنو ينزلون — تصير أول مصدر للوحة الترند اليومية (<bdi dir="ltr">.io/sources.json</bdi>)، ومعها مواقع مجالك. اختياري.</p>
+    <div id="srcRows"></div>
+    <button type="button" class="add" id="addSrc">+ حساب ثاني</button>
+    <label for="sites">مواقع وأخبار المجال (موقع بكل سطر)</label>
+    <textarea id="sites" class="ltr" placeholder="example.com&#10;news.example.org/section"></textarea>
+    <p class="hint" id="typeSites" hidden></p>
+
+    <h2 style="margin-top:18px">تريد الترند يومياً؟</h2>
+    <p class="muted">كل يوم بالساعة اللي تختارها Claude يجيب ترند مصادرك ويكتب أفكار جاهزة ببرنامج آي أو استوديو (تبويب الأفكار). تگدر تطفيه بعدين من «هويتي».</p>
+    <div class="seg" id="dtSeg" role="group" aria-label="الترند اليومي"><button type="button" data-dt="1" aria-pressed="true">إي، يومياً</button><button type="button" data-dt="0" aria-pressed="false">لا، بعدين</button></div>
+    <div id="dtHourBox"><label for="dtHour">الساعة المفضّلة</label><select id="dtHour" style="max-width:200px"></select></div>
+  </section>
+
+  <section data-step="4">
+    <h2>٤. هويتك البصرية</h2>
+    <div class="grid">
+      <button type="button" class="opt" data-mode="create" aria-pressed="true"><b>✨ أنشئ لي هوية</b><small>اختار إحساس وخذ وحدة من ثلاث</small></button>
+      <button type="button" class="opt" data-mode="upload" aria-pressed="false"><b>📤 أرفع هويتي</b><small>شعار أو بوستات قديمة</small></button>
+    </div>
+    <div id="create">
+      <label for="mood">الإحساس</label><select id="mood"></select>
+      <div class="ids" id="ids"></div>
+    </div>
+    <div id="upload" hidden>
+      <div class="drop" id="drop" tabindex="0">اسحب الصور هنا أو اضغط للاختيار (شعار، بوستات، لقطات من حسابك)</div>
+      <input type="file" id="files" accept="image/*" multiple hidden>
+      <p class="muted" id="flist"></p>
+    </div>
+  </section>
+
+  <section data-step="5">
+    <div class="done" id="summary"></div>
+  </section>
+
+  <p class="err" id="err" role="alert"></p>
+  <div class="nav"><button type="button" class="back" id="back" hidden>رجوع</button><button type="button" class="go" id="next">التالي</button></div>
+</div>
+<script>
+'use strict';
+const $ = (id) => document.getElementById(id);
+const S = { step: 1, dialect: '', mode: 'create', option: 1, files: [], type: '', format: 'video', accent: '', dt: true };
+const LAST = 5;
+const PLAT = { instagram: 'إنستقرام', youtube: 'يوتيوب', tiktok: 'تيك توك', x: 'إكس', site: 'موقع' };
+const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+let state = null;
+
+function stepTo(n) {
+  S.step = n;
+  document.querySelectorAll('section').forEach((s) => s.classList.toggle('on', +s.dataset.step === n));
+  document.querySelectorAll('.steps span').forEach((s, i) => s.classList.toggle('on', i < n));
+  $('back').hidden = n === 1 || n === LAST;
+  $('next').hidden = n === LAST;
+  $('next').textContent = n === LAST - 1 ? 'احفظ' : 'التالي';
+  $('err').textContent = '';
+}
+
+async function loadOptions() {
+  const accent = typeAccent();
+  const r = await fetch('/api/identity-options?mood=' + encodeURIComponent($('mood').value) + (accent ? '&accent=' + encodeURIComponent(accent) : ''));
+  const opts = await r.json();
+  $('ids').innerHTML = opts.map((t, i) => `<div class="idc" role="button" tabindex="0" data-i="${i + 1}" aria-pressed="${i + 1 === S.option}" style="background:${t.colors.bg};color:${t.colors.ink};font-family:'${t.fonts.heading}',Cairo,sans-serif">
+    <div class="sw">${['bg', 'ink', 'accent', 'accent2', 'soft'].map((k) => `<i style="background:${t.colors[k]}"></i>`).join('')}</div>
+    <b style="font-size:20px">عنوان <span style="color:${t.colors.accent}">بهويتك</span></b><br><small>${t.fonts.heading} · ${t.feel}</small></div>`).join('');
+}
+
+function readFiles(list) {
+  const arr = [...list].slice(0, 8);
+  Promise.all(arr.map((f) => new Promise((res) => { const r = new FileReader(); r.onload = () => res({ name: f.name, data: r.result }); r.readAsDataURL(f); }))).then((x) => { S.files = x; $('flist').textContent = x.map((f) => f.name).join('، '); });
+}
+
+function typeAccent() {
+  const t = typeOf(S.type);
+  return t && t.identity && t.identity.mood === $('mood').value ? t.identity.accent : '';
+}
+
+function typeOf(id) { return state && (state.accountTypes || []).find((t) => t.id === id); }
+
+function srcRow(platform, handle) {
+  const div = document.createElement('div');
+  div.className = 'src';
+  div.innerHTML = `<select aria-label="المنصة">${(state.sourcePlatforms || Object.keys(PLAT)).map((p) => `<option value="${esc(p)}"${p === platform ? ' selected' : ''}>${esc(PLAT[p] || p)}</option>`).join('')}</select>
+    <input class="ltr" aria-label="الحساب أو الرابط" placeholder="@account أو رابط" value="${esc(handle || '')}">
+    <button type="button" aria-label="شيل هالحساب" title="شيل">✕</button>`;
+  div.querySelector('button').onclick = () => { div.remove(); if (!$('srcRows').children.length) srcRow('instagram'); };
+  $('srcRows').appendChild(div);
+}
+
+function pickType(id) {
+  S.type = id;
+  $('err').textContent = '';
+  document.querySelectorAll('[data-type]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.type === id)));
+  const t = typeOf(id);
+  if (t && t.identity && t.identity.mood && [...$('mood').options].some((o) => o.value === t.identity.mood)) { $('mood').value = t.identity.mood; S.option = 1; loadOptions(); }
+  const sites = t && t.trendSites ? t.trendSites : [];
+  $('typeSites').hidden = !sites.length;
+  $('typeSites').textContent = sites.length ? 'ونضيف مواقع مجالك تلقائياً: ' + sites.join('، ') : '';
+}
+
+function hourLabel(h) { return (h % 12 || 12) + ':00 ' + (h < 12 ? 'صباحاً' : h < 17 ? 'الظهر/العصر' : 'مساءً'); }
+function pickDaily(on) {
+  S.dt = !!on;
+  document.querySelectorAll('[data-dt]').forEach((b) => b.setAttribute('aria-pressed', String((b.dataset.dt === '1') === S.dt)));
+  $('dtHourBox').hidden = !S.dt;
+}
+
+function pickFormat(id) {
+  S.format = id;
+  document.querySelectorAll('[data-format]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.format === id)));
+  const f = (state.formats || []).find((x) => x.id === id);
+  $('formatDesc').textContent = f ? f.description : '';
+}
+
+function sources() {
+  const accounts = [...document.querySelectorAll('#srcRows .src')].map((row) => ({ platform: row.querySelector('select').value, handle: row.querySelector('input').value.trim() })).filter((a) => a.handle);
+  const sites = $('sites').value.split(/\n+/).map((x) => x.trim()).filter(Boolean);
+  return { accounts, sites, keywords: $('niche').value.trim() ? [$('niche').value.trim()] : [] };
+}
+
+async function save() {
+  const payload = {
+    dialect: S.dialect, name: $('name').value, brand: $('brand').value, niche: $('niche').value,
+    handles: { instagram: $('h-instagram').value, youtube: $('h-youtube').value, tiktok: $('h-tiktok').value },
+    lessonCharacter: $('lessonChar').value,
+    accountType: S.type, contentFormat: S.format, sources: sources(),
+    dailyTrends: { enabled: S.dt, hour: +$('dtHour').value },
+    identity: S.mode === 'create' ? { mode: 'create', mood: $('mood').value, accent: typeAccent() || undefined, option: S.option } : { mode: 'upload', files: S.files },
+  };
+  $('next').disabled = true; $('next').textContent = 'أحفظ…';
+  try {
+    const r = await fetch('/api/onboard', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
+    const j = await r.json();
+    if (!j.ok) { $('err').textContent = (j.errors || ['صار خطأ']).join(' · '); stepTo(j.errors && j.errors.some((e) => /لهجة/.test(e)) ? 1 : j.errors && j.errors.some((e) => /نوع الحساب|شكل المحتوى/.test(e)) ? 3 : 2); return; }
+    const c = j.theme.colors || {};
+    $('summary').innerHTML = `<div class="big">✅</div><h2>انحفظت هويتك</h2><div class="sw" style="justify-content:center;margin:10px 0">${Object.values(c).map((v) => `<i style="background:${v}"></i>`).join('')}</div><p class="muted">الملفات: ${j.files.map(esc).join(' · ')}</p>${typeOf(S.type) ? `<p>نوع حسابك: <b>${esc(typeOf(S.type).icon + ' ' + typeOf(S.type).name)}</b> — كل الأدوات راح تقترح حزمته.</p>` : ''}${S.dt ? `<p>📈 الترند اليومي: كل يوم الساعة <b>${esc(hourLabel(+$('dtHour').value))}</b> — الأفكار تنزل ببرنامج آي أو استوديو.</p>` : ''}<p><b>ارجع لـ Claude واكتب: «خلصت»</b> — وتكمّل وياه بلهجتك.</p>`;
+    stepTo(LAST);
+  } catch (e) { $('err').textContent = 'ما گدرت أوصل للبلقن — تأكد إن Claude بعده شغّال.'; }
+  finally { $('next').disabled = false; }
+}
+
+$('next').onclick = () => {
+  if (S.step === 1 && !S.dialect) { $('err').textContent = 'اختار لهجة'; return; }
+  if (S.step === 2 && !$('name').value.trim()) { $('err').textContent = 'اكتب اسمك'; return; }
+  if (S.step === 3 && !S.type) { $('err').textContent = 'اختار نوع حسابك'; return; }
+  if (S.step === LAST - 1) return save();
+  stepTo(S.step + 1);
+};
+$('back').onclick = () => stepTo(S.step - 1);
+document.addEventListener('click', (e) => {
+  const d = e.target.closest('[data-dialect]');
+  if (d) { S.dialect = d.dataset.dialect; document.querySelectorAll('[data-dialect]').forEach((b) => b.setAttribute('aria-pressed', String(b === d))); $('hello').textContent = d.dataset.greeting; }
+  const m = e.target.closest('[data-mode]');
+  if (m) { S.mode = m.dataset.mode; document.querySelectorAll('[data-mode]').forEach((b) => b.setAttribute('aria-pressed', String(b === m))); $('create').hidden = S.mode !== 'create'; $('upload').hidden = S.mode !== 'upload'; }
+  const ty = e.target.closest('[data-type]');
+  if (ty) pickType(ty.dataset.type);
+  const dt = e.target.closest('[data-dt]');
+  if (dt) pickDaily(dt.dataset.dt === '1');
+  const fo = e.target.closest('[data-format]');
+  if (fo) pickFormat(fo.dataset.format);
+  const c = e.target.closest('.idc');
+  if (c) { S.option = +c.dataset.i; document.querySelectorAll('.idc').forEach((x) => x.setAttribute('aria-pressed', String(x === c))); }
+});
+$('mood').onchange = loadOptions;
+$('addSrc').onclick = () => { srcRow('instagram'); $('srcRows').lastChild.querySelector('input').focus(); };
+$('drop').onclick = () => $('files').click();
+$('drop').onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') $('files').click(); };
+$('files').onchange = (e) => readFiles(e.target.files);
+$('drop').ondragover = (e) => e.preventDefault();
+$('drop').ondrop = (e) => { e.preventDefault(); readFiles(e.dataTransfer.files); };
+
+(async () => {
+  try { state = await (await fetch('/api/state')).json(); } catch (e) { $('err').textContent = 'افتح هالصفحة من البلقن: node engine/serve.js --open welcome.html'; return; }
+  $('dialects').innerHTML = state.dialects.map((d) => `<button type="button" class="opt" data-dialect="${d.id}" data-greeting="${d.greeting}" aria-pressed="false"><b>${d.name}</b><small>${d.region}</small></button>`).join('');
+  $('mood').innerHTML = state.moods.map((m) => `<option value="${m.id}">${m.ar}</option>`).join('');
+  $('types').innerHTML = (state.accountTypes || []).map((t) => `<button type="button" class="opt" data-type="${esc(t.id)}" aria-pressed="false"><span class="ic" aria-hidden="true">${esc(t.icon)}</span><b>${esc(t.name)}</b><small>${esc(t.description)}</small></button>`).join('');
+  $('formats').innerHTML = (state.formats || []).map((f) => `<button type="button" data-format="${esc(f.id)}" aria-pressed="false">${esc(f.name)}</button>`).join('');
+  const src = state.sources || {};
+  (src.accounts && src.accounts.length ? src.accounts : [{ platform: 'instagram', handle: '' }]).forEach((a) => srcRow(a.platform, a.handle));
+  pickFormat('video');
+  $('dtHour').innerHTML = Array.from({ length: 24 }, (_, h) => `<option value="${h}"${h === 9 ? ' selected' : ''}>${hourLabel(h)}</option>`).join('');
+  if (state.project) {
+    const dt = state.project.dailyTrends;
+    if (dt && typeof dt === 'object') { pickDaily(dt.enabled === true); if (Number.isFinite(+dt.hour)) $('dtHour').value = String(+dt.hour); }
+    const p = state.project;
+    if (p.accountType && typeOf(p.accountType)) pickType(p.accountType);
+    if (p.contentFormat) pickFormat(p.contentFormat);
+    if (p.owner) $('name').value = p.owner; if (p.name && p.name !== p.owner) $('brand').value = p.name;
+    for (const k of ['instagram', 'youtube', 'tiktok']) if (p.handles && p.handles[k]) $('h-' + k).value = p.handles[k];
+  }
+  loadOptions();
+})();
+</script>
+</body>
+</html>

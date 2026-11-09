@@ -1,0 +1,81 @@
+{
+  "meta": {
+    "id": "geo-continents",
+    "subject": "geography",
+    "subjectLabel": "جغرافيا",
+    "level": "ابتدائي ٤–٦",
+    "stage": "primary"
+  },
+  "title": "قارات العالم ومحيطاته",
+  "format": "16:9",
+  "style": "cartoon",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّمة",
+    "shirt": "#2E9B5B",
+    "hijab": "#2F7FBF"
+  },
+  "beats": [
+    {
+      "say": "هذي خريطة مبسطة للعالم: بيها سبع قارات.",
+      "geography": {
+        "preset": "world"
+      }
+    },
+    {
+      "say": "أكبر قارة هي آسيا، وإحنا بالعراق نعيش بيها.",
+      "geography": {
+        "preset": "none",
+        "sea": false,
+        "compass": false,
+        "pins": [
+          {
+            "lonlat": [
+              44.4,
+              33.3
+            ],
+            "label": "العراق"
+          }
+        ]
+      }
+    },
+    {
+      "say": "وبيها خمس محيطات، أكبرها المحيط الهادئ.",
+      "geography": {
+        "preset": "none",
+        "sea": false,
+        "compass": false,
+        "oceans": true
+      }
+    },
+    {
+      "say": "البوصلة: الشمال فوق، الجنوب جوّه، الشرق يمين والغرب يسار.",
+      "highlight": {
+        "box": [
+          860,
+          90,
+          100,
+          110
+        ],
+        "kind": "circle",
+        "color": "red"
+      }
+    },
+    {
+      "say": "أكبر قارة بالعالم؟",
+      "quiz": {
+        "options": [
+          "أفريقيا",
+          "آسيا",
+          "أوروبا"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "say": "آسيا! أحسنتم يا مستكشفين.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

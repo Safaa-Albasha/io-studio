@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مكتبة الدروس — I/O Studio</title>
+<link rel="icon" href="lib/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="lib/brand.css">
+<script src="lib/ls-migrate.js"></script>
+<style>
+:root{
+  /* product chrome = lib/brand.css (sky + cinematic charcoal) */
+  --surface-1:var(--card); --surface-2:var(--card-2);
+  --text-primary:var(--ink); --text-secondary:var(--ink-2); --text-muted:var(--muted);
+  --good:var(--ok);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--text-primary);font-family:var(--font);font-size:15px;line-height:1.5}
+button,select,input{font-family:inherit;font-size:14px;color:var(--text-primary)}
+button{background:var(--surface-1);border:1px solid var(--line);border-radius:10px;padding:7px 12px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:700}
+button[aria-pressed="true"]{border-color:var(--text-primary);font-weight:700;background:var(--surface-2)}
+.wrap{max-width:1280px;margin:0 auto;padding:16px}
+header{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px;padding-bottom:10px}
+header h1{font-size:22px;margin:0}
+header .sp{flex:1}
+header .count{color:var(--text-muted);font-size:13px}
+.logo.sf-mark{width:36px;height:36px;border-radius:11px;font-size:20px}
+.filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px}
+.filters .lbl{color:var(--text-muted);font-size:13px;margin-inline-end:4px;min-width:52px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:12px}
+.card{background:var(--surface-1);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;text-align:start;padding:0}
+.card:hover,.card:focus-visible{border-color:var(--accent);outline:none}
+.thumb{background:var(--surface-2);display:grid;place-items:center;height:200px}
+.thumb canvas{max-width:100%;max-height:200px;display:block}
+.meta{padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.meta b{font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tag{font-size:12px;color:var(--text-secondary);background:var(--surface-2);border-radius:6px;padding:1px 7px}
+.empty{color:var(--text-muted);padding:40px;text-align:center;border:1px dashed var(--line);border-radius:14px}
+.empty code{direction:ltr;display:inline-block}
+dialog{border:1px solid var(--line);border-radius:16px;background:var(--surface-1);color:var(--text-primary);padding:0;max-width:min(1200px,96vw);width:100%}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+.player{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:0}
+.stage{background:#111;display:grid;place-items:center;padding:10px;min-height:300px}
+.stage canvas{max-width:100%;max-height:78vh;display:block;border-radius:8px}
+.side{padding:14px;display:flex;flex-direction:column;gap:10px;border-inline-start:1px solid var(--line);max-height:86vh;overflow:auto}
+.side h2{font-size:18px;margin:0}
+.controls{display:flex;gap:8px;align-items:center;padding:10px 14px;border-top:1px solid var(--line);grid-column:1 / -1}
+.controls input[type=range]{flex:1;accent-color:var(--accent);direction:ltr}
+.time{font-variant-numeric:tabular-nums;color:var(--text-secondary);direction:ltr;min-width:90px;text-align:center}
+.beats{display:flex;flex-direction:column;gap:4px;font-size:13px}
+.beats button{text-align:start;padding:6px 8px;border-radius:8px;line-height:1.4}
+.beats button.on{border-color:var(--accent);background:var(--surface-2)}
+.hint{font-size:13px;color:var(--text-secondary);background:var(--surface-2);border-radius:10px;padding:8px 10px}
+.cmd{direction:ltr;text-align:left;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:8px;word-break:break-all}
+.toast{position:fixed;bottom:18px;inset-inline-start:50%;transform:translateX(50%);background:var(--text-primary);color:var(--page);padding:8px 14px;border-radius:10px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.show{opacity:1}
+@media (max-width:820px){
+  .player{grid-template-columns:1fr}
+  .side{border-inline-start:0;border-top:1px solid var(--line);max-height:none}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+  .thumb{height:170px}.thumb canvas{max-height:170px}
+}
+</style>
+</head>
+<body class="sf-page">
+<div class="wrap">
+  <header class="sf-letterbox">
+    <div class="logo sf-mark"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#5CB8F0"/><path d="M10.5 17h11.5v4.6h-2.6v20.8h2.6V47H10.5v-4.6h2.6V21.6h-2.6z" fill="#14181D"/><ellipse cx="47.4" cy="32" rx="8.6" ry="12.2" fill="none" stroke="#14181D" stroke-width="5.6"/><path d="M22 32h14.2" stroke="#F2FAFF" stroke-width="1.6" stroke-linecap="round"/><path d="M29.1 26.4Q30.1 31.0 34.7 32Q30.1 33.0 29.1 37.6Q28.1 33.0 23.5 32Q28.1 31.0 29.1 26.4z" fill="#FFFFFF"/></svg></div>
+    <h1>مكتبة الدروس</h1>
+    <span class="count" id="count"></span>
+    <span class="sp"></span>
+    <label><button id="pick" type="button">📂 افتح مجلد الدروس</button><input id="dir" type="file" webkitdirectory hidden></label>
+    <button id="theme" type="button" title="فاتح / غامق">🌓</button>
+  </header>
+  <div class="filters" id="fSubject"><span class="lbl">المادة:</span></div>
+  <div class="filters" id="fStyle"><span class="lbl">الستايل:</span></div>
+  <div class="filters" id="fFormat"><span class="lbl">المقاس:</span></div>
+  <div id="grid" class="grid"></div>
+</div>
+
+<dialog id="dlg">
+  <div class="player">
+    <div class="stage"><canvas id="cv" width="1080" height="1920"></canvas></div>
+    <div class="side">
+      <div style="display:flex;gap:8px;align-items:center"><h2 id="pTitle" style="flex:1"></h2><button id="close" type="button" aria-label="إغلاق">✕</button></div>
+      <div class="tags" id="pTags"></div>
+      <div class="hint" id="pSay"></div>
+      <div class="beats" id="pBeats"></div>
+      <div class="hint">🎬 <b>افتحه بالاستوديو:</b> انسخ الملف لمجلد درس باسم <code>scene.json</code> (مثلاً <code dir="ltr">lessons/<span id="pSlug"></span>/scene.json</code>)، وافتح المجلد بـ <code>studio.html</code> واختار «🎬 مشهد» حتى تسجّل صوتك فوقه.</div>
+      <div><b style="font-size:13px">أمر التصدير MP4:</b></div>
+      <div class="cmd" id="pCmd"></div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap"><button id="copyCmd" type="button" class="primary">📋 انسخ الأمر</button><button id="copyJson" type="button">📋 انسخ scene.json</button></div>
+    </div>
+    <div class="controls">
+      <button id="play" type="button" class="primary" style="min-width:84px">▶ تشغيل</button>
+      <input id="scrub" type="range" min="0" max="1000" value="0" aria-label="الوقت">
+      <span class="time" id="time">0.0 / 0.0</span>
+    </div>
+  </div>
+</dialog>
+<div class="toast" id="toast"></div>
+
+<script src="lib/scene-core.js"></script>
+<script src="../library/lessons/lessons.js" onerror="void 0"></script>
+<script>
+'use strict';
+const SS = window.IoScene;
+const $ = (id) => document.getElementById(id);
+const STYLE_AR = { cartoon: 'كرتون', chalkboard: 'سبورة طباشير', whiteboard: 'سبورة بيضاء', paper: 'دفتر' };
+const state = { lessons: [], scenes: {}, filter: { subject: 'all', style: 'all', format: 'all' }, cur: null, t: 0, playing: false, last: 0 };
+
+function toast(msg) { const t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove('show'), 1800); }
+function fmtT(s) { return s.toFixed(1); }
+
+// theme toggle (remembered per viewer)
+try { const th = localStorage.getItem('io-theme'); if (th) document.documentElement.dataset.theme = th; } catch (e) { /* storage blocked */ }
+$('theme').onclick = () => {
+  const dark = document.documentElement.dataset.theme ? document.documentElement.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  document.documentElement.dataset.theme = dark ? 'light' : 'dark';
+  try { localStorage.setItem('io-theme', document.documentElement.dataset.theme); } catch (e) { /* ignore */ }
+};
+
+function load(catalog, scenes) {
+  state.lessons = catalog.lessons; state.scenes = {};
+  for (const l of catalog.lessons) {
+    const raw = scenes[l.id];
+    if (!raw) continue;
+    const { scene, errors } = SS.normalizeScene(raw);
+    if (errors.length) { console.warn(l.id, errors); continue; }
+    state.scenes[l.id] = { scene, raw, tl: SS.timeline(scene), total: SS.totalDuration(scene) };
+  }
+  buildFilters(); render();
+}
+
+function chips(box, key, items) {
+  box.querySelectorAll('button').forEach((b) => b.remove());
+  for (const [v, label] of [['all', 'الكل']].concat(items)) {
+    const b = document.createElement('button'); b.type = 'button'; b.textContent = label;
+    b.setAttribute('aria-pressed', String(state.filter[key] === v));
+    b.onclick = () => { state.filter[key] = v; buildFilters(); render(); };
+    box.appendChild(b);
+  }
+}
+function buildFilters() {
+  const subj = [...new Map(state.lessons.map((l) => [l.subject, l.subjectLabel])).entries()];
+  chips($('fSubject'), 'subject', subj);
+  chips($('fStyle'), 'style', [...new Set(state.lessons.map((l) => l.style))].map((s) => [s, STYLE_AR[s] || s]));
+  chips($('fFormat'), 'format', [['9:16', '9:16 ريلز'], ['16:9', '16:9 يوتيوب']]);
+}
+
+const thumbCache = new Map();
+function thumb(id) {
+  if (thumbCache.has(id)) return thumbCache.get(id);
+  const S = state.scenes[id], [W, H] = SS.FORMATS[S.scene.format];
+  const big = Object.assign(document.createElement('canvas'), { width: W, height: H });
+  // a moment where the board is full: the end of the busiest beat
+  const beat = S.tl.reduce((a, b) => ((b.board || []).length > (a.board || []).length ? b : a), S.tl[0]);
+  SS.drawScene(big.getContext('2d'), S.scene, beat.end - 0.05, { timeline: S.tl, showProgress: false });
+  const k = 200 / Math.max(W, H) * 1.6, small = Object.assign(document.createElement('canvas'), { width: Math.round(W * k), height: Math.round(H * k) });
+  small.getContext('2d').drawImage(big, 0, 0, small.width, small.height);
+  thumbCache.set(id, small);
+  return small;
+}
+
+function render() {
+  const g = $('grid'); g.innerHTML = '';
+  const f = state.filter;
+  const list = state.lessons.filter((l) => state.scenes[l.id] && (f.subject === 'all' || l.subject === f.subject) && (f.style === 'all' || l.style === f.style) && (f.format === 'all' || l.format === f.format));
+  $('count').textContent = state.lessons.length ? `${list.length} من ${state.lessons.length} درس` : '';
+  if (!state.lessons.length) {
+    g.innerHTML = '<div class="empty" style="grid-column:1/-1">ما لگيت المكتبة. افتح الصفحة من ملفات البلگن مباشرة، أو اضغط «📂 افتح مجلد الدروس» واختار <code>library/lessons</code>.</div>';
+    return;
+  }
+  if (!list.length) { g.innerHTML = '<div class="empty" style="grid-column:1/-1">ماكو دروس بهالفلتر.</div>'; return; }
+  for (const l of list) {
+    const c = document.createElement('button'); c.type = 'button'; c.className = 'card';
+    const th = document.createElement('div'); th.className = 'thumb';
+    const m = document.createElement('div'); m.className = 'meta';
+    m.innerHTML = `<b></b><div class="tags"></div>`;
+    m.querySelector('b').textContent = l.title;
+    for (const t of [l.subjectLabel, STYLE_AR[l.style] || l.style, l.format, `${Math.round(l.duration)} ث`, l.level]) if (t) { const s = document.createElement('span'); s.className = 'tag'; s.textContent = t; m.querySelector('.tags').appendChild(s); }
+    c.append(th, m); c.onclick = () => open(l.id);
+    g.appendChild(c);
+    requestAnimationFrame(() => { try { th.appendChild(thumb(l.id)); } catch (e) { th.textContent = '⚠️'; } });
+  }
+}
+
+function open(id) {
+  const S = state.scenes[id], l = state.lessons.find((x) => x.id === id), [W, H] = SS.FORMATS[S.scene.format];
+  state.cur = S; state.t = 0; state.playing = false;
+  const cv = $('cv'); cv.width = W; cv.height = H;
+  $('pTitle').textContent = l.title; $('pSlug').textContent = l.id;
+  const tags = $('pTags'); tags.innerHTML = '';
+  for (const t of [l.subjectLabel, STYLE_AR[l.style], l.format, l.level, `${S.scene.beats.length} لقطات`]) { const s = document.createElement('span'); s.className = 'tag'; s.textContent = t; tags.appendChild(s); }
+  $('pCmd').textContent = `node "\${CLAUDE_PLUGIN_ROOT}/engine/render.js" scene "\${CLAUDE_PLUGIN_ROOT}/library/lessons/${l.file}" --out ${l.id}.mp4 --fps 30`;
+  const box = $('pBeats'); box.innerHTML = '';
+  S.tl.forEach((b, i) => { const btn = document.createElement('button'); btn.type = 'button'; btn.textContent = `${i + 1}. ${b.beat.say}`; btn.onclick = () => { state.t = b.start; draw(); }; box.appendChild(btn); });
+  $('dlg').showModal(); draw(); setPlay(true);
+}
+function setPlay(on) { state.playing = on; state.last = performance.now(); if (on && state.t >= state.cur.total) state.t = 0; $('play').textContent = on ? '⏸ إيقاف' : '▶ تشغيل'; }
+function draw() {
+  const S = state.cur; if (!S) return;
+  const idx = SS.drawScene($('cv').getContext('2d'), S.scene, state.t, { timeline: S.tl });
+  $('scrub').value = String(Math.round((state.t / S.total) * 1000));
+  $('time').textContent = `${fmtT(state.t)} / ${fmtT(S.total)}`;
+  [...$('pBeats').children].forEach((b, i) => b.classList.toggle('on', i === idx));
+  $('pSay').textContent = idx >= 0 ? S.scene.beats[idx].say : '';
+}
+function loop(now) {
+  if (state.playing && state.cur) {
+    state.t += (now - state.last) / 1000; state.last = now;
+    if (state.t >= state.cur.total) { state.t = state.cur.total; setPlay(false); }
+    draw();
+  }
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+$('play').onclick = () => setPlay(!state.playing);
+$('scrub').oninput = (e) => { if (!state.cur) return; state.t = (e.target.value / 1000) * state.cur.total; setPlay(false); draw(); };
+$('close').onclick = () => { setPlay(false); $('dlg').close(); };
+$('dlg').addEventListener('close', () => { state.playing = false; });
+document.addEventListener('keydown', (e) => { if ($('dlg').open && e.code === 'Space' && e.target.tagName !== 'BUTTON') { e.preventDefault(); setPlay(!state.playing); } });
+async function copy(text, msg) { try { await navigator.clipboard.writeText(text); toast(msg); } catch (e) { prompt('انسخ:', text); } }
+$('copyCmd').onclick = () => copy($('pCmd').textContent, 'انّسخ الأمر ✓');
+$('copyJson').onclick = () => { const S = state.cur; const raw = Object.assign({}, S.raw); delete raw.meta; copy(JSON.stringify(raw, null, 2), 'انّسخ scene.json ✓'); };
+
+// load: bundled library (file:// from the plugin folder) or a folder the user picks
+$('pick').onclick = () => $('dir').click();
+$('dir').onchange = async (e) => {
+  const files = [...e.target.files].filter((f) => f.name.endsWith('.json'));
+  const cat = files.find((f) => f.name === 'catalog.json');
+  if (!cat) { toast('ما لگيت catalog.json بالمجلد'); return; }
+  const catalog = JSON.parse(await cat.text()), scenes = {};
+  for (const l of catalog.lessons) { const f = files.find((x) => x.name === l.file); if (f) scenes[l.id] = JSON.parse(await f.text()); }
+  load(catalog, scenes);
+};
+document.fonts.ready.then(() => {
+  if (window.IO_LESSONS) load(window.IO_LESSONS.catalog, window.IO_LESSONS.scenes);
+  else render();
+});
+</script>
+</body>
+</html>

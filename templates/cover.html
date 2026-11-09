@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>كفرات — I/O Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;800&display=swap">
+<style>
+/* الهوية من .io/theme.json */
+:root{--bg:#FFF7EC;--ink:#2A2622;--accent:#E0663A;--accent2:#2F7FBF;--soft:#F3E3CF;--font:"Cairo",sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:#1b1917;font-family:var(--font);padding:30px;display:flex;flex-wrap:wrap;gap:30px;align-items:flex-start}
+html.export body{padding:0;gap:0;background:none;display:block}
+.wrap{zoom:.35}html.export .wrap{zoom:1}
+.label{color:#ddd;font-size:44px;margin-bottom:12px}html.export .label{display:none}
+.cover{position:relative;overflow:hidden;background:var(--ink);color:var(--bg)}
+.cover .photo{position:absolute;inset:0;background:center/cover no-repeat;opacity:.9}
+.cover .shade{position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.75), transparent 60%)}
+.cover h1{position:absolute;font-weight:800;line-height:1.1}
+.cover .hl{color:var(--accent)}
+.cover .tag{position:absolute;font-weight:800;background:var(--accent);color:#fff;border-radius:999px}
+/* دليل منطقة الشبكة (يختفي بالتصدير) */
+.guide{position:absolute;left:0;right:0;border:4px dashed rgba(255,255,255,.5);pointer-events:none}
+html.export .guide{display:none}
+
+/* إنستقرام ريلز وتيك توك: 1080×1920 — العنوان داخل الوسط 1080×1440 (شبكة الحساب) وفوق واجهة تيك توك */
+.v{width:1080px;height:1920px}
+.v .guide{top:240px;height:1440px}
+.v h1{right:120px;left:120px;bottom:620px;font-size:132px}
+.v .tag{right:120px;top:330px;font-size:44px;padding:14px 36px}
+/* يوتيوب ثمبنيل: 1280×720 — نص ≤ 4 كلمات، كبير، يبين بحجم طابع بريد */
+.yt{width:1280px;height:720px}
+.yt h1{right:70px;top:120px;width:720px;font-size:118px}
+.yt .tag{right:70px;bottom:60px;font-size:40px;padding:12px 32px}
+.yt .shade{background:linear-gradient(to left, rgba(0,0,0,.8), transparent 70%)}
+</style>
+<script>if (/export=1/.test(location.search)) document.documentElement.classList.add('export');</script>
+</head>
+<body>
+<div class="wrap"><div class="label">إنستقرام ريلز — 1080×1920</div>
+<section class="cover v" data-platform="instagram"><div class="photo"></div><div class="shade"></div><div class="guide"></div>
+  <span class="tag">درس جديد</span><h1>الهوك اللي <span class="hl">يوقف</span> السكرول</h1></section></div>
+
+<div class="wrap"><div class="label">يوتيوب ثمبنيل — 1280×720</div>
+<section class="cover yt" data-platform="youtube"><div class="photo"></div><div class="shade"></div>
+  <h1>هوك <span class="hl">يوقف</span> السكرول</h1><span class="tag">3 دقائق</span></section></div>
+
+<div class="wrap"><div class="label">تيك توك — 1080×1920</div>
+<section class="cover v" data-platform="tiktok"><div class="photo"></div><div class="shade"></div><div class="guide"></div>
+  <span class="tag">درس جديد</span><h1>الهوك اللي <span class="hl">يوقف</span> السكرول</h1></section></div>
+</body>
+</html>

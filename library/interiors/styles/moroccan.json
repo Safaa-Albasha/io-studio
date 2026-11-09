@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "id": "moroccan",
+  "name_ar": "مغربي",
+  "name_en": "Moroccan",
+  "description_ar": "زليج ملوّن (أخضر وأزرق)، فوانيس نحاس، أقواس، بوفات جلد ومخدات مطرزة. ألوان غنية ودافية.",
+  "palette": [
+    "#2e7d6b",
+    "#2a4f8a",
+    "#c9a24a",
+    "#b7653f",
+    "#f1e6d2"
+  ],
+  "materials": {
+    "wall": {
+      "kind": "plaster",
+      "color": "#f1e6d2",
+      "roughness": 0.95
+    },
+    "floor": "zellige-green",
+    "main": {
+      "kind": "fabric",
+      "color": "#f1e6d2",
+      "roughness": 0.9
+    },
+    "cushion": {
+      "kind": "fabric",
+      "color": "#2a4f8a",
+      "roughness": 0.85
+    },
+    "accent": {
+      "kind": "fabric",
+      "color": "#b7653f",
+      "roughness": 0.85
+    },
+    "wood": "teak",
+    "metal": "brass",
+    "fabric": {
+      "kind": "fabric",
+      "color": "#c9a24a",
+      "roughness": 0.85
+    },
+    "rug": {
+      "kind": "fabric",
+      "color": "#9e3b2d",
+      "roughness": 1
+    },
+    "rug2": {
+      "kind": "fabric",
+      "color": "#2a4f8a",
+      "roughness": 1
+    },
+    "stone": "zellige-blue",
+    "frame": "brass",
+    "pot": "pot-terracotta"
+  },
+  "swaps": {
+    "pendant-lamp": "moroccan-lantern",
+    "ottoman": "pouf",
+    "coffee-table": "tea-tray-table",
+    "frame-art": "arch-niche"
+  },
+  "recommended": [
+    "loveseat",
+    "pouf",
+    "moroccan-lantern",
+    "tea-tray-table",
+    "arch-niche",
+    "rug",
+    "plant-tall"
+  ],
+  "lighting": {
+    "time_of_day": "evening",
+    "lamp_color": "#ffb866"
+  },
+  "tips_ar": [
+    "الفانوس بالمسا يرسم ظلال على الجدار — صوّرها.",
+    "زاوية من الأرض تبيّن الزليج."
+  ]
+}

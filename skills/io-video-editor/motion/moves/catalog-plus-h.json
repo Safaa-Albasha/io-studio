@@ -1,0 +1,506 @@
+{
+ "version": 1,
+ "note": "حركات 307–328 — باقة «مراجع الريلز» (الجزء الثاني): الدوال بـmotion/moves-plus-h.js (بعد moves-plus-g.js)، المعاينات بـmotion/moves/render-preview-h.js. الحركات اللي تنحط على سطح أو جسم أو وجه تاخذ o.quad / o.anchor / o.box / o.face ثابتة أو دالة t أو o.track (ملف تتبّع .io). نفس مخطط catalog.json.",
+ "moves": [
+  {
+   "n": 307,
+   "id": "linkCard",
+   "cat": "card",
+   "name": "كرت الروابط",
+   "sub": "صورتك واسمك وروابطك",
+   "desc": "آخر الفيديو: صورتك بحلقة، الاسم، سطر لاتيني، جملة تعريف تنكتب، وقائمة روابط بأيقونات عامة بلا شعارات منصات.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/307.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "cta"
+   ]
+  },
+  {
+   "n": 308,
+   "id": "editorMonitor",
+   "cat": "camera",
+   "name": "الفيديو على شاشة",
+   "sub": "مونتاج على شاشة كمبيوتر بالإيد",
+   "desc": "المونتاج يشتغل على شاشة مايلة بإطار برنامج مونتاج عام وضوء غرفة، والكاميرا تتمايل؛ دخول وطلوع بسحبة من لقطة سيلفي.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/308.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 2,
+   "families": [
+    "calm"
+   ],
+   "cues": [
+    "emphasis",
+    "tech"
+   ]
+  },
+  {
+   "n": 309,
+   "id": "neonIcon",
+   "cat": "card",
+   "name": "أيقونة نيون",
+   "sub": "دواير زجاج وخط مضيء",
+   "desc": "أيقونات خطية عامة داخل دواير زجاج غامقة بحلقة مضيئة، تولّع برمشات وتطن.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/309.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "tech",
+    "list"
+   ]
+  },
+  {
+   "n": 310,
+   "id": "iconCarousel",
+   "cat": "card",
+   "name": "أيقونات تدور",
+   "sub": "حول رقم أو عجلة تحت",
+   "desc": "شارات نيون تلف حول رقم كبير (مدار)، أو عجلة أيقونات تحت تلف خانة مع كل بند والحالية تكبر.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/310.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "list"
+   ]
+  },
+  {
+   "n": 311,
+   "id": "surfaceText",
+   "cat": "text",
+   "name": "كلام مجسّم على سطح",
+   "sub": "نص بعمق على جدار أو أرض",
+   "desc": "نص مجسّم متوهج ينحط بمنظور على جدار أو أرض (o.quad أو التتبّع) والكلمات تطلع من السطح.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/311.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "number"
+   ]
+  },
+  {
+   "n": 312,
+   "id": "objectRing",
+   "cat": "card",
+   "name": "حلقة حول الشي",
+   "sub": "قوس مضيء ورقم مجسّم",
+   "desc": "قوس مضيء يلف حول جسم (عجلة، منتج) على مستواه، رأسه يلمع، وبالنص رقم مجسّم يعدّ.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/312.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "number",
+    "hit"
+   ]
+  },
+  {
+   "n": 313,
+   "id": "eyeGlow",
+   "cat": "card",
+   "name": "عيون تولّع",
+   "sub": "توهج على العيون",
+   "desc": "قرص توهج وخط ضوء على كل عين، ينط وينبض — يحتاج مكان الوجه أو العيون.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/313.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit"
+   ]
+  },
+  {
+   "n": 314,
+   "id": "objectGlow",
+   "cat": "camera",
+   "name": "لمعة على المنتج",
+   "sub": "شريط لون داخل شكل المنتج",
+   "desc": "شريط لون من اللون المميز يمسح شكل المنتج بس (قناع)، وبعده المنتج يبقى متوهج.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/314.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "reveal",
+    "number"
+   ]
+  },
+  {
+   "n": 315,
+   "id": "holoPanel",
+   "cat": "card",
+   "name": "لوحة زجاج مثبّتة",
+   "sub": "مواصفات بمنظور جنب الشي",
+   "desc": "لوح زجاج بحد نيون بمنظور جنب الشي وخط قائد له، والمواصفات تنكتب (العنوان ثم القيم الكبيرة).",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/315.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "number",
+    "list"
+   ]
+  },
+  {
+   "n": 316,
+   "id": "photoStackCard",
+   "cat": "card",
+   "name": "كرت صور يتقلّب",
+   "sub": "صور مكدّسة تتبدّل",
+   "desc": "كرت أبيض بعنوان، صوره مكدّسة وراه والصورة اللي فوق تنسحب وترجع ورا، وبالآخر الكرت يطير بسحبة.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/316.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "calm",
+    "punch"
+   ],
+   "cues": [
+    "reveal"
+   ]
+  },
+  {
+   "n": 317,
+   "id": "faceLock",
+   "cat": "camera",
+   "name": "قفل على الوجه",
+   "sub": "زوايا تنقفل وشارة ترمش",
+   "desc": "أربع زوايا تنقفل على الوجه وتلحقه بتأخير بسيط، وشارة «LOCKED» ترمش فوق.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/317.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit"
+   ]
+  },
+  {
+   "n": 318,
+   "id": "glitterTitle",
+   "cat": "text",
+   "name": "عنوان بريق",
+   "sub": "كلمة معدنية وبقعة ضوء",
+   "desc": "الشاشة تظلم إلا بقعة على الشخص، وكلمة بخط مزخرف ولون معدني (من اللون المميز) فوقه، ولمعة وبريق يتساقط.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/318.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "punch",
+    "calm"
+   ],
+   "cues": [
+    "emphasis",
+    "hit"
+   ]
+  },
+  {
+   "n": 319,
+   "id": "viewfinderZoom",
+   "cat": "camera",
+   "name": "عدسة كاميرا فيديو",
+   "sub": "REC وتقريب بخطوات",
+   "desc": "إطار كاميرا فيديو (زوايا، REC، وقت، ×التكبير) والصورة تقرّب على الوجه بخطوات.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/319.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit",
+    "emphasis"
+   ]
+  },
+  {
+   "n": 320,
+   "id": "halftoneSubject",
+   "cat": "camera",
+   "name": "الشخص نقاط",
+   "sub": "هافتون باللون المميز",
+   "desc": "الإطار يسود والموضوع يصير نقاط هافتون (حجم النقطة من الضوء)، وبالآخر يرجع للفيديو والنقاط تصغر.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/320.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "hit"
+   ]
+  },
+  {
+   "n": 321,
+   "id": "thumbWall",
+   "cat": "card",
+   "name": "جدار المقاطع",
+   "sub": "مصغّرات ورا الشخص أو منشور بالجدار",
+   "desc": "شبكة مصغّرات تتحرك لفوق: تنزل ورا الشخص مع كرت متابعين يعدّ، أو الفيديو يصغر ويصير منشور داخلها.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/321.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "number"
+   ]
+  },
+  {
+   "n": 322,
+   "id": "monoPoster",
+   "cat": "camera",
+   "name": "بوستر أبيض وأسود",
+   "sub": "كلمة ضخمة ورا الشخص وثلاث سطور",
+   "desc": "الفيديو أبيض وأسود بتباين عالي، كلمة ضخمة باللون المميز ورا الشخص، وثلاث سطور مكدّسة تطلع بالتتابع.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/322.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 3,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "emphasis",
+    "hit"
+   ]
+  },
+  {
+   "n": 323,
+   "id": "moodGrade",
+   "cat": "camera",
+   "name": "مزاج اللون",
+   "sub": "moody · warm · bw · cool",
+   "desc": "تدريج لوني للفيديو (أغمق وأبرد، دافي، أبيض وأسود، بارد) يدخل ويطلع بنعومة.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/323.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 1,
+   "families": [
+    "calm"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 324,
+   "id": "flipClock",
+   "cat": "card",
+   "name": "ساعة قلابة",
+   "sub": "HH:MM ينقلب",
+   "desc": "ساعة بلاطتين غامقة بخط فاصل، كل نبضة الرقم ينقلب ويعدّ تنازلي أو تصاعدي.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/324.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "number"
+   ]
+  },
+  {
+   "n": 325,
+   "id": "cardFan",
+   "cat": "card",
+   "name": "مروحة كروت",
+   "sub": "قوس تحت أو مروحة ورا الراس",
+   "desc": "كروت صغيرة على قوس تحت تطلع وتتمايل، أو كروت جوال كبيرة تنفتح مثل المروحة ورا راس الشخص.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/325.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch",
+    "calm"
+   ],
+   "cues": [
+    "reveal",
+    "number"
+   ]
+  },
+  {
+   "n": 326,
+   "id": "giantPair",
+   "cat": "text",
+   "name": "كلمة ضخمة وكلمة صغيرة",
+   "sub": "قناع يمسح وكلمة مزخرفة",
+   "desc": "كلمة عريضة ضخمة باللون المميز تنكشف بقناع يمسح، وتحتها كلمة صغيرة بخط مزخرف.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/326.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "emphasis",
+    "hit"
+   ]
+  },
+  {
+   "n": 327,
+   "id": "gradHeadline",
+   "cat": "text",
+   "name": "عنوان بلونين",
+   "sub": "تدرّج مميز وأبيض وأيقونات",
+   "desc": "كلمات العنوان: المميزة بتدرّج من اللون المميز وتوهج والباقي أبيض لرمادي، وتحته سطر فيه أيقونات.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/327.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 1,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 328,
+   "id": "stageCones",
+   "cat": "card",
+   "name": "مسرح بأشعة",
+   "sub": "شبكة وأشعة وتوهج",
+   "desc": "خلفية غامقة بشبكة خفيفة، أشعة ضوء نازلة تتنفس، وتوهج ورا العنصر البطل وفينيت.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/328.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm"
+   ],
+   "cues": [
+    "tech"
+   ]
+  }
+ ]
+}

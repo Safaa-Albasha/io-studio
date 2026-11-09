@@ -1,0 +1,16 @@
+{
+  "title": "حرف الباء",
+  "format": "9:16",
+  "numerals": "western",
+  "character": { "name": "المعلّمة", "shirt": "#E0663A", "hijab": "#2F7FBF" },
+  "beats": [
+    { "say": "هلا حبايبي! اليوم نتعرّف على حرف جديد.", "mood": "happy", "show": { "kind": "text", "value": "ب" }, "bounce": true },
+    { "say": "هذا حرف الباء، بيه نقطة وحدة تحت.", "label": "باء" },
+    { "say": "خلّونا نكتب كلمة: باب.", "reveal": { "text": "باب" }, "mood": "thinking" },
+    { "say": "وتعرفون شنو يبدي بحرف الباء؟ بطّة!", "mood": "surprised", "morph": { "to": { "kind": "emoji", "value": "🦆" }, "label": "بطّة" } },
+    { "say": "يلا نحسب البطّات سوا: وحدة، ثنتين، ثلاثة، أربعة، خمسة!", "count": { "item": { "kind": "emoji", "value": "🦆" }, "n": 5, "label": "بطّات" } },
+    { "say": "بطّة كبيرة وبطّة صغيرة!", "compare": { "a": "🦆", "b": "🐥", "labelA": "كبيرة", "labelB": "صغيرة" }, "bg": "#EAF3FB" },
+    { "say": "سؤال: أي وحدة تبدي بحرف الباء؟", "quiz": { "options": ["🍌", "🐟", "🦆"], "answer": 2 } },
+    { "say": "شاطرين! باچر نتعلم حرف التاء. باي باي!", "celebrate": true, "mood": "happy" }
+  ]
+}

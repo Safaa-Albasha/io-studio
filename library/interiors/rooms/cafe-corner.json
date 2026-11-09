@@ -1,0 +1,289 @@
+{
+  "id": "cafe-corner",
+  "version": 1,
+  "name": "Café corner",
+  "name_ar": "ركن كافيه",
+  "style": "industrial",
+  "description_ar": "ركن كافيه ٤٫٥×٣٫٥ م: كاونتر مع مكينة قهوة، كراسي بار، طاولتين صغار، لوحة منيو، وواجهة زجاج.",
+  "room": {
+    "width": 4.5,
+    "depth": 3.5,
+    "height": 3
+  },
+  "walls": [
+    {
+      "side": "north"
+    },
+    {
+      "side": "south",
+      "openings": [
+        {
+          "type": "window",
+          "offset": 0.4,
+          "width": 2.6,
+          "height": 2,
+          "sill": 0.4
+        },
+        {
+          "type": "door",
+          "offset": 3.35,
+          "width": 0.9,
+          "height": 2.2
+        }
+      ]
+    },
+    {
+      "side": "east"
+    },
+    {
+      "side": "west"
+    }
+  ],
+  "lighting": {
+    "time_of_day": "golden",
+    "sun_azimuth": 205
+  },
+  "furniture": [
+    {
+      "id": "counter",
+      "type": "bar-counter",
+      "position": [
+        2.6,
+        2.75
+      ]
+    },
+    {
+      "id": "stool-1",
+      "type": "bar-stool",
+      "position": [
+        1.95,
+        2.05
+      ]
+    },
+    {
+      "id": "stool-2",
+      "type": "bar-stool",
+      "position": [
+        2.6,
+        2.05
+      ]
+    },
+    {
+      "id": "stool-3",
+      "type": "bar-stool",
+      "position": [
+        3.25,
+        2.05
+      ]
+    },
+    {
+      "id": "table-1",
+      "type": "bistro-table",
+      "position": [
+        0.8,
+        1
+      ]
+    },
+    {
+      "id": "chair-1a",
+      "type": "dining-chair",
+      "position": [
+        0.8,
+        0.45
+      ],
+      "rotation": 180
+    },
+    {
+      "id": "chair-1b",
+      "type": "dining-chair",
+      "position": [
+        0.8,
+        1.55
+      ]
+    },
+    {
+      "id": "table-2",
+      "type": "bistro-table",
+      "position": [
+        3.7,
+        1
+      ]
+    },
+    {
+      "id": "chair-2a",
+      "type": "dining-chair",
+      "position": [
+        3.15,
+        1
+      ],
+      "rotation": -90
+    },
+    {
+      "id": "pend-1",
+      "type": "pendant-lamp",
+      "position": [
+        2,
+        2.75
+      ],
+      "size": [
+        0.3,
+        0.3,
+        1.1
+      ]
+    },
+    {
+      "id": "pend-2",
+      "type": "pendant-lamp",
+      "position": [
+        2.6,
+        2.75
+      ],
+      "size": [
+        0.3,
+        0.3,
+        1.1
+      ]
+    },
+    {
+      "id": "pend-3",
+      "type": "pendant-lamp",
+      "position": [
+        3.2,
+        2.75
+      ],
+      "size": [
+        0.3,
+        0.3,
+        1.1
+      ]
+    },
+    {
+      "id": "plant",
+      "type": "plant-tall",
+      "position": [
+        0.4,
+        3.1
+      ]
+    }
+  ],
+  "decor": [
+    {
+      "id": "espresso",
+      "type": "espresso-machine",
+      "position": [
+        3,
+        2.85
+      ],
+      "on": "counter"
+    },
+    {
+      "id": "menu",
+      "type": "menu-board",
+      "wall": "north",
+      "at": 2.6,
+      "elevation": 1.6
+    },
+    {
+      "id": "shelf",
+      "type": "wall-shelf",
+      "wall": "north",
+      "at": 1.1,
+      "elevation": 1.6
+    },
+    {
+      "id": "neon",
+      "type": "neon-sign",
+      "wall": "east",
+      "at": 2.6,
+      "elevation": 1.9
+    },
+    {
+      "id": "hanging",
+      "type": "plant-hanging",
+      "position": [
+        1.2,
+        1.1
+      ]
+    },
+    {
+      "id": "laptop",
+      "type": "laptop",
+      "position": [
+        3.7,
+        1
+      ],
+      "rotation": -60,
+      "on": "table-2"
+    }
+  ],
+  "cameras": {
+    "stills": [
+      {
+        "name": "wide",
+        "position": [
+          4.2,
+          0.35,
+          1.7
+        ],
+        "target": [
+          1.6,
+          2.8,
+          1
+        ]
+      },
+      {
+        "name": "counter",
+        "position": [
+          2.6,
+          0.6,
+          1.35
+        ],
+        "target": [
+          2.6,
+          3.4,
+          1.1
+        ]
+      },
+      {
+        "name": "table",
+        "position": [
+          1.7,
+          0.5,
+          1.1
+        ],
+        "target": [
+          0.8,
+          1.2,
+          0.75
+        ]
+      }
+    ],
+    "walkthrough": {
+      "points": [
+        [
+          3.8,
+          0.3
+        ],
+        [
+          3,
+          0.6
+        ],
+        [
+          2.4,
+          1
+        ]
+      ],
+      "seconds": 8,
+      "target": [
+        2.4,
+        2.9,
+        1
+      ]
+    }
+  },
+  "outputs": [
+    "9:16",
+    "16:9",
+    "3:4"
+  ]
+}

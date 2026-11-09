@@ -1,0 +1,147 @@
+{
+  "meta": {
+    "id": "ar-taa-thaa",
+    "subject": "arabic",
+    "subjectLabel": "العربي",
+    "level": "أطفال ٤–٦",
+    "stage": "kindergarten"
+  },
+  "title": "التاء والثاء",
+  "format": "9:16",
+  "style": "chalkboard",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّمة",
+    "shirt": "#E0663A",
+    "hijab": "#2F7FBF"
+  },
+  "beats": [
+    {
+      "say": "تذكرون الباء؟ قارب ونقطة تحت.",
+      "mood": "happy",
+      "alphabet": {
+        "letter": "ب",
+        "at": [
+          500,
+          330
+        ],
+        "size": 520,
+        "guide": false
+      }
+    },
+    {
+      "say": "إذا حطينا نقطتين فوق، يصير حرف التاء!",
+      "alphabet": {
+        "letter": "ت",
+        "at": [
+          500,
+          760
+        ],
+        "size": 520
+      }
+    },
+    {
+      "say": "وإذا حطينا ثلاث نقاط فوق، يصير الثاء!",
+      "erase": true,
+      "alphabet": {
+        "letter": "ث",
+        "at": [
+          500,
+          400
+        ],
+        "size": 700
+      }
+    },
+    {
+      "say": "التاء بداية تفاحة، والثاء بداية ثعلب.",
+      "erase": true,
+      "draw": [
+        {
+          "shape": "emoji",
+          "value": "🍎",
+          "at": [
+            740,
+            300
+          ],
+          "size": 190
+        },
+        {
+          "shape": "emoji",
+          "value": "🦊",
+          "at": [
+            260,
+            300
+          ],
+          "size": 190,
+          "with": true
+        }
+      ],
+      "write": [
+        {
+          "text": "تفاحة",
+          "at": [
+            740,
+            520
+          ],
+          "size": 90,
+          "color": "yellow"
+        },
+        {
+          "text": "ثعلب",
+          "at": [
+            260,
+            520
+          ],
+          "size": 90,
+          "color": "pink"
+        }
+      ]
+    },
+    {
+      "say": "نعد النقاط: الباء وحدة، التاء ثنتين، الثاء ثلاثة.",
+      "table": {
+        "rows": [
+          [
+            "الحرف",
+            "النقاط"
+          ],
+          [
+            "ب",
+            1
+          ],
+          [
+            "ت",
+            2
+          ],
+          [
+            "ث",
+            3
+          ]
+        ],
+        "at": [
+          500,
+          640
+        ],
+        "colW": 260,
+        "size": 44
+      }
+    },
+    {
+      "say": "سؤال: أي حرف بيه ثلاث نقاط؟",
+      "erase": true,
+      "quiz": {
+        "options": [
+          "ت",
+          "ث",
+          "ب"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "say": "برافو عليكم! الدرس الجاي: الجيم.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

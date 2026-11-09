@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>رسم أعمدة — موشن I/O Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;800&display=swap">
+<style>
+/* الهوية من .io/theme.json — بدّل هذي القيم بس */
+:root{--bg:#FFF7EC;--ink:#2A2622;--accent:#E0663A;--accent2:#2F7FBF;--soft:#F3E3CF;--font:"Cairo",sans-serif;--W:1080px;--H:1920px}
+*{box-sizing:border-box;margin:0}
+html,body{width:var(--W);height:var(--H);overflow:hidden;background:var(--bg);font-family:var(--font);color:var(--ink)}
+#stage{position:relative;width:var(--W);height:var(--H);overflow:hidden}
+.el{position:absolute;will-change:transform,opacity}
+#title{top:300px;right:120px;left:120px;font-size:80px;font-weight:800;line-height:1.2}
+#chart{top:520px;right:120px;left:120px;height:860px}
+.row{position:absolute;right:0;left:0;height:120px}
+.name{position:absolute;right:0;top:0;width:260px;font-size:46px;font-weight:800;line-height:120px}
+.bar{position:absolute;right:280px;top:24px;height:72px;border-radius:12px 36px 36px 12px;background:var(--ink);opacity:.85}
+.val{position:absolute;top:0;font-size:44px;font-weight:800;line-height:120px;direction:ltr;font-variant-numeric:tabular-nums}
+.top .bar{background:var(--accent);opacity:1}
+#src{top:1400px;right:120px;font-size:30px;opacity:.55}
+</style>
+</head>
+<body>
+<div id="stage">
+<div class="el" id="title">مثال: مشاهداتي حسب المنصة</div>
+<div class="el" id="chart"></div>
+<div class="el" id="src">المصدر: اكتب المصدر هنا</div>
+</div>
+<script>
+// ── عقد الموشن: __duration بالثواني، و__seek(t) يرسم اللقطة عند t بدون مؤقتات ──
+// أعمدة تطلع وحدة وحدة وأرقامها تعد، والأعلى ينميّز. غيّر DATA.
+window.__duration = 7;
+const $ = (id) => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const p = (t, a, d) => clamp((t - a) / d);                       // تقدّم 0→1
+const outCubic = (x) => 1 - Math.pow(1 - x, 3);
+const inOut = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+const outBack = (x) => 1 + 2.7 * Math.pow(x - 1, 3) + 1.7 * Math.pow(x - 1, 2);
+const outElastic = (x) => (x === 0 || x === 1 ? x : Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * (2 * Math.PI / 3)) + 1);
+const lerp = (a, b, k) => a + (b - a) * k;
+function rise(el, k, dist) { el.style.opacity = k; el.style.transform = `translateY(${(1 - outCubic(k)) * (dist || 60)}px)`; }
+function pop(el, k) { el.style.opacity = clamp(k * 2); el.style.transform = `scale(${k ? outBack(k) : 0})`; }
+function fmt(n, dec) { return Number(n).toLocaleString('en-US', { minimumFractionDigits: dec || 0, maximumFractionDigits: dec || 0 }); }
+/** يقسم نص العنصر لكلمات <span> حتى تتحرك كلمة كلمة. */
+function words(el) { if (!el.dataset.split) { el.innerHTML = el.textContent.trim().split(/\s+/).map((w) => `<span class="w">${w}</span>`).join(' '); el.dataset.split = 1; } return [...el.querySelectorAll('.w')]; }
+// ⛔ أرقام حقيقية من مصدر بس — اكتب المصدر بـ #src
+const DATA = [['إنستقرام', 40], ['يوتيوب', 30], ['تيك توك', 50]], MAXW = 460, UNIT = 'K'; // مثال — بدّله بأرقامك (stats.js summary)
+const max = Math.max(...DATA.map((d) => d[1]));
+if (!$('chart').children.length) $('chart').innerHTML = DATA.map((d, i) => `<div class="row${d[1] === max ? ' top' : ''}" style="top:${i * 170}px"><div class="name">${d[0]}</div><div class="bar"></div><div class="val"></div></div>`).join('');
+window.__seek = function (t) {
+  rise($('title'), p(t, 0.1, 0.5), 40);
+  [...$('chart').children].forEach((row, i) => {
+    const k = outCubic(p(t, 0.8 + i * 0.35, 1.0));
+    row.style.opacity = p(t, 0.7 + i * 0.35, 0.3);
+    const w = (DATA[i][1] / max) * MAXW * k;
+    row.querySelector('.bar').style.width = w + 'px';
+    const v = row.querySelector('.val'); v.textContent = fmt(DATA[i][1] * k) + UNIT; v.style.right = (300 + w) + 'px';
+    if (DATA[i][1] === max) row.style.transform = `scale(${1 + 0.04 * Math.sin(p(t, 3.2, 0.5) * Math.PI)})`;
+  });
+  $('src').style.opacity = p(t, 3.4, 0.4) * 0.55;
+  $('stage').style.opacity = 1 - p(t, window.__duration - 0.4, 0.4);
+};
+// المعاينة بالمتصفح: يشتغل لوحده. وضع التصدير (?render=1): الرسّام يتحكم بالوقت.
+if (!/render=1/.test(location.search)) {
+  const t0 = performance.now();
+  (function loop(now) { window.__seek(((now - t0) / 1000) % (window.__duration + 1)); requestAnimationFrame(loop); })(t0);
+} else window.__seek(0);
+</script>
+</body>
+</html>

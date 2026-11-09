@@ -1,0 +1,566 @@
+{
+ "version": 1,
+ "note": "حركات 329–352 — باقة «كولاج تحريري ومونتاج المؤثرات»: الدوال بـmotion/moves-plus-i.js (بعد moves-plus-h.js)، المعاينات بـmotion/moves/render-preview-i.js. تقنيات عامة من ريلز مرجعية (بلا أسماء ولا شعارات ولا رسومات أحد)، الألوان من الثيم. نفس مخطط catalog.json.",
+ "moves": [
+  {
+   "n": 329,
+   "id": "accentBeam",
+   "cat": "card",
+   "name": "شعاع اللون",
+   "sub": "دايرة وإسفين ضوء",
+   "desc": "دايرة بلون مميز تطلع من نقطة ومنها شعاع مايل ينفتح لين يطلع برّا الإطار، وظل شخص صغير يمشي جوّاها — كولاج تحريري.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/329.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "reveal",
+    "emphasis"
+   ]
+  },
+  {
+   "n": 330,
+   "id": "sliceBand",
+   "cat": "card",
+   "name": "قطعة ملوّنة",
+   "sub": "الشي ينقص وشريط لون بالشق",
+   "desc": "الصورة أو الرسمة تنقص على خط مايل، النصين ينزاحون على طول الخط، ويطلع بالشق شريط بلون مميز مع كلمة فوق وكبسولة تحت — للتناقض.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/330.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "contrast",
+    "reveal"
+   ]
+  },
+  {
+   "n": 331,
+   "id": "puzzleJoin",
+   "cat": "card",
+   "name": "قطعتين بزل",
+   "sub": "غامقة وملوّنة يتركّبون",
+   "desc": "قطعة بزل غامقة وقطعة باللون المميز تدخل من الجنبين وتلزق بنطّة، وفوقها وتحتها كلام بإطار خطوط.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/331.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "contrast",
+    "reveal"
+   ]
+  },
+  {
+   "n": 332,
+   "id": "editorialDecor",
+   "cat": "card",
+   "name": "زخرفة تحريرية",
+   "sub": "ورق وشبكة وباركود",
+   "desc": "عدّة الكولاج: ورق بفينيت وحبيبات، شبكة صلبان، باركود برقم، علامات زوايا، وفقرة نص صغيرة تطلع بالتتابع حول المحتوى.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/332.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 333,
+   "id": "trackedReveal",
+   "cat": "text",
+   "name": "كلمة متباعدة",
+   "sub": "حروف سيرف كبيرة متباعدة",
+   "desc": "كلمة سيرف بحروف متباعدة تنكشف حرف حرف والتباعد ينضم (العربي كلمة كاملة بقناع)، وتحتها كلمة ثانية باللون المميز وسطر صغير فوق.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/333.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 1,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "emphasis",
+    "reveal"
+   ]
+  },
+  {
+   "n": 334,
+   "id": "showcaseGrid",
+   "cat": "card",
+   "name": "شبكة عرض",
+   "sub": "كروت تشتغل وعنوان مزخرف",
+   "desc": "كروت جوال (2 فوق وواحد تحت متداخل، أو صف) على أرضية غامقة، كل كرت يشغّل مقطعه، وفوقها عنوان بسطر مزخرف وسطر عريض.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/334.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "list",
+    "reveal"
+   ]
+  },
+  {
+   "n": 335,
+   "id": "indexTable",
+   "cat": "card",
+   "name": "فهرس بعمودين",
+   "sub": "البند الحالي يتظلل",
+   "desc": "جدول مرقّم بعمودين، والبند الحالي يتظلل بشريط يتزحلق له مع كل مقطع، واللي خلص جنبه ✓ — لمونتاج «N مؤثر».",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/335.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "list"
+   ]
+  },
+  {
+   "n": 336,
+   "id": "effectCard",
+   "cat": "card",
+   "name": "كرت المؤثر",
+   "sub": "كليب بعدّاد واسم",
+   "desc": "كرت فيديو بالنص على ورق بشبكة، فوقه عدّاد «NN/المجموع» وتحته كبسولة اسم المؤثر وصورة صغيرة بالزاوية، والكليب يتبدّل بغباش مع كل مقطع.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/336.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "list",
+    "reveal"
+   ]
+  },
+  {
+   "n": 337,
+   "id": "pinnedKeyword",
+   "cat": "text",
+   "name": "كلمة التعليق ثابتة",
+   "sub": "كلمة كبيرة ثابتة والكلام فوقها يتبدّل",
+   "desc": "كلمة التعليق كبيرة بتدرّج من اللون المميز ثابتة بالنص، وفوقها مقطع كلام صغير يتبدّل مع الصوت — لختام «اكتب الكلمة بالتعليقات».",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/337.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 1,
+   "families": [
+    "calm"
+   ],
+   "cues": [
+    "cta"
+   ]
+  },
+  {
+   "n": 338,
+   "id": "bilingualCaption",
+   "cat": "text",
+   "name": "كابشن بلغتين",
+   "sub": "الكلمة كبيرة والترجمة تحتها",
+   "desc": "الكلمة اللي تنقال كبيرة بالنص (المهمة باللون المميز) ونجمة صغيرة تلف وراها، وتحتها سطر الترجمة صغير وكلمته الحالية ملوّنة.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/338.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 339,
+   "id": "glassTags",
+   "cat": "card",
+   "name": "وسوم زجاج",
+   "sub": "كبسولات تفرقع جنب الراس",
+   "desc": "كبسولات زجاج صغيرة بحد أبيض شفاف تفرقع فوق جنب الراس وحدة ورا وحدة — للكلمات المفتاحية.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/339.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm"
+   ],
+   "cues": [
+    "emphasis",
+    "list"
+   ]
+  },
+  {
+   "n": 340,
+   "id": "sourceCard",
+   "cat": "card",
+   "name": "كرت المصدر",
+   "sub": "شاشة الأداة فوق باسمها ورابطها",
+   "desc": "كرت شاشة فوق بزوايا دائرية، فوق يساره كبسولة اسم الأداة وتحته رابط صغير، والمحتوى يتبدّل بغباش مع كل بند.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/340.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "list",
+    "reveal"
+   ]
+  },
+  {
+   "n": 341,
+   "id": "wordSlate",
+   "cat": "transition",
+   "name": "لوحات كلمة",
+   "sub": "قطع للوحات ملوّنة بكلمة كبيرة",
+   "desc": "سلسلة لوحات ملء الشاشة بخلفيتين بالتناوب، كل لوحة كلمة عربية كبيرة، وكلاكيت مرسوم بالزاوية يطقّ مع كل لوحة.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/341.mp4",
+   "bonus": false,
+   "role": "transition",
+   "energy": 2,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "reveal",
+    "emphasis"
+   ]
+  },
+  {
+   "n": 342,
+   "id": "iconJiggle",
+   "cat": "card",
+   "name": "أيقونات ترجف",
+   "sub": "صف تطبيقات ووحدة تنحذف",
+   "desc": "صف أيقونات تطبيقات عامة يطلع، يرجف مثل وضع الحذف، وأيقونة تنشطب بخط أحمر وتختفي بنفخة والباقي يتقارب — «بدون هالبرامج».",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/342.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch",
+    "calm"
+   ],
+   "cues": [
+    "contrast",
+    "reveal"
+   ]
+  },
+  {
+   "n": 343,
+   "id": "colorSlider",
+   "cat": "camera",
+   "name": "سلايدر الألوان",
+   "sub": "الفيديو يتلوّن مع المقبض",
+   "desc": "شريط سلايدر بتدرّج الطيف، والمقبض يتزحلق، والفيديو يتلوّن حسب مكانه (تدوير الدرجة)، ويرجع بالآخر.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/343.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 2,
+   "families": [
+    "punch"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 344,
+   "id": "eyedropper",
+   "cat": "card",
+   "name": "قطّارة اللون",
+   "sub": "تلقط لون وتطلع رمزه",
+   "desc": "قطّارة مرسومة تتحرك لنقطة وتنقر، وتطلع جنبها كبسولة فيها اللون ورمزه، والإطار يميل للون شوي.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/344.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 345,
+   "id": "hookBanner",
+   "cat": "text",
+   "name": "بانر الهوك",
+   "sub": "عنوان بصناديق لونية فوق",
+   "desc": "عنوان الريل فوق بسطرين أو ثلاثة، كل سطر بصندوق على قدّه والصناديق تلتحم، باللون المميز، يطلع أول ثانية ويقعد طول المقطع.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/345.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 1,
+   "families": [
+    "punch",
+    "calm"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 346,
+   "id": "appBadge",
+   "cat": "card",
+   "name": "شارة التطبيق",
+   "sub": "أيقونة واسمها بحد ستيكر",
+   "desc": "أيقونة تطبيق (صورتك أو رسمة عامة) واسمه تحتها بحد أبيض مثل الستيكر، تفرقع وتتمايل — لما تذكر أداة.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/346.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "calm",
+    "punch"
+   ],
+   "cues": [
+    "reveal",
+    "emphasis"
+   ]
+  },
+  {
+   "n": 347,
+   "id": "docuScene",
+   "cat": "camera",
+   "name": "مشهد وثائقي مقصوص",
+   "sub": "شي مقصوص فوق مكان يذوب للورق",
+   "desc": "ورق فاتح، خلفية مكان تذوب للورق والشي المقصوص قدامها، المشهد يدخل من غباش قوي والكاميرا تقرّب ببطء، ويطلع بسحبة جانبية فيها بارالاكس — نظام مشاهد كامل بعنوان وسطر وكلمة.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/347.mp4",
+   "bonus": false,
+   "role": "camera",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "reveal",
+    "emphasis"
+   ]
+  },
+  {
+   "n": 348,
+   "id": "selectBox",
+   "cat": "text",
+   "name": "كلمة بصندوق تحديد",
+   "sub": "إطار منقّط بمقابض",
+   "desc": "كلمة عريضة داخل إطار منقّط بمقابض بالزوايا مثل تحديد عنصر ببرنامج تصميم: الإطار ينرسم، المقابض تنط، والكلمة تنكشف.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/348.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 349,
+   "id": "fadeNumber",
+   "cat": "text",
+   "name": "رقم يذوب",
+   "sub": "رقم ضخم بتدرّج يختفي تحت",
+   "desc": "رقم ضخم بتدرّج عمودي غامق فوق يختفي تحت، كل خانة تطلع من غباش بالتتابع، وفوقه سطر مزخرف صغير — للتواريخ والأرقام بالوثائقي.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/349.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "number",
+    "reveal"
+   ]
+  },
+  {
+   "n": 350,
+   "id": "squareLabel",
+   "cat": "text",
+   "name": "مربع يصير ملصق",
+   "sub": "مربع غامق يتمدد للكلمة",
+   "desc": "مربع صغير غامق ينط ويتمدد بالعرض على قد الكلمة، والكلمة تطلع جوّاه بالأبيض بظل قاسي.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/350.mp4",
+   "bonus": false,
+   "role": "text",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "emphasis"
+   ]
+  },
+  {
+   "n": 351,
+   "id": "showcaseFrame",
+   "cat": "card",
+   "name": "إطار العرض",
+   "sub": "الريل بكرت فوق لوح مونتاج",
+   "desc": "الفيديو بكرت فوق لوح مونتاج غامق بسطرين (كلمة التعليق ملوّنة وسطر مضيء بخط مزخرف) على خلفية فاتحة بخطوط ضوء — لعرض مشروع أو تحميله.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/351.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "cta"
+   ]
+  },
+  {
+   "n": 352,
+   "id": "starSting",
+   "cat": "card",
+   "name": "ختام النجمة",
+   "sub": "نجمة بوجهين وسطر «صُنع بـ»",
+   "desc": "نجمة رباعية مقعّرة بوجهين فاتح وغامق تلف من غباش وتستقر، وتحتها سطر «صُنع بواسطة…» ينكتب وسطر حقوق.",
+   "source": {
+    "label": "I/O Studio — مراجع ريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/352.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "cta"
+   ]
+  }
+ ]
+}

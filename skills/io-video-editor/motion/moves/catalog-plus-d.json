@@ -1,0 +1,247 @@
+{
+ "version": 1,
+ "note": "حركات 233–242 — الدوال بـmotion/moves-plus-d.js، المعاينات بـmotion/moves/render-preview-d.js، الشرح بـreferences/moves.md. أفكار الريلز (خطة ٩ نوفمبر §٥): شخصية كرتونية بصورة أي شخص، قوالب واجهات من نص، منحنى البقاء، وكرت كلمة التعليق — تصميم أصلي بلا شعارات أو أسماء منصات. حركات manual (تحتاج صورة أو أرقام) ما تنختار تلقائي. نفس مخطط catalog.json.",
+ "moves": [
+  {
+   "n": 233,
+   "id": "photoToon",
+   "cat": "card",
+   "name": "شخصيتك الكرتونية",
+   "sub": "صورة الوجه بدائرة على جسم كرتوني",
+   "desc": "صورة أي شخص (o.photo) تصير راس دائري على جسم كرتوني بسيط (ذكر/أنثى): يطلع، يلوّح، ويتكلم بفقاعة كلمة كلمة. بلا صورة: ظل شخص بمكانها.",
+   "source": {
+    "label": "I/O Studio — أفكار الريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/233.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "reveal"
+   ],
+   "manual": true
+  },
+  {
+   "n": 234,
+   "id": "photoToonPoint",
+   "cat": "card",
+   "name": "شخصيتك تأشّر",
+   "sub": "الإصبع على الشي المهم",
+   "desc": "نفس الشخصية الكرتونية بصورة الوجه تأشّر بإيدها يمين أو يسار، وليبل ينبثق عند إصبعها.",
+   "source": {
+    "label": "I/O Studio — أفكار الريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/234.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "emphasis"
+   ],
+   "manual": true
+  },
+  {
+   "n": 235,
+   "id": "photoToonCard",
+   "cat": "card",
+   "name": "شخصيتك تعرض كرت",
+   "sub": "ماسكة الفكرة قدامها",
+   "desc": "الشخصية الكرتونية بصورة الوجه ماسكة كرت بالإيدين — فكرة، رقم، أو عرض — والكرت ينبثق ويتمايل.",
+   "source": {
+    "label": "I/O Studio — أفكار الريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/235.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "calm",
+    "editorial"
+   ],
+   "cues": [
+    "reveal",
+    "number"
+   ],
+   "manual": true
+  },
+  {
+   "n": 236,
+   "id": "pricingTable",
+   "cat": "card",
+   "name": "جدول أسعار",
+   "sub": "باقات تطلع والسعر يعدّ",
+   "desc": "باقات من نص تطلع وحدة وحدة، السعر يعدّ، المميزات تنعلّم، والباقة المميزة تكبر بإطار وشارة «الأكثر طلباً».",
+   "source": {
+    "label": "I/O Studio — أفكار الريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/236.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "price",
+    "list"
+   ]
+  },
+  {
+   "n": 237,
+   "id": "appScreen",
+   "cat": "card",
+   "name": "شاشة تطبيق",
+   "sub": "جوال بقائمة وضغطة",
+   "desc": "جوال بإطار عام: عنوان، بحث، قائمة عناصر تنزلق، ضغطة بموجة على عنصر، وزر رئيسي وشريط سفلي — كلها من نص.",
+   "source": {
+    "label": "I/O Studio — أفكار الريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/237.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "tech",
+    "list"
+   ]
+  },
+  {
+   "n": 238,
+   "id": "socialPost",
+   "cat": "card",
+   "name": "بطاقة منشور",
+   "sub": "منشور ينكتب والقلب ينضغط",
+   "desc": "بطاقة منشور/تغريدة عامة بلا شعار منصة: الصورة والاسم والمعرّف، النص ينكتب كلمة كلمة، والإعجاب ينضغط ويعدّ.",
+   "source": {
+    "label": "I/O Studio — أفكار الريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/238.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "reveal",
+    "emphasis"
+   ]
+  },
+  {
+   "n": 239,
+   "id": "repoCard",
+   "cat": "card",
+   "name": "بطاقة مستودع",
+   "sub": "مشروع كود والنجوم تعدّ",
+   "desc": "بطاقة مستودع كود عامة: الاسم، الوصف، المواضيع، اللغة، النجوم والتفرعات تعدّ، زر النجمة ينضغط، ونشاط آخر الأسابيع.",
+   "source": {
+    "label": "I/O Studio — أفكار الريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/239.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "tech",
+    "number"
+   ]
+  },
+  {
+   "n": 240,
+   "id": "notifyBanner",
+   "cat": "card",
+   "name": "إشعارات",
+   "sub": "بانرات تنزل وتتكدّس",
+   "desc": "إشعارات تنزل من فوق وحدة ورا الثانية، الجديد فوق ويدف القديم — طلب جديد، متابعين، رسالة… من نص.",
+   "source": {
+    "label": "I/O Studio — أفكار الريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/240.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 3,
+   "families": [
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "hit",
+    "reveal"
+   ]
+  },
+  {
+   "n": 241,
+   "id": "retentionCurve",
+   "cat": "card",
+   "name": "منحنى البقاء",
+   "sub": "كم واحد كمّل يشوف",
+   "desc": "منحنى البقاء من أرقام الإحصائيات: الخط ينرسم والنسبة تمشي معاه، علامات على أكبر نزلات (−18% عند 0:03)، ونسبة اللي كمّلوا للآخر.",
+   "source": {
+    "label": "I/O Studio — أفكار الريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/241.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "calm"
+   ],
+   "cues": [
+    "number",
+    "contrast"
+   ],
+   "manual": true
+  },
+  {
+   "n": 242,
+   "id": "commentKeyword",
+   "cat": "card",
+   "name": "اكتب الكلمة بالتعليقات",
+   "sub": "كلمة التعليق ← رسالة خاصة",
+   "desc": "كرت نهاية: «اكتب» + الكلمة بكبسولة + «بالتعليقات»، الكلمة تنكتب بخانة تعليق وتنرسل، وتوصل رسالة خاصة من حسابك (يوتيوب: تعليق مثبّت). نفس كلمة publish-pack.js --keyword.",
+   "source": {
+    "label": "I/O Studio — أفكار الريلز (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/242.mp4",
+   "bonus": false,
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "calm",
+    "punch",
+    "editorial"
+   ],
+   "cues": [
+    "cta"
+   ]
+  }
+ ]
+}

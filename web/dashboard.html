@@ -1,0 +1,956 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>الإحصائيات — I/O Studio</title>
+<link rel="icon" href="lib/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="lib/brand.css">
+<script src="lib/ls-migrate.js"></script>
+<style>
+:root{
+  /* product chrome = lib/brand.css (sky + cinematic charcoal) */
+  --surface-1:var(--card); --surface-2:var(--card-2);
+  --text-primary:var(--ink); --text-secondary:var(--ink-2); --text-muted:var(--muted);
+  --good:var(--ok);
+  --series-instagram:#3987e5; --series-youtube:#d95926; --series-tiktok:#199e70;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--text-primary);font-family:var(--font);font-size:15px;line-height:1.5;overflow-x:hidden}
+a{color:var(--accent)}
+button,select,input,textarea{font-family:inherit;font-size:14px;color:var(--text-primary)}
+button{background:var(--surface-1);border:1px solid var(--line);border-radius:10px;padding:7px 12px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:700}
+button.sm{padding:3px 9px;font-size:13px}
+button[aria-pressed="true"]{border-color:var(--text-primary);font-weight:700}
+button:disabled{opacity:.5;cursor:default}
+input,select,textarea{background:var(--surface-1);border:1px solid var(--line);border-radius:8px;padding:6px 8px;min-width:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1280px;margin:0 auto;padding:16px}
+header{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;margin-bottom:14px;padding-bottom:10px}
+header h1{font-size:22px;margin:0}
+header .sp{flex:1}
+.logo.sf-mark{width:36px;height:36px;border-radius:11px;font-size:20px;display:inline-flex}
+.filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:14px}
+.filters .lbl{color:var(--text-muted);font-size:13px;margin-inline-end:4px}
+.card{background:var(--surface-1);border:1px solid var(--line);border-radius:14px;padding:14px 16px;min-width:0}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-bottom:12px}
+.tile .k{color:var(--text-secondary);font-size:13px}
+.tile .v{font-size:28px;font-weight:800;font-variant-numeric:tabular-nums}
+.tile .d{font-size:12px;color:var(--text-muted)}
+.up{color:var(--good)}.down{color:var(--bad)}
+.ph{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block;flex:0 0 auto}
+.ph b{font-size:17px}.ph .h{color:var(--text-muted);font-size:13px;direction:ltr}
+.badge{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:0 9px;color:var(--text-secondary);white-space:nowrap}
+.badge.live{border-color:var(--ok);color:var(--ok)}
+.badge.est{border-color:var(--warn);color:var(--warn)}
+.badge.off{color:var(--text-muted)}
+.kv{display:grid;grid-template-columns:1fr auto;gap:4px 10px;font-size:14px}
+.kv span:nth-child(odd){color:var(--text-secondary)}
+.kv span:nth-child(even){font-weight:700;font-variant-numeric:tabular-nums;text-align:left}
+h2{font-size:16px;margin:0 0 8px}
+h3{font-size:14px;margin:10px 0 6px}
+.section{margin-top:12px}
+.chart{position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--text-secondary);margin-bottom:6px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:13px;box-shadow:0 6px 20px rgba(0,0,0,.12);display:none;white-space:nowrap;z-index:5}
+.tip .r{display:flex;gap:8px;align-items:center;justify-content:space-between}
+.tip .r b{font-variant-numeric:tabular-nums}
+.top{list-style:none;margin:8px 0 0;padding:0;font-size:13px}
+.top li{display:flex;gap:8px;justify-content:space-between;align-items:center;padding:5px 0;border-top:1px solid var(--line)}
+.top li .t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-secondary);min-width:0;flex:1}
+.top li a{color:inherit}
+.insights{margin:0;padding-inline-start:18px}
+.insights li{margin:4px 0}
+.share-row{display:flex;align-items:center;gap:10px;margin:8px 0}
+.share-row .n{width:90px;color:var(--text-secondary);font-size:13px}
+.share-bar{flex:1;display:flex;gap:2px;height:22px}
+.share-bar div{height:100%;border-radius:4px;min-width:2px}
+.share-row .pcts{font-size:12px;color:var(--text-muted);min-width:170px;text-align:left;direction:ltr}
+.share-row .pcts.ar{direction:rtl;text-align:right;min-width:150px}
+.hours{display:flex;justify-content:space-between;font-size:10px;color:var(--text-muted);direction:ltr}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+th{color:var(--text-secondary);font-weight:700}
+.muted{color:var(--text-muted);font-size:13px}
+.empty{padding:24px;text-align:center;color:var(--text-secondary)}
+.balance{height:10px;background:var(--surface-2);border-radius:5px;overflow:hidden;margin-top:6px}
+.balance div{height:100%;background:var(--text-primary);border-radius:5px}
+/* data sources */
+.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.choice{cursor:pointer;border:2px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--surface-1);text-align:right;display:flex;flex-direction:column;gap:2px}
+.choice b{font-size:16px}
+.choice[aria-pressed="true"]{border-color:var(--accent);background:var(--sky-soft)}
+.pane{margin-top:12px}
+.steps{margin:6px 0;padding-inline-start:20px}
+.steps li{margin:4px 0}
+.formrow{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
+.formrow label{display:flex;flex-direction:column;gap:2px;font-size:12px;color:var(--text-secondary);flex:1 1 110px;min-width:0}
+.formrow label.wide{flex:3 1 220px}
+.note{background:var(--sky-soft);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:13px;margin:8px 0}
+.note.warn{border-color:var(--warn)}
+code{direction:ltr;unicode-bidi:embed;background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:0 5px;font-size:12px}
+.can{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px}
+.can ul{margin:4px 0;padding-inline-start:18px}
+/* heatmap */
+.heat{display:grid;grid-template-columns:52px repeat(24,minmax(0,1fr));gap:2px;font-size:10px;align-items:center}
+.heat .c{aspect-ratio:1;border-radius:3px;background:var(--surface-2)}
+.heat .hl{color:var(--text-muted);text-align:center}
+.heat .dl{color:var(--text-secondary);font-size:11px;white-space:nowrap}
+/* evaluation */
+.evbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px}
+.evlist{display:flex;flex-direction:column;gap:8px}
+.ev{border:1px solid var(--line);border-radius:12px;background:var(--surface-1)}
+.ev>summary{list-style:none;display:grid;grid-template-columns:64px minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:8px 10px;cursor:pointer}
+.ev>summary::-webkit-details-marker{display:none}
+.thumb{width:64px;height:64px;border-radius:10px;object-fit:cover;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--text-muted)}
+.ev .ttl{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ev .meta{font-size:12px;color:var(--text-muted)}
+.ev .why{font-size:13px;color:var(--text-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.num{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;text-align:center;line-height:1.1}
+.num small{display:block;font-size:11px;font-weight:500;color:var(--text-muted)}
+.grade{border-radius:999px;padding:1px 10px;font-size:12px;font-weight:700;white-space:nowrap}
+.grade.strong{background:color-mix(in srgb,var(--ok) 22%,transparent);color:var(--ok)}
+.grade.mid{background:color-mix(in srgb,var(--warn) 22%,transparent);color:var(--warn)}
+.grade.weak{background:color-mix(in srgb,var(--bad) 22%,transparent);color:var(--bad)}
+.evbody{padding:4px 12px 12px;border-top:1px dashed var(--line);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.mt{display:grid;grid-template-columns:1fr auto;gap:2px 10px;font-size:13px}
+.mt span:nth-child(even){font-weight:700;text-align:left;font-variant-numeric:tabular-nums}
+.src{font-size:10px;border-radius:5px;padding:0 4px;margin-inline-start:4px;border:1px solid var(--line);color:var(--text-muted);font-weight:500}
+.src.official{border-color:var(--ok);color:var(--ok)}
+.reasons{list-style:none;margin:0;padding:0;font-size:13px}
+.reasons li{padding:4px 0;border-bottom:1px solid var(--line)}
+.reasons li .fx{color:var(--text-muted);display:block}
+.r-bad::before{content:'▼ ';color:var(--bad)}.r-good::before{content:'▲ ';color:var(--ok)}.r-info::before{content:'• ';color:var(--text-muted)}
+.analysis{background:var(--sky-soft);border-radius:10px;padding:8px 10px;font-size:13px}
+.qline{font-size:12px;color:var(--text-muted)}
+.toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--page);padding:8px 16px;border-radius:999px;z-index:20;max-width:calc(100vw - 32px);font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+[hidden]{display:none!important}
+@media (max-width:900px){.grid3,.tiles{grid-template-columns:1fr 1fr}.grid3>*:last-child{grid-column:1/-1}.grid2{grid-template-columns:1fr}.evbody{grid-template-columns:1fr}}
+@media (max-width:560px){.wrap{padding:16px}.grid3,.tiles,.choices,.can{grid-template-columns:1fr}.grid3>*:last-child{grid-column:auto}.share-row{flex-wrap:wrap}.share-row .pcts{min-width:0;width:100%}
+  .ev>summary{grid-template-columns:52px minmax(0,1fr) auto}.ev>summary .hk{display:none}.thumb{width:52px;height:52px}.heat{grid-template-columns:40px repeat(24,minmax(0,1fr))}.heat .hl:nth-child(odd){visibility:hidden}
+  header h1{font-size:19px}.tile .v{font-size:24px}}
+</style>
+</head>
+<body class="sf-page">
+<div class="wrap">
+  <header class="sf-letterbox">
+    <a class="logo sf-mark" href="index.html" title="كل الصفحات" aria-label="I/O Studio · كل الصفحات"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#5CB8F0"/><path d="M10.5 17h11.5v4.6h-2.6v20.8h2.6V47H10.5v-4.6h2.6V21.6h-2.6z" fill="#14181D"/><ellipse cx="47.4" cy="32" rx="8.6" ry="12.2" fill="none" stroke="#14181D" stroke-width="5.6"/><path d="M22 32h14.2" stroke="#F2FAFF" stroke-width="1.6" stroke-linecap="round"/><path d="M29.1 26.4Q30.1 31.0 34.7 32Q30.1 33.0 29.1 37.6Q28.1 33.0 23.5 32Q28.1 31.0 29.1 26.4z" fill="#FFFFFF"/></svg></a>
+    <h1>الإحصائيات <span class="muted">— إنستقرام · يوتيوب · تيك توك</span></h1>
+    <span class="sp"></span>
+    <a href="app.html" class="badge" style="text-decoration:none">🧩 برنامج آي أو استوديو</a>
+    <span id="where" class="badge off"></span>
+    <button id="loadJson" class="sm">📂 فتح stats.json</button>
+    <button id="saveJson" class="sm">💾 تنزيل</button>
+    <button id="demo" class="sm">✨ تجريبي</button>
+    <button id="clear" class="sm">🗑️ مسح</button>
+    <button id="themeT" class="sm" title="فاتح/داكن" aria-label="فاتح أو داكن">◐</button>
+    <input type="file" id="jsonInput" accept=".json" hidden>
+  </header>
+
+  <!-- ───────── where the numbers come from ───────── -->
+  <section class="card" id="sources" aria-labelledby="srcH">
+    <h2 id="srcH">من وين الأرقام؟</h2>
+    <div class="choices" role="group" aria-label="طريقة جمع البيانات">
+      <button class="choice" data-mode="manual" aria-pressed="true"><b>✍️ يدوي</b><span class="muted">ملف تصدير من المنصة، أو تكتب الأرقام — للمنصات الثلاث</span></button>
+      <button class="choice" data-mode="composio" aria-pressed="false"><b>🔗 إنستقرام عبر Claude + Composio</b><span class="muted">بدون مفاتيح بالبلقن — Claude يسحب إحصائياتك الرسمية يومياً</span></button>
+    </div>
+
+    <div class="pane" id="paneManual">
+      <div class="formrow">
+        <label>المنصة<select id="mPlatform"><option value="instagram">إنستقرام</option><option value="youtube">يوتيوب</option><option value="tiktok">تيك توك</option></select></label>
+        <label>الحساب<input id="mHandle" placeholder="@حسابك" dir="ltr"></label>
+        <label>المتابعون اليوم<input id="mFollowers" type="number" min="0" inputmode="numeric"></label>
+        <button id="mUpload">⬆️ ملف تصدير (CSV/JSON)</button>
+      </div>
+      <p class="muted" id="exportHint"></p>
+      <details>
+        <summary class="muted" style="cursor:pointer">+ أضف منشور بأرقامه (من شاشة إحصائيات المنشور)</summary>
+        <div class="formrow" style="margin-top:8px">
+          <label class="wide">العنوان / أول سطر<input id="pTitle"></label>
+          <label>التاريخ والوقت<input id="pDate" type="datetime-local"></label>
+          <label class="wide">الرابط<input id="pUrl" dir="ltr" placeholder="https://"></label>
+        </div>
+        <div class="formrow" style="margin-top:6px">
+          <label>المشاهدات<input id="pViews" type="number" min="0"></label>
+          <label>الوصول<input id="pReach" type="number" min="0"></label>
+          <label>الإعجابات<input id="pLikes" type="number" min="0"></label>
+          <label>التعليقات<input id="pComments" type="number" min="0"></label>
+          <label>المشاركات<input id="pShares" type="number" min="0"></label>
+          <label>الحفظ<input id="pSaves" type="number" min="0"></label>
+          <label>الطول (ثانية)<input id="pDur" type="number" min="0"></label>
+          <label>متوسط المشاهدة (ث)<input id="pAvg" type="number" min="0" step="0.1"></label>
+          <label>كمّلوا بعد ٣ث (%)<input id="pHold" type="number" min="0" max="100"></label>
+        </div>
+      </details>
+      <div class="formrow" style="margin-top:8px"><button class="primary" id="mSave">احفظ بالمشروع</button><span class="muted" id="mMsg"></span></div>
+    </div>
+
+    <div class="pane" id="paneComposio" hidden>
+      <ol class="steps">
+        <li>حسابك بإنستقرام لازم يكون <b>احترافي</b> (منشئ محتوى أو تجاري) — من التطبيق: الإعدادات ← نوع الحساب.</li>
+        <li>بـ Claude (اللي فيه Composio)، اربط <b>Instagram</b> مرة وحدة — Claude يطلب منك الموافقة بصفحة Composio. المفتاح يبقى عند Composio، ولا شي ينحفظ بالبلقن.</li>
+        <li>اضغط «اسحب الآن» — يوصل طلب لـ Claude، يشغّل أدوات إنستقرام الأربع ويكتب الأرقام هنا. بعدها يسحب تلقائياً مرة باليوم أول ما تفتح جلسة.</li>
+      </ol>
+      <div class="formrow"><button class="primary" id="cSync">🔄 اسحب الآن</button><button id="cUpload">⬆️ عندي ملف سحب جاهز (JSON)</button><span class="muted" id="cMsg"></span></div>
+      <div class="can" style="margin-top:10px">
+        <div><b class="up">✓ يجيب (رسمي من إنستقرام)</b><ul><li>المتابعين، وكل منشور وريل</li><li>المشاهدات، الوصول، الإعجابات، التعليقات، الحفظ، المشاركات</li><li>للريلز: متوسط وقت المشاهدة + نسبة التخطي بأول ٣ ثواني (الهوك الحقيقي)</li><li>أعمار وبلدان المتابعين ووقت تواجدهم (من ١٠٠ متابع وفوق)</li></ul></div>
+        <div><b class="muted">✗ ما يجيب</b><ul><li>منحنى البقاء ثانية بثانية (إنستقرام ما يطلّعه)</li><li>يوتيوب وتيك توك — أدخلها يدوي لحد ما نضيف ربطها</li><li>حسابات اللي تتابعهم — تجي من سحب الترند (سكل io-trends) بقسم «قارن نفسك»</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="filters section" id="filters">
+    <span class="lbl">الفترة:</span>
+    <button data-d="7">٧ أيام</button><button data-d="28" aria-pressed="true">٢٨ يوم</button><button data-d="90">٩٠ يوم</button><button data-d="365">سنة</button><button data-d="0">الكل</button>
+    <span class="lbl" style="margin-inline-start:10px">من</span><input type="date" id="from" aria-label="من"><span class="lbl">إلى</span><input type="date" id="to" aria-label="إلى">
+    <span class="sp" style="flex:1"></span>
+    <button id="tableT" aria-pressed="false">▦ عرض كجدول</button>
+  </div>
+
+  <div class="tiles" id="tiles"></div>
+  <div class="grid3" id="platforms"></div>
+
+  <div class="grid3 section">
+    <div class="card" style="grid-column:span 2">
+      <h2>نمو المتابعين (٪ من بداية الفترة)</h2>
+      <div class="legend" id="growthLegend"></div>
+      <div class="chart" id="growthChart"></div>
+    </div>
+    <div class="card">
+      <h2>توزيع الجهد والنتائج</h2>
+      <div id="shares"></div>
+      <h2 style="margin-top:14px">ملاحظات</h2>
+      <ul class="insights" id="insights"></ul>
+    </div>
+  </div>
+
+  <div class="grid2 section">
+    <div class="card">
+      <div class="ph"><h2 style="margin:0;flex:1">أفضل يوم وساعة</h2><select id="heatP" aria-label="المنصة"><option value="">كل المنصات</option><option value="instagram">إنستقرام</option><option value="youtube">يوتيوب</option><option value="tiktok">تيك توك</option></select></div>
+      <div id="heat"></div>
+      <p class="muted" id="heatNote"></p>
+    </div>
+    <div class="card">
+      <h2>أعلى المنشورات</h2>
+      <ul class="top" id="topPosts"></ul>
+      <div class="formrow" style="margin-top:10px"><button id="ideasBtn">💡 اطلع أفكار من أفضل منشوراتي</button><button id="reelBtn">🎬 سو ريل من هالأرقام</button></div>
+    </div>
+  </div>
+
+  <div class="grid2 section" id="hookRow">
+    <div class="card">
+      <h2>الهوك والبقاء</h2>
+      <div id="hookBars"></div>
+    </div>
+    <div class="card" id="audienceCard">
+      <h2>جمهورك</h2>
+      <div id="audience"></div>
+    </div>
+  </div>
+
+  <div class="section card">
+    <h2>المشاهدات الأسبوعية — كل منصة بمقياسها</h2>
+    <div class="grid3" id="weekly"></div>
+  </div>
+
+  <!-- ───────── benchmark: followed accounts' median views (.io/benchmark.json, engine/trends.js) ───────── -->
+  <section class="section card" id="benchCard" aria-labelledby="bnH" hidden>
+    <h2 id="bnH">قارن نفسك</h2>
+    <p class="muted" style="margin-top:0">وسيط مشاهداتك على إنستقرام مقابل وسيط الحسابات اللي تتابعها (من آخر سحب ترند).</p>
+    <div id="bench" style="overflow-x:auto"></div>
+  </section>
+
+  <!-- ───────── content evaluation ───────── -->
+  <section class="section card" id="evalCard" aria-labelledby="evH">
+    <h2 id="evH">تقييم المحتوى</h2>
+    <p class="muted" style="margin-top:0">كل منشور مقارنة بعادتك أنت (وسيط آخر ٢٠ منشور على نفس المنصة)، بنفس القواعد للمنصات الثلاث. «تقديري» = ما عندنا بقاء رسمي لهالمنشور.</p>
+    <div class="note" id="patterns"></div>
+    <div class="evbar">
+      <span class="lbl muted">التقييم:</span>
+      <button data-g="" aria-pressed="true" class="sm">الكل</button><button data-g="weak" aria-pressed="false" class="sm">ضعيف</button><button data-g="mid" aria-pressed="false" class="sm">متوسط</button><button data-g="strong" aria-pressed="false" class="sm">قوي</button>
+      <select id="evP" aria-label="المنصة"><option value="">كل المنصات</option><option value="instagram">إنستقرام</option><option value="youtube">يوتيوب</option><option value="tiktok">تيك توك</option></select>
+      <span class="sp" style="flex:1"></span>
+      <button id="anaWeak" class="sm">🔍 حلّل كل الضعيفة</button>
+    </div>
+    <div class="evlist" id="evList"></div>
+    <div style="text-align:center;margin-top:8px"><button id="evMore" hidden>اعرض أكثر</button></div>
+    <div class="qline" id="qline" style="margin-top:8px"></div>
+  </section>
+
+  <div class="section card" id="tableCard" hidden>
+    <h2>الأرقام كجدول</h2>
+    <div id="table" style="overflow-x:auto"></div>
+  </div>
+
+  <p class="muted section">
+    التفاعل = (إعجابات + تعليقات + مشاركات + حفظ) ÷ المشاهدات — نفس المعادلة لكل المنصات. الأرقام تنحفظ بمشروعك (<code>.io/stats.json</code>) لما السيرفر المحلي شغّال،
+    وإلا بهالمتصفح بس. ما فيه سيرفر لآي أو استوديو — كل شي على جهازك.
+  </p>
+</div>
+<div class="tip" id="tip"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="lib/platforms.js"></script>
+<script src="lib/stats-core.js"></script>
+<script src="lib/content-eval.js"></script>
+<script>
+'use strict';
+const S = window.IoStats, P = window.IoPlatforms, E = window.IoEval;
+const IDS = S.PLATFORM_IDS;
+const $ = (id) => document.getElementById(id);
+const STORE = 'io-dashboard-stats';
+const LS = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* blocked */ } } };
+const ST = { stats: S.emptyStats(), status: null, server: false, range: null, days: 28, ev: null, evGrade: '', evP: '', evShown: 25, queue: [], mode: 'manual' };
+const DAYS_AR = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
+
+const nf = new Intl.NumberFormat('en-US');
+function num(n) {
+  if (n === null || n === undefined || !isFinite(n)) return '—';
+  const a = Math.abs(n);
+  if (a >= 1e6) return (n / 1e6).toFixed(a >= 1e7 ? 0 : 1) + 'M';
+  if (a >= 1e4) return (n / 1e3).toFixed(a >= 1e5 ? 0 : 1) + 'K';
+  return nf.format(Math.round(n));
+}
+function pct(x, d) { return x === null || x === undefined || !isFinite(x) ? '—' : (x * 100).toFixed(d === undefined ? 1 : d) + '%'; }
+function signed(n, f) { return (n > 0 ? '+' : n < 0 ? '−' : '') + f(Math.abs(n)); }
+function ltr(s) { return `<span dir="ltr">${s}</span>`; }
+function color(id) { return `var(--series-${id})`; }
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+const safeUrl = (u) => (/^https?:\/\//i.test(String(u || '')) ? u : '');
+let toastT;
+function toast(t) { const el = $('toast'); el.textContent = t; el.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('on'), 3200); }
+async function copy(t) { try { await navigator.clipboard.writeText(t); } catch (e) { /* ignore */ } toast('انسخ الطلب ✓ — الصقه بـ Claude'); }
+
+// ------------------------------------------------------------ storage: project first, browser as fallback
+async function api(path, body) {
+  const r = await fetch(path, body === undefined ? { cache: 'no-store' } : { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok || j.ok === false) throw new Error((j.errors || [j.error || r.status]).join('، '));
+  return j;
+}
+function persistLocal() { LS.set(STORE, JSON.stringify(ST.stats)); }
+function take(j) { if (j.stats) ST.stats = j.stats; if (j.benchmark !== undefined) ST.bench = j.benchmark; if (j.status) { ST.status = j.status; ST.mode = j.status.mode || 'manual'; } }
+async function boot() {
+  if (location.protocol !== 'file:') {
+    try { take(await api('/api/stats')); ST.server = true; } catch (e) { ST.server = false; }
+  }
+  if (!ST.server) { try { const s = JSON.parse(LS.get(STORE) || 'null'); if (s && s.accounts) ST.stats = s; } catch (e) { /* ignore */ } ST.mode = LS.get('io-stats-mode') || 'manual'; }
+  $('where').textContent = ST.server ? '💾 ينحفظ بالمشروع' : '⚠️ بالمتصفح بس (السيرفر طافي)';
+  $('where').className = 'badge ' + (ST.server ? 'live' : 'est');
+  setMode(ST.mode, false);
+  setDays(ST.days);
+  await loadEval();
+  if (ST.server) { pollQueue(); setInterval(pollQueue, 6000); }
+}
+/** Saves through the server when it runs; otherwise mutates the browser copy with the same core functions. */
+async function changed(j) { take(j); setDays(ST.days > 0 ? ST.days : 28); await loadEval(); }
+
+// ------------------------------------------------------------ range
+function latestDate() {
+  let d = '';
+  for (const id of IDS) {
+    const a = ST.stats.accounts[id];
+    for (const p of a.posts || []) if (p.date && p.date > d) d = p.date;
+    for (const s of a.snapshots || []) if (s.date > d) d = s.date;
+  }
+  return d ? d.slice(0, 10) : new Date().toISOString().slice(0, 10);
+}
+function setDays(d) {
+  ST.days = d;
+  if (!d) ST.range = null;
+  else {
+    const to = latestDate();
+    const f = new Date(to + 'T00:00:00'); f.setDate(f.getDate() - d + 1);
+    ST.range = { from: f.toISOString().slice(0, 10), to };
+  }
+  $('from').value = ST.range ? ST.range.from : ''; $('to').value = ST.range ? ST.range.to : '';
+  document.querySelectorAll('#filters [data-d]').forEach((b) => b.setAttribute('aria-pressed', String(+b.dataset.d === d)));
+  render();
+}
+
+// ------------------------------------------------------------ render
+function render() {
+  const cmp = S.compare(ST.stats, ST.range);
+  let prev = null;
+  if (ST.range) {
+    const span = (Date.parse(ST.range.to) - Date.parse(ST.range.from)) / 864e5 + 1;
+    const pt = new Date(ST.range.from + 'T00:00:00'); pt.setDate(pt.getDate() - 1);
+    const pf = new Date(pt); pf.setDate(pf.getDate() - span + 1);
+    prev = S.compare(ST.stats, { from: pf.toISOString().slice(0, 10), to: pt.toISOString().slice(0, 10) });
+  }
+  renderTiles(cmp, prev);
+  renderPlatforms(cmp);
+  renderGrowth(cmp);
+  renderShares(cmp);
+  $('insights').innerHTML = S.insights(cmp).map((t) => `<li>${esc(t)}</li>`).join('');
+  renderHeat();
+  renderTop(cmp);
+  renderHook();
+  renderAudience();
+  renderWeekly(cmp);
+  renderBench();
+  renderTable(cmp);
+}
+
+function renderBench() {
+  const acc = ST.bench && ST.bench.accounts ? Object.values(ST.bench.accounts).filter((a) => a && a.medianViews > 0) : [];
+  $('benchCard').hidden = !acc.length;
+  if (!acc.length) return;
+  const mine = E.median((ST.stats.accounts.instagram.posts || []).slice().sort((x, y) => String(x.date || '').localeCompare(String(y.date || ''))).slice(-20).map((p) => p.views)) || 0;
+  const rows = acc.sort((a, b) => b.medianViews - a.medianViews).slice(0, 15).map((a) => {
+    const r = mine ? mine / a.medianViews : 0;
+    return `<tr><td dir="ltr">@${esc(a.handle)}</td><td>${nf.format(Math.round(a.medianViews))}</td><td>${r ? (r >= 1 ? '▲ ' : '▼ ') + r.toFixed(1) + '×' : '—'}</td><td>${a.topOutlier ? a.topOutlier.toFixed(1) + '×' : '—'}</td></tr>`;
+  }).join('');
+  $('bench').innerHTML = `<table><thead><tr><th>الحساب</th><th>وسيط المشاهدات</th><th>أنت مقابله</th><th>أقوى ترند</th></tr></thead><tbody><tr><td><b>أنت</b></td><td>${mine ? nf.format(Math.round(mine)) : '—'}</td><td></td><td></td></tr>${rows}</tbody></table>`;
+}
+
+function delta(cur, old) {
+  if (old === undefined || old === null || !isFinite(old) || old === 0) return '';
+  const ch = (cur - old) / Math.abs(old);
+  const cls = ch > 0 ? 'up' : ch < 0 ? 'down' : '';
+  return `<span class="${cls}">${ch > 0 ? '▲' : ch < 0 ? '▼' : '•'} ${pct(Math.abs(ch), 0)}</span> عن الفترة السابقة`;
+}
+function renderTiles(c, p) {
+  const T = c.totals, PT = p && p.totals;
+  const tiles = [
+    ['المتابعون (المجموع)', num(T.followers), T.followerGrowth ? `${ltr(signed(T.followerGrowth, num))} بالفترة` : ''],
+    ['المشاهدات', num(T.views), PT ? delta(T.views, PT.views) : ''],
+    ['نسبة التفاعل', pct(T.engagementRate), PT ? delta(T.engagementRate, PT.engagementRate) : ''],
+    ['المنشورات', nf.format(T.posts), PT ? delta(T.posts, PT.posts) : ''],
+    ['توازن المنصات', `${c.balance.score}<small style="font-size:14px">/100</small>`, '<div class="balance"><div style="width:' + c.balance.score + '%"></div></div>'],
+  ];
+  $('tiles').innerHTML = tiles.map(([k, v, d]) => `<div class="card tile"><div class="k">${k}</div><div class="v">${v}</div><div class="d">${d}</div></div>`).join('');
+}
+
+function sourceBadge(id) {
+  const a = ST.stats.accounts[id];
+  const sync = a.sync || null;
+  const has = (a.posts || []).length || a.followers;
+  if (sync && sync.source === 'composio') {
+    const when = sync.at ? new Date(sync.at) : null;
+    const old = when && Date.now() - when.getTime() > 36 * 3600e3;
+    return `<span class="badge ${old ? 'est' : 'live'}" title="إنستقرام عبر Composio">مربوط · آخر مزامنة ${when ? when.toLocaleString('ar', { day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' }) : '—'}</span>`;
+  }
+  return has ? '<span class="badge">يدوي</span>' : '<span class="badge off">ما بيه بيانات</span>';
+}
+
+function renderPlatforms(c) {
+  $('platforms').innerHTML = IDS.map((id) => {
+    const k = c.per[id], spec = P.PLATFORMS[id], a = ST.stats.accounts[id];
+    const has = k.posts || k.followers;
+    const top = k.top.slice(0, 3).map((t) => `<li><span class="t">${safeUrl(t.url) ? `<a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.title || t.id)}</a>` : esc(t.title || t.id)}</span><b>${num(t.views)}</b></li>`).join('');
+    return `<div class="card" data-p="${id}">
+      <div class="ph"><span class="sw" style="background:${color(id)}"></span><b>${spec.nameAr}</b><span class="h">${esc(a.handle || '')}</span><span class="sp" style="flex:1"></span>${sourceBadge(id)}</div>
+      ${has ? `<div class="kv">
+        <span>المتابعون</span><span>${num(k.followers)}</span>
+        <span>النمو</span><span class="${k.followerGrowth >= 0 ? 'up' : 'down'}" dir="ltr">${signed(k.followerGrowth, num)} (${pct(k.followerGrowthPct)})</span>
+        <span>المشاهدات</span><span>${num(k.views)}</span>
+        <span>متوسط المشاهدات</span><span>${num(k.avgViews)}</span>
+        <span>نسبة التفاعل</span><span>${pct(k.engagementRate)}</span>
+        <span>منشورات/أسبوع</span><span>${k.postsPerWeek.toFixed(1)}</span>
+        ${k.watchHours ? `<span>ساعات المشاهدة</span><span>${num(k.watchHours)}</span>` : ''}
+        <span>أفضل يوم / ساعة</span><span>${k.bestWeekday ? k.bestWeekday.nameAr : '—'} / ${k.bestHour !== null ? k.bestHour + ':00' : '—'}</span>
+      </div>
+      ${top ? `<ul class="top">${top}</ul>` : ''}`
+      : `<div class="empty">ما بيه بيانات لـ${spec.nameAr} بهالفترة — ${id === 'instagram' ? 'اسحبها عبر Composio أو ' : ''}أدخلها يدوي فوق</div>`}
+    </div>`;
+  }).join('');
+}
+
+// ------------------------------------------------------------ charts (inline SVG)
+const tip = $('tip');
+function showTip(host, x, y, html) {
+  tip.innerHTML = html; tip.style.display = 'block';
+  const r = host.getBoundingClientRect();
+  const tw = tip.offsetWidth;
+  let left = r.left + window.scrollX + x + 14;
+  if (left + tw > window.scrollX + document.documentElement.clientWidth - 8) left = r.left + window.scrollX + x - tw - 14;
+  tip.style.left = Math.max(8, left) + 'px';
+  tip.style.top = (r.top + window.scrollY + y - 10) + 'px';
+}
+function hideTip() { tip.style.display = 'none'; }
+function niceMax(v) {
+  if (v <= 0) return 1;
+  const e = Math.pow(10, Math.floor(Math.log10(v)));
+  const n = v / e;
+  return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10) * e;
+}
+
+function renderGrowth(c) {
+  const host = $('growthChart');
+  const series = IDS.map((id) => {
+    const s = c.per[id].followerSeries.filter((x) => x.followers);
+    const base = s.length ? s[0].followers : 0;
+    return { id, pts: s.map((x) => ({ date: x.date, v: base ? (x.followers - base) / base : 0, raw: x.followers })) };
+  }).filter((s) => s.pts.length > 1);
+  $('growthLegend').innerHTML = IDS.map((id) => `<span><span class="sw" style="background:${color(id)}"></span>${P.PLATFORMS[id].nameAr}</span>`).join('');
+  if (!series.length) { host.innerHTML = '<div class="empty">يحتاج يومين أو أكثر من أرقام المتابعين — السحب اليومي أو ملف «المتابعين» من التصدير</div>'; return; }
+  const W = 760, H = 260, m = { t: 12, r: 12, b: 26, l: 52 };
+  const dates = [...new Set(series.flatMap((s) => s.pts.map((p) => p.date)))].sort();
+  const t0 = Date.parse(dates[0]), t1 = Date.parse(dates[dates.length - 1]) || t0 + 1;
+  const maxV = niceMax(Math.max(0.001, ...series.flatMap((s) => s.pts.map((p) => p.v))));
+  const minV = Math.min(0, ...series.flatMap((s) => s.pts.map((p) => p.v)));
+  const X = (d) => W - m.r - ((Date.parse(d) - t0) / Math.max(1, t1 - t0)) * (W - m.l - m.r); // RTL: time flows right→left
+  const Y = (v) => m.t + (1 - (v - minV) / (maxV - minV || 1)) * (H - m.t - m.b);
+  let g = '';
+  for (let i = 0; i <= 4; i++) {
+    const v = minV + (maxV - minV) * i / 4;
+    g += `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)" stroke-width="1"/><text x="${m.l - 8}" y="${Y(v) + 4}" text-anchor="end" font-size="11" fill="var(--text-muted)">${pct(v, 1)}</text>`;
+  }
+  [dates[0], dates[Math.floor(dates.length / 2)], dates[dates.length - 1]].forEach((d) => { g += `<text x="${X(d)}" y="${H - 6}" text-anchor="middle" font-size="11" fill="var(--text-muted)">${d.slice(5)}</text>`; });
+  const lines = series.map((s) => {
+    const d = s.pts.map((p, i) => `${i ? 'L' : 'M'}${X(p.date).toFixed(1)},${Y(p.v).toFixed(1)}`).join('');
+    const last = s.pts[s.pts.length - 1];
+    return `<path d="${d}" fill="none" stroke="${color(s.id)}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="${X(last.date)}" cy="${Y(last.v)}" r="4" fill="${color(s.id)}" stroke="var(--surface-1)" stroke-width="2"/>`;
+  }).join('');
+  host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="نمو المتابعين لكل منصة كنسبة من بداية الفترة">${g}${lines}<line id="gx" y1="${m.t}" y2="${H - m.b}" stroke="var(--text-muted)" stroke-width="1" visibility="hidden"/><rect x="${m.l}" y="0" width="${W - m.l - m.r}" height="${H}" fill="transparent" id="ghit"/></svg>`;
+  const svg = host.querySelector('svg'), hit = host.querySelector('#ghit'), gx = host.querySelector('#gx');
+  hit.addEventListener('mousemove', (e) => {
+    const r = svg.getBoundingClientRect();
+    const sx = (e.clientX - r.left) * W / r.width;
+    let best = dates[0], bd = Infinity;
+    for (const d of dates) { const dd = Math.abs(X(d) - sx); if (dd < bd) { bd = dd; best = d; } }
+    gx.setAttribute('x1', X(best)); gx.setAttribute('x2', X(best)); gx.setAttribute('visibility', 'visible');
+    const rows = series.map((s) => { const p = s.pts.find((q) => q.date === best); return p ? `<div class="r"><span><span class="sw" style="background:${color(s.id)}"></span> ${P.PLATFORMS[s.id].nameAr}</span><b dir="ltr">${num(p.raw)} · ${signed(p.v, (x) => pct(x))}</b></div>` : ''; }).join('');
+    showTip(host, X(best) * r.width / W, (e.clientY - r.top), `<div class="muted">${best}</div>${rows}`);
+  });
+  hit.addEventListener('mouseleave', () => { gx.setAttribute('visibility', 'hidden'); hideTip(); });
+}
+
+function renderShares(c) {
+  const rows = [['المنشورات', 'posts'], ['المشاهدات', 'views'], ['المتابعون', 'followers']];
+  $('shares').innerHTML = rows.map(([label, f]) => {
+    const parts = IDS.map((id) => ({ id, v: c.share[id][f] }));
+    const bar = parts.filter((p) => p.v > 0).map((p) => `<div style="width:${(p.v * 100).toFixed(2)}%;background:${color(p.id)}" title="${P.PLATFORMS[p.id].nameAr}: ${pct(p.v, 0)}"></div>`).join('');
+    const txt = parts.map((p) => `${P.PLATFORMS[p.id].short} ${pct(p.v, 0)}`).join(' · ');
+    return `<div class="share-row"><span class="n">${label}</span><div class="share-bar">${bar || '<div style="width:100%;background:var(--surface-2)"></div>'}</div><span class="pcts">${txt}</span></div>`;
+  }).join('') + '<p class="muted" style="margin:4px 0 0">المثالي: كل منصة ثلث المنشورات تقريباً (٣٣٪).</p>';
+}
+
+function renderHeat() {
+  const pl = $('heatP').value;
+  const accs = (pl ? [pl] : IDS).map((id) => ST.stats.accounts[id]);
+  const h = S.heatmap(accs, ST.range);
+  const n = h.cells.flat().reduce((a, c) => a + c.n, 0);
+  if (!n) { $('heat').innerHTML = '<div class="empty">يحتاج منشورات بوقت النشر (ساعة) — السحب من إنستقرام أو تصدير فيه الوقت</div>'; $('heatNote').textContent = ''; return; }
+  let html = '<span></span>' + Array.from({ length: 24 }, (_, i) => `<span class="hl">${i}</span>`).join('');
+  let best = null;
+  h.cells.forEach((row, d) => {
+    html += `<span class="dl">${DAYS_AR[d]}</span>` + row.map((c, hr) => {
+      if (c.n && (!best || c.avg > best.avg)) best = { d, hr, avg: c.avg, n: c.n };
+      const k = h.max ? c.avg / h.max : 0;
+      return `<span class="c" style="${c.n ? `background:color-mix(in srgb,var(--accent) ${Math.round(15 + k * 85)}%,var(--surface-2))` : ''}" title="${DAYS_AR[d]} ${hr}:00 — ${c.n ? `${c.n} منشور · متوسط ${num(c.avg)} مشاهدة` : 'ما نشرت'}"></span>`;
+    }).join('');
+  });
+  $('heat').innerHTML = `<div class="heat" role="img" aria-label="متوسط المشاهدات حسب اليوم والساعة">${html}</div>`;
+  $('heatNote').textContent = best ? `أعلى متوسط: ${DAYS_AR[best.d]} الساعة ${best.hr}:00 (${num(best.avg)} مشاهدة، ${best.n} منشور). الخانات الفاضية = ما نشرت بهالوقت، مو وقت سيئ.` : '';
+}
+
+function postsInRange(pl) {
+  const out = [];
+  for (const id of pl ? [pl] : IDS) for (const p of ST.stats.accounts[id].posts || []) if (!ST.range || (p.date && p.date.slice(0, 10) >= ST.range.from && p.date.slice(0, 10) <= ST.range.to)) out.push(Object.assign({ platform: id }, p));
+  return out;
+}
+function bestPosts() {
+  // ranked against each account's own median, so a small platform isn't drowned by a big one
+  const med = {};
+  for (const id of IDS) med[id] = E.median((ST.stats.accounts[id].posts || []).map((p) => p.views)) || 0;
+  return postsInRange().filter((p) => p.views).map((p) => Object.assign(p, { idx: med[p.platform] ? p.views / med[p.platform] : 0 })).sort((a, b) => b.idx - a.idx);
+}
+function renderTop() {
+  const list = bestPosts().slice(0, 8);
+  $('topPosts').innerHTML = list.length ? list.map((p) => `<li><span class="sw" style="background:${color(p.platform)}"></span><span class="t">${safeUrl(p.url) ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title || p.id)}</a>` : esc(p.title || p.id)}</span><span class="muted" dir="ltr">${p.idx.toFixed(1)}×</span><b>${num(p.views)}</b></li>`).join('')
+    : '<li class="muted">ما بيه منشورات بهالفترة</li>';
+}
+
+function renderHook() {
+  const reels = postsInRange().filter((p) => p.hold3 != null || p.skipRate != null || (p.avgWatchSec != null && p.durationSec)).sort((a, b) => String(b.date).localeCompare(a.date)).slice(0, 10);
+  const withCurve = postsInRange().filter((p) => Array.isArray(p.retention) && p.retention.length > 2);
+  let html = '';
+  if (withCurve.length) {
+    const p = withCurve.sort((a, b) => String(b.date).localeCompare(a.date))[0];
+    html += `<h3>منحنى البقاء — ${esc(p.title || p.id)}</h3>${curveSvg(p.retention, p.durationSec)}`;
+  }
+  if (reels.length) {
+    html += '<h3>كم واحد ظل بعد أول ٣ ثواني</h3>' + reels.map((p) => {
+      const hold = p.hold3 != null ? p.hold3 : p.skipRate != null ? 100 - p.skipRate : null;
+      const wr = p.avgWatchSec != null && p.durationSec ? Math.min(1, p.avgWatchSec / p.durationSec) : null;
+      const off = (p.src || {}).skipRate === 'official' || (p.src || {}).hold3 === 'official';
+      return `<div class="share-row"><span class="n" title="${esc(p.title)}" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc((p.title || p.id).slice(0, 22))}</span>
+        <div class="share-bar" style="background:var(--surface-2);border-radius:4px">${hold != null ? `<div style="width:${hold}%;background:${hold >= 70 ? 'var(--ok)' : hold >= 55 ? 'var(--warn)' : 'var(--bad)'}"></div>` : ''}</div>
+        <span class="pcts ar">${hold != null ? Math.round(hold) + '% بعد ٣ث' : '—'}${wr != null ? ' · شاهدوا ' + pct(wr, 0) : ''}${off ? '' : ' · يدوي'}</span></div>`;
+    }).join('');
+  }
+  $('hookBars').innerHTML = html || '<div class="empty">نسبة التخطي ومتوسط المشاهدة تجي من سحب إنستقرام (Composio)، أو اكتبها يدوي لكل ريل. تيك توك ما يطلّعها.</div>';
+}
+function curveSvg(pts, dur) {
+  const W = 520, H = 200, m = { t: 10, r: 10, b: 24, l: 40 };
+  const X = (x) => W - m.r - x * (W - m.l - m.r), Y = (v) => m.t + (1 - Math.min(100, v) / 100) * (H - m.t - m.b);
+  let g = '';
+  for (const v of [0, 50, 100]) g += `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="${m.l - 6}" y="${Y(v) + 4}" text-anchor="end" font-size="10" fill="var(--text-muted)">${v}%</text>`;
+  const d = pts.map((p, i) => `${i ? 'L' : 'M'}${X(p[0]).toFixed(1)},${Y(p[1]).toFixed(1)}`).join('');
+  g += `<text x="${W - m.r}" y="${H - 6}" text-anchor="end" font-size="10" fill="var(--text-muted)">0:00</text><text x="${m.l}" y="${H - 6}" font-size="10" fill="var(--text-muted)">${dur ? Math.floor(dur / 60) + ':' + String(Math.round(dur % 60)).padStart(2, '0') : 'النهاية'}</text>`;
+  return `<div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="منحنى البقاء">${g}<path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round"/></svg></div>`;
+}
+
+function renderAudience() {
+  const x = ST.stats.accounts.instagram.extra || {};
+  let html = '';
+  if (Array.isArray(x.onlineHours) && x.onlineHours.some(Boolean)) {
+    const mx = Math.max(...x.onlineHours);
+    const top = x.onlineHours.map((v, h) => [h, v]).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([h]) => h + ':00').join('، ');
+    html += `<h3>متى متابعينك أونلاين (إنستقرام)</h3><div style="display:flex;align-items:end;gap:2px;height:70px;direction:ltr">${x.onlineHours.map((v, h) => `<div title="${h}:00 — ${num(v)}" style="flex:1;height:${Math.max(4, v / mx * 100)}%;background:var(--accent);border-radius:3px 3px 0 0;opacity:${0.35 + 0.65 * v / mx}"></div>`).join('')}</div><div class="hours"><span>0:00</span><span>6:00</span><span>12:00</span><span>18:00</span><span>23:00</span></div><p class="muted">أكثر ساعات: ${top} (بتوقيت إنستقرام للحساب).</p>`;
+  }
+  const A = x.audience || {};
+  const NM = { age: 'الأعمار', country: 'البلدان', gender: 'الجنس', city: 'المدن' };
+  for (const k of Object.keys(A)) {
+    const list = A[k] || []; const tot = list.reduce((a, r) => a + (r.v || 0), 0);
+    if (!list.length) continue;
+    html += `<h3>${NM[k] || esc(k)}</h3>` + list.slice(0, 5).map((r) => `<div class="share-row"><span class="n" dir="auto">${esc(k === 'gender' ? ({ F: 'إناث', M: 'ذكور', U: 'غير محدد' }[r.k] || r.k) : r.k)}</span><div class="share-bar"><div style="width:${tot ? (r.v / tot * 100).toFixed(1) : 0}%;background:var(--series-instagram)"></div></div><span class="pcts">${tot ? pct(r.v / tot, 0) : ''}</span></div>`).join('');
+  }
+  $('audience').innerHTML = html || '<div class="empty">أعمار وبلدان المتابعين ووقت تواجدهم تجي من سحب إنستقرام عبر Composio (حساب فيه ١٠٠ متابع وفوق).</div>';
+}
+
+function renderWeekly(c) {
+  $('weekly').innerHTML = IDS.map((id) => `<div><div class="ph"><span class="sw" style="background:${color(id)}"></span><b style="font-size:14px">${P.PLATFORMS[id].nameAr}</b></div><div class="chart" data-w="${id}"></div></div>`).join('');
+  for (const id of IDS) {
+    const host = document.querySelector(`[data-w="${id}"]`);
+    const wk = c.per[id].weekly;
+    if (!wk.length) { host.innerHTML = '<div class="empty">—</div>'; continue; }
+    const W = 360, H = 160, m = { t: 8, r: 6, b: 22, l: 40 };
+    const maxV = niceMax(Math.max(...wk.map((w) => w.views)));
+    const n = wk.length, slot = (W - m.l - m.r) / n, bw = Math.max(3, slot - 2);
+    const Y = (v) => m.t + (1 - v / maxV) * (H - m.t - m.b);
+    let g = '';
+    for (let i = 0; i <= 2; i++) { const v = maxV * i / 2; g += `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="${m.l - 6}" y="${Y(v) + 4}" text-anchor="end" font-size="10" fill="var(--text-muted)">${num(v)}</text>`; }
+    const bars = wk.map((w, i) => {
+      const x = W - m.r - (i + 1) * slot + (slot - bw) / 2; // RTL: oldest on the right
+      const y = Y(w.views), h = Math.max(0, H - m.b - y);
+      const r = Math.min(4, bw / 2, h);
+      const path = h > 0 ? `M${x},${H - m.b}V${y + r}Q${x},${y} ${x + r},${y}H${x + bw - r}Q${x + bw},${y} ${x + bw},${y + r}V${H - m.b}Z` : '';
+      return `<path d="${path}" fill="${color(id)}"/><rect x="${x - 1}" y="${m.t}" width="${slot}" height="${H - m.t - m.b}" fill="transparent" data-i="${i}"/>`;
+    }).join('');
+    g += `<text x="${W - m.r}" y="${H - 6}" text-anchor="end" font-size="10" fill="var(--text-muted)">${wk[0].week.slice(5)}</text><text x="${m.l}" y="${H - 6}" text-anchor="start" font-size="10" fill="var(--text-muted)">${wk[n - 1].week.slice(5)}</text>`;
+    host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="المشاهدات الأسبوعية على ${P.PLATFORMS[id].nameAr}">${g}${bars}</svg>`;
+    const svg = host.querySelector('svg');
+    svg.querySelectorAll('rect[data-i]').forEach((rc) => {
+      rc.addEventListener('mousemove', (e) => {
+        const w = wk[+rc.dataset.i], r = svg.getBoundingClientRect();
+        showTip(host, e.clientX - r.left, e.clientY - r.top, `<div class="muted">أسبوع ${w.week}</div><div class="r"><span>المشاهدات</span><b>${nf.format(w.views)}</b></div><div class="r"><span>المنشورات</span><b>${w.posts}</b></div><div class="r"><span>التفاعل</span><b>${w.views ? pct(w.engagement / w.views) : '—'}</b></div>`);
+      });
+      rc.addEventListener('mouseleave', hideTip);
+    });
+  }
+}
+
+function renderTable(c) {
+  const rows = [
+    ['المتابعون', (k) => nf.format(k.followers)], ['النمو', (k) => ltr(signed(k.followerGrowth, (x) => nf.format(x)))], ['المنشورات', (k) => k.posts],
+    ['المشاهدات', (k) => nf.format(k.views)], ['متوسط المشاهدات', (k) => nf.format(Math.round(k.avgViews))], ['الوسيط', (k) => nf.format(Math.round(k.medianViews))],
+    ['الإعجابات', (k) => nf.format(k.likes)], ['التعليقات', (k) => nf.format(k.comments)], ['المشاركات', (k) => nf.format(k.shares)], ['الحفظ', (k) => nf.format(k.saves)],
+    ['نسبة التفاعل', (k) => pct(k.engagementRate, 2)], ['منشورات/أسبوع', (k) => k.postsPerWeek.toFixed(2)],
+  ];
+  $('table').innerHTML = `<table><thead><tr><th>المؤشر</th>${IDS.map((id) => `<th>${P.PLATFORMS[id].nameAr}</th>`).join('')}</tr></thead><tbody>${rows.map(([l, f]) => `<tr><td>${l}</td>${IDS.map((id) => `<td>${f(c.per[id])}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+}
+
+// ------------------------------------------------------------ content evaluation
+async function loadEval() {
+  if (ST.server) { try { ST.ev = await api('/api/stats/eval'); } catch (e) { ST.ev = E.evaluate(ST.stats); } }
+  else ST.ev = E.evaluate(ST.stats);
+  renderEval();
+}
+const SRC_AR = { official: 'رسمي', manual: 'يدوي', file: 'ملف', composio: 'رسمي' };
+function srcTag(s) { return s ? `<span class="src ${s === 'official' ? 'official' : ''}">${SRC_AR[s] || esc(s)}</span>` : ''; }
+function renderEval() {
+  const ev = ST.ev || { posts: [], patterns: { lines: [] } };
+  $('patterns').innerHTML = `<b>شنو يشتغل عندك</b><ul class="insights">${(ev.patterns.lines || []).map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`;
+  const list = ev.posts.filter((p) => (!ST.evGrade || p.grade === ST.evGrade) && (!ST.evP || p.platform === ST.evP));
+  $('anaWeak').disabled = !ev.posts.some((p) => p.grade === 'weak');
+  if (!list.length) { $('evList').innerHTML = `<div class="empty">${ev.posts.length ? 'ما فيه منشورات بهالفلتر' : 'ما بيه منشورات بعد — اسحب إنستقرام أو أدخل منشوراتك يدوي'}</div>`; $('evMore').hidden = true; return; }
+  $('evList').innerHTML = list.slice(0, ST.evShown).map(evRow).join('');
+  $('evMore').hidden = list.length <= ST.evShown;
+}
+function evRow(p) {
+  const M = p.metrics, s = p.sources || {};
+  const thumb = safeUrl(p.thumb) ? `<img class="thumb" src="${esc(p.thumb)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'thumb',textContent:'🎞️'}))">` : '<span class="thumb" aria-hidden="true">🎞️</span>';
+  const row = (k, v, src) => (v === null || v === undefined ? '' : `<span>${k}${srcTag(src)}</span><span>${v}</span>`);
+  const q = ST.queue.filter((x) => x.type === 'analyze-post' && (x.postId === p.id || (x.posts || []).some((y) => y.postId === p.id))).slice(-1)[0];
+  const a = p.analysis;
+  return `<details class="ev" data-key="${esc(p.key)}">
+    <summary>${thumb}
+      <div style="min-width:0"><div class="ttl">${esc(p.title || '(بلا عنوان)')}</div>
+        <div class="meta"><span class="sw" style="background:${color(p.platform)}"></span> ${P.PLATFORMS[p.platform].nameAr} · ${p.date ? esc(p.date.slice(0, 16).replace('T', ' ')) : ''}${p.durationSec ? ` · ${Math.round(p.durationSec)}ث` : ''} ${p.grade ? `<span class="grade ${p.grade}">${p.gradeAr}</span>` : ''}</div>
+        <div class="why">${p.topReason ? esc(p.topReason.text) : ''}</div></div>
+      <div class="num">${p.score === null ? '—' : p.score}<small>الدرجة</small></div>
+      <div class="num hk">${p.hookScore === null ? '—' : p.hookScore}<small>${p.hookEstimated ? 'هوك · تقديري' : 'الهوك'}</small></div>
+    </summary>
+    <div class="evbody">
+      <div>
+        <div class="mt">
+          ${row('المشاهدات', num(M.views), s.views)}${row('الوصول', num(M.reach), s.reach)}${row('الإعجابات', num(M.likes), s.likes)}${row('التعليقات', num(M.comments), s.comments)}
+          ${row('المشاركات', num(M.shares), s.shares)}${row('الحفظ', num(M.saves), s.saves)}${row('نسبة التفاعل', pct(M.er), '')}${row('حفظ + مشاركة', M.ssr === null ? null : pct(M.ssr, 2), '')}
+          ${row('الوصول ÷ المتابعين', M.reachRatio === null ? null : pct(M.reachRatio, 0), '')}${row('متوسط المشاهدة', M.avgWatchSec === null ? null : M.avgWatchSec.toFixed(1) + 'ث', s.avgWatchSec)}
+          ${row('شاهدوا من الطول', M.watchRatio === null ? null : pct(M.watchRatio, 0), '')}${row('ظلوا بعد ٣ث', M.hold3 === null ? null : Math.round(M.hold3) + '%', s.skipRate || s.hold3 || s.retention)}
+          ${row('المشاهدات ÷ عادتك', p.index.views === null ? null : p.index.views.toFixed(2) + '×', '')}
+        </div>
+        <h3>دليل الهوك ${p.hookEstimated ? '<span class="badge est">تقديري</span>' : '<span class="badge live">من أرقام رسمية</span>'}</h3>
+        <ul class="reasons">${p.hookEvidence.map((t) => `<li class="r-info">${esc(t)}</li>`).join('') || '<li class="r-info">ما فيه أرقام كافية</li>'}</ul>
+      </div>
+      <div>
+        <h3 style="margin-top:0">ليش؟ وشنو أسوي؟</h3>
+        <ul class="reasons">${p.reasons.map((r) => `<li class="r-${r.kind}">${esc(r.text)}${r.fix ? `<span class="fx">← ${esc(r.fix)}</span>` : ''}</li>`).join('')}</ul>
+        ${a ? `<div class="analysis" style="margin-top:8px"><b>تحليل Claude</b>${a.at ? ` <span class="muted">${esc(String(a.at).slice(0, 10))}</span>` : ''}
+          ${a.verdict ? `<p style="margin:4px 0">${esc(a.verdict)}</p>` : ''}${a.promised ? `<div><b>الهوك وعد بـ:</b> ${esc(a.promised)}</div>` : ''}${a.leftAt ? `<div><b>وين طلعوا:</b> ${esc(a.leftAt)}</div>` : ''}${a.why ? `<div><b>ليش:</b> ${esc(a.why)}</div>` : ''}
+          ${(a.fixes || []).length ? `<ol style="margin:4px 0;padding-inline-start:18px">${a.fixes.map((f) => `<li>${esc(f)}</li>`).join('')}</ol>` : ''}
+          ${a.hook && a.hook.rewritten ? `<div><b>هوك بديل:</b> «${esc(a.hook.rewritten)}»</div>` : ''}
+          <button class="sm primary" data-better="${esc(p.key)}" style="margin-top:6px">✨ سو نسخة محسّنة</button></div>` : ''}
+        <div class="formrow" style="margin-top:8px">
+          <button class="sm" data-analyze="${esc(p.key)}">🔍 حلّل هالريل</button>
+          ${safeUrl(p.url) ? `<a class="badge" href="${esc(p.url)}" target="_blank" rel="noopener">افتح المنشور ↗</a>` : ''}
+          ${q ? `<span class="qline">${qState(q)}</span>` : ''}
+        </div>
+      </div>
+    </div>
+  </details>`;
+}
+const QST = { pending: '⏳ بالانتظار عند Claude', working: '⚙️ Claude يحلّل', done: '✅ خلص', error: '❌ ما تم' };
+function qState(q) { return `${QST[q.status] || q.status}${q.progress && q.progress.msg ? ' — ' + esc(q.progress.msg) : ''}`; }
+
+// ------------------------------------------------------------ requests for Claude (existing queue)
+async function enqueue(body, prompt) {
+  if (!ST.server) { copy(prompt); return null; }
+  try {
+    const j = await api('/api/queue', body);
+    ST.queue.push(j.item); toast('انرسل لـ Claude ✓ — يستلمه وهو شغّال (الطيار الآلي)');
+    renderEval(); setTimeout(pollQueue, 1500);
+    return j.item;
+  } catch (e) { toast('ما انرسل: ' + e.message); return null; }
+}
+async function pollQueue() {
+  if (!ST.server || document.hidden) return;
+  try {
+    const r = await api('/api/queue');
+    const before = JSON.stringify(ST.queue.map((x) => [x.id, x.status, x.progress && x.progress.msg]));
+    const was = Object.fromEntries(ST.queue.map((x) => [x.id, x.status]));
+    ST.queue = (r.items || []).filter((x) => ['analyze-post', 'sync-stats', 'stats-ideas', 'stats-reel'].includes(x.type));
+    if (JSON.stringify(ST.queue.map((x) => [x.id, x.status, x.progress && x.progress.msg])) === before) return;
+    const finished = ST.queue.some((x) => x.status === 'done' && was[x.id] && was[x.id] !== 'done');
+    if (finished) { toast('✅ Claude خلّص — حدّثت الأرقام'); take(await api('/api/stats')); setDays(ST.days); await loadEval(); }
+    else renderEval();
+    const s = ST.queue.filter((x) => x.type === 'sync-stats').slice(-1)[0];
+    if (s) $('cMsg').innerHTML = qState(s);
+    const open = ST.queue.filter((x) => x.status === 'pending' || x.status === 'working');
+    $('qline').textContent = open.length ? `طلبات مفتوحة عند Claude: ${open.length}. ما استلمها؟ گله بالشات: «شغّل الطيار الآلي».` : '';
+  } catch (e) { /* server went away */ }
+}
+function evByKey(k) { return (ST.ev && ST.ev.posts || []).find((p) => p.key === k); }
+function postMetrics(p) {
+  const M = p.metrics, o = { score: p.score, hookScore: p.hookScore, hookEstimated: p.hookEstimated ? 1 : 0, durationSec: p.durationSec };
+  for (const k of ['views', 'reach', 'likes', 'comments', 'shares', 'saves', 'avgWatchSec', 'hold3', 'skipRate', 'er', 'ssr', 'watchRatio']) if (M[k] !== null && M[k] !== undefined) o[k] = M[k];
+  if (p.index && p.index.views) o.viewsVsMedian = p.index.views;
+  return o;
+}
+function analyzeBody(p) { return { platform: p.platform, postId: p.id, title: p.title, url: p.url, videoUrl: p.videoUrl, metrics: postMetrics(p), reason: p.topReason ? p.topReason.text : '' }; }
+document.addEventListener('click', (e) => {
+  const an = e.target.closest('[data-analyze]');
+  if (an) { const p = evByKey(an.dataset.analyze); if (p) enqueue(Object.assign({ type: 'analyze-post' }, analyzeBody(p)), `/io:io-dashboard حلّل هالمنشور بعمق (${p.platform} #${p.id}): ${p.url || p.title}`); return; }
+  const bt = e.target.closest('[data-better]');
+  if (bt) {
+    const p = evByKey(bt.dataset.better); if (!p || !p.analysis) return;
+    const a = p.analysis;
+    const text = `نسخة محسّنة من «${p.title}» (${P.PLATFORMS[p.platform].nameAr}، الدرجة ${p.score}).\nالهوك الجديد: ${a.hook && a.hook.rewritten || ''}\nالتصليحات:\n${(a.fixes || []).map((f, i) => `${i + 1}. ${f}`).join('\n')}\nالرابط الأصلي: ${p.url || ''}`;
+    enqueue({ type: 'script', format: 'reel', text, title: 'نسخة محسّنة: ' + p.title.slice(0, 80) }, '/io:io-script ' + text);
+  }
+});
+$('anaWeak').onclick = () => {
+  const weak = (ST.ev.posts || []).filter((p) => p.grade === 'weak' && (!ST.evP || p.platform === ST.evP)).slice(0, 30);
+  if (!weak.length) return;
+  enqueue({ type: 'analyze-post', posts: weak.map(analyzeBody) }, `/io:io-dashboard حلّل كل المنشورات الضعيفة (${weak.length}) بتقييم المحتوى`);
+};
+$('ideasBtn').onclick = () => {
+  const top = bestPosts().slice(0, 10).map((p) => ({ title: p.title || p.id, url: p.url, platform: p.platform, metrics: { views: p.views, viewsVsMedian: Math.round(p.idx * 100) / 100, likes: p.likes, comments: p.comments, shares: p.shares, saves: p.saves } }));
+  if (!top.length) { toast('ما بيه منشورات بعد'); return; }
+  enqueue({ type: 'stats-ideas', top }, '/io:io-dashboard اطلع ٥ أفكار جديدة من أفضل منشوراتي بـ .io/stats.json وضيفها للبرنامج');
+};
+$('reelBtn').onclick = () => {
+  const c = S.compare(ST.stats, ST.range);
+  if (!c.totals.posts && !c.totals.followers) { toast('ما بيه أرقام بعد'); return; }
+  const numbers = { days: ST.days || 0, followers: c.totals.followers, followerGrowth: c.totals.followerGrowth, views: c.totals.views, engagementRate: Math.round(c.totals.engagementRate * 10000) / 10000, posts: c.totals.posts, balance: c.balance.score };
+  for (const id of IDS) if (c.per[id].posts || c.per[id].followers) { numbers[id + 'Followers'] = c.per[id].followers; numbers[id + 'Views'] = c.per[id].views; }
+  enqueue({ type: 'stats-reel', numbers, note: ST.range ? `الفترة ${ST.range.from} → ${ST.range.to}` : 'كل الفترة' }, '/io:io-motion سو ريل أرقام من إحصائياتي: ' + JSON.stringify(numbers));
+};
+
+// ------------------------------------------------------------ data sources
+function setMode(m, save = true) {
+  ST.mode = m;
+  document.querySelectorAll('[data-mode]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === m)));
+  $('paneManual').hidden = m !== 'manual';
+  $('paneComposio').hidden = m !== 'composio';
+  const ig = ST.status && ST.status.instagram;
+  if (m === 'composio') $('cMsg').textContent = ig ? `آخر سحب: ${new Date(ig.at).toLocaleString('ar')} · ${ig.posts} منشور` : 'ما صار سحب بعد';
+  if (!save) return;
+  if (ST.server) api('/api/stats/mode', { mode: m }).then(take).catch((e) => toast(e.message)); else LS.set('io-stats-mode', m);
+}
+document.querySelectorAll('[data-mode]').forEach((b) => { b.onclick = () => setMode(b.dataset.mode); });
+const HINT = {
+  instagram: 'من التطبيق: لوحة الاحترافي ← الإحصائيات، أو Meta Business Suite ← Insights ← Export (المنشورات + المتابعين).',
+  youtube: 'YouTube Studio ← Analytics ← Advanced mode ← Export ← CSV (Content، وSubscribers للنمو).',
+  tiktok: 'TikTok Studio ← Analytics ← Download data. تيك توك ما يطلّع وقت مشاهدة ولا بقاء بالتصدير — الهوك يطلع «تقديري».',
+};
+function fillManual() {
+  const id = $('mPlatform').value, a = ST.stats.accounts[id];
+  $('mHandle').value = a.handle || ''; $('mFollowers').value = '';
+  $('mFollowers').placeholder = a.followers ? String(a.followers) : '';
+  $('exportHint').textContent = HINT[id];
+}
+$('mPlatform').onchange = fillManual;
+const fileIn = Object.assign(document.createElement('input'), { type: 'file', accept: '.csv,.json,.txt,.tsv', multiple: true });
+let fileMode = 'export';
+fileIn.onchange = async () => {
+  const id = $('mPlatform').value;
+  for (const f of fileIn.files) {
+    const text = await f.text();
+    try {
+      if (fileMode === 'composio') {
+        if (!ST.server) throw new Error('ملف السحب يحتاج السيرفر المحلي');
+        const j = await api('/api/stats/import', { from: 'composio-instagram', text });
+        await changed(j); toast(`✅ إنستقرام: ${j.result.posts} منشور`);
+      } else if (ST.server) {
+        const j = await api('/api/stats/import', { platform: id, text, handle: $('mHandle').value.trim() });
+        await changed(j); toast(`✅ ${P.PLATFORMS[id].nameAr}: ${j.result.kind === 'followers' ? j.result.snapshots + ' يوم متابعين' : j.result.posts + ' منشور'}`);
+      } else {
+        const r = S.importText(ST.stats, id, text, { handle: $('mHandle').value.trim() });
+        ST.stats.accounts[id].sync = ST.stats.accounts[id].sync || { source: 'manual', at: new Date().toISOString() };
+        persistLocal(); await changed({}); toast(`✅ ${P.PLATFORMS[id].nameAr}: ${r.kind === 'followers' ? r.snapshots + ' يوم متابعين' : r.posts + ' منشور'}`);
+      }
+    } catch (e) { toast('❌ ' + f.name + ': ' + e.message); }
+  }
+  fileIn.value = '';
+};
+$('mUpload').onclick = () => { fileMode = 'export'; fileIn.click(); };
+$('cUpload').onclick = () => { fileMode = 'composio'; fileIn.click(); };
+$('cSync').onclick = () => enqueue({ type: 'sync-stats', platform: 'instagram' }, '/io:io-dashboard اسحب إحصائيات إنستقرام عبر Composio واكتبها بـ .io/stats.json');
+$('mSave').onclick = async () => {
+  const id = $('mPlatform').value;
+  const v = (k) => { const x = $(k).value.trim(); return x === '' ? undefined : +x; };
+  const body = { platform: id, handle: $('mHandle').value.trim(), followers: v('mFollowers'), posts: [] };
+  if ($('pTitle').value.trim() || v('pViews') !== undefined) {
+    body.posts.push({ title: $('pTitle').value.trim(), date: $('pDate').value || undefined, url: $('pUrl').value.trim(), views: v('pViews'), reach: v('pReach'), likes: v('pLikes'), comments: v('pComments'), shares: v('pShares'), saves: v('pSaves'), durationSec: v('pDur'), avgWatchSec: v('pAvg'), hold3: v('pHold') });
+  }
+  try {
+    if (ST.server) await changed(await api('/api/stats/manual', body));
+    else {
+      // offline: same shape, straight into the browser copy
+      const a = ST.stats.accounts[id];
+      if (body.handle) a.handle = body.handle;
+      const today = new Date().toISOString().slice(0, 10);
+      const posts = body.posts.map((p, i) => ({ id: `m-${Date.now()}-${i}`, date: p.date ? p.date.replace(' ', 'T').slice(0, 16) : today + 'T00:00', title: p.title, url: p.url, type: 'video', views: p.views || 0, reach: p.reach, likes: p.likes || 0, comments: p.comments || 0, shares: p.shares || 0, saves: p.saves || 0, durationSec: p.durationSec || 0, avgWatchSec: p.avgWatchSec, hold3: p.hold3, src: { hold3: 'manual', avgWatchSec: 'manual' } }));
+      S.merge(ST.stats, id, { posts, snapshots: body.followers !== undefined ? [{ date: today, followers: body.followers, newFollowers: 0 }] : [] }, { followers: body.followers });
+      persistLocal(); await changed({});
+    }
+    $('mMsg').textContent = '✓ انحفظ'; ['pTitle', 'pDate', 'pUrl', 'pViews', 'pReach', 'pLikes', 'pComments', 'pShares', 'pSaves', 'pDur', 'pAvg', 'pHold'].forEach((k) => { $(k).value = ''; });
+    fillManual();
+  } catch (e) { $('mMsg').textContent = '❌ ' + e.message; }
+};
+
+// ------------------------------------------------------------ header buttons
+document.addEventListener('click', (e) => {
+  const d = e.target.closest('#filters [data-d]');
+  if (d) setDays(+d.dataset.d);
+  const g = e.target.closest('[data-g]');
+  if (g) { ST.evGrade = g.dataset.g; ST.evShown = 25; document.querySelectorAll('[data-g]').forEach((b) => b.setAttribute('aria-pressed', String(b === g))); renderEval(); }
+});
+$('evP').onchange = () => { ST.evP = $('evP').value; ST.evShown = 25; renderEval(); };
+$('evMore').onclick = () => { ST.evShown += 25; renderEval(); };
+$('heatP').onchange = renderHeat;
+$('from').onchange = $('to').onchange = () => {
+  if ($('from').value && $('to').value) { ST.range = { from: $('from').value, to: $('to').value }; ST.days = -1; document.querySelectorAll('#filters [data-d]').forEach((b) => b.setAttribute('aria-pressed', 'false')); render(); }
+};
+$('tableT').onclick = () => { const on = $('tableCard').hidden; $('tableCard').hidden = !on; $('tableT').setAttribute('aria-pressed', String(on)); };
+$('loadJson').onclick = () => $('jsonInput').click();
+$('jsonInput').onchange = async (e) => {
+  try {
+    const j = JSON.parse(await e.target.files[0].text());
+    if (!j.accounts) throw new Error('مو ملف stats.json');
+    if (ST.server) await changed(await api('/api/stats/replace', { stats: j }));
+    else { ST.stats = S.emptyStats(); for (const id of IDS) if (j.accounts[id]) Object.assign(ST.stats.accounts[id], j.accounts[id]); persistLocal(); await changed({}); }
+    toast('✅ انفتح stats.json');
+  } catch (er) { toast('❌ ' + er.message); }
+  e.target.value = '';
+};
+$('saveJson').onclick = () => {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(ST.stats, null, 2)], { type: 'application/json' }));
+  a.download = 'stats.json'; a.click();
+};
+$('clear').onclick = async () => {
+  if (!confirm(ST.server ? 'تمسح كل الإحصائيات من مشروعك (.io/stats.json)؟' : 'تمسح كل البيانات من هالمتصفح؟')) return;
+  if (ST.server) await changed(await api('/api/stats/clear', {}));
+  else { ST.stats = S.emptyStats(); persistLocal(); await changed({}); }
+};
+$('demo').onclick = async () => {
+  const d = demoStats();
+  if (ST.server) { if (!confirm('تحط بيانات تجريبية بمكان أرقامك بالمشروع؟')) return; await changed(await api('/api/stats/replace', { stats: d })); }
+  else { ST.stats = d; persistLocal(); await changed({}); }
+};
+$('themeT').onclick = () => {
+  const r = document.documentElement;
+  const dark = r.dataset.theme ? r.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  r.dataset.theme = dark ? 'light' : 'dark';
+  LS.set('io-theme', r.dataset.theme);
+  render();
+};
+
+// Deterministic sample data: Instagram shaped like a Composio pull (official insights), the others like manual exports.
+function demoStats() {
+  let seed = 7;
+  const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+  const st = S.emptyStats();
+  const cfg = { instagram: [42000, 2400, 0.065, 5], youtube: [18500, 5200, 0.045, 3], tiktok: [61000, 9800, 0.08, 4] };
+  const hooks = ['ليش ما أحد يگلك هالشي؟', '٣ أخطاء تخرب ريلزك', 'جربت أصور بالموبايل بس', 'لا تشتري كاميرا قبل ما تشوف هذا', 'شلون أكتب سكربت بدقيقة', 'يوم كامل وياي بالاستوديو', 'السر اللي غيّر حسابي'];
+  const end = new Date(); end.setHours(0, 0, 0, 0);
+  for (const id of IDS) {
+    const [f0, v0, er, perWeek] = cfg[id];
+    let f = f0;
+    const snaps = [], posts = [];
+    for (let d = 119; d >= 0; d--) {
+      const day = new Date(end); day.setDate(day.getDate() - d);
+      const iso = day.toISOString().slice(0, 10);
+      f += Math.round((f0 * 0.0012) * (0.4 + rnd() * 1.4));
+      snaps.push({ date: iso, followers: f, newFollowers: 0 });
+      if (rnd() < perWeek / 7) {
+        const hour = [12, 15, 18, 20, 21, 22, 2][Math.floor(rnd() * 7)];
+        const dur = [12, 22, 28, 45, 70, 95][Math.floor(rnd() * 6)] * (id === 'youtube' ? 6 : 1);
+        const hold = 35 + rnd() * 50 - (dur > 60 && id !== 'youtube' ? 8 : 0);
+        const v = Math.round(v0 * (0.3 + rnd() * rnd() * 4) * (day.getDay() === 4 ? 1.4 : 1) * (0.5 + hold / 80) * (hour === 2 ? 0.5 : 1));
+        const e = v * er * (0.6 + rnd() * 0.8);
+        const p = { id: `${id}-${iso}`, date: `${iso}T${String(hour).padStart(2, '0')}:00`, title: `${hooks[Math.floor(rnd() * hooks.length)]} (${iso.slice(5)})`, type: 'video', url: '', views: v, likes: Math.round(e * 0.7), comments: Math.round(e * 0.08), shares: Math.round(e * 0.1), saves: Math.round(e * 0.12), watchSec: 0, durationSec: dur };
+        if (id === 'instagram') Object.assign(p, { reach: Math.round(v * (0.6 + rnd() * 0.3)), skipRate: Math.round(100 - hold), hold3: Math.round(hold), avgWatchSec: Math.round(dur * (0.2 + hold / 150) * 10) / 10, src: { views: 'official', reach: 'official', likes: 'official', comments: 'official', shares: 'official', saves: 'official', skipRate: 'official', hold3: 'official', avgWatchSec: 'official' } });
+        if (id === 'tiktok') p.saves = 0;
+        posts.push(p);
+      }
+    }
+    S.merge(st, id, { posts, snapshots: snaps }, { handle: '@demo' });
+    st.accounts[id].sync = id === 'instagram' ? { source: 'composio', at: new Date().toISOString() } : { source: 'manual', at: new Date().toISOString() };
+  }
+  st.accounts.instagram.extra = { onlineHours: Array.from({ length: 24 }, (_, h) => Math.round(400 + 900 * Math.max(0, Math.sin((h - 9) / 24 * Math.PI * 2)) + (h >= 20 && h <= 23 ? 700 : 0))), audience: { age: [{ k: '25-34', v: 41 }, { k: '18-24', v: 30 }, { k: '35-44', v: 17 }, { k: '45-54', v: 7 }], country: [{ k: 'IQ', v: 52 }, { k: 'SA', v: 14 }, { k: 'AE', v: 9 }, { k: 'KW', v: 6 }] } };
+  return st;
+}
+
+// ------------------------------------------------------------ boot
+const t0 = LS.get('io-theme'); if (t0) document.documentElement.dataset.theme = t0;
+fillManual();
+boot();
+</script>
+</body>
+</html>

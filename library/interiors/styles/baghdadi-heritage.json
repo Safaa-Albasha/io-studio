@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "id": "baghdadi-heritage",
+  "name_ar": "تراثي بغدادي (شناشيل)",
+  "name_en": "Baghdadi heritage",
+  "description_ar": "مستوحى من بيوت بغداد القديمة: خشب منقوش بشبابيك شبكية (شناشيل)، طابوق أصفر، سجاد أحمر، نحاس، ومجلس أرضي. تصميم عام مستلهم، مو نسخة من بيت معين.",
+  "palette": [
+    "#e2cfa5",
+    "#6b3f22",
+    "#8e2a22",
+    "#b8873a",
+    "#2d4a5a"
+  ],
+  "materials": {
+    "wall": {
+      "kind": "brick",
+      "color": "#d9c08f",
+      "color2": "#efe3c8",
+      "roughness": 0.95,
+      "scale": 0.8
+    },
+    "floor": "tile-terracotta",
+    "main": {
+      "kind": "fabric",
+      "color": "#8e2a22",
+      "roughness": 0.9
+    },
+    "cushion": {
+      "kind": "fabric",
+      "color": "#2d4a5a",
+      "roughness": 0.9
+    },
+    "accent": {
+      "kind": "fabric",
+      "color": "#b8873a",
+      "roughness": 0.85
+    },
+    "wood": "teak",
+    "metal": "copper",
+    "fabric": {
+      "kind": "fabric",
+      "color": "#a14a2b",
+      "roughness": 0.9
+    },
+    "rug": {
+      "kind": "fabric",
+      "color": "#8e2a22",
+      "roughness": 1
+    },
+    "rug2": {
+      "kind": "fabric",
+      "color": "#2d4a5a",
+      "roughness": 1
+    },
+    "frame": "teak",
+    "door": "teak",
+    "trim": "teak",
+    "pot": "pot-terracotta"
+  },
+  "swaps": {
+    "sofa": "majlis-floor-seat",
+    "loveseat": "majlis-floor-seat",
+    "armchair": "majlis-armrest",
+    "coffee-table": "tea-tray-table",
+    "coffee-table-round": "tea-tray-table",
+    "pendant-lamp": "moroccan-lantern",
+    "curtains": "shanasheel-screen"
+  },
+  "recommended": [
+    "majlis-floor-seat",
+    "majlis-armrest",
+    "tea-tray-table",
+    "shanasheel-screen",
+    "coffee-pot-set",
+    "moroccan-lantern",
+    "rug",
+    "ceiling-fan"
+  ],
+  "lighting": {
+    "time_of_day": "golden",
+    "lamp_color": "#ffbf70"
+  },
+  "tips_ar": [
+    "خلي ضوء الشمس يعبر من الشناشيل — الظلال الشبكية على الأرض لقطة بحد ذاتها.",
+    "صوت استكان الجاي بالخلفية يكمل الجو."
+  ]
+}

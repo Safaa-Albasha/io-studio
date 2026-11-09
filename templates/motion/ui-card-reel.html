@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>بطاقة واجهة على نجوم — موشن I/O Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap">
+<style>
+/* الهوية من .io/theme.json — بدّل هذي القيم بس (الخلفية الغامقة تمشي أحسن لهالقالب، والفاتحة تشتغل بعد) */
+:root{--bg:#0F1115;--ink:#F5F6F8;--accent:#4FB3FF;--mut:#8A8F99;--font:"Cairo",sans-serif;--W:1080px;--H:1920px}
+*{margin:0;box-sizing:border-box}
+html,body{width:var(--W);height:var(--H);overflow:hidden;background:var(--bg)}
+canvas{display:block}
+</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script>
+/* ═══ قالب «بطاقة واجهة على نجوم» (I/O Studio) — شرح أداة بخطوات: 3 مشاهد، كل مشهد عنوان (سطر صغير + سطر عريض بكبسولة) وبطاقة واجهة تحته.
+   خلفية نجوم بكسل وتوهج يتنفس وإطار خطوط. كل شي يدخل من الضباب ويطلع للضباب — بلا قص حاد.
+   عدّل CONFIG بس: النصوص بلهجة البروفايل، و*كلمة* = الكبسولة. الأوقات بالثواني (كل كلمة مهمة على كلمتها أو قبلها بـ0.12 ث). */
+const CONFIG = {
+  top: ['AI · WHICH ONE?', 'UI-CARD'],
+  scenes: [
+    { t0: 0, t1: 2.55, kick: 'ONE · QUESTION', lead: 'كل يوم نفس السؤال', text: 'يا *أداة* أحسن؟',
+      card: { type: 'tabs', tabs: ['Tool A', 'Tool B', 'Tool C'], note: '«منو أحسن؟» … ونرجع نسأل', badge: '؟؟؟' } },
+    { t0: 2.85, t1: 5.55, kick: 'YOUR TASK · TRY IT', lead: 'وقّف تسأل منو أحسن', text: 'اسأل شنو *شغلتك*',
+      card: { type: 'rows', rows: [['تكتب كابشن', 'كلهم يمشون', 'ANY'], ['ملف طويل', 'جرّب منو يقبله', 'TEST'], ['كود لمشروعك', 'نفس الشغلة عالثلاثة', 'TEST']], pick: 1, stamp: 'جرّب، لا تسأل' } },
+    { t0: 5.85, t1: 99, kick: 'COMMENT · GET IT', lead: 'تريد جدول التجربة؟', text: 'علّق *جدول*',
+      card: { type: 'comment', word: 'جدول', dm: 'وصلك الجدول بالخاص ✓' } },
+  ],
+  duration: 8.6,
+};
+window.__duration = CONFIG.duration;
+const X = document.getElementById('c').getContext('2d');
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const C = { bg: css('--bg'), ink: css('--ink'), acc: css('--accent'), mut: css('--mut'), font: css('--font') };
+const cl = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v)), L = (a, b, k) => a + (b - a) * k, P = (t, a, d, e) => (e || oc)(cl((t - a) / d));
+const oc = x => 1 - Math.pow(1 - x, 3), ic = x => x * x * x, ioc = x => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2), ob = x => { const c1 = 2, c3 = 3; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const rgb = h => { h = h.replace('#', ''); if (h.length === 3) h = h.split('').map(c => c + c).join(''); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16)); };
+const A = (h, a) => { const [r, g, b] = rgb(h); return `rgba(${r},${g},${b},${a})`; }, mix = (a, b, k) => '#' + rgb(a).map((v, i) => Math.round(L(v, rgb(b)[i], k)).toString(16).padStart(2, '0')).join('');
+const lum = h => { const [r, g, b] = rgb(h); return 0.2126 * r + 0.7152 * g + 0.0722 * b; }, dark = lum(C.bg) < 110;
+const SURF = dark ? mix(C.bg, C.ink, 0.07) : mix(C.bg, '#ffffff', 0.75), LINE = mix(C.bg, C.ink, 0.16), SOFT = mix(C.bg, C.ink, 0.72), ON = lum(C.acc) > 150 ? mix(dark ? C.bg : C.ink, '#000', 0.2) : '#fff';
+const h2 = (a, b) => { let h = Math.imul(a | 0, 374761393) ^ Math.imul(b | 0, 668265263); h = Math.imul(h ^ (h >>> 13), 1274126177); return ((h ^ (h >>> 16)) >>> 0) / 4294967296; };
+const F = (w, s) => `${w} ${s}px ${C.font}`;
+function txt(s, x, y, size, o = {}) { X.save(); X.font = F(o.w || 700, size); X.direction = /[؀-ۿ]/.test(s) ? 'rtl' : 'ltr'; X.textAlign = o.align || 'center'; X.fillStyle = o.color || C.ink; if (o.ls) X.letterSpacing = o.ls + 'px'; X.globalAlpha *= o.a == null ? 1 : o.a; X.fillText(s, x, y); X.restore(); }
+const tw = (s, size, w) => { X.save(); X.font = F(w || 700, size); const v = X.measureText(s).width; X.restore(); return v; };
+const rr = (x, y, w, h, r) => { X.beginPath(); X.roundRect(x, y, w, h, r); };
+// دخول من الضباب وطلعة للضباب
+const env = (t, a, z, o = {}) => { const pi = P(t, a, o.din || 0.45), po = P(t, z, 0.28, ic); return { o: pi * (1 - po), b: (o.bIn || 18) * (1 - pi) + 16 * po, y: (o.yIn || 18) * (1 - pi), s: L(o.sIn || 0.97, 1, pi) * L(1, 0.97, po) }; };
+const withE = (e, cx, cy, fn) => { if (e.o <= 0.01) return; X.save(); X.globalAlpha *= e.o; if (e.b > 0.3) X.filter = `blur(${e.b}px)`; X.translate(cx, cy + e.y); X.scale(e.s, e.s); X.translate(-cx, -cy); fn(); X.restore(); };
+// سطر عريض فيه *كلمة* بكبسولة (الكلمات بترتيب RTL: الأولى يمين)
+function capLine(s, cx, y, size, k) { const ws = s.split(/\s+/), cap = ws.map(w => /\*/.test(w)), W = ws.map(w => tw(w.replace(/\*/g, ''), size, 900)), sp = tw(' ', size, 900), pad = size * 0.3;
+  const tot = W.reduce((a, b) => a + b, 0) + sp * (ws.length - 1) + cap.filter(Boolean).length * pad * 2; let x = cx + tot / 2;
+  ws.forEach((w, i) => { if (cap[i]) x -= pad; const r = x, l = x - W[i]; if (cap[i]) { const h = size * 1.18, sc = L(0.6, 1, ob(cl(k))); X.save(); X.translate((l + r) / 2, y - size * 0.32); X.scale(sc, sc); X.fillStyle = C.acc; rr(-W[i] / 2 - pad, -h / 2, W[i] + pad * 2, h, h / 2); X.fill(); X.restore(); }
+    txt(w.replace(/\*/g, ''), (l + r) / 2, y, size, { w: 900, color: cap[i] ? ON : C.ink }); x = l - sp - (cap[i] ? pad : 0); }); }
+function bg(t) { X.fillStyle = C.bg; X.fillRect(0, 0, 1080, 1920); const br = 0.11 + 0.025 * Math.sin(t * 1.3);
+  let g = X.createRadialGradient(540, 1180, 0, 540, 1180, 820); g.addColorStop(0, A(C.acc, br)); g.addColorStop(0.5, A(C.acc, br * 0.35)); g.addColorStop(1, A(C.acc, 0)); X.fillStyle = g; X.fillRect(0, 0, 1080, 1920);
+  if (dark) { g = X.createRadialGradient(540, 960, 500, 540, 960, 1250); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,.55)'); X.fillStyle = g; X.fillRect(0, 0, 1080, 1920); }
+  for (let i = 0; i < 170; i++) { const v = 6 + h2(i, 3) * 22, z = h2(i, 4), k = h2(i, 5), ph = h2(i, 6) * 6.28, y = ((h2(i, 2) * 1920 - v * t) % 1920 + 1920) % 1920, x = h2(i, 1) * 1080 + Math.sin(t * 0.4 + ph) * 10, a = (0.25 + 0.75 * (0.5 + 0.5 * Math.sin(t * (1 + h2(i, 7) * 2) + ph))) * (z < 0.55 ? 0.35 : 0.7);
+    if (k < 0.45) { X.fillStyle = A(C.ink, a * 0.45); X.fillRect(x, y, 1.5 + z * 1.6, 1.5 + z * 1.6); } else if (k < 0.8) { X.strokeStyle = A(C.acc, a * 0.55); X.lineWidth = 1.6; X.strokeRect(x, y, 7 + z * 7, 7 + z * 7); } else { X.fillStyle = A(C.acc, a * 0.6); X.fillRect(x, y, 4 + z * 4, 4 + z * 4); } }
+  X.fillStyle = A(C.ink, 0.07); [222, 1642].forEach(y => X.fillRect(0, y, 1080, 1.5)); [66, 1014].forEach(x => X.fillRect(x, 0, 1.5, 1920));
+  txt(CONFIG.top[0], 96, 262, 22, { align: 'left', color: C.mut, ls: 4, w: 600 }); txt(CONFIG.top[1], 984, 262, 22, { align: 'right', color: C.mut, ls: 4, w: 600 }); }
+function card(y, h) { X.save(); X.shadowColor = dark ? 'rgba(0,0,0,.65)' : 'rgba(0,0,0,.15)'; X.shadowBlur = 140; X.shadowOffsetY = 50; X.fillStyle = SURF; rr(111, y, 858, h, 30); X.fill(); X.restore(); X.lineWidth = 1.5; X.strokeStyle = LINE; rr(111, y, 858, h, 30); X.stroke(); }
+const pop = (t, a, s, x, y, rot) => { const q = P(t, a, 0.33, ob); if (q <= 0.01) return; const w = tw(s, 32, 800) + 64; X.save(); X.globalAlpha *= cl(q * 3); X.translate(x, y); X.rotate(rot * Math.PI / 180); X.scale(L(1.6, 1, q), L(1.6, 1, q)); X.fillStyle = C.acc; rr(-w / 2, -34, w, 68, 34); X.fill(); txt(s, 0, 11, 32, { w: 800, color: ON }); X.restore(); };
+const RUN = {
+  tabs(t, S, c) { card(720, 620); const n = c.tabs.length, u = Math.max(0, t - S.t0 - 0.5), k = Math.floor(u / 0.42) % n, f = (u % 0.42) / 0.42, po = ic(cl((f - 0.72) / 0.28));
+    let x = 241; c.tabs.forEach((nm, i) => { const w = tw(nm, 22, 600) + 40, on = i === k; if (on) { X.fillStyle = mix(SURF, C.ink, 0.1); rr(x, 734, w, 36, 12); X.fill(); } txt(nm, x + w / 2, 760, 22, { w: 600, color: on ? C.ink : C.mut }); x += w + 8; });
+    X.fillStyle = LINE; X.fillRect(111, 784, 858, 1.5); [0, 1, 2].forEach(i => { X.fillStyle = LINE; X.beginPath(); X.arc(144 + i * 26, 752, 7, 0, 6.28); X.fill(); });
+    const name = (i, a, b, dy) => { if (a < 0.01) return; X.save(); X.globalAlpha *= a; if (b > 0.3) X.filter = `blur(${b}px)`; txt('MODEL · 0' + (i + 1), 540, 880 + dy, 22, { color: C.mut, ls: 6, w: 600 }); txt(c.tabs[i], 540, 1010 + dy, 110, { w: 900 }); X.restore(); };
+    name(k, 1 - po, 14 * po, -20 * po); if (f > 0.72) name((k + 1) % n, po, 14 * (1 - po), 20 * (1 - po));
+    txt(c.note, 540, 1120, 34, { w: 400, color: SOFT }); pop(t, S.t0 + 1.5, c.badge, 540, 1240, -5); },
+  rows(t, S, c) { card(720, 620); txt('YOUR TASK → TRY IT', 151, 780, 22, { align: 'left', color: C.mut, ls: 5, w: 600 });
+    c.rows.forEach((r, i) => { const a = P(t, S.t0 + 0.2 + i * 0.12, 0.42), y = 830 + i * 150, hi = i === c.pick && t > S.t0 + 1.75; X.save(); X.globalAlpha *= a; if (a < 0.98) X.filter = `blur(${16 * (1 - a)}px)`; X.translate(0, 34 * (1 - a));
+      if (hi) { X.shadowColor = A(C.acc, 0.35); X.shadowBlur = 60; } X.fillStyle = mix(C.bg, C.ink, dark ? 0.03 : 0.02); rr(151, y, 778, 118, 22); X.fill(); X.shadowBlur = 0; X.lineWidth = 1.5; X.strokeStyle = hi ? C.acc : LINE; X.stroke();
+      txt(r[0], 899, y + 70, 34, { align: 'right', w: 800 }); txt('← ' + r[1], 899 - tw(r[0], 34, 800) - 24, y + 70, 30, { align: 'right', w: 400, color: SOFT }); txt(r[2], 181, y + 68, 20, { align: 'left', color: C.mut, ls: 3, w: 600 }); X.restore(); });
+    pop(t, S.t0 + 1.9, c.stamp, 540, 1290, -5);
+    const on = t > S.t0 + 1.05 && t < S.t0 + 2.55, [cx, cy] = t < S.t0 + 1.65 ? [L(980, 560, ioc(P(t, S.t0 + 1.05, 0.6, x => x))), L(1700, 1050, ioc(P(t, S.t0 + 1.05, 0.6, x => x)))] : [560, 1050];
+    if (on) { const s = t > S.t0 + 1.7 && t < S.t0 + 1.87 ? 0.8 : 1, d = t - S.t0 - 1.75; X.save(); X.globalAlpha *= P(t, S.t0 + 1.05, 0.2) * (1 - P(t, S.t0 + 2.35, 0.2)); X.translate(cx, cy); X.scale(s * 2.2, s * 2.2);
+      X.beginPath(); X.moveTo(0, 0); X.lineTo(0, 16.5); X.lineTo(4.6, 12.4); X.lineTo(7.6, 18.9); X.lineTo(10.4, 17.6); X.lineTo(7.5, 11.3); X.lineTo(13.6, 11.1); X.closePath(); X.fillStyle = C.ink; X.fill(); X.lineWidth = 1.2; X.strokeStyle = C.bg; X.stroke(); X.restore();
+      if (d > 0 && d < 0.5) { X.strokeStyle = A(C.acc, (1 - d / 0.5) * 0.9); X.lineWidth = 3; X.beginPath(); X.arc(cx, cy, 20 + d / 0.5 * 70, 0, 6.28); X.stroke(); } } },
+  comment(t, S, c) { const a0 = S.t0, posted = t >= a0 + 1.4, typing = t >= a0 + 0.7;
+    const p = P(t, a0 + 1.4, 0.45, ob); if (p > 0.01) { X.save(); X.globalAlpha *= cl(p * 2); X.translate(0, 70 * (1 - p)); card(720, 120); X.fillStyle = 'transparent'; X.lineWidth = 2; X.strokeStyle = LINE; X.beginPath(); X.arc(911, 780, 28, 0, 6.28); X.stroke(); txt(c.word, 863, 792, 32, { align: 'right', w: 600 });
+      const h = P(t, a0 + 1.85, 0.3, ob); X.fillStyle = h > 0.05 ? C.acc : 'transparent'; X.strokeStyle = h > 0.05 ? C.acc : SOFT; X.save(); X.translate(170, 780); const s = h > 0 && h < 1 ? L(1.6, 1, h) : 1; X.scale(s * 1.6, s * 1.6); X.beginPath(); X.moveTo(0, 8); X.bezierCurveTo(-12, 0, -10, -10, -4, -10); X.bezierCurveTo(-1, -10, 0, -8, 0, -6); X.bezierCurveTo(0, -8, 1, -10, 4, -10); X.bezierCurveTo(10, -10, 12, 0, 0, 8); X.closePath(); if (h > 0.05) X.fill(); X.lineWidth = 1.6; X.stroke(); X.restore(); X.restore(); }
+    card(870, 130); X.lineWidth = 2; X.strokeStyle = LINE; X.beginPath(); X.arc(911, 935, 26, 0, 6.28); X.stroke(); X.fillStyle = C.acc; X.beginPath(); X.arc(170, 935, 28, 0, 6.28); X.fill(); txt('+', 170, 948, 34, { w: 900, color: ON });
+    const shown = posted || !typing ? 'أضف تعليقاً…' : c.word.split(/\s+/).slice(0, Math.ceil(cl((t - a0 - 0.7) / 0.5) * c.word.split(/\s+/).length)).join(' ') + (Math.floor(t * 2.4) % 2 ? '' : '│');
+    txt(shown, 863, 947, 32, { align: 'right', w: 400, color: !posted && typing ? C.ink : C.mut });
+    const dm = P(t, a0 + 2.1, 0.4, ob); if (dm > 0.01) { const w = tw(c.dm, 28, 400) + 120; X.save(); X.globalAlpha *= cl(dm * 2); X.translate(-60 * (1 - dm), 0); X.fillStyle = SURF; rr(969 - w, 1040, w, 84, 42); X.fill(); X.strokeStyle = LINE; X.stroke(); X.fillStyle = C.acc; X.beginPath(); X.arc(969 - 46, 1082, 26, 0, 6.28); X.fill(); txt(c.dm, 969 - 86, 1092, 28, { align: 'right', w: 400 }); X.restore(); } },
+};
+window.__seek = t => { bg(t);
+  CONFIG.scenes.forEach((S, i) => { if (t < S.t0 - 0.3 || t > S.t1 + 0.4) return; const a = S.t0 + 0.12;
+    withE(env(t, i ? a - 0.05 : -0.6, S.t1, { yIn: 10 }), 540, 320, () => txt(S.kick, 540, 340, 22, { color: C.mut, ls: 7, w: 600 }));
+    withE(env(t, i ? a : -0.6, S.t1 + 0.02), 540, 400, () => txt(S.lead, 540, 420, 50, { w: 400, color: SOFT }));
+    withE(env(t, i ? a + 0.08 : -0.05, S.t1 + 0.04, { din: 0.5, bIn: 22 }), 540, 510, () => capLine(S.text, 540, 540, 86, P(t, S.t0 + 0.45, 0.4, x => x)));
+    withE(env(t, i ? S.t0 - 0.08 : -0.6, S.t1 + 0.02, { din: 0.42, yIn: 34, sIn: 0.95, bIn: 22 }), 540, 1030, () => RUN[S.card.type](t, S, S.card)); }); };
+if (!/render=1/.test(location.search)) { const t0 = performance.now(); (function loop(now) { window.__seek(((now - t0) / 1000) % (window.__duration + 1)); requestAnimationFrame(loop); })(t0); } else window.__seek(0);
+</script>
+</body>
+</html>

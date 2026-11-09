@@ -1,0 +1,18 @@
+{
+  "name": "هويتي",
+  "handle": "",
+  "colors": {
+    "bg": "#FFF7EC",
+    "ink": "#2A2622",
+    "accent": "#E0663A",
+    "accent2": "#2F7FBF",
+    "soft": "#F3E3CF"
+  },
+  "fonts": {
+    "heading": "Cairo",
+    "body": "Cairo"
+  },
+  "numerals": "western",
+  "logo": "",
+  "style": ""
+}

@@ -1,0 +1,15 @@
+node_modules/
+skills/io-video-editor/bin/
+skills/io-video-editor/node_modules/
+__pycache__/
+*.pyc
+skills/io-video-editor/package-lock.json
+library/looks/luts/
+# project data / caches written when the plugin folder is also used as a test project
+.io/
+.sky/
+.safaa/
+.cache/
+docs/guide/guide.built.html
+*.log
+.DS_Store

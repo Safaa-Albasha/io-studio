@@ -1,0 +1,261 @@
+{
+  "id": "kitchen",
+  "version": 1,
+  "name": "Kitchen",
+  "name_ar": "مطبخ مع جزيرة",
+  "style": "modern",
+  "description_ar": "مطبخ ٤×٣٫٢ م: كاونترات على الجدار الخلفي، ثلاجة، طباخ وشفاط، جزيرة مع كراسي بار.",
+  "room": {
+    "width": 4,
+    "depth": 3.2,
+    "height": 2.8
+  },
+  "walls": [
+    {
+      "side": "north",
+      "openings": [
+        {
+          "type": "window",
+          "offset": 1.45,
+          "width": 0.7,
+          "height": 0.9,
+          "sill": 1.2
+        }
+      ]
+    },
+    {
+      "side": "south",
+      "openings": [
+        {
+          "type": "door",
+          "offset": 3,
+          "width": 0.9,
+          "height": 2.1
+        }
+      ]
+    },
+    {
+      "side": "east"
+    },
+    {
+      "side": "west"
+    }
+  ],
+  "lighting": {
+    "time_of_day": "noon"
+  },
+  "furniture": [
+    {
+      "id": "fridge",
+      "type": "fridge",
+      "wall": "north",
+      "at": 0.42
+    },
+    {
+      "id": "base-1",
+      "type": "kitchen-base",
+      "wall": "north",
+      "at": 1.11
+    },
+    {
+      "id": "sink",
+      "type": "kitchen-sink",
+      "wall": "north",
+      "at": 1.81
+    },
+    {
+      "id": "stove",
+      "type": "kitchen-stove",
+      "wall": "north",
+      "at": 2.51
+    },
+    {
+      "id": "base-2",
+      "type": "kitchen-base",
+      "wall": "north",
+      "at": 3.11
+    },
+    {
+      "id": "base-3",
+      "type": "kitchen-base",
+      "wall": "north",
+      "at": 3.69
+    },
+    {
+      "id": "island",
+      "type": "kitchen-island",
+      "position": [
+        2,
+        1.45
+      ]
+    },
+    {
+      "id": "stool-1",
+      "type": "bar-stool",
+      "position": [
+        1.6,
+        0.68
+      ]
+    },
+    {
+      "id": "stool-2",
+      "type": "bar-stool",
+      "position": [
+        2.4,
+        0.68
+      ]
+    },
+    {
+      "id": "pend-1",
+      "type": "pendant-lamp",
+      "position": [
+        1.5,
+        1.45
+      ],
+      "size": [
+        0.32,
+        0.32,
+        0.9
+      ]
+    },
+    {
+      "id": "pend-2",
+      "type": "pendant-lamp",
+      "position": [
+        2.5,
+        1.45
+      ],
+      "size": [
+        0.32,
+        0.32,
+        0.9
+      ]
+    }
+  ],
+  "decor": [
+    {
+      "id": "wc-1",
+      "type": "kitchen-wall-cabinet",
+      "wall": "north",
+      "at": 1.11
+    },
+    {
+      "id": "wc-2",
+      "type": "kitchen-wall-cabinet",
+      "wall": "north",
+      "at": 3.11
+    },
+    {
+      "id": "wc-3",
+      "type": "kitchen-wall-cabinet",
+      "wall": "north",
+      "at": 3.69
+    },
+    {
+      "id": "hood",
+      "type": "range-hood",
+      "wall": "north",
+      "at": 2.51
+    },
+    {
+      "id": "coffee",
+      "type": "espresso-machine",
+      "wall": "north",
+      "at": 3.69,
+      "gap": 0.1
+    },
+    {
+      "id": "herbs",
+      "type": "plant-small",
+      "wall": "north",
+      "at": 0.95,
+      "gap": 0.2,
+      "elevation": 0.9
+    },
+    {
+      "id": "vase",
+      "type": "vase",
+      "position": [
+        2.3,
+        1.45
+      ],
+      "on": "island"
+    },
+    {
+      "id": "clock",
+      "type": "wall-clock",
+      "wall": "west",
+      "at": 1.6
+    }
+  ],
+  "cameras": {
+    "stills": [
+      {
+        "name": "wide",
+        "position": [
+          3.7,
+          0.3,
+          1.6
+        ],
+        "target": [
+          1.4,
+          2.7,
+          0.9
+        ]
+      },
+      {
+        "name": "island",
+        "position": [
+          2,
+          0.3,
+          1.3
+        ],
+        "target": [
+          2,
+          2.9,
+          1
+        ]
+      },
+      {
+        "name": "counter",
+        "position": [
+          3.4,
+          1.6,
+          1.4
+        ],
+        "target": [
+          2.2,
+          2.95,
+          0.95
+        ]
+      }
+    ],
+    "walkthrough": {
+      "points": [
+        [
+          3.45,
+          0.35
+        ],
+        [
+          3.4,
+          0.9
+        ],
+        [
+          3,
+          0.6
+        ]
+      ],
+      "seconds": 7,
+      "target": [
+        1.8,
+        2.6,
+        0.9
+      ]
+    }
+  },
+  "outputs": [
+    "9:16",
+    "16:9",
+    "3:4"
+  ]
+}

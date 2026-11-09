@@ -1,0 +1,245 @@
+{
+  "id": "majlis",
+  "version": 1,
+  "name": "Majlis",
+  "name_ar": "مجلس ضيوف",
+  "style": "gulf-majlis",
+  "description_ar": "مجلس ٦×٤٫٥ م بجلسات أرضية على ثلاث جدران، صينية قهوة بالنص، وثريا.",
+  "room": {
+    "width": 6,
+    "depth": 4.5,
+    "height": 3
+  },
+  "walls": [
+    {
+      "side": "north",
+      "openings": [
+        {
+          "type": "window",
+          "offset": 1,
+          "width": 1.2,
+          "height": 1.4,
+          "sill": 1.1
+        },
+        {
+          "type": "window",
+          "offset": 3.8,
+          "width": 1.2,
+          "height": 1.4,
+          "sill": 1.1
+        }
+      ]
+    },
+    {
+      "side": "south",
+      "openings": [
+        {
+          "type": "door",
+          "offset": 2.5,
+          "width": 1,
+          "height": 2.3
+        }
+      ]
+    },
+    {
+      "side": "east"
+    },
+    {
+      "side": "west"
+    }
+  ],
+  "lighting": {
+    "time_of_day": "evening"
+  },
+  "furniture": [
+    {
+      "id": "seat-n1",
+      "type": "majlis-floor-seat",
+      "wall": "north",
+      "at": 1.6
+    },
+    {
+      "id": "seat-n2",
+      "type": "majlis-floor-seat",
+      "wall": "north",
+      "at": 4.4
+    },
+    {
+      "id": "seat-w",
+      "type": "majlis-floor-seat",
+      "wall": "west",
+      "at": 2.15
+    },
+    {
+      "id": "seat-e",
+      "type": "majlis-floor-seat",
+      "wall": "east",
+      "at": 2.15
+    },
+    {
+      "id": "arm-1",
+      "type": "majlis-armrest",
+      "position": [
+        0.55,
+        3.95
+      ],
+      "rotation": 45,
+      "allow_overlap": true
+    },
+    {
+      "id": "arm-2",
+      "type": "majlis-armrest",
+      "position": [
+        5.45,
+        3.95
+      ],
+      "rotation": -45,
+      "allow_overlap": true
+    },
+    {
+      "id": "tray",
+      "type": "tea-tray-table",
+      "position": [
+        3,
+        2.25
+      ]
+    },
+    {
+      "id": "chandelier",
+      "type": "chandelier",
+      "position": [
+        3,
+        2.25
+      ]
+    }
+  ],
+  "decor": [
+    {
+      "id": "rug",
+      "type": "rug",
+      "position": [
+        3,
+        2.25
+      ],
+      "size": [
+        3.6,
+        2.4,
+        0.015
+      ]
+    },
+    {
+      "id": "coffee-set",
+      "type": "coffee-pot-set",
+      "position": [
+        3,
+        2.25
+      ],
+      "on": "tray",
+      "elevation": -0.01
+    },
+    {
+      "id": "arch",
+      "type": "arch-niche",
+      "wall": "south",
+      "at": 1.2
+    },
+    {
+      "id": "arch2",
+      "type": "arch-niche",
+      "wall": "south",
+      "at": 4.8
+    },
+    {
+      "id": "ac",
+      "type": "air-conditioner",
+      "wall": "north",
+      "at": 3,
+      "elevation": 2.4
+    },
+    {
+      "id": "sconce-w",
+      "type": "wall-sconce",
+      "wall": "west",
+      "at": 0.6,
+      "elevation": 1.9
+    },
+    {
+      "id": "sconce-e",
+      "type": "wall-sconce",
+      "wall": "east",
+      "at": 0.6,
+      "elevation": 1.9
+    }
+  ],
+  "cameras": {
+    "stills": [
+      {
+        "name": "wide",
+        "position": [
+          3,
+          0.35,
+          1.6
+        ],
+        "target": [
+          3,
+          4,
+          0.6
+        ]
+      },
+      {
+        "name": "seat-level",
+        "position": [
+          5.1,
+          0.7,
+          0.85
+        ],
+        "target": [
+          1.5,
+          3.2,
+          0.5
+        ]
+      },
+      {
+        "name": "coffee",
+        "position": [
+          3.6,
+          1.3,
+          0.9
+        ],
+        "target": [
+          3,
+          2.25,
+          0.4
+        ]
+      }
+    ],
+    "walkthrough": {
+      "points": [
+        [
+          3,
+          0.35
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3.6,
+          1.5
+        ]
+      ],
+      "seconds": 8,
+      "height": 1.55,
+      "target": [
+        3,
+        3.6,
+        0.6
+      ]
+    }
+  },
+  "outputs": [
+    "9:16",
+    "16:9",
+    "3:4"
+  ]
+}

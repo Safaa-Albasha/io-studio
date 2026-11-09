@@ -1,0 +1,10 @@
+{
+  "description": "I/O Studio: remind Claude to run io-onboarding when the creator profile is missing",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [{ "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/session-start.js\"", "timeout": 5 }]
+      }
+    ]
+  }
+}

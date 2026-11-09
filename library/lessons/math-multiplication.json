@@ -1,0 +1,112 @@
+{
+  "meta": {
+    "id": "math-multiplication",
+    "subject": "math",
+    "subjectLabel": "رياضيات",
+    "level": "ابتدائي ٢–٣",
+    "stage": "primary"
+  },
+  "title": "الضرب: صفوف وأعمدة",
+  "format": "16:9",
+  "style": "paper",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّمة",
+    "shirt": "#2A64AA",
+    "hijab": "#D2502A"
+  },
+  "beats": [
+    {
+      "say": "الضرب هو جمع متكرر. شوفوا ثلاث صفوف.",
+      "grid": {
+        "cols": 4,
+        "rows": 3,
+        "fill": "all",
+        "dots": true,
+        "cell": 110,
+        "at": [
+          500,
+          420
+        ],
+        "color": "red",
+        "side": "٣ صفوف",
+        "top": "٤ بكل صف"
+      }
+    },
+    {
+      "say": "كل صف بيه أربع نقاط: أربعة وأربعة وأربعة.",
+      "write": {
+        "text": "4 + 4 + 4 = 12",
+        "at": [
+          500,
+          790
+        ],
+        "size": 70,
+        "dir": "ltr"
+      }
+    },
+    {
+      "say": "يعني ثلاثة ضرب أربعة يساوي اثنا عشر.",
+      "write": {
+        "text": "3 × 4 = 12",
+        "at": [
+          500,
+          900
+        ],
+        "size": 80,
+        "color": "blue",
+        "dir": "ltr",
+        "box": true
+      }
+    },
+    {
+      "say": "ولو دورنا الشكل؟ أربع صفوف، كل صف ثلاثة.",
+      "erase": true,
+      "grid": {
+        "cols": 3,
+        "rows": 4,
+        "fill": "all",
+        "dots": true,
+        "cell": 110,
+        "at": [
+          500,
+          400
+        ],
+        "color": "green",
+        "numbers": true
+      }
+    },
+    {
+      "say": "نفس الجواب! الترتيب ما يغيّر ناتج الضرب.",
+      "write": {
+        "text": "4 × 3 = 3 × 4 = 12",
+        "at": [
+          500,
+          870
+        ],
+        "size": 70,
+        "color": "red",
+        "dir": "ltr",
+        "underline": true
+      }
+    },
+    {
+      "say": "كم ناتج خمسة ضرب اثنين؟",
+      "erase": true,
+      "quiz": {
+        "question": "كم ناتج ٥ × ٢ ؟",
+        "options": [
+          "٧",
+          "١٠",
+          "١٢"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "say": "عشرة! ممتازين.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

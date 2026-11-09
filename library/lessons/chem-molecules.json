@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "id": "chem-molecules",
+    "subject": "chemistry",
+    "subjectLabel": "كيمياء",
+    "level": "متوسط ٢",
+    "stage": "middle"
+  },
+  "title": "جزيئات حولنا",
+  "format": "9:16",
+  "style": "chalkboard",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّمة",
+    "shirt": "#E0663A",
+    "hijab": "#2F7FBF"
+  },
+  "beats": [
+    {
+      "say": "جزيء الماء: ذرة أكسجين وحدة وذرتين هيدروجين.",
+      "chemistry": {
+        "molecule": "H2O",
+        "at": [
+          500,
+          380
+        ],
+        "size": 700
+      }
+    },
+    {
+      "say": "الزاوية بين الرابطتين حوالي ١٠٤٫٥ درجة، لهذا شكله منحني.",
+      "highlight": {
+        "box": [
+          370,
+          260,
+          260,
+          270
+        ],
+        "kind": "circle"
+      }
+    },
+    {
+      "say": "ثاني أكسيد الكربون: كربون بالنص، وروابط ثنائية، وشكله مستقيم.",
+      "erase": true,
+      "chemistry": {
+        "molecule": "CO2",
+        "at": [
+          500,
+          300
+        ],
+        "size": 520
+      }
+    },
+    {
+      "say": "والهيدروجين يحترق ويا الأكسجين، ويطلع ماء!",
+      "chemistry": {
+        "reaction": {
+          "left": [
+            "2H2",
+            "O2"
+          ],
+          "right": [
+            "2H2O"
+          ]
+        },
+        "at": [
+          500,
+          760
+        ],
+        "size": 64
+      }
+    },
+    {
+      "say": "الميثان، غاز الطبخ: كربون وأربع ذرات هيدروجين.",
+      "erase": true,
+      "chemistry": {
+        "molecule": "CH4",
+        "at": [
+          500,
+          400
+        ],
+        "size": 600
+      }
+    },
+    {
+      "say": "كم ذرة بجزيء الماء؟",
+      "erase": true,
+      "quiz": {
+        "options": [
+          "٢",
+          "٣",
+          "٤"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "say": "ثلاث ذرات! أنتم كيميائيين صغار.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}

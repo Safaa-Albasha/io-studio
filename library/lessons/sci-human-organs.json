@@ -1,0 +1,159 @@
+{
+  "meta": {
+    "id": "sci-human-organs",
+    "subject": "science",
+    "subjectLabel": "علوم",
+    "level": "ابتدائي ٣–٤",
+    "stage": "primary"
+  },
+  "title": "أعضاء جسم الإنسان",
+  "format": "16:9",
+  "style": "cartoon",
+  "numerals": "arabic",
+  "character": {
+    "name": "المعلّمة",
+    "gender": "female",
+    "shirt": "#2E9B5B",
+    "hijab": "#D9483B"
+  },
+  "beats": [
+    {
+      "say": "في جسم الإنسان أعضاء كثيرة، ولكل عضو عمل مهم.",
+      "draw": [
+        {
+          "shape": "circle",
+          "center": [
+            500,
+            190
+          ],
+          "r": 100,
+          "color": "brown"
+        },
+        {
+          "shape": "ellipse",
+          "center": [
+            500,
+            570
+          ],
+          "rx": 180,
+          "ry": 270,
+          "color": "brown"
+        }
+      ]
+    },
+    {
+      "say": "الدماغ في الرأس، وهو يتحكم في الجسم كله، وبه نفكر ونتذكر.",
+      "draw": {
+        "shape": "emoji",
+        "value": "🧠",
+        "at": [
+          500,
+          190
+        ],
+        "size": 120
+      },
+      "label": {
+        "text": "الدماغ",
+        "at": [
+          560,
+          170
+        ],
+        "from": [
+          760,
+          120
+        ],
+        "color": "pink"
+      }
+    },
+    {
+      "say": "الرئتان في الصدر، وبهما نتنفس فيدخل الأكسجين إلى الجسم.",
+      "draw": {
+        "shape": "emoji",
+        "value": "🫁",
+        "at": [
+          470,
+          440
+        ],
+        "size": 150
+      },
+      "label": {
+        "text": "الرئتان",
+        "at": [
+          410,
+          440
+        ],
+        "from": [
+          160,
+          380
+        ],
+        "color": "blue"
+      }
+    },
+    {
+      "say": "القلب عضلة قوية، تضخ الدم إلى كل أجزاء الجسم.",
+      "draw": {
+        "shape": "emoji",
+        "value": "❤️",
+        "at": [
+          560,
+          500
+        ],
+        "size": 70
+      },
+      "label": {
+        "text": "القلب",
+        "at": [
+          585,
+          505
+        ],
+        "from": [
+          800,
+          470
+        ],
+        "color": "red"
+      }
+    },
+    {
+      "say": "والمعدة تهضم الطعام، لنحصل منه على الطاقة.",
+      "draw": {
+        "shape": "ellipse",
+        "center": [
+          480,
+          660
+        ],
+        "rx": 70,
+        "ry": 45,
+        "fill": "orange",
+        "color": "orange"
+      },
+      "label": {
+        "text": "المعدة",
+        "at": [
+          420,
+          670
+        ],
+        "from": [
+          170,
+          720
+        ],
+        "color": "orange"
+      }
+    },
+    {
+      "say": "أي عضو يضخ الدم في الجسم؟",
+      "quiz": {
+        "options": [
+          "🧠",
+          "❤️",
+          "🫁"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "say": "القلب! يعمل ليلًا ونهارًا بلا توقف. أحسنتم.",
+      "celebrate": true,
+      "mood": "happy"
+    }
+  ]
+}
