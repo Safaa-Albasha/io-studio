@@ -5,14 +5,14 @@
   },
   "metadata": {
     "description": "I/O Studio · آي أو استوديو — Arabic AI tools for content creators. Idea in. Story out. «فكرتك تدخل… والذكاء يكمّل الإبداع»",
-    "version": "4.0.0"
+    "version": "4.0.1"
   },
   "plugins": [
     {
       "name": "io",
       "source": "./",
       "description": "I/O Studio · آي أو استوديو — أدوات عربية لصنّاع المحتوى: فكرتك تدخل، فيديوك يطلع، والذكاء بالنص — إنستقرام ويوتيوب وتيك توك بالتساوي",
-      "version": "4.0.0"
+      "version": "4.0.1"
     }
   ]
 }

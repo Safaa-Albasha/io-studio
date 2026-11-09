@@ -1,5 +1,8 @@
 # Changelog
 
+## 4.0.1
+- io-trends: ScrapeCreators يشتغل على الحساب الفوري مال Composio — ما يطلب تسجيل دخول أو مفتاح ScrapeCreators؛ تقدير الكلفة أول مرة وقواعد التشغيل (`references/scrapecreators-composio.md`).
+
 ## 4.0.0 — 2026-11-09 — renamed to I/O Studio · آي أو استوديو (breaking)
 - New name **I/O Studio · آي أو استوديو**: I = Input (your idea), O = Output (your video), AI in between. Slogan «فكرتك تدخل… والذكاء يكمّل الإبداع» · "Idea in. Story out." (sub: "AI does the in-between."); wordmark `I ── slogan ── O` on the start page (`.sf-io` in `web/lib/brand.css`), short form "I/O Studio" elsewhere.
 - New mark `web/lib/logo.svg` — sky square, bold I and O joined by a thin line with a ✦ sparkle; same charcoal/sky palette, readable at 16–24 px. Used in every page header and favicon (incl. the timeline and video-onboarding pages), the guide cover, and `.claude-plugin/icon.png` (1024 px).
