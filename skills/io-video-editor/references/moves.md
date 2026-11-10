@@ -1,12 +1,12 @@
 # بنك الحركات — كل فيديو له لوحة حركات، وأنت تختار بوعي
 
-بنك حركات مرقّم يكبر مع الوقت — **354 حركة** (1–100 بـ`motion/moves/catalog.json` من 17 أكتوبر، و101–200 بـ`catalog-plus-a.json` و`catalog-plus-b.json`، و201–232 بـ`catalog-plus-c.json`، و233–242 بـ`catalog-plus-d.json`، و243–264 بـ`catalog-plus-e.json` «أنمي وكرتون»، و265–283 بـ`catalog-plus-f.json` «أنظمة الموشن»، و284–328 بـ`catalog-plus-g.json` و`catalog-plus-h.json` «مراجع الريلز»، و329–352 بـ`catalog-plus-i.json` «كولاج تحريري ومونتاج المؤثرات»، و353–354 بـ`catalog-plus-j.json` من video-ad-editor 6.5 — دوالها داخل `motion/moves.js`، نوفمبر). كل حركة: دالة جاهزة (`motion/moves.js` أو `moves-plus-a.js`/`moves-plus-b.js`/`moves-plus-c.js`/`moves-plus-d.js`/`moves-plus-e.js`/`moves-plus-f.js`/`moves-plus-g.js`/`moves-plus-h.js`/`moves-plus-i.js`) + معاينة + مصدرها.
+بنك حركات مرقّم يكبر مع الوقت — **358 حركة** (1–100 بـ`motion/moves/catalog.json` من 17 أكتوبر، و101–200 بـ`catalog-plus-a.json` و`catalog-plus-b.json`، و201–232 بـ`catalog-plus-c.json`، و233–242 بـ`catalog-plus-d.json`، و243–264 بـ`catalog-plus-e.json` «أنمي وكرتون»، و265–283 بـ`catalog-plus-f.json` «أنظمة الموشن»، و284–328 بـ`catalog-plus-g.json` و`catalog-plus-h.json` «مراجع الريلز»، و329–352 بـ`catalog-plus-i.json` «كولاج تحريري ومونتاج المؤثرات»، و353–354 بـ`catalog-plus-j.json` من video-ad-editor 6.5 — دوالها داخل `motion/moves.js`، و355–358 بـ`catalog-plus-k.json` «ريلز الأدوات والبودكاست»، نوفمبر). كل حركة: دالة جاهزة (`motion/moves.js` أو `moves-plus-a.js`/`moves-plus-b.js`/`moves-plus-c.js`/`moves-plus-d.js`/`moves-plus-e.js`/`moves-plus-f.js`/`moves-plus-g.js`/`moves-plus-h.js`/`moves-plus-i.js`) + معاينة + مصدرها.
 **قرار المستخدم (13 أكتوبر):** «ابيك تكون غني بالحركات… وتكون واعي». هو ما يختار حركة حركة. أنت تختار لكل فيديو.
 
 | الملف | شنو فيه |
 |---|---|
 | `motion/moves/catalog.json` + `catalog-plus-*.json` | الرقم · `id` · الاسم · `role` · `energy` 1–3 · `families` · `cues` · المصدر · المعاينة (تنقرا مدموجة بالرقم) |
-| `motion/moves.js` (1–100) · `moves-plus-a.js` (101–150) · `moves-plus-b.js` (151–200) · `moves-plus-c.js` (201–232) · `moves-plus-d.js` (233–242) · `moves-plus-e.js` (243–264) · `moves-plus-f.js` (265–283) · `moves-plus-g.js` (284–306) · `moves-plus-h.js` (307–328، بعد g) · `moves-plus-i.js` (329–352، بعد h) · 353–354 (`pixelList`, `explode`) داخل `motion/moves.js` | الدوال: `ctx.FX.<id>(ctx, t, o)` — كل خياراتها مكتوبة فوق كل دالة. الملفات الإضافية تمدّ نفس `FX` وتنحمّل بعد `moves.js` |
+| `motion/moves.js` (1–100) · `moves-plus-a.js` (101–150) · `moves-plus-b.js` (151–200) · `moves-plus-c.js` (201–232) · `moves-plus-d.js` (233–242) · `moves-plus-e.js` (243–264) · `moves-plus-f.js` (265–283) · `moves-plus-g.js` (284–306) · `moves-plus-h.js` (307–328، بعد g) · `moves-plus-i.js` (329–352، بعد h) · 353–354 (`pixelList`, `explode`) داخل `motion/moves.js` · `moves-plus-k.js` (355–358، بعد i) | الدوال: `ctx.FX.<id>(ctx, t, o)` — كل خياراتها مكتوبة فوق كل دالة. الملفات الإضافية تمدّ نفس `FX` وتنحمّل بعد `moves.js` |
 | `motion/moves/render-preview.js` | يرسم المعاينات من الدوال نفسها (`node motion/moves/render-preview.js 101-150`) — الديموهات بـ`render-preview.demos.js` |
 | `motion/moves/index.html` | المعرض (يفتحه `scripts/35_moves.py`) — للفرجة، أو لو حب يمنع شي |
 | `motion/moves/CREDITS.md` | المصادر والرخص |
@@ -389,7 +389,18 @@ MV.ready(() => { const EX = { s: 15.28, out: 18.22, n: 8, x: 400, y: 600, w: 340
 - خيارات ثانية: `spin` (درجة/ث) · `line` لون الخط المنقّط · `lw` سماكته · `pill:false` بلا خلفية ورا الاسم · `m` هامش الكادر · `lead` (0.1).
 - العنوان («8 طبقات حماية») مو من الحركة: اكتبه بمشهدك، والعدد يزيد مع كل لوح ينفك (نفس توقيت `s + i×stag`).
 
-## 4) إضافة حركة جديدة (البنك وصل 354 — أي زيادة برقم جديد بالآخر)
+## 3ك) 355–358 «ريلز الأدوات والبودكاست» (`moves-plus-k.js` · معاينات `render-preview-k.js`)
+كود آي أو استوديو الأصلي (تقنيات عامة من ريل مرجعي، بلا نسخ)، الألوان من الثيم:
+- **355 `speakerTag`** — اسم المتكلم فوق مقطع البودكاست (`name`, `sub`, `y`, `side`, `live`, `dark:false` = كبسولة فاتحة). الاسم يتكشف بمسحة ونقطة بلون الهوية تنبض.
+- **356 `scoreRing`** — حلقة درجة تعبّي والعدّاد معها (`value`, `max`, `suffix`, `label`, `reasons`, `x`, `y`, `r`, `every`) — تقييم، مقارنة، «كم تعطيها؟». صوت `ding` لما تكمل و`tick` لكل سبب.
+- **357 `seriesDayTag`** — «اليوم N في سلسلة …» فوق الراس (`day`, `series`, `prefix`, `color`, `count:false` بلا عدّ). رقم الحلقة واسمها من `engine/series.js`.
+- **358 `commandCallout`** — «الأمر كامل 👇» وتحته كبسولة فيها الأمر ينكتب (`cmd`, `label`, `y`, `rate`) — الجزء اللاتيني (`/أمر`) يسار والعربي بعده، كل جزء بلا قلب اتجاه.
+```js
+MV.ready(() => { const s = MV.wordTime(0, 0).s;
+  MV.scene('tag', t => { FX.seriesDayTag(MV, t, { s, day: 3, series: 'سلسلة كلود' }); FX.speakerTag(MV, t, { s: s + 0.4, name: 'اسم الضيف', y: 300 }); }); });
+```
+
+## 4) إضافة حركة جديدة (البنك وصل 358 — أي زيادة برقم جديد بالآخر)
 
 **دفعة جديدة كاملة** (مثلاً 265–300): ملف دوال جديد `motion/moves-plus-<x>.js` يبدأ بـ`const FX = (G.FX = G.FX || {});` (يمدّ نفس الكائن، ما يستبدله) + كتالوج `motion/moves/catalog-plus-<x>.json` بنفس الحقول.
 الكتالوج يتقرا لحاله (أي `catalog-plus-*.json` — `35_moves.py` و`00_onboard.py` و`catalog-all.json` للمعرض)، بس **ملف الدوال لازم ينضاف بالمحمّلات**: `motion/engine.html` · `scripts/compose.REFERENCE.html` · `MOVES_SRC`/`MOVES_PLUS` بـ`04_render_frames.js` و`08_safe_check.js` (وقائمة الاحتياط بـ`motion/moves/index.html`). ⛔ لا تكرر `id` موجود — الملف اللي ينحمّل بعده يغلب بصمت.

@@ -1,5 +1,12 @@
 # Changelog
 
+## 4.2.0 — 2026-11-10 — podcast from a link (transcript first) + motion bank 358
+- **Podcast from a link** `engine/podcast-link.js` (own code): `subs <link>` reads only the title and the platform's subtitles with yt-dlp (no video) → `.io/podcast/<id>/words.json` (WebVTT parser keeps only new words of rolling auto-captions and uses per-word stamps); `score` gives every `podcast-batch.js propose` window a first 0–100 rank with Arabic reasons (starts with a question, a number, a pull word, fast speech, a complete idea, length) and the strongest non-overlapping picks; `fetch` downloads **only the approved clips** (`--download-sections`) with their own `words.json`/`spec.json` moved to the clip's clock. `--audio` falls back to sound-only for `18_long_transcribe.py`.
+- New page **`web/podcast.html`** «مقاطع البودكاست» (linked from the app's montage step for podcast accounts): score rings, reasons, time ranges, «Claude يختار الأقوى» / «أنا أختار», 3/5/8/10 reels, caption language + translation line + dubbing; saves `selections.draft.json` through `/api/podcast/*` (project-local ids only). Claude confirms with the creator before `select`.
+- `podcast-batch.js status` follows a clip that was downloaded on its own.
+- Motion bank **358** — «ريلز الأدوات والبودكاست» 355–358 (`moves-plus-k.js`): `speakerTag` (podcast speaker name pill with a live dot), `scoreRing` (score ring that fills with a counter and reason chips), `seriesDayTag` («اليوم N في سلسلة …» with a counting number), `commandCallout` (a command typed in an accent pill, Latin and Arabic runs kept in order).
+- Reference studied, not copied: Hojas Studio (github.com/rakaga66/hojas-studio) is under the PolyForm Noncommercial licence, so none of its code, UI or wording is used — the features above are written from scratch after the reel.
+
 ## 4.1.0 — 2026-11-10 — video editor 6.5.1 (soft hair cut, depth, real SFX)
 - Video editor engine updated 6.3.0 → 6.5.1 from the MIT-licensed upstream (video-ad-editor, © 2026 Majed Alzaabi — three-way merged onto our copy; credits in `third_party/NOTICE.md`):
   - **Soft hair cut «القص الناعم»** `scripts/44_matte.py` (BiRefNet portrait via rembg, free and local; room colour cleaned from hair edges; GPU when `onnxruntime-gpu` is present) — runs by itself after «ورا الشخص» (`11_behind_text.js`, `MATTE=apple` = old cut); `--from-apple` cleans the fast cut in seconds. Install once with `00_setup.sh --extras`.

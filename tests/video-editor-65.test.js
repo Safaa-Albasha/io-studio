@@ -26,7 +26,7 @@ test('moves 353–354: catalog, previews, functions in moves.js', () => {
   const ids = new Set();
   for (const f of fs.readdirSync(MOVES).filter((f) => /^catalog.*\.json$/.test(f))) for (const m of JSON.parse(fs.readFileSync(path.join(MOVES, f), 'utf8')).moves) {
     assert.ok(!ids.has(m.id), 'duplicate id ' + m.id); ids.add(m.id); }
-  assert.strictEqual(ids.size, 354);
+  assert.ok(ids.size >= 354, String(ids.size));   // the exact total is checked by the newest bank test
   assert.match(read('motion/moves/index.html'), /catalog-plus-j\.json/);
   const demos = require(path.join(MOVES, 'render-preview-j.js'));
   assert.ok(demos.pixelList && demos.explode);

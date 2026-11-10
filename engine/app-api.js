@@ -378,6 +378,7 @@ function route(req, res, url, dir, h) {
     return true;
   }
   if (p.startsWith('/api/projects') || p.startsWith('/api/series')) return libraryRoute(req, res, url, dir, h);
+  if (p.startsWith('/api/podcast')) return require('./podcast-link.js').route(req, res, url, dir, h);
   if (p === '/api/plan' && req.method === 'POST') {
     h.readBody(req, PLAN_LIMIT).then((body) => {
       try { const r = writePlan(dir, body); h.sendJson(res, r.ok ? 200 : 400, r); } catch (e) { h.sendJson(res, 500, { ok: false, errors: [e.message] }); }

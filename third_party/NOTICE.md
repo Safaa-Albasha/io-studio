@@ -33,3 +33,6 @@ SKY's own motion library (the plugin owner's work): motion-bank moves 265–283 
 
 ## Reel Studio visual ports (moves 201–227, caption styles)
 Portions of I/O Studio's motion bank (moves 201–227 in `skills/io-video-editor/motion/moves-plus-c.js`, the inline-kashida caption option `capKashida:"inline"`, and the `box`/`karaoke`/`outline`/`paper` caption styles in `skills/io-video-editor/scripts/compose.REFERENCE.html`) are adapted from **Reel Studio** — MIT License, Copyright (c) 2026 Mohamed Abdou — https://github.com/mohamedabdou-ai/reel-studio (license: `LICENSE.reel-studio`). The logic was re-implemented for a Canvas 2D engine; no Reel Studio, React or Remotion code is bundled. Map geometry (moves 214–215): Natural Earth 5.1.1 (public domain), Palestine point-of-view edition, simplified and clipped. Moves 228–232 are an original I/O Studio design.
+
+## Reviewed, not included
+- **Hojas Studio** (© 2026 Hojas / Rakan Alzahrani — github.com/rakaga66/hojas-studio) is licensed under the **PolyForm Noncommercial 1.0.0** licence, which is not compatible with this MIT plugin. Nothing from it (code, UI, text, brand) is included. The podcast-from-a-link flow (`engine/podcast-link.js`, `web/podcast.html`) and moves 355–358 (`moves-plus-k.js`) are I/O Studio's own code, written after watching a public reel that showed the tool.

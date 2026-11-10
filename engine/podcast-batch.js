@@ -193,7 +193,7 @@ function main() {
       if (!batch.selectionApproved || !batch.clips.length) { console.log('لسه ما فيه اختيار معتمد — اعرض المقترحات وخلّه يختار، ثم select.'); return; }
       let finished = 0;
       for (const c of batch.clips) {
-        const s = clipStatus(c.work, batch.episode || '<الحلقة>', batch.words);
+        const s = clipStatus(c.work, c.episode || batch.episode || '<الحلقة>', c.wordsFile || batch.words);   // c.episode/c.wordsFile: مقطع نزل لحاله (podcast-link.js fetch)
         if (s.finished) finished++;
         console.log(`${s.finished ? '✅' : '⏳'} ${c.id} (${clock(c.fromSec)}–${clock(c.toSec)}) — ${s.stage} [${s.done}/${s.of}]${s.next ? `\n     التالي: ${s.next}` : ''}`);
       }

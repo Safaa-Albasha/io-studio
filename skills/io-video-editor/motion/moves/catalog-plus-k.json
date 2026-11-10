@@ -1,0 +1,100 @@
+{
+ "version": 1,
+ "note": "حركات 355–358 — باقة «ريلز الأدوات والبودكاست»: الدوال بـmotion/moves-plus-k.js (بعد moves-plus-i.js)، المعاينات بـmotion/moves/render-preview-k.js. كود آي أو استوديو الأصلي — تقنيات عامة من ريل مرجعي، بلا نسخ ولا أسماء ولا شعارات، الألوان من الثيم. نفس مخطط catalog.json.",
+ "moves": [
+  {
+   "n": 355,
+   "id": "speakerTag",
+   "cat": "card",
+   "name": "اسم المتكلم",
+   "sub": "كبسولة اسم الضيف بنقطة مباشر",
+   "desc": "كبسولة فوق مقطع البودكاست فيها اسم المتكلم يتكشف بمسحة ونقطة بلون الهوية تنبض، وتحتها سطر صغير اختياري (الحلقة أو المنصب).",
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "name",
+    "podcast"
+   ],
+   "source": {
+    "label": "I/O Studio — بعد ريل أداة بودكاست (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/355.mp4",
+   "bonus": false
+  },
+  {
+   "n": 356,
+   "id": "scoreRing",
+   "cat": "card",
+   "name": "حلقة التقييم",
+   "sub": "درجة تعبّي وأسبابها",
+   "desc": "حلقة تعبّي من 0 للدرجة والعدّاد يمشي معها، لونها يتدرج حسب الدرجة، وتحتها عنوان وأسباب الدرجة كرقاقات تطلع وحدة وحدة — للتقييم والمقارنة.",
+   "role": "card",
+   "energy": 2,
+   "families": [
+    "editorial",
+    "punch"
+   ],
+   "cues": [
+    "number",
+    "list",
+    "reveal"
+   ],
+   "source": {
+    "label": "I/O Studio — بعد ريل أداة بودكاست (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/356.mp4",
+   "bonus": false
+  },
+  {
+   "n": 357,
+   "id": "seriesDayTag",
+   "cat": "text",
+   "name": "شارة اليوم بالسلسلة",
+   "sub": "«اليوم N في سلسلة …» بعدّاد",
+   "desc": "سطرين فوق الراس بخط عريض وحد غامق: «اليوم N» والرقم يعدّ لين يوقف بنطّة، وتحته «في سلسلة …» — يرتبط برقم الحلقة من engine/series.js.",
+   "role": "text",
+   "energy": 1,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "series",
+    "number"
+   ],
+   "source": {
+    "label": "I/O Studio — بعد ريل أداة بودكاست (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/357.mp4",
+   "bonus": false
+  },
+  {
+   "n": 358,
+   "id": "commandCallout",
+   "cat": "card",
+   "name": "الأمر كامل",
+   "sub": "كبسولة فيها الأمر ينكتب",
+   "desc": "سطر صغير «الأمر كامل 👇» وتحته كبسولة بلون الهوية فيها الأمر أو البرومبت ينكتب (اللاتيني حرف حرف والعربي كلمة كلمة) ومؤشر يرمش — لريلز شرح الأدوات.",
+   "role": "card",
+   "energy": 1,
+   "families": [
+    "editorial"
+   ],
+   "cues": [
+    "tech",
+    "cta"
+   ],
+   "source": {
+    "label": "I/O Studio — بعد ريل أداة بودكاست (تصميم أصلي)",
+    "url": ""
+   },
+   "preview": "previews/358.mp4",
+   "bonus": false
+  }
+ ]
+}

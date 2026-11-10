@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>مقاطع البودكاست · آي أو استوديو</title>
+<link rel="icon" href="lib/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="lib/brand.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--font);line-height:1.6}
+.wrap{max-width:980px;margin:0 auto;padding:16px}
+header{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+header img{width:34px;height:34px}
+header h1{font-size:20px;margin:0}
+.muted{color:var(--muted)} .small{font-size:13px}
+.grow{flex:1}
+button,select{font:inherit;color:inherit}
+button{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:6px 14px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+button.go{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:800}
+button[aria-pressed="true"]{background:var(--sky-soft);color:var(--sky-soft-ink);border-color:var(--accent);font-weight:700}
+select{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 10px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:14px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.lbl{font-weight:700;min-width:120px}
+.seg{display:inline-flex;gap:6px;flex-wrap:wrap}
+code{direction:ltr;unicode-bidi:embed;background:var(--card-2);border:1px solid var(--line);border-radius:6px;padding:0 6px;font-size:13px}
+.cards{display:grid;gap:12px}
+.card{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px;cursor:pointer}
+.card.on{border-color:var(--accent);background:linear-gradient(0deg,var(--sky-soft),var(--sky-soft)) padding-box;box-shadow:0 0 0 1px var(--accent) inset}
+.card h3{margin:0 0 2px;font-size:16px}
+.card p{margin:4px 0 0;font-size:14px;color:var(--ink-2);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card.open p{-webkit-line-clamp:unset}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.chip{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:1px 10px;color:var(--muted)}
+.ring{width:58px;height:58px}
+.ring text{font:800 17px var(--font);fill:var(--ink)}
+.tick{width:26px;height:26px;border-radius:8px;border:2px solid var(--line);display:grid;place-items:center;font-weight:900;color:var(--accent-ink)}
+.card.on .tick{background:var(--accent);border-color:var(--accent)}
+.time{direction:ltr;unicode-bidi:embed;font-size:13px;color:var(--muted)}
+.bar{position:sticky;bottom:0;background:var(--page);border-top:1px solid var(--line);padding:10px 0;margin-top:14px}
+.msg{min-height:1.6em}
+.ok{color:var(--ok)} .bad{color:var(--bad)}
+@media (max-width:560px){.card{grid-template-columns:auto 1fr}.card .ringcell{grid-column:1/-1;justify-self:start}.lbl{min-width:0;width:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="lib/logo.svg" alt="">
+    <div class="grow"><h1>مقاطع البودكاست</h1><div class="muted small">النص أول: تختار من الكلام، وما ينزل إلا المقاطع اللي اخترتها.</div></div>
+    <select id="batch" aria-label="الحلقة"></select>
+  </header>
+
+  <div id="empty" class="panel" hidden>
+    <b>ما فيه حلقة لسه.</b>
+    <p class="small">قل لـClaude «طلّع ريلات من هالحلقة» مع الرابط، أو شغّل:</p>
+    <p><code>node engine/podcast-link.js subs &lt;الرابط&gt;</code></p>
+    <p><code>node engine/podcast-batch.js propose .io/podcast/&lt;id&gt;/words.json --dir .io/podcast/&lt;id&gt;</code></p>
+    <p><code>node engine/podcast-link.js score .io/podcast/&lt;id&gt;/batch.json</code></p>
+  </div>
+
+  <div id="main" hidden>
+    <div class="panel">
+      <div class="row" style="justify-content:space-between"><b id="title"></b><a id="src" class="small" target="_blank" rel="noopener"></a></div>
+      <div class="row" style="margin-top:10px"><span class="lbl">مين يختار؟</span>
+        <span class="seg"><button data-by="claude" aria-pressed="true">Claude يختار الأقوى</button><button data-by="creator" aria-pressed="false">أنا أختار</button></span></div>
+      <div class="row" style="margin-top:8px"><span class="lbl">كم ريل؟</span>
+        <span class="seg" id="count"><button>3</button><button aria-pressed="true">5</button><button>8</button><button>10</button></span></div>
+      <div class="row" style="margin-top:8px"><span class="lbl">لغة الكابشن</span><select id="caption"></select>
+        <span class="lbl">سطر ترجمة تحته</span><select id="translate"></select></div>
+      <div class="row" style="margin-top:8px"><span class="lbl">دبلجة</span><select id="dub"></select>
+        <span class="muted small">الدبلجة بنفس السكتات — Claude يسويها بعد الموافقة.</span></div>
+    </div>
+    <div class="row" style="margin-bottom:8px"><span class="muted small" id="hint"></span><span class="grow"></span><button id="again">رتّب بالوقت</button></div>
+    <div class="cards" id="cards"></div>
+    <div class="bar"><div class="row"><b id="picked"></b><span class="grow"></span><span class="msg small" id="msg" role="status"></span><button class="go" id="save">احفظ الاختيار</button></div></div>
+  </div>
+</div>
+<script>
+'use strict';
+const $ = (s) => document.querySelector(s);
+const LANGS = [['none', 'بدون'], ['ar', 'العربية'], ['en', 'English'], ['es', 'Español'], ['fr', 'Français'], ['tr', 'Türkçe'], ['ur', 'اردو']];
+const S = { id: '', data: null, sel: new Set(), count: 5, by: 'claude', order: 'score' };
+const clock = (t) => { t = Math.max(0, +t || 0); const h = Math.floor(t / 3600), m = Math.floor(t % 3600 / 60), s = Math.floor(t % 60); return (h ? h + ':' + String(m).padStart(2, '0') : m) + ':' + String(s).padStart(2, '0'); };
+const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+function fill(sel, val) { sel.textContent = ''; for (const [v, n] of LANGS) { const o = el('option', null, n); o.value = v; sel.appendChild(o); } sel.value = val; }
+fill($('#caption'), 'ar'); fill($('#translate'), 'none'); fill($('#dub'), 'none');
+
+function ring(score) {
+  const NS = 'http://www.w3.org/2000/svg', svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', '0 0 58 58'); svg.setAttribute('class', 'ring');
+  const v = score == null ? 0 : Math.max(0, Math.min(100, score)), C = 2 * Math.PI * 24;
+  const col = v >= 80 ? 'var(--ok)' : v >= 50 ? 'var(--warn)' : 'var(--muted)';
+  const bg = document.createElementNS(NS, 'circle'); bg.setAttribute('cx', 29); bg.setAttribute('cy', 29); bg.setAttribute('r', 24); bg.setAttribute('fill', 'none'); bg.setAttribute('stroke', 'var(--line)'); bg.setAttribute('stroke-width', 5);
+  const fg = bg.cloneNode(); fg.setAttribute('stroke', col); fg.setAttribute('stroke-linecap', 'round'); fg.setAttribute('stroke-dasharray', `${C * v / 100} ${C}`); fg.setAttribute('transform', 'rotate(-90 29 29)');
+  const tx = document.createElementNS(NS, 'text'); tx.setAttribute('x', 29); tx.setAttribute('y', 35); tx.setAttribute('text-anchor', 'middle'); tx.textContent = score == null ? '–' : String(score);
+  svg.append(bg, fg, tx); svg.setAttribute('aria-label', 'الدرجة ' + (score == null ? 'ما انحسبت' : score)); return svg;
+}
+function topIds(n) {   // أقوى n بلا تداخل
+  const out = [];
+  for (const c of [...S.data.candidates].sort((a, b) => (b.score || 0) - (a.score || 0))) { if (out.length >= n) break; if (out.some((o) => c.fromSec < o.toSec && o.fromSec < c.toSec)) continue; out.push(c); }
+  return out.map((c) => c.id);
+}
+function overlaps(id) { const c = S.data.candidates.find((x) => x.id === id); return [...S.sel].some((o) => { const d = S.data.candidates.find((x) => x.id === o); return d && o !== id && c.fromSec < d.toSec && d.fromSec < c.toSec; }); }
+function render() {
+  const box = $('#cards'); box.textContent = '';
+  const list = [...S.data.candidates].sort(S.order === 'score' ? (a, b) => (b.score || 0) - (a.score || 0) : (a, b) => a.fromSec - b.fromSec);
+  for (const c of list) {
+    const card = el('div', 'card' + (S.sel.has(c.id) ? ' on' : '')); card.tabIndex = 0; card.setAttribute('role', 'checkbox'); card.setAttribute('aria-checked', S.sel.has(c.id));
+    const tick = el('div', 'tick', S.sel.has(c.id) ? '✓' : '');
+    const body = el('div'); const h = el('h3', null, (c.first || '').split(/\s+/).slice(0, 9).join(' ') + '…');
+    const tm = el('div', 'time', `${clock(c.fromSec)} – ${clock(c.toSec)} · ${Math.round(c.seconds || c.toSec - c.fromSec)}s`);
+    const p = el('p', null, c.text); const chips = el('div', 'chips'); (c.why || []).forEach((w) => chips.appendChild(el('span', 'chip', w)));
+    body.append(h, tm, p, chips);
+    const rc = el('div', 'ringcell'); rc.appendChild(ring(c.score));
+    card.append(tick, body, rc);
+    const toggle = () => { if (S.sel.has(c.id)) S.sel.delete(c.id); else { if (overlaps(c.id)) return say('هالمقطع متداخل مع مقطع مختار — كل ريل فكرة لحالها', true); S.sel.add(c.id); } S.by = 'creator'; syncBy(); render(); };
+    card.addEventListener('click', (e) => { if (e.detail === 2) { card.classList.toggle('open'); return; } toggle(); });
+    card.addEventListener('keydown', (e) => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggle(); } });
+    box.appendChild(card);
+  }
+  $('#picked').textContent = `مختار ${S.sel.size} من ${S.count}`;
+  const scored = S.data.candidates.some((c) => c.score != null);
+  $('#hint').textContent = scored ? 'الدرجة تقدير أولي من الكلام (سؤال، رقم، كلمة تشد، فكرة كاملة) — Claude يراجع المعنى قبل التنفيذ. ضغطتين تفتح النص كامل.' : 'لسه ما انرتّبت — شغّل podcast-link.js score.';
+}
+function syncBy() { document.querySelectorAll('[data-by]').forEach((b) => b.setAttribute('aria-pressed', b.dataset.by === S.by)); }
+function say(t, bad) { const m = $('#msg'); m.textContent = t; m.className = 'msg small ' + (bad ? 'bad' : 'ok'); }
+document.querySelectorAll('[data-by]').forEach((b) => b.addEventListener('click', () => { S.by = b.dataset.by; syncBy(); if (S.by === 'claude') S.sel = new Set(topIds(S.count)); render(); }));
+$('#count').addEventListener('click', (e) => { if (e.target.tagName !== 'BUTTON') return; S.count = +e.target.textContent; [...$('#count').children].forEach((b) => b.setAttribute('aria-pressed', b === e.target)); if (S.by === 'claude') S.sel = new Set(topIds(S.count)); render(); });
+$('#again').addEventListener('click', () => { S.order = S.order === 'score' ? 'time' : 'score'; $('#again').textContent = S.order === 'score' ? 'رتّب بالوقت' : 'رتّب بالدرجة'; render(); });
+$('#save').addEventListener('click', async () => {
+  try {
+    const r = await fetch('/api/podcast/draft?id=' + encodeURIComponent(S.id), { method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ ids: [...S.sel], count: S.count, by: S.by, caption: $('#caption').value, translate: $('#translate').value, dub: $('#dub').value }) });
+    const j = await r.json(); if (!j.ok) return say((j.errors || ['ما انحفظ']).join(' · '), true);
+    say(`انحفظ ✓ — ارجع لـClaude وقل «تمام اعتمد»، وينزّل ${j.draft.clips.length} مقاطع بس`);
+  } catch (e) { say('السيرفر مو شغّال — node engine/serve.js --open podcast.html', true); }
+});
+async function load(id) {
+  const r = await fetch('/api/podcast?id=' + encodeURIComponent(id)); const d = await r.json(); if (!r.ok) return say((d.errors || []).join(' · '), true);
+  S.id = id; S.data = d; $('#title').textContent = (d.source && d.source.title) || id;
+  const a = $('#src'); a.textContent = d.source && d.source.url ? 'الرابط ↗' : ''; if (d.source && d.source.url && /^https?:/.test(d.source.url)) a.href = d.source.url;
+  if (d.draft) { S.sel = new Set(d.draft.clips.map((c) => c.from)); S.count = d.draft.count; S.by = d.draft.by; $('#caption').value = d.draft.caption; $('#translate').value = d.draft.translate; $('#dub').value = d.draft.dub;
+    [...$('#count').children].forEach((b) => b.setAttribute('aria-pressed', +b.textContent === S.count)); }
+  else S.sel = new Set(topIds(S.count));
+  syncBy(); render();
+}
+(async () => {
+  let list = []; try { list = (await (await fetch('/api/podcast/list')).json()).batches || []; } catch (e) { /* offline */ }
+  if (!list.length) { $('#empty').hidden = false; return; }
+  $('#main').hidden = false; const sel = $('#batch');
+  for (const b of list) { const o = el('option', null, b.title + (b.approved ? ' ✓' : '')); o.value = b.id; sel.appendChild(o); }
+  const want = new URLSearchParams(location.search).get('id'); if (want && list.some((b) => b.id === want)) sel.value = want;
+  sel.addEventListener('change', () => load(sel.value)); load(sel.value);
+})();
+</script>
+</body>
+</html>

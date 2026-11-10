@@ -33,6 +33,19 @@ description: يمنتج البودكاست والمقابلات — كاميرت
    node "${CLAUDE_PLUGIN_ROOT}/engine/podcast-batch.js" status <مجلد الحلقة>/batch.json   # كل مقطع وين وصل + الأمر الجاي
    ```
    النوافذ خريطة حدود نظيفة مو تقييم — اقرأ التفريغ كله واختار 3-5 لحظات مستقلة (سؤال وجوابه، قصة بنهايتها). `select` يرفض التداخل والكلمة المقطوعة وأطول من 10 د، ويكتب `spec.json` لكل مقطع (لـ`20_episode_cuts.py`). رسم واحد بكل مرة، وكل مقطع له حزمة نشره.
+7.6 **🆕 من رابط (يوتيوب، تيك توك، إنستقرام… أي رابط يقراه yt-dlp) — النص أول، وما ينزل إلا اللي يختاره:**
+   ```bash
+   node "${CLAUDE_PLUGIN_ROOT}/engine/podcast-link.js" subs <الرابط> [--id <slug>]          # العنوان + ترجمة المنصة بس (بلا فيديو) → .io/podcast/<id>/words.json
+   node "${CLAUDE_PLUGIN_ROOT}/engine/podcast-batch.js" propose .io/podcast/<id>/words.json --dir .io/podcast/<id>
+   node "${CLAUDE_PLUGIN_ROOT}/engine/podcast-link.js" score .io/podcast/<id>/batch.json --top 5   # درجة أولية 0–100 + ليش (سؤال، رقم، كلمة تشد، فكرة كاملة)
+   node "${CLAUDE_PLUGIN_ROOT}/engine/serve.js" --reuse --open podcast.html                       # يختار بنفسه أو «Claude يختار الأقوى»، كم ريل، لغة الكابشن وسطر الترجمة
+   ```
+   - **الدرجة تلميح مو حكم:** اقرأ نص كل مقطع مختار بنفسك — فكرة كاملة؟ يبدأ بشي يشد؟ — وقله لو عندك أقوى منه.
+   - الصفحة تحفظ `.io/podcast/<id>/selections.draft.json`. اعرض عليه الاختيار بسطر، وبعد موافقته: حوّله لـ`selections.json` (حدود على أول/آخر كلمة) ← `podcast-batch.js select … --approved-by "<اسمه>"`.
+   - **بعدها نزّل المقاطع بس:** `node "${CLAUDE_PLUGIN_ROOT}/engine/podcast-link.js" fetch .io/podcast/<id>/batch.json` — كل مقطع `source.mp4` + `words.json` + `spec.json` بوقته هو ← `20_episode_cuts.py <مجلد المقطع> <مجلد المقطع>/source.mp4 <مجلد المقطع>/words.json`.
+   - ما فيه ترجمة بالمنصة؟ `subs … --audio` ينزّل الصوت بس ← `18_long_transcribe.py`.
+   - اسم المتكلم فوق المقطع: حركة 355 `speakerTag`؛ سطر الترجمة تحت الكابشن: 338 `bilingualCaption`؛ «اليوم N بالسلسلة»: 357 `seriesDayTag`.
+   - ⛔ المحتوى مو لك؟ ريلات من حلقة غيرك تحتاج إذن صاحبها — اسأله قبل النشر.
 8. **طريقة العمل مع كل حلقة جديدة:**
    - **المحادثة للقرارات:** فرّغ الحلقة، وعطه **ورقة مقترحات مرقّمة** (هوك + بداية/نهاية + ليش تنفع)، وهو يختار بالأرقام. لا تقص قبل ما يختار.
    - **بعد المونتاج — صفحة المراجعة (إلزامي لـ2+ عناصر):** كل الريلات والكاروسيل بصفحة وحدة فيها ملاحظة واعتماد وتحميل ← `references/review-page.md`. التعديلات بعدها من ملاحظاته بالصفحة («شوف الملاحظات»).
