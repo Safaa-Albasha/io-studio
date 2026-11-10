@@ -1,7 +1,7 @@
 #!/bin/bash
 # فحص وتجهيز الأدوات.  ./00_setup.sh          → يفحص ويقول وش ناقص
 #                      ./00_setup.sh --install → ينزّل الناقص (بعد إذن المستخدم)
-#                      ./00_setup.sh --extras  → الإضافات الاختيارية: تنظيف صوت ذكي · نبض · بحث بالمعنى
+#                      ./00_setup.sh --extras  → الإضافات الاختيارية: تنظيف صوت ذكي · نبض · بحث بالمعنى · قصّ الشعر الناعم (بيريف نت)
 # ✏️ معدّل ليشتغل على ويندوز وماك ولينكس. الأصل الماكي محفوظ بـ00_setup.sh.mac-orig
 # 🩺 الفحص الشامل لكل الإضافة (بلا bash — ويندوز PowerShell/CMD عادي): node <الإضافة>/engine/doctor.js [--install]
 #    ويندوز بلا قِت-باش: powershell -ExecutionPolicy Bypass -File 00_setup.ps1 [--install]  (يحوّل لـdoctor.js)
@@ -45,6 +45,7 @@ extras_status(){
   local e=()
   { [ -x "$SKILL/bin/deep-filter" ] || [ -x "$SKILL/bin/deep-filter.exe" ] || have deep-filter; } && e+=("تنظيف-الصوت✅") || e+=("تنظيف-الصوت—")
   "$PY" -c "import transformers,PIL" 2>/dev/null && e+=("البحث-بالمعنى✅") || e+=("البحث-بالمعنى—")
+  "$PY" -c "import rembg,pymatting" 2>/dev/null && e+=("قص-الشعر-الناعم✅") || e+=("قص-الشعر-الناعم—")
   echo "${e[*]}"
 }
 if [ "$1" = "--extras" ]; then
@@ -69,6 +70,8 @@ if [ "$1" = "--extras" ]; then
   fi
   "$PY" -c "import torch" 2>/dev/null || { line "⏬ torch (أساس الموديلات)…"; pipx2 torch; }
   "$PY" -c "import transformers,PIL" 2>/dev/null || { line "⏬ البحث بالمعنى (transformers — الموديل ~1.5 قيقا ينزل أول بحث)…"; pipx2 "transformers>=4.49" pillow sentencepiece protobuf || line "   ⚠️ فشل"; }
+  # 🆕 6.5 قصّ الشخص بحواف شعر ناعمة (44_matte.py — بيريف نت، الموديل ~970 ميقا ينزل أول قصّ)
+  "$PY" -c "import rembg,pymatting" 2>/dev/null || { line "⏬ قصّ الشعر الناعم (rembg + onnxruntime + pymatting)…"; { command -v nvidia-smi >/dev/null 2>&1 && ORT=onnxruntime-gpu || ORT=onnxruntime; }; pipx2 rembg "$ORT" pymatting || line "   ⚠️ فشل — يبقى قصّ الماك"; }
   line "الإضافات: $(extras_status)"
   exit 0
 fi
@@ -77,6 +80,10 @@ have ffmpeg  && OK+=("ffmpeg")  || MISS+=("ffmpeg")
 have ffprobe && OK+=("ffprobe") || MISS+=("ffprobe")
 "$PY" -c "import whisper" 2>/dev/null && OK+=("whisper") || MISS+=("whisper")
 "$PY" -c "import numpy"   2>/dev/null && OK+=("numpy")   || MISS+=("numpy")
+# 6.4: سكل مراجعة المنتج يتتبع القطع ويرسم فريمات الفحص
+"$PY" -c "import cv2"     2>/dev/null && OK+=("opencv")  || MISS+=("opencv")
+"$PY" -c "import scipy"   2>/dev/null && OK+=("scipy")   || MISS+=("scipy")
+"$PY" -c "import PIL"     2>/dev/null && OK+=("pillow")  || MISS+=("pillow")
 
 # كروم: نفس ترتيب البحث اللي بالسكربتات
 find_chrome(){
@@ -134,6 +141,9 @@ for m in "${MISS[@]}"; do
       if [ "$OS" = linux ] && have apt-get; then   # mediapipe يحتاج libGLESv2 على لينكس
         { [ "$(id -u)" = 0 ] && apt-get install -y -q libgles2 libegl1 || sudo apt-get install -y -q libgles2 libegl1; } >/dev/null 2>&1 || NOTE+=("نصّب libgles2 libegl1 بـapt")
       fi ;;
+    opencv)  pipi opencv-python-headless || NOTE+=("opencv فشل") ;;
+    scipy)   pipi scipy || NOTE+=("scipy فشل") ;;
+    pillow)  pipi pillow || NOTE+=("pillow فشل") ;;
     puppeteer-core) line "⏬ puppeteer-core…"
       ( cd "$SKILL" && npm i --silent puppeteer-core ) || NOTE+=("puppeteer-core فشل") ;;
     chrome) NOTE+=("كروم مو منصّب — نزّله من google.com/chrome أو حدّد CHROME_PATH") ;;

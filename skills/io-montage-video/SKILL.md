@@ -6,7 +6,7 @@ description: مونتاج مقاطع بلا كلام على الإيقاع — �
 # مونتاج مقاطع بلا كلام
 
 **المحرّك مشترك** مع سكل الريل. كل `scripts/` و`references/` من هني:
-`${CLAUDE_SKILL_DIR}/../video-editor`
+`${CLAUDE_SKILL_DIR}/../io-video-editor`
 
 ## الخطوات
 

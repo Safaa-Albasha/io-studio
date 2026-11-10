@@ -6,7 +6,7 @@ description: يصمم كفر الريل (أول فريم بالفيديو، كل
 # الكفر والثمبنيل — اللي ينقرا بالجوال
 
 **المحرّك مشترك** مع سكل الريل. كل `scripts/` و`references/` من هني:
-`${CLAUDE_SKILL_DIR}/../video-editor`
+`${CLAUDE_SKILL_DIR}/../io-video-editor`
 
 **اقرأ أول شي:** `references/thumbnails.md` — الأحجام الدنيا ومصادرها. الشبكة تصغّر الكفر لـ12٪، فاللي تحت الحد ما ينقرا.
 

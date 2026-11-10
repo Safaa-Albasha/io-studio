@@ -6,7 +6,7 @@ description: فيلم موشن قرافيكس ثلاثي الأبعاد بلا �
 # شرح بالموشن — فيلم من نص، بلا تصوير
 
 **المحرّك مشترك** مع سكل الريل. كل `scripts/` و`references/` و`motion/` من هني:
-`${CLAUDE_SKILL_DIR}/../video-editor`
+`${CLAUDE_SKILL_DIR}/../io-video-editor`
 
 ## الخطوات
 

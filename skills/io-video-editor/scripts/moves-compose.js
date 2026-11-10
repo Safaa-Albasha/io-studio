@@ -26,6 +26,8 @@
      MV.panel(Y, fn?)       يعبّي Y بلون الخلفية ثم fn(Y) — مشهد B جاهز للانتقال
      MV.hideCaption(s, e)   يطفي كابشن المحرّك بنافذة (لما FX.caption يرسم الكابشن بداله)
      MV.scene(name, fn, layer?)  = SCENE_LIST.push بنفس safe() — fn(t) تُنادى كل فريم
+     MV.cue(k, t, o?)       🔊 صوت مربوط بالحركة (6.5) — 04_render_frames.js cues ← cues.json ← 05_sfx.py
+     MV.findWord(key, from) أول نطق لكلمة (6.5 — 101 قائمة تنكشف) · MV.json(name) ملف json من مجلد الشغل
      MV.ready(fn)           يشغّل fn بعد init (لما caps.json يوصل) — أي wordTime/lineSpan/hideCaption برّا الرسم يكون داخله
      MV.trackAt(name, t)    شكل التتبّع (track/<name>.json من engine/track/track.py) بإحداثيات الكانفس عند t: {quad, box, points, center, angle, size, alpha} أو null
      MV.track(name)         نفس التتبّع جاهز لـo.track بالحركات (FX.placeAt / FX.trackAt) — studio.json ← moves:[{s, e, id, o, track}] تنرسم وحدها
@@ -180,10 +182,17 @@
         if (st.clip || st.reveal != null || st.clipUp != null) {
           X.beginPath();
           if (st.reveal != null) { const rw = (box.w + 20) * clamp(st.reveal); X.rect(box.x + box.w + 10 - rw, box.y - L.size * .3, rw, box.h + L.size * .6); }
-          else if (st.clipUp != null) { const ext = L.size * .75 * Math.max(0, Math.min(1, 1 - (st.dy || 0) / (L.size * .6))); X.rect(box.x - 20, box.y - L.size * .3, box.w + 40, box.h + L.size * .3 + ext); }   // وهي طالعة: القناع على السطر (طلعة نظيفة). لما توصل: ينزل تحت السطر فتكمل ذيول ج ي ع ونقاط الياء بلا حد ينشاف
+          else if (st.clipUp != null) {   /* 🛠️ 6.5 (بلاغ المؤلف الأصلي): القناع من قياس الكلمة الحقيقي (فوق وتحت الحروف + هامش) — داخلة = تطلع من خط مخفي تحتها،
+             طالعة = تختفي بخط مخفي فوقها، واقفة = بلا قناع (النقاط والذيول ج ي ع كاملة). clipUp:'in'|'out' — أو رقم (قديم): الاتجاه من dy */
+          const ph = (st.clipUp === 'in' || st.clipUp === 'out') ? st.clipUp : ((st.dy || 0) > 0.5 ? 'in' : (st.dy || 0) < -0.5 ? 'out' : null);
+          if (ph) { const mm = X.measureText(w.text), pad = L.size * 0.14, asc = (mm.actualBoundingBoxAscent || L.size * 0.95) + pad, des = (mm.actualBoundingBoxDescent || L.size * 0.4) + pad, hx = L.size * 0.5;
+            if (ph === 'in') X.rect(box.x - hx, box.base - asc - L.size * 3, box.w + hx * 2, asc + des + L.size * 3);
+            else X.rect(box.x - hx, box.base - asc, box.w + hx * 2, asc + des + L.size * 3); }
+          else X.rect(-1e4, -1e4, 2e4, 2e4); }
           else X.rect(st.clip.x, st.clip.y, st.clip.w, st.clip.h);
           X.clip();
         }
+        if (st.blur > 0.3) X.filter = 'blur(' + (+st.blur).toFixed(1) + 'px)';
         X.translate(box.cx + (st.dx || 0), box.cy + (st.dy || 0)); if (st.rot) X.rotate(st.rot); if (st.scale != null) X.scale(st.scale, st.scaleY ?? st.scale);
         X.translate(-box.cx, -box.cy);
         if (st.shadow) { X.shadowColor = st.shadow.color || 'rgba(0,0,0,.3)'; X.shadowBlur = st.shadow.blur || 20; X.shadowOffsetY = st.shadow.y || 8; }
@@ -214,6 +223,25 @@
     if (o.stroke) { X.lineJoin = 'round'; X.lineWidth = o.stroke.width || 8; X.strokeStyle = o.stroke.color; X.strokeText(K.text, 0, 0); }
     X.fillStyle = o.color || PAL().ink; X.fillText(K.text, 0, 0);
     X.restore(); return K;
+  }
+  /* 🆕 6.5.1 (قاعدة المستخدم): كلمة ورا الراس = الكشيدة على الراس — لا حرف ولا نقطة تنخفي ورا راسه.
+     headGap(X, str, {gx, gap, family='display', weight=900, size=200, m=40}) → {text, x, gx, n, w, ok}:
+     تمدّ الكلمة بكشيدة بالمفصل اللي يخلّيها أقرب لوسط الراس gx، بطول gap (عرض الراس عند سطر الكلام + هامش)،
+     وx = وين ترسمها (وسط النص، align center) عشان الكشيدة تجي فوق الراس بالضبط. ok=false (ما فيه مفصل، أو الكادر ما يكفي
+     وطلعت الكشيدة عن الراس) = انقل الكلمة فوق الراس أو قدّامه — مو شرط تكون ورا الراس. */
+  function headGap(X, str, o = {}) {
+    X.save(); X.font = fontStr(o.family || 'display', o.weight || 900, o.size || 200); X.direction = 'rtl';
+    const s0 = westernDigits(str), m = o.m == null ? 40 : o.m, wt = X.measureText('ـ').width || 1, gx = o.gx == null ? 540 : o.gx, gap = o.gap || 300;
+    const n = Math.max(1, Math.ceil(gap / wt)), ch = [...s0]; let best = null;
+    for (const sl of kashidaSlots(s0)) {
+      const R = ch.slice(0, sl.at).join(''), L = ch.slice(sl.at).join(''), txt = R + 'ـ'.repeat(n) + L, W = X.measureText(txt).width;
+      if (W > 1080 - 2 * m) continue;
+      const wR = X.measureText(R + 'ـ').width - wt, ideal = gx - W / 2 + wR + (n * wt) / 2;     // RTL: أول الكلمة يمين، فوسط الكشيدة = x + W/2 − wR − طولها/2
+      const x = Math.min(1080 - m - W / 2, Math.max(m + W / 2, ideal)), off = Math.abs(x - ideal);
+      if (!best || off < best.off) best = { text: txt, x, gx: gx + (x - ideal), n, w: W, off };
+    }
+    X.restore();
+    return best ? Object.assign(best, { ok: best.off <= gap * 0.2 }) : { text: s0, x: gx, gx, n: 0, w: 0, off: 0, ok: false };
   }
   function typeSub(str, k) { const ch = [...westernDigits(str)], n = Math.round(clamp(k) * ch.length); const s = ch.slice(0, n).join(''); return n < ch.length && n > 0 && DUAL.has(ch[n - 1]) ? s + '‍' : s; }
 
@@ -307,12 +335,12 @@
   /* خط إضافي بالطلب (74 آية بسكينة: 'Amiri Quran'): MV.needFont(fam) يرجّع true لو جاهز، وإلا يبدأ التحميل من مجلد الشغل
      (04_render_frames.js و08_safe_check.js ينسخون AmiriQuran-Regular.ttf من motion/fonts لما compose.html فيه ayahCalm) ويرجّع false —
      الحركة تتخطى الرسم، وsettle() تنتظر الخط وتعيد الفريم. */
-  const FONTREQ = { 'Amiri Quran': 'AmiriQuran-Regular.ttf' }, FONTS = new Map();
+  const FONTREQ = { 'Amiri Quran': 'AmiriQuran-Regular.ttf', 'Aref Ruqaa': [['ArefRuqaa-Bold.ttf', '700'], ['ArefRuqaa-Regular.ttf', '400']] }, FONTS = new Map();
   function needFont(fam) {
     let h = FONTS.get(fam); if (h) return h.ok;
     h = { ok: false, bad: false }; FONTS.set(fam, h);
     try { if ([...document.fonts].some(f => f.family.replace(/["']/g, '') === fam && f.status === 'loaded')) { h.ok = true; h.p = Promise.resolve(); return true; } } catch (e) {}
-    const files = FONTREQ[fam] ? [[FONTREQ[fam], '400']] : ((G.STYLES && G.STYLES.FONT_FILES[fam]) || []);
+    const files = FONTREQ[fam] ? (Array.isArray(FONTREQ[fam]) ? FONTREQ[fam] : [[FONTREQ[fam], '400']]) : ((G.STYLES && G.STYLES.FONT_FILES[fam]) || []);
     if (!files.length) { h.bad = true; h.p = Promise.resolve(); return false; }
     h.p = Promise.all(files.map(([file, weight]) => new FontFace(fam, 'url("' + file + '")', { weight, style: 'normal' }).load().then(f => document.fonts.add(f))))
       .then(() => { h.ok = true; }, () => { h.bad = true; console.error('⚠️ MV.needFont: ما لقيت ' + files.map(x => x[0]).join(' ') + ' بمجلد الشغل (انسخه من motion/fonts)'); });
@@ -377,6 +405,21 @@
     Object.values(STY.fonts).forEach(f => { if (G.STYLES.FONT_FILES[f]) needFont(f); });
     return STY;
   }
+  /* 🔊 6.5 صوت مربوط بحركة: MV.cue('pen', t0, {d:0.4, g:0.03, id:'box1'}) داخل المشهد عند لحظة الحركة نفسها.
+     عادي يُنادى كل فريم (يتسجّل مرة وحدة بالمفتاح id). `node 04_render_frames.js <work> cues` يجمعها بـcues.json
+     و05_sfx.py يخلطها تحت صوتك. الأنواع: tick hit impact air swish whip pen paper pop ding clink (references/depth.md §7). */
+  const CUES = G.__CUES || (G.__CUES = {});
+  function cue(k, t, o) { o = o || {}; const id = o.id || (k + '@' + (+t).toFixed(2)); if (!CUES[id]) CUES[id] = { k, t: +(+t).toFixed(3), d: o.d == null ? null : +o.d, g: o.g == null ? null : +o.g }; }
+  /* 🆕 6.5 (101 قائمة تنكشف): MV.findWord(key, from) = أول نطق لكلمة بعد ثانية from (بلا تشكيل ولا كشيدة، والواو/ال قبلها عادي) أو null ·
+     MV.json(name) = ملف json من مجلد الشغل (البنود وكلماتها) */
+  const NRM = s => String(s || '').replace(/[\u064B-\u0652\u0640\u2066-\u2069]/g, '').replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').trim();
+  function findWord(key, from) { const k = NRM(key); if (!k || typeof CAPS === 'undefined') return null;
+    let best = null; for (const c of CAPS) for (const w of (c.w || [])) { if (w.s < (from || 0)) continue; const n = NRM(w.t); if ((n === k || n.includes(k)) && (best == null || w.s < best)) best = w.s; }
+    return best; }
+  const JS = {};
+  function json(name) { if (name in JS) return JS[name]; let d = null;
+    try { const x = new XMLHttpRequest(); x.open('GET', name, false); x.send(); if (x.status === 200 || (x.status === 0 && x.responseText)) d = JSON.parse(x.responseText); } catch (e) { console.error('⚠️ MV.json: ما انقرى ' + name + ' — ' + e.message); }
+    return (JS[name] = d); }
   function scene(name, fn, layer) { if (typeof SCENE_LIST === 'undefined') throw new Error('MV.scene: هالصفحة مو compose'); if (layer) fn.layer = layer; SCENE_LIST.push([name, fn, layer]); }
 
   const MV = {
@@ -386,12 +429,12 @@
     at: (lt, a, b, ez = 'cubicOut') => (typeof ez === 'function' ? ez : E[ez])(prog(lt, a, b)),
     wordTime, lineSpan, wordsOf,
     font: fontStr, F: fontStr,
-    text: Object.assign((X, s, x, y, o) => text(X, s, x, y, o), { draw: text, layout, drawLayout, kashida, drawKashida, typeSub, westernDigits, visualOrder }),
+    text: Object.assign((X, s, x, y, o) => text(X, s, x, y, o), { draw: text, layout, drawLayout, kashida, drawKashida, headGap, typeSub, westernDigits, visualOrder }),
     num: (v, d = 0) => westernDigits(Number(v).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d })),
     drawPath, pathInfo,
     video, person, panel, hideCaption, scene, ready,
     frameAt, personAt, pending, settle, faceAt, needFont, palmAt, env, overlay, trackAt, track,
-    useStyle, get S() { return STY; },
+    useStyle, get S() { return STY; }, cue, findWord, json,
   };
   G.MV = MV;
 })();

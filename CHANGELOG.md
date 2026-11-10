@@ -1,5 +1,16 @@
 # Changelog
 
+## 4.1.0 — 2026-11-10 — video editor 6.5.1 (soft hair cut, depth, real SFX)
+- Video editor engine updated 6.3.0 → 6.5.1 from the MIT-licensed upstream (video-ad-editor, © 2026 Majed Alzaabi — three-way merged onto our copy; credits in `third_party/NOTICE.md`):
+  - **Soft hair cut «القص الناعم»** `scripts/44_matte.py` (BiRefNet portrait via rembg, free and local; room colour cleaned from hair edges; GPU when `onnxruntime-gpu` is present) — runs by itself after «ورا الشخص» (`11_behind_text.js`, `MATTE=apple` = old cut); `--from-apple` cleans the fast cut in seconds. Install once with `00_setup.sh --extras`.
+  - **Depth** `scripts/depth.js` + `references/depth.md`: room ← words behind the head ← you ← words in front, a virtual camera between the layers, a glowing word that lights the wall/rim (front words also light the face), room tint, and `DEPTH.box` (an exact box on printed text from `43_textbox.py`). Captions can be hidden with the creator's OK.
+  - **Word timing on the waveform** (`02_captions.py`, `--no-snap`, `--lead`), **46 recorded CC0 sounds** (`sfx/bank.npz`) tied to on-screen motion with `MV.cue` → `node 04_render_frames.js <work> cues` → `05_sfx.py` (ducked under the voice).
+  - **Storyboard before the full render** (`32_midframes.py --story`), **note on the frame** in the review page and a **taste file** (`41_review.py taste`, kept in `~/.io-editor/taste.md`).
+  - `riseUp` (move 3) mask from real glyph metrics + blur/bounce/shine; `MV.text.headGap` — a word behind the head stretches with kashida so no letter or dot hides; magazine cover (57) takes `head`/`place`.
+  - Motion bank **354**: 353 `pixelList` «قائمة تنكشف» (pixelated list items revealed on their spoken word with a theme-colour highlight) and 354 `explode` «تفكيك الطبقات» (3D layers come apart one by one with dotted labels) — upstream 101/102, renumbered; previews re-rendered (`render-preview-j.js`).
+- New skill **`io-review-video`** — product review reel with voice-over: part-tracking lines, smooth zooms, spec/discount cards, cut-out product cover (`scripts/review/`, `references/review-video.md`, `references/pro-editor.md`); accent colours from the project theme.
+- Fix: `io-ai-story`, `io-montage-video`, `io-motion-video`, `io-podcast-video`, `io-thumbnail-video` pointed at `../video-editor` (missing folder) — now `../io-video-editor`.
+
 ## 4.0.2
 - دليل تعليمي مصوّر `docs/tutorial/io-studio-tutorial.pdf` (٢٥ صفحة، صور حقيقية عليها أرقام وأسهم) — يفتح من البرنامج «📖 دليل الاستخدام».
 

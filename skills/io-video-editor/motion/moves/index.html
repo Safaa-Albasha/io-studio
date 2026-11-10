@@ -88,7 +88,7 @@ document.getElementById('save').onclick = async () => {
 async function loadCatalog() {
   try { const r = await fetch('catalog-all.json', { cache: 'no-store' }); if (r.ok) { const d = await r.json(); if (d && Array.isArray(d.moves)) return d.moves; } } catch (e) {}
   const by = new Map();
-  for (const f of ['catalog.json', 'catalog-plus-a.json', 'catalog-plus-b.json', 'catalog-plus-c.json', 'catalog-plus-d.json', 'catalog-plus-e.json', 'catalog-plus-f.json', 'catalog-plus-g.json', 'catalog-plus-h.json', 'catalog-plus-i.json']) {
+  for (const f of ['catalog.json', 'catalog-plus-a.json', 'catalog-plus-b.json', 'catalog-plus-c.json', 'catalog-plus-d.json', 'catalog-plus-e.json', 'catalog-plus-f.json', 'catalog-plus-g.json', 'catalog-plus-h.json', 'catalog-plus-i.json', 'catalog-plus-j.json']) {
     try { const r = await fetch(f, { cache: 'no-store' }); if (!r.ok) continue; ((await r.json()).moves || []).forEach(m => { if (m && m.n != null && !by.has(m.n)) by.set(m.n, m); }); } catch (e) {}
   }
   return [...by.values()].sort((a, b) => a.n - b.n);
