@@ -1,4 +1,3 @@
-/* Ported from video-ad-editor 6.5 (MIT, © 2026 Majed Alzaabi — third_party/LICENSE.video-ad-editor), adapted for I/O Studio. */
 /* يرسم طبقة الموشن الشفافة لكل فريم من plan.json
    node render_overlay.js <work> [f1,f2,...] */
 const path=require('path'),fs=require('fs');

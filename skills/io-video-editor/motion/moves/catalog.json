@@ -2096,8 +2096,7 @@
    "desc": "عنصر (رقم، سعر، منتج) يطفو فوق كفّك ويتمايل لما ترفع إيدك، ويختفي لما تنزلها. الكف من التتبع (ماك)؛ بلاه ثابت تحت يسار.",
    "preview": "previews/91.mp4",
    "source": {
-    "label": "السكل نفسه — scripts/29_handtrack.py",
-    "url": "https://github.com/majedphotos/video-ad-editor"
+    "label": "السكل نفسه — scripts/29_handtrack.py"
    },
    "bonus": false,
    "hand": "optional",

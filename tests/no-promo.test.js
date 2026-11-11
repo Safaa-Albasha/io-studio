@@ -18,7 +18,7 @@ test('no course ad or promo link in skills, agents or hooks', () => {
   const files = ['skills', 'agents', 'hooks'].flatMap((d) => walk(path.join(ROOT, d)));
   for (const f of files) {
     const s = fs.readFileSync(f, 'utf8');
-    assert.doesNotMatch(s, /dawrat\.com|احترف كلود|instagram\.com\/channel\//, path.relative(ROOT, f));
+    assert.doesNotMatch(s, /dawrat\.com|احترف كلود|instagram\.com\/channel\/|video-ad-editor/, path.relative(ROOT, f));
   }
 });
 

@@ -37,4 +37,3 @@ description: يمنتج ريل مراجعة منتج 9:16 — تعليق صوت�
 
 ---
 **آي أو استوديو:** الهوية والألوان من `.io/` (`theme.json` · `project.json`) — كرت الخصم والخطوط بلون `acc` من الثيم، والكفر بمقاسات إنستقرام ويوتيوب وتيك توك بالتساوي (`references/thumbnails.md`). 
-مأخوذ من سكل `review-video` بمشروع video-ad-editor (© 2026 Majed Alzaabi، رخصة MIT — `third_party/LICENSE.video-ad-editor`).

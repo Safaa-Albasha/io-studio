@@ -88,4 +88,3 @@
 - لو عنده كفرات سابقة، انسخ ترتيبها وألوانها قبل أي شي.
 
 ---
-<sub>Ported from video-ad-editor 6.5 (MIT, © 2026 Majed Alzaabi — third_party/LICENSE.video-ad-editor), adapted for I/O Studio.</sub>

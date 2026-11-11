@@ -87,4 +87,3 @@
 - ملف بالسحابة «أونلاين فقط» حجمه صفر محلياً. نزّله قبل الاستخدام.
 
 ---
-<sub>Ported from video-ad-editor 6.5 (MIT, © 2026 Majed Alzaabi — third_party/LICENSE.video-ad-editor), adapted for I/O Studio.</sub>

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# Ported from video-ad-editor 6.5 (MIT, © 2026 Majed Alzaabi — third_party/LICENSE.video-ad-editor), adapted for I/O Studio.
 """خلفية مسرح: أشعة ضوء فوق طاولة خشب، بلون الهوية.
    python3 stage.py <out.png> [#لون] [بذرة]"""
 import sys

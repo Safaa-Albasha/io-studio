@@ -133,4 +133,3 @@ python3 scripts/05_sfx.py <work>                 # يخلط cues.json + sfx.json
 ومصدر كل صوت محفوظ داخل البنك (`_index`). `pen` و`whip` مولّدين بالكود.
 
 ---
-<sub>Ported from video-ad-editor 6.5 (MIT, © 2026 Majed Alzaabi — third_party/LICENSE.video-ad-editor), adapted for I/O Studio.</sub>
