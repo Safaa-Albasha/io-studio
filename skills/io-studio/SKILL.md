@@ -14,7 +14,7 @@ node "${CLAUDE_PLUGIN_ROOT}/engine/config.js" lesson <slug>
   - عرض HTML (`deck.html`، كل شريحة `<section>` أو `.slide`): صدّره صور:
     `node "${CLAUDE_PLUGIN_ROOT}/engine/shoot.js" lessons/<slug>/deck.html --selector "section, .slide" --out-dir lessons/<slug>/slides --prefix p`
     (أو من الاستوديو نفسه: «📥 استيراد عرض HTML» — أسرع بس الخطوط والصور الخارجية ممكن ما تطلع).
-- `prompt.md` — نص الملقّن: كل شريحة تبدي بـ `## رقم` (سكل io-script يكتبه).
+- `prompt.md` — نص الملقّن (سكل io-script يكتبه): أول شريحة `## شريحة العنوان`، والباقي `### شريحة X.Y — عنوان`، وسطر فاضي بين النقاط. هالصيغة يقراها الاستوديوين؛ `## رقم` يشتغل بالسريع بس — استوديو الكورسات يطلع بيه ملقّن فاضي.
 - `scene.json` — اختياري، للمشهد المتحرك (سكل io-lesson).
 - `theme.json` — ينسخ من `.io/` تلقائياً.
 

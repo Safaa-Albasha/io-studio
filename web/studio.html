@@ -410,7 +410,7 @@ function updatePrompter() {
   const el = $('prompter');
   const txt = promptText();
   const n = count();
-  el.textContent = txt ? txt : (n ? '— ما بيه نص لهالشريحة —' : 'الملقّن: حط prompt.md بمجلد الدرس (كل شريحة تبدي بـ ## رقمها).');
+  el.textContent = txt ? txt : (n ? '— ما بيه نص لهالشريحة —' : 'الملقّن: حط prompt.md بمجلد الدرس (أول شريحة ## شريحة العنوان، والباقي ### شريحة 1.1 …).');
   el.style.fontSize = $('promptSize').value + 'px';
   el.scrollTop = 0;
   if (popup && !popup.closed) {
