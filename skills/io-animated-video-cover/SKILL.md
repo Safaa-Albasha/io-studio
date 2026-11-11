@@ -348,7 +348,6 @@ await page.evaluate(() => document.fonts.ready);
 ---
 
 ## 🆕 I/O Studio — الكفر المتحرك للمنصات الثلاث
-> مبني على animated-video-cover من content-engine (ماجد الزعابي، بإذنه).
 
 | المنصة | المقاس | التعديل |
 |---|---|---|

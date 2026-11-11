@@ -13,7 +13,6 @@ By Safaa Albasha — [@safaaio](https://instagram.com/safaaio) · **[العرب�
 ## What's inside
 
 - **`web/app.html` — the full program:** ideas (incl. daily trend ideas from the accounts you follow) → schedule (3 platforms equally) → build pipeline → montage (timeline editor, filters, sound) → library of every installed move (358), template, sound, look and lesson (56) — tuned to your account type (doctor, interior designer, entrepreneur, creator, teacher/student, personal; video or podcast). Run `node engine/serve.js --open app.html`.
-- **Merged plugins (copied and modified):** content-engine (with the author's permission — onboarding, carousel, news board, animated cover, arabize-post, PNG export, Blotato publishing, product-ad and quality agents), the video editor (talking-head reels, 3D motion engine, podcast, beat montage, thumbnails), live-stage, reels rhythm script, trips, and استوديو الكورسات (Arabic UI). See `third_party/NOTICE.md`.
 - **New in 4.2 — podcast from a link:** paste a YouTube/TikTok/Instagram link — the transcript comes first (no video download), every moment gets a score with reasons, you pick in `web/podcast.html` (or let Claude pick the strongest), and only the chosen clips are downloaded. Plus four moves (speaker name tag, score ring, series day tag, typed command).
 - **New in 4.1 — video editor 6.5.1:** soft hair cut (BiRefNet, free and local — put yourself on any background or words with no halo), words behind/in front of you with a camera between the layers and a glowing word that lights the room, an exact box on printed text, word timing on the waveform, 46 real sound effects tied to on-screen motion, a storyboard before rendering, and a product-review reel skill (`io-review-video`).
 - **Motion:** 11 HTML motion templates (`templates/motion/`) and a lesson engine with show, reveal, morph, count, compare, quiz, confetti, character moods and per-beat colours.
@@ -49,4 +48,4 @@ claude plugin validate . # plugin + marketplace manifests
 
 **Upgrading from SKY (3.x) or SAFAA Studio:** project data moves from `.sky/` (or `.safaa/`) to `.io/`, and `~/.sky-editor` (or `~/.safaa-studio`) to `~/.io-editor`, automatically the first time a session starts. Commands are now `/io:io-…` (were `/sky:sky-…`).
 
-Includes MIT code from [live-stage, script, trips](https://github.com/majedphotos) (Majed Alzaabi) and the course recorder (Kondratev Alexander, MIT) — licenses and changes in `third_party/NOTICE.md`. content-engine is included with the author's permission (no upstream license file). I/O Studio's own code: MIT.
+Thanks to Majed Alzaabi ([majedphotos](https://github.com/majedphotos)) — parts of I/O Studio are built on his work. Licenses in [`third_party/`](third_party/NOTICE.md). I/O Studio's own code: MIT.

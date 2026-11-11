@@ -4,6 +4,7 @@
 - Removed the course ad line («عجبتك النتيجة؟ 🎓 دورة احترف كلود…» with the dawrat.com and Instagram-channel links) that `io-video-editor` told Claude to print at the end of every delivery. A test (`tests/no-promo.test.js`) keeps promo links out of skills, agents and hooks.
 - One naming everywhere: every reference to another skill now uses its `io-` name (`io-video-editor`, `io-motion-video`, `io-podcast-video`, `io-thumbnail-video`, `io-review-video`, `io-video-cut`, `io-publish-kit`, `io-lesson`, `io-script`, `io-carousel`, `io-studio` …), and a test checks every skill and agent is named `io-…` and matches its folder. Old `~/.sky-editor` / `.sky/` names stay only in the one-time migration code that moves old data to `~/.io-editor` / `.io/`.
 - No mention of the upstream video editor project's name in skills, scripts, catalogs, READMEs or the changelog; its MIT licence and copyright line stay only in `third_party/` (the MIT licence requires that).
+- Credits are one thank-you line in each README; the «مبني على …» lines are gone from skills and agents, the content guide footer no longer names the original, the DaVinci hand-off to an outside plugin is removed, and the one-take example and the live-stage README now show `Safaa-Albasha/io-studio`.
 - `third_party/NOTICE.md`: lottie cache path `~/.cache/io/`, «I/O Studio's own motion library».
 
 ## 4.2.0 — 2026-11-10 — podcast from a link (transcript first) + motion bank 358

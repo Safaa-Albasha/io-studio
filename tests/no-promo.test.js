@@ -14,11 +14,11 @@ function walk(dir, out = []) {
   return out;
 }
 
-test('no course ad or promo link in skills, agents or hooks', () => {
+test('no course ad, promo link or upstream credit in skills, agents or hooks', () => {
   const files = ['skills', 'agents', 'hooks'].flatMap((d) => walk(path.join(ROOT, d)));
   for (const f of files) {
     const s = fs.readFileSync(f, 'utf8');
-    assert.doesNotMatch(s, /dawrat\.com|احترف كلود|instagram\.com\/channel\/|video-ad-editor/, path.relative(ROOT, f));
+    assert.doesNotMatch(s, /dawrat\.com|احترف كلود|instagram\.com\/channel\/|video-ad-editor|majed|ماجد|الزعابي|content-engine/i, path.relative(ROOT, f));
   }
 });
 

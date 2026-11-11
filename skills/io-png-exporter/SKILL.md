@@ -61,7 +61,6 @@ await page.evaluate(() => document.fonts.ready);
 ---
 
 ## 🆕 I/O Studio — التصدير بأمر واحد (بدون فتح المتصفح)
-> مبني على png-exporter من content-engine (ماجد الزعابي، بإذنه).
 ```bash
 node "${CLAUDE_PLUGIN_ROOT}/engine/shoot.js" <file.html> --selector .slide --out-dir <dir> [--query size=1080x1920]
 ```
