@@ -1,6 +1,6 @@
 ---
 name: io-podcast-video
-description: يمنتج البودكاست والمقابلات — كاميرتين أو أكثر لنفس الجلسة إلى ريلات 9:16 بكابشن عربي وهوك مكتوب، أو الحلقة كاملة 16:9 لليوتيوب، أو حلقة ساعة إلى عدة ريلات. Use when user says "بودكاست"، "كاميرتين"، "الحلقة كاملة بالعرض"، "حلقة يوتيوب"، "ريلات من الحلقة"، "طلّع ريلات من المقابلة"، or sends multi-camera files or a long episode. Not for a single talking video (use video-editor).
+description: يمنتج البودكاست والمقابلات — كاميرتين أو أكثر لنفس الجلسة إلى ريلات 9:16 بكابشن عربي وهوك مكتوب، أو الحلقة كاملة 16:9 لليوتيوب، أو حلقة ساعة إلى عدة ريلات. Use when user says "بودكاست"، "كاميرتين"، "الحلقة كاملة بالعرض"، "حلقة يوتيوب"، "ريلات من الحلقة"، "طلّع ريلات من المقابلة"، or sends multi-camera files or a long episode. Not for a single talking video (use io-video-editor).
 ---
 
 # البودكاست والمقابلات

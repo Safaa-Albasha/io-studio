@@ -11,7 +11,7 @@
    ⚠ الاستئناف يتخطّى أي فريم موجود: عدّلت مشهد؟ استخدم --fresh أو range على المقطع المعدّل بعد حذف فريماته. */
 const fs = require('fs'), path = require('path'), http = require('http'), { spawnSync } = require('child_process');
 require('./vendor.js')();
-const ROOT = path.resolve(__dirname, '..');                        // video-editor (serves /motion, /scripts)
+const ROOT = path.resolve(__dirname, '..');                        // io-video-editor (serves /motion, /scripts)
 const LOGOS = path.resolve(__dirname, '../../hook-assets/logos');
 const CHROME = process.env.CHROME || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 let puppeteer; try { puppeteer = require('puppeteer-core'); } catch (e) { puppeteer = require(path.resolve(__dirname, '../../node_modules/puppeteer-core')); }
@@ -27,7 +27,7 @@ const SCALE = parseFloat(flag('scale', '1')), SAFE = !!flag('safe', false), WORK
 const Q = parseFloat(flag('q', '0.95')), CRF = String(flag('crf', '16')), NOENC = !!flag('no-encode', false), FRESH = !!flag('fresh', false);
 const proj = JSON.parse(fs.readFileSync(path.join(PROJ, 'project.json'), 'utf8'));
 
-/* ── static server: /proj/* → project, /@logos/* → hook-assets/logos, else → video-editor ── */
+/* ── static server: /proj/* → project, /@logos/* → hook-assets/logos, else → io-video-editor ── */
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript', '.json': 'application/json', '.ttf': 'font/ttf', '.otf': 'font/otf', '.woff2': 'font/woff2', '.woff': 'font/woff', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.wav': 'audio/wav', '.mp3': 'audio/mpeg', '.mp4': 'video/mp4', '.css': 'text/css' };
 function serve() {
   return new Promise(res => {

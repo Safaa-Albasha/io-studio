@@ -115,7 +115,6 @@ ffmpeg -y -i clip.mp4 -i overlay.png -filter_complex \
 ---
 
 ## 🆕 I/O Studio — نسخ المنصات الثلاث
-> مبني على product-ad-studio من content-engine (ماجد الزعابي، بإذنه).
 
 بعد الكاروسيل الإعلاني (1080×1440):
 - **تيك توك:** نفس الشرائح 1080×1920 (`shoot.js --query size=1080x1920`)، والمقاطع تنركّب 9:16: `node "${CLAUDE_PLUGIN_ROOT}/engine/video.js" variants <clip> --mode crop`.

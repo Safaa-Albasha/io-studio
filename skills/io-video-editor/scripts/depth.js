@@ -1,4 +1,3 @@
-/* Ported from video-ad-editor 6.5 (MIT, © 2026 Majed Alzaabi — third_party/LICENSE.video-ad-editor), adapted for I/O Studio. */
 /* ═══ depth.js — 🎥 «العمق» (6.5 — من دليل «How I edited my captions reel with AI») ═══
    ترتيب الطبقات: الغرفة ← كلام ورا ← أنت (مقصوص) ← كلام قدام، وكاميرا افتراضية تتحرك بينهم حركة خفيفة:
    القريب يتحرك أكثر من البعيد (بارالاكس) فالكلام يبين مجسّم بين الغرفة وبينك.

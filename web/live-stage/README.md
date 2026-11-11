@@ -5,8 +5,8 @@
 **التنصيب ككلود بلقن / Install as a Claude Code plugin:**
 
 ```
-/plugin marketplace add majedphotos/majed-plugins
-/plugin install majed-live-stage@majed-plugins
+/plugin marketplace add Safaa-Albasha/io-studio
+/plugin install io@io-studio
 ```
 
 بعدها قول لكلود "أبي عرض عن ..." / Then ask Claude for "a live presentation about ...".

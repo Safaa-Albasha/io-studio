@@ -10,7 +10,7 @@ const PHC = { x: PH.x + PH.w / 2, y: PH.y + PH.h / 2 };
 const LAP = { x: 120, y: 430, w: 840, h: 525 };          // شاشة اللابتوب
 const SPH = W / PH.w;                                     // زوم الجوال لين يملا الإطار
 const BLUR = [[0.95, 2.0], [4.35, 5.15], [9.2, 11.1], [13.0, 14.6]];
-const URL = 'majedphotos/majed-plugins';
+const URL = 'Safaa-Albasha/io-studio';
 
 MOTION.scene({
   id: 's1', start: 0, end: 16,
@@ -88,7 +88,7 @@ MOTION.scene({
       const out = (d) => E.expoIn(C(prog(t, 7.25 + d, 7.75 + d), 0, 1)) * -1500;
       const hd = at(t, 5.05, 5.5, 'expoOut');
       Y.save(); Y.globalAlpha = hd; ctx.text(Y, 'بلقنين جاهزين', 540, 520 + 60 * (1 - hd) + out(0), { family: 'display', size: 120, color: '#FFFFFF', align: 'center' }); Y.restore();
-      [['content-engine-v5', 'مصنع المحتوى', 820, 5.2, 6.15], ['majed-video', 'بلقن الفيديو', 1110, 5.42, 6.75]].forEach(([n, a, y, t0, ck], i) => {
+      [['io', 'آي أو استوديو', 820, 5.2, 6.15], ['io-video-editor', 'محرّك الفيديو', 1110, 5.42, 6.75]].forEach(([n, a, y, t0, ck], i) => {
         const dy = (1 - SPR(prog(t, t0, t0 + 0.6))) * 1300 + out(0.07 * (i + 1));
         Y.save(); Y.translate(0, y + dy);
         Y.save(); Y.shadowColor = 'rgba(80,30,10,0.22)'; Y.shadowBlur = 40; Y.shadowOffsetY = 16; Y.fillStyle = '#FFFFFF'; Y.beginPath(); Y.roundRect(90, -115, 900, 230, 44); Y.fill(); Y.restore();

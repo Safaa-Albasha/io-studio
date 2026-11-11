@@ -1,4 +1,3 @@
-/* Ported from video-ad-editor 6.5 (MIT, © 2026 Majed Alzaabi — third_party/LICENSE.video-ad-editor), adapted for I/O Studio. */
 /* node cover_render.js <setup.json> <out-prefix> */
 const path=require('path'),fs=require('fs');const S=path.resolve(__dirname,'..','..');
 const R=[process.env.PUPPETEER_PATH,path.join(S,'node_modules/puppeteer-core'),'puppeteer-core','puppeteer'].filter(Boolean);let P;for(const r of R){try{P=require(r);break}catch(e){}}

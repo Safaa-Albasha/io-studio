@@ -1,5 +1,12 @@
 # Changelog
 
+## 4.2.1 — 2026-11-11 — cleanup
+- Removed the course ad line («عجبتك النتيجة؟ 🎓 دورة احترف كلود…» with the dawrat.com and Instagram-channel links) that `io-video-editor` told Claude to print at the end of every delivery. A test (`tests/no-promo.test.js`) keeps promo links out of skills, agents and hooks.
+- One naming everywhere: every reference to another skill now uses its `io-` name (`io-video-editor`, `io-motion-video`, `io-podcast-video`, `io-thumbnail-video`, `io-review-video`, `io-video-cut`, `io-publish-kit`, `io-lesson`, `io-script`, `io-carousel`, `io-studio` …), and a test checks every skill and agent is named `io-…` and matches its folder. Old `~/.sky-editor` / `.sky/` names stay only in the one-time migration code that moves old data to `~/.io-editor` / `.io/`.
+- No mention of the upstream video editor project's name in skills, scripts, catalogs, READMEs or the changelog; its MIT licence and copyright line stay only in `third_party/` (the MIT licence requires that).
+- Credits are one thank-you line in each README; the «مبني على …» lines are gone from skills and agents, the content guide footer no longer names the original, the DaVinci hand-off to an outside plugin is removed, and the one-take example and the live-stage README now show `Safaa-Albasha/io-studio`.
+- `third_party/NOTICE.md`: lottie cache path `~/.cache/io/`, «I/O Studio's own motion library».
+
 ## 4.2.0 — 2026-11-10 — podcast from a link (transcript first) + motion bank 358
 - **Podcast from a link** `engine/podcast-link.js` (own code): `subs <link>` reads only the title and the platform's subtitles with yt-dlp (no video) → `.io/podcast/<id>/words.json` (WebVTT parser keeps only new words of rolling auto-captions and uses per-word stamps); `score` gives every `podcast-batch.js propose` window a first 0–100 rank with Arabic reasons (starts with a question, a number, a pull word, fast speech, a complete idea, length) and the strongest non-overlapping picks; `fetch` downloads **only the approved clips** (`--download-sections`) with their own `words.json`/`spec.json` moved to the clip's clock. `--audio` falls back to sound-only for `18_long_transcribe.py`.
 - New page **`web/podcast.html`** «مقاطع البودكاست» (linked from the app's montage step for podcast accounts): score rings, reasons, time ranges, «Claude يختار الأقوى» / «أنا أختار», 3/5/8/10 reels, caption language + translation line + dubbing; saves `selections.draft.json` through `/api/podcast/*` (project-local ids only). Claude confirms with the creator before `select`.
@@ -8,7 +15,7 @@
 - Reference studied, not copied: Hojas Studio (github.com/rakaga66/hojas-studio) is under the PolyForm Noncommercial licence, so none of its code, UI or wording is used — the features above are written from scratch after the reel.
 
 ## 4.1.0 — 2026-11-10 — video editor 6.5.1 (soft hair cut, depth, real SFX)
-- Video editor engine updated 6.3.0 → 6.5.1 from the MIT-licensed upstream (video-ad-editor, © 2026 Majed Alzaabi — three-way merged onto our copy; credits in `third_party/NOTICE.md`):
+- Video editor engine updated 6.3.0 → 6.5.1 from the MIT-licensed upstream (three-way merged onto our copy; licence in `third_party/`):
   - **Soft hair cut «القص الناعم»** `scripts/44_matte.py` (BiRefNet portrait via rembg, free and local; room colour cleaned from hair edges; GPU when `onnxruntime-gpu` is present) — runs by itself after «ورا الشخص» (`11_behind_text.js`, `MATTE=apple` = old cut); `--from-apple` cleans the fast cut in seconds. Install once with `00_setup.sh --extras`.
   - **Depth** `scripts/depth.js` + `references/depth.md`: room ← words behind the head ← you ← words in front, a virtual camera between the layers, a glowing word that lights the wall/rim (front words also light the face), room tint, and `DEPTH.box` (an exact box on printed text from `43_textbox.py`). Captions can be hidden with the creator's OK.
   - **Word timing on the waveform** (`02_captions.py`, `--no-snap`, `--lead`), **46 recorded CC0 sounds** (`sfx/bank.npz`) tied to on-screen motion with `MV.cue` → `node 04_render_frames.js <work> cues` → `05_sfx.py` (ducked under the voice).
@@ -67,7 +74,7 @@
 - Tests check every skill's name matches its folder and the start hook reads both profile formats.
 
 ## 2.0.0 — 2026-11-07
-- One plugin: merged (copied and modified, MIT) video-ad-editor → `video-editor`, `motion-video`, `podcast-video`, `montage-video`, `thumbnail-video`; live-stage; reels rhythm script (now `script`); trips; BStudio (Arabic UI at `web/bstudio/`). Licenses and changes: `third_party/NOTICE.md`.
+- One plugin: merged (copied and modified, MIT) the video editor → `video-editor`, `motion-video`, `podcast-video`, `montage-video`, `thumbnail-video`; live-stage; reels rhythm script (now `script`); trips; BStudio (Arabic UI at `web/bstudio/`). Licenses and changes: `third_party/NOTICE.md`.
 - Identity bridge: `config.js video-theme` turns `.sky/theme.json` into the video engine theme; engine reads `.sky/creator-profile.md`; upstream self-update removed.
 - More motion: 8 new templates (kinetic, stat, chart, quote, before-after, intro, steps, lower-third); lesson engine adds reveal, compare, quiz, celebrate (confetti), bounce, character moods and per-beat backgrounds.
 - New `arabize` skill. `cover` folded into `thumbnail-video` (adds TikTok + quick HTML path). `start` routes to all 21 skills.

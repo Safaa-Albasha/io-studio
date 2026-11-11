@@ -1,6 +1,6 @@
 # بنك الحركات — كل فيديو له لوحة حركات، وأنت تختار بوعي
 
-بنك حركات مرقّم يكبر مع الوقت — **358 حركة** (1–100 بـ`motion/moves/catalog.json` من 17 أكتوبر، و101–200 بـ`catalog-plus-a.json` و`catalog-plus-b.json`، و201–232 بـ`catalog-plus-c.json`، و233–242 بـ`catalog-plus-d.json`، و243–264 بـ`catalog-plus-e.json` «أنمي وكرتون»، و265–283 بـ`catalog-plus-f.json` «أنظمة الموشن»، و284–328 بـ`catalog-plus-g.json` و`catalog-plus-h.json` «مراجع الريلز»، و329–352 بـ`catalog-plus-i.json` «كولاج تحريري ومونتاج المؤثرات»، و353–354 بـ`catalog-plus-j.json` من video-ad-editor 6.5 — دوالها داخل `motion/moves.js`، و355–358 بـ`catalog-plus-k.json` «ريلز الأدوات والبودكاست»، نوفمبر). كل حركة: دالة جاهزة (`motion/moves.js` أو `moves-plus-a.js`/`moves-plus-b.js`/`moves-plus-c.js`/`moves-plus-d.js`/`moves-plus-e.js`/`moves-plus-f.js`/`moves-plus-g.js`/`moves-plus-h.js`/`moves-plus-i.js`) + معاينة + مصدرها.
+بنك حركات مرقّم يكبر مع الوقت — **358 حركة** (1–100 بـ`motion/moves/catalog.json` من 17 أكتوبر، و101–200 بـ`catalog-plus-a.json` و`catalog-plus-b.json`، و201–232 بـ`catalog-plus-c.json`، و233–242 بـ`catalog-plus-d.json`، و243–264 بـ`catalog-plus-e.json` «أنمي وكرتون»، و265–283 بـ`catalog-plus-f.json` «أنظمة الموشن»، و284–328 بـ`catalog-plus-g.json` و`catalog-plus-h.json` «مراجع الريلز»، و329–352 بـ`catalog-plus-i.json` «كولاج تحريري ومونتاج المؤثرات»، و353–354 بـ`catalog-plus-j.json` — دوالها داخل `motion/moves.js`، و355–358 بـ`catalog-plus-k.json` «ريلز الأدوات والبودكاست»، نوفمبر). كل حركة: دالة جاهزة (`motion/moves.js` أو `moves-plus-a.js`/`moves-plus-b.js`/`moves-plus-c.js`/`moves-plus-d.js`/`moves-plus-e.js`/`moves-plus-f.js`/`moves-plus-g.js`/`moves-plus-h.js`/`moves-plus-i.js`) + معاينة + مصدرها.
 **قرار المستخدم (13 أكتوبر):** «ابيك تكون غني بالحركات… وتكون واعي». هو ما يختار حركة حركة. أنت تختار لكل فيديو.
 
 | الملف | شنو فيه |
@@ -350,7 +350,7 @@ FX.riseUp(MV, t, { text: 'الفكرة أهم من الأداة', s, out, accent
 ```
 - `clipUp` بـ`drawLayout` يقبل `'in'`/`'out'` (أو رقم قديم: الاتجاه من `dy`)، و`blur` لكل كلمة.
 
-## 3ط) 353 قائمة تنكشف (`pixelList` — من video-ad-editor 6.5، MIT)
+## 3ط) 353 قائمة تنكشف (`pixelList`)
 
 كرت أبيض بإطار مرسوم باليد **تحت الوجه وفوق منطقة الكابشن**: عنوان بخط يدوي (رقعة) وتحته خط، و3–5 بنود **مبكسلة**.
 لما ينطق كلمة البند: البكسلة تروح عنه، وينمسح وراه **شريط هايلايت بلون الهوية** (`acc` من `theme.json` — مو لون ثابت)،
@@ -371,7 +371,7 @@ MV.ready(() => { const L = MV.json('pixel_list.json');
 ```
 - خط العنوان (Aref Ruqaa) ينسخه `04_render_frames.js` لمجلد الشغل لحاله. الأصوات (تكّة + قلم مع كل كشف) تتسجّل بـ`MV.cue`.
 
-## 3ي) 354 تفكيك الطبقات (`explode` — من video-ad-editor 6.5.1، MIT)
+## 3ي) 354 تفكيك الطبقات (`explode`)
 
 ألواح **ثلاثية الأبعاد** بألوان الهوية (تدرّج `clay ← acc ← ink` من `theme.json`، أو `cols` من تحت لفوق) تطلع من نقطة —
 **فوق المنتج** أو جنبك — وهي لازقة، وتنفك عن بعض **وحدة وحدة** بارتداد مع دوران خفيف. لحظة ما ينطق اسم طبقة: يطلع منها

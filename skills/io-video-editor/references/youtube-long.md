@@ -111,7 +111,7 @@ node -e "const C=require('${CLAUDE_PLUGIN_ROOT}/engine/cut-core.js');const k=req
 1. من `transcript.txt` اختار ٣–٥ لحظات (٢٠–٦٠ ث): معلومة وحدة كاملة، رقم، قصة قصيرة، رأي جريء. **الطابور = موافقة على ٣**؛ أكثر من ٣ اعرض القائمة أول.
 2. لكل ريل مجلد `work/<slug>-reel-<n>/` + `spec.json` ← `20_episode_cuts.py` ← `fixes.json` ← `02_captions.py` ← `03_cut_zoom.py` (بالطول حول الوجه) ← **🪝 الهوك المكتوب** (`22_hook.py` — `references/podcast-hook.md`) ← الرسم ← `06b` ← `19_seam_check.py` (إلزامي).
 3. اللون: نفس اللوك بلا شرائط وبلا حبيبات قوية: `video.js cinematic <reel> --look <نفسه> --letterbox off --grain 3`.
-4. انسخهم لـ `output/<slug>/reels/` وسوّ لكل واحد كفر (thumbnail-video، كفر الريل).
+4. انسخهم لـ `output/<slug>/reels/` وسوّ لكل واحد كفر (io-thumbnail-video، كفر الريل).
 
 ## ٩. التسليم
 - `queue.js done <id> --out "output/<slug>/<slug>.youtube.mp4" --note "خلص: فيديو طويل + <n> ريلز"`.

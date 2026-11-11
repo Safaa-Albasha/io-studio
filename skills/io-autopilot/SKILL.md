@@ -40,10 +40,10 @@ node "${CLAUDE_PLUGIN_ROOT}/engine/series.js" resolve --file <file> --dir "$CLAU
 | النوع | شنو تسوي |
 |---|---|
 | `montage` + `format: reel` | سكل **io-video-editor** (ريل 9:16 بكابشن). الفيديو: `file` (تسجيل من استوديو الكورسات بـ `recordings/…`) أو `<work>/src.mov` للفكرة. ما بيه فيديو؟ اسأله يرفعه أو يسجّل. |
-| `montage` + `format: youtube` | **video-editor → `references/youtube-long.md`** (فيديو طويل 16:9 سينمائي: قص، −14 LUFS، لوك، فصول، ثمبنيل). |
+| `montage` + `format: youtube` | **io-video-editor → `references/youtube-long.md`** (فيديو طويل 16:9 سينمائي: قص، −14 LUFS، لوك، فصول، ثمبنيل). |
 | `montage` + `format: both` | youtube-long كامل، وبنهايته ٣–٥ ريلز عمودية منه (نفس الملف، القسم الأخير). |
 | `rewrite-idea` | عدّل الفكرة حسب `note` (العنوان، الهوك، الشكل، الملاحظات) بنفس `id` بـ `.io/plan.json` — اقرا الملف، غيّر الفكرة بس، احفظه JSON صالح (البرنامج يحدّث نفسه كل ٨ ثواني). طبّق حزمة نوع الحساب. |
-| `script` | `text` سكربت أو فكرة من المستخدم: سكل **script** يرتّبه بهويته ولهجته (`format`: reel/youtube/both/carousel → carousel = سكل carousel). ضيفه فكرة بالبرنامج: `node "${CLAUDE_PLUGIN_ROOT}/engine/app-api.js" add-ideas <ideas.json> --no-trends-mark` مع `"source":"manual"` والسكربت بـ `notes`. |
+| `script` | `text` سكربت أو فكرة من المستخدم: سكل **io-script** يرتّبه بهويته ولهجته (`format`: reel/youtube/both/carousel → carousel = سكل io-carousel). ضيفه فكرة بالبرنامج: `node "${CLAUDE_PLUGIN_ROOT}/engine/app-api.js" add-ideas <ideas.json> --no-trends-mark` مع `"source":"manual"` والسكربت بـ `notes`. |
 | `edit` + `target: caption` | التايملاين: `work` + `segment.index` (رقم الجملة بـ `a.json`/`fixes.json`) و`segment.text`. أعد صياغة الجملة حسب `note` **بنفس عدد كلمات وِسبر** (اربط بـ `_`، و`~` لكلمة تنشال) واكتبها بـ `fixes.json` → `fix[index]` بس، وبعدها التطبيق الجزئي: `POST http://127.0.0.1:<port>/api/tl/apply` بنفس جسم الصفحة (لو الاستوديو شغّال) أو `02_captions.py` ثم الرسم والتجميع — `references/timeline.md`. |
 | `edit` + `target: audio` | سكل io-video-editor → `references/audio-enhance.md` (`segment.start/end` بزمن المصدر إذا محدد). |
 | `edit` + `note` فيه «ثبّت / الصق / خلّه يلحق» شي يتحرك (رقم على قاع، شعار على شاشة) | تتبّع: سكل io-video-editor → `references/tracking.md` (قسم «من الشات»): فريم واضح → زوايا السطح → `engine/track/track.py plane … --out <work>/track/<اسم>.json` → عاين بـ`preview` → «صلّح من هنا» لو ضاع → اربط `track` بالعنصر بـ`studio.json` → ارسم الجزء. |

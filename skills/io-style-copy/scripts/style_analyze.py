@@ -291,7 +291,7 @@ def map_dna(dna_path, work=None, apply=False):
                   "command": f"python3 scripts/35_moves.py plan --title \"…\" --family {family} --style <id من المرشحين بعد ما تشوف الفريمات>"},
         "caption_position": {"band": band, "hint": None if band in (None, "lower", "bottom") else
                              ("window.CAP_Y_AT = t => 960  // نص الشاشة" if band == "middle" else "window.CAP_Y_AT = t => 520  // فوق — بعيد عن منطقة 0-150 الآمنة")},
-        "look": {"suggest": nearest_looks(lk), "rule": "صفر تعديل لوني على صورته إلا بطلب صريح (video-editor القاعدة 4) — اعرض قبل/بعد واسأله."},
+        "look": {"suggest": nearest_looks(lk), "rule": "صفر تعديل لوني على صورته إلا بطلب صريح (io-video-editor القاعدة 4) — اعرض قبل/بعد واسأله."},
         "colors": {"palette": lk["palette"], "accent_guess": lk["accent_guess"],
                    "rule": "الهوية من .io/theme.json تبقى. ألوان المرجع للكروت بس إذا طلبها — نتعلّم الأسلوب مو هوية غيرنا."},
         "cut": {"shot_mean_ref": round(shot, 2), "reel_seconds_ref": round(dur, 1),

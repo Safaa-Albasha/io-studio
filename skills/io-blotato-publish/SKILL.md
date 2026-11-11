@@ -120,7 +120,6 @@ python3 blotato_publish.py <مجلد-الصور> --caption "الكابشن" --pl
 ---
 
 ## 🆕 I/O Studio
-> مبني على blotato-publish من content-engine (ماجد الزعابي، بإذنه).
 
 - **الافتراضي: المنصات الثلاث بالتساوي** — `--platforms instagram,youtube,tiktok` إلا إذا حدّد غير ذلك. كل منصة بنسختها (الصور بمقاسها من `output/carousels/<slug>/<platform>/`، والكابشن من `output/publish/<slug>.md` اللي يكتبه `io-publish-kit`). نفّذ أمر لكل منصة إذا الصور تختلف بالمقاس.
 - مسار الأداة: `python3 "${CLAUDE_PLUGIN_ROOT}/skills/io-blotato-publish/blotato_publish.py" …` — و`accounts.json` يبقى بمجلد مشروعه (مو داخل البلقن)، ومضاف لـ`.gitignore`.

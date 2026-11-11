@@ -58,7 +58,7 @@ node engine/grade.js lut teal_orange --out teal_orange.cube               # LUT 
 - `letterbox` و`cinema_scope` للفيديو **بالعرض 16:9** بس. على 9:16 تغطي نص الصورة.
 - الصور (كفر، كاروسيل): `apply cover.jpg --look ...` يطلّع صورة بنفس الصيغة.
 
-## ٥. مع محرّك الفيديو (video-editor)
+## ٥. مع محرّك الفيديو (io-video-editor)
 - `theme.json` ← `"grade"` يقبل `false` (الافتراضي) أو `"auto"` (تصحيح مقاس بعد موافقته — شوف `25_scopes.py`). اللوكات الفنية ما تنحط هناك.
 - اللوك الفني = **مرحلة أخيرة بعد `06_encode.sh`**:
   ```bash

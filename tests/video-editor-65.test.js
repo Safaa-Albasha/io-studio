@@ -1,5 +1,5 @@
 'use strict';
-// video-ad-editor 6.4–6.5.1 port (MIT, © 2026 Majed Alzaabi): soft hair cut, depth, SFX bank, moves 353–354, io-review-video.
+// video editor 6.4–6.5.1 port (MIT, licence in third_party/): soft hair cut, depth, SFX bank, moves 353–354, io-review-video.
 const test = require('node:test');
 const assert = require('node:assert');
 const fs = require('fs');
@@ -22,7 +22,7 @@ test('engine version and ported files are in place', () => {
 test('moves 353–354: catalog, previews, functions in moves.js', () => {
   const j = JSON.parse(read('motion/moves/catalog-plus-j.json')).moves;
   assert.deepStrictEqual(j.map((m) => [m.n, m.id]), [[353, 'pixelList'], [354, 'explode']]);
-  for (const m of j) { assert.ok(fs.existsSync(path.join(MOVES, m.preview)), m.preview); assert.match(m.source.label, /video-ad-editor/); assert.match(m.name, /[؀-ۿ]/); }
+  for (const m of j) { assert.ok(fs.existsSync(path.join(MOVES, m.preview)), m.preview); assert.match(m.source.label, /NOTICE/); assert.match(m.name, /[؀-ۿ]/); }
   const ids = new Set();
   for (const f of fs.readdirSync(MOVES).filter((f) => /^catalog.*\.json$/.test(f))) for (const m of JSON.parse(fs.readFileSync(path.join(MOVES, f), 'utf8')).moves) {
     assert.ok(!ids.has(m.id), 'duplicate id ' + m.id); ids.add(m.id); }
@@ -74,7 +74,7 @@ test('io-review-video skill points at the shared engine; sibling skills use the 
 test('ported text carries no personal names, affiliate codes or upstream data paths', () => {
   const files = ['references/depth.md', 'references/pro-editor.md', 'references/review-video.md', 'scripts/depth.js', 'scripts/43_textbox.py', 'scripts/44_matte.py',
     'scripts/41_review.py', 'scripts/02_captions.py', 'references/moves.md', 'references/keyword-automation.md', 'scripts/review/review.py'];
-  for (const f of files) { const s = read(f); assert.doesNotMatch(s, /ماجد|عزيز|CUKTECH|كود \*\*MAJED|\.video-ad-editor\//, f); }
+  for (const f of files) { const s = read(f); assert.doesNotMatch(s, /ماجد|عزيز|CUKTECH|كود \*\*MAJED|video-ad-editor/, f); }
   assert.match(read('scripts/41_review.py'), /\.io-editor/);
   assert.match(fs.readFileSync(path.join(ROOT, 'third_party', 'NOTICE.md'), 'utf8'), /6\.4\.0 → 6\.5\.1/);
 });

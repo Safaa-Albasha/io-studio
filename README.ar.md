@@ -110,12 +110,8 @@ claude plugin validate .          # فحص البلقن والمتجر
 
 **شكل المستودع:** البلقن بجذر المستودع `Safaa-Albasha/io-studio` — بيه `.claude-plugin/plugin.json` (البلقن `io`) و`.claude-plugin/marketplace.json` (المتجر `io-studio`، المصدر `./`). كل شي يحتاجه البلقن داخل هالمجلد.
 
-## مبني على
-آي أو استوديو يجمع بلقنات ماجد الزعابي واستوديو الكورسات (MIT، وcontent-engine بإذن صاحبه) بعد ما نسخناها وعدّلناها، ويّا أدوات مكتوبة من الصفر:
-- **content-engine** (بإذن صاحبه) و**video-ad-editor** و**live-stage** و**script** و**trips** لماجد الزعابي — [majedphotos](https://github.com/majedphotos)
-- **استوديو الكورسات** لـ Kondratev Alexander (MIT، معرّب — التفاصيل بـ `third_party/NOTICE.md`)
-
-الرخص الأصلية وقائمة التعديلات بـ [`third_party/NOTICE.md`](third_party/NOTICE.md).
+## شكر
+شكر خاص لماجد الزعابي ([majedphotos](https://github.com/majedphotos)) — أجزاء من آي أو استوديو مبنية على شغله. الرخص بـ [`third_party/`](third_party/NOTICE.md).
 
 ## الرخصة
 MIT — مجاني، استخدمه وعدّله وشاركه.

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# Ported from video-ad-editor 6.5 (MIT, © 2026 Majed Alzaabi — third_party/LICENSE.video-ad-editor), adapted for I/O Studio.
 """ريل مراجعة منتج: تعليق صوتي فوق لقطات منتج، بخطوط تتبع القطعة وكرت خصم.
    python3 review.py inspect <مجلد المواد> <work>    يفرّغ، يطلع ورقات فريمات، يقيس الثبات والحدة
    python3 review.py grid <work> <ملف> <ثانية>       فريم بشبكة إحداثيات لاختيار نقاط القطع

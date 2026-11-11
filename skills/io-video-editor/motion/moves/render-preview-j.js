@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* ═══ render-preview-j.js — معاينات الحركات 353–354 (FX.pixelList · FX.explode داخل motion/moves.js — من video-ad-editor 6.5، MIT) ═══
+/* ═══ render-preview-j.js — معاينات الحركات 353–354 (FX.pixelList · FX.explode داخل motion/moves.js) ═══
    node motion/moves/render-preview-j.js            → previews/353.mp4 · 354.mp4
    نفس طريقة render-preview-i.js. الألوان من ثيم المعاينة (P.acc …) — بلا أسماء ولا منتجات حقيقية. */
 const D = {

@@ -1,4 +1,4 @@
-"""Small, dependency-free statistics for the hook-meter experiment.
+"""Small, dependency-free statistics for the io-hook-meter experiment.
 
 Only the Python standard library is used, so the experiment runs anywhere.
 

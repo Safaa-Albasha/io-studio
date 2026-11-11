@@ -106,4 +106,4 @@ ffmpeg -i x.mp4 -vf "select='not(mod(n\,40))',scale=270:-1,tile=6x2" -frames:v 1
 **أو بصوته:** بالاستوديو (سكل io-studio) — افتح المجلد، «🎬 مشهد»، الملقّن يعرض جملة كل لقطة، والتسجيل يبدي من أول المشهد ويوقف بنهايته.
 
 ## ٥. بعدها
-كابشن (video-cut → captions/burn)، كفر من أحلى لقطة (cover)، وحزمة نشر (publish-kit).
+كابشن (io-video-cut → captions/burn)، كفر من أحلى لقطة (io-thumbnail-video)، وحزمة نشر (io-publish-kit).
