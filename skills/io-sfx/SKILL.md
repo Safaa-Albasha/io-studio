@@ -42,7 +42,7 @@ description: مكتبة مؤثرات صوتية حرّة (100+ صوت مولّد
 - **سينمائي/وثائقي/سفر:** `whoosh_long`، `air_pass`، `cinematic_hit`، `hit_trailer_tail`، `wind_gust`.
 - **فخم (عطور، ساعات):** `tap_glass`، `whoosh_soft`، `sparkle_magic` — قليل جداً.
 
-## ٣. بمحرّك الفيديو (video-editor)
+## ٣. بمحرّك الفيديو (io-video-editor)
 بـ`sfx.json` ضيف `lib` — كل عنصر `[الاسم، الثانية]` أو `[الاسم، الثانية، القوة]`:
 ```json
 { "outro": 4.2, "whoosh_up": [3.1], "lib": [["pop_soft", 3.2], ["cinematic_hit", 0.4, 0.16], ["kaching", 12.8]] }

@@ -161,7 +161,7 @@ Working example of 2b + motion blur + the wall: `motion/examples/stage-wall/` (1
 
 ## 6. Commands
 ```bash
-cd video-editor/motion
+cd io-video-editor/motion
 python3 voice.py <proj>                      # TTS per line (cache: only changed lines regenerate)
 python3 voice.py <proj> --own me.wav         # your own recording: the whole take is kept (lines tile it, cut at the quietest point), long pauses ≥0.45s → 0.30s (--keep-silence keeps them). Then set timing {keepOriginal:true, snap:'none'}
 python3 timeline.py <proj>                   # beat-snapped timeline + vo/vo_full.wav

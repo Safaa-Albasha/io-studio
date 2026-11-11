@@ -1,6 +1,6 @@
 ---
 name: io-montage-video
-description: مونتاج مقاطع بلا كلام على الإيقاع — مجلد مقاطع (مقهى، سفرة، منتج، مكان، فعالية) يتحوّل لفيديو واحد 9:16 يختار أحلى لحظة من كل مقطع ويقطع على نبضات الصوت. Use when user says "مونتاج من هالمقاطع"، "سو فيديو من هالكلبات"، "ركّب المقاطع على الأغنية"، "مونتاج على الإيقاع"، or sends a folder of clips without speech. Not for a talking video (use video-editor).
+description: مونتاج مقاطع بلا كلام على الإيقاع — مجلد مقاطع (مقهى، سفرة، منتج، مكان، فعالية) يتحوّل لفيديو واحد 9:16 يختار أحلى لحظة من كل مقطع ويقطع على نبضات الصوت. Use when user says "مونتاج من هالمقاطع"، "سو فيديو من هالكلبات"، "ركّب المقاطع على الأغنية"، "مونتاج على الإيقاع"، or sends a folder of clips without speech. Not for a talking video (use io-video-editor).
 ---
 
 # مونتاج مقاطع بلا كلام

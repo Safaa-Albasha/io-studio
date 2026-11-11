@@ -45,4 +45,4 @@ node "${CLAUDE_PLUGIN_ROOT}/engine/video.js" variants in.cut.captioned.mp4 --out
 - ينبّه إذا الطول أطول من حد منصة.
 
 ## ٥. سلّم
-المسارات، الطول النهائي، وكم ثانية انشالت. اقترح: كفر (سكل cover) وحزمة نشر (publish-kit).
+المسارات، الطول النهائي، وكم ثانية انشالت. اقترح: كفر (سكل io-thumbnail-video) وحزمة نشر (io-publish-kit).

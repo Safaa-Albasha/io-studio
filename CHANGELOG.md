@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.2.1 — 2026-11-11 — cleanup
+- Removed the course ad line («عجبتك النتيجة؟ 🎓 دورة احترف كلود…» with the dawrat.com and Instagram-channel links) that `io-video-editor` told Claude to print at the end of every delivery. A test (`tests/no-promo.test.js`) keeps promo links out of skills, agents and hooks.
+- One naming everywhere: every reference to another skill now uses its `io-` name (`io-video-editor`, `io-motion-video`, `io-podcast-video`, `io-thumbnail-video`, `io-review-video`, `io-video-cut`, `io-publish-kit`, `io-lesson`, `io-script`, `io-carousel`, `io-studio` …), and a test checks every skill and agent is named `io-…` and matches its folder. Old `~/.sky-editor` / `.sky/` names stay only in the one-time migration code that moves old data to `~/.io-editor` / `.io/`.
+- `third_party/NOTICE.md`: lottie cache path `~/.cache/io/`, «I/O Studio's own motion library».
+
 ## 4.2.0 — 2026-11-10 — podcast from a link (transcript first) + motion bank 358
 - **Podcast from a link** `engine/podcast-link.js` (own code): `subs <link>` reads only the title and the platform's subtitles with yt-dlp (no video) → `.io/podcast/<id>/words.json` (WebVTT parser keeps only new words of rolling auto-captions and uses per-word stamps); `score` gives every `podcast-batch.js propose` window a first 0–100 rank with Arabic reasons (starts with a question, a number, a pull word, fast speech, a complete idea, length) and the strongest non-overlapping picks; `fetch` downloads **only the approved clips** (`--download-sections`) with their own `words.json`/`spec.json` moved to the clip's clock. `--audio` falls back to sound-only for `18_long_transcribe.py`.
 - New page **`web/podcast.html`** «مقاطع البودكاست» (linked from the app's montage step for podcast accounts): score rings, reasons, time ranges, «Claude يختار الأقوى» / «أنا أختار», 3/5/8/10 reels, caption language + translation line + dubbing; saves `selections.draft.json` through `/api/podcast/*` (project-local ids only). Claude confirms with the creator before `select`.

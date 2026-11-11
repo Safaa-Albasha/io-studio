@@ -5,7 +5,7 @@
  * Adapted from Reel Studio (MIT, © 2026 Mohamed Abdou): scripts/lib/podcast-batch.mjs (proposePodcastCandidates,
  * validatePodcastSelections) and instructions/PODCAST.md. Changes: reads the words.json of
  * skills/io-video-editor/scripts/18_long_transcribe.py, writes one work folder per clip with the spec.json that
- * 20_episode_cuts.py takes, and a resumable `status` that names the next step of every clip (video-editor steps 5-11).
+ * 20_episode_cuts.py takes, and a resumable `status` that names the next step of every clip (io-video-editor steps 5-11).
  *
  *   node engine/podcast-batch.js propose <words.json> --episode <episode.mp4> [--dir <batch dir>] [--min 15] [--max 90] [--gap 1.2]
  *        pause-bounded transcript windows → <dir>/batch.json + candidates.md. A map of clean edges — it does NOT judge
