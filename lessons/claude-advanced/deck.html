@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>كلود للمستوى المتوسط</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#F6F1E9; --paper:#FFFBF5; --ink:#1E1A16; --muted:#6E655B; --line:#E4DACB;
+  --accent:#D9774B; --accent-soft:#F6DCCD; --blue:#3C6E91; --blue-soft:#DCE8F0;
+  --green:#4E8A5E; --green-soft:#DDEDE0; --dark:#1E1A16; --dark2:#2B2621;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#3a342e;font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;color:var(--ink)}
+.slide{width:1920px;height:1080px;margin:0 auto 40px;position:relative;overflow:hidden;background:var(--bg);padding:120px 150px 110px;display:flex;flex-direction:column}
+.export body,html.export body{background:var(--bg)}
+.kicker{position:absolute;top:56px;right:150px;font-size:28px;font-weight:600;color:var(--accent);letter-spacing:.5px}
+.foot{position:absolute;bottom:48px;right:150px;left:150px;display:flex;justify-content:space-between;font-size:24px;color:var(--muted)}
+.foot .n{direction:ltr;font-family:"JetBrains Mono",monospace}
+h1{font-size:150px;line-height:1.05;margin:0;font-weight:700}
+h2{font-size:84px;line-height:1.15;margin:0 0 18px;font-weight:700}
+.lead{font-size:42px;color:var(--muted);margin:0 0 44px;font-weight:500;line-height:1.4}
+ul.pts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:26px}
+ul.pts li{font-size:42px;line-height:1.35;padding-right:44px;position:relative;font-weight:500}
+ul.pts li::before{content:"";position:absolute;right:0;top:20px;width:18px;height:18px;border-radius:50%;background:var(--accent)}
+.ltr{direction:ltr;unicode-bidi:isolate;font-family:"JetBrains Mono",monospace}
+.acc{color:var(--accent)}
+.row{display:flex;gap:56px;flex:1;min-height:0}
+.col{flex:1;display:flex;flex-direction:column;min-width:0}
+.card{background:var(--paper);border:2px solid var(--line);border-radius:28px;padding:40px 44px}
+.pill{display:inline-block;border-radius:999px;padding:10px 26px;font-size:30px;font-weight:600}
+
+/* title */
+.title{background:var(--dark);color:#F6F1E9;justify-content:center}
+.title h1 .acc{color:var(--accent)}
+.title .sub{font-size:48px;color:#C9BEB1;margin-top:34px;font-weight:500}
+.title .meta{margin-top:70px;display:flex;gap:20px}
+.title .meta .pill{background:var(--dark2);color:#E8DFD3;border:2px solid #3d362f}
+.stairs{position:absolute;left:120px;bottom:0;display:flex;align-items:flex-end;gap:14px}
+.stairs i{display:block;width:86px;background:var(--accent);border-radius:14px 14px 0 0;opacity:.9}
+
+/* ladder */
+.ladder{display:flex;align-items:flex-end;gap:22px;flex:1;padding-top:20px}
+.step{flex:1;border-radius:26px 26px 0 0;padding:30px 26px;display:flex;flex-direction:column;justify-content:flex-start;color:var(--ink)}
+.step b{font-size:26px;font-family:"JetBrains Mono",monospace;color:var(--muted);direction:ltr;text-align:right}
+.step strong{font-size:46px;margin:8px 0 10px}
+.step span{font-size:28px;color:var(--muted);line-height:1.35}
+.step.hi{background:var(--accent)!important;color:#fff}
+.step.hi b,.step.hi span{color:#FBE7DC}
+
+/* context window */
+.window{border:4px dashed var(--accent);border-radius:30px;padding:30px;display:flex;flex-direction:column;gap:14px;position:relative;background:var(--paper)}
+.window .lbl{position:absolute;top:-28px;right:40px;background:var(--bg);padding:0 16px;font-size:30px;font-weight:700;color:var(--accent)}
+.chip{border-radius:16px;padding:14px 22px;font-size:30px;font-weight:500;background:#EFE7DB}
+.chip.u{background:var(--blue-soft)} .chip.a{background:#EFE7DB} .chip.f{background:var(--green-soft)}
+.chip.old{background:var(--accent-soft);opacity:.55}
+
+/* prompt blocks */
+.blocks{display:flex;gap:18px;margin:10px 0 50px}
+.blk{flex:1;border-radius:24px;padding:28px 26px;min-height:250px}
+.blk b{display:block;font-size:24px;font-family:"JetBrains Mono",monospace;opacity:.7;direction:ltr;text-align:right}
+.blk strong{display:block;font-size:48px;margin:6px 0 12px}
+.blk span{font-size:28px;line-height:1.4;display:block}
+.tips{display:flex;flex-wrap:wrap;gap:18px}
+.tips .pill{background:var(--paper);border:2px solid var(--line);font-size:32px;font-weight:500}
+
+/* demo */
+.demo{background:var(--dark);color:#F6F1E9;justify-content:center}
+.demo .kicker{color:var(--accent)}
+.demo .tag{font-size:40px;font-weight:700;color:var(--accent);margin-bottom:24px}
+.demo h2{font-size:120px;color:#fff}
+.demo .lead{color:#C9BEB1;font-size:46px}
+.demo .foot{color:#8E8478}
+.vs{display:flex;gap:40px;margin-top:40px;align-items:stretch}
+.vs .card{background:var(--dark2);border-color:#3d362f;color:#E8DFD3;font-size:34px;flex:1;line-height:1.5}
+.vs .card small{display:block;font-size:26px;color:var(--accent);font-weight:700;margin-bottom:12px}
+.rec{position:absolute;top:56px;left:150px;display:flex;align-items:center;gap:14px;font-size:28px;color:#C9BEB1}
+.rec i{width:22px;height:22px;border-radius:50%;background:#E5484D;display:block}
+
+/* compare table */
+table.cmp{width:100%;border-collapse:separate;border-spacing:0 14px;font-size:36px}
+table.cmp th{font-size:46px;text-align:right;padding:0 30px 10px}
+table.cmp td{background:var(--paper);padding:24px 30px;border-top:2px solid var(--line);border-bottom:2px solid var(--line)}
+table.cmp td:first-child{border-right:2px solid var(--line);border-radius:0 20px 20px 0;color:var(--muted);font-weight:600;width:22%}
+table.cmp td:last-child{border-left:2px solid var(--line);border-radius:20px 0 0 20px}
+table.cmp .ag{color:var(--accent);font-weight:600}
+.bottomline{margin-top:auto;font-size:44px;font-weight:700;background:var(--accent);color:#fff;border-radius:24px;padding:26px 40px;text-align:center}
+
+/* decision */
+.dec{display:flex;flex-direction:column;gap:22px}
+.dq{display:flex;align-items:center;gap:26px;background:var(--paper);border:2px solid var(--line);border-radius:24px;padding:26px 32px}
+.dq span{flex:1;font-size:36px;font-weight:500}
+.dq .pill{font-size:34px;min-width:250px;text-align:center}
+.p1{background:var(--blue-soft);color:var(--blue)} .p2{background:var(--green-soft);color:var(--green)} .p3{background:var(--accent-soft);color:#B4532A}
+.brief{background:var(--dark);color:#F6F1E9;border-radius:28px;padding:40px 44px}
+.brief h3{font-size:40px;margin:0 0 24px;color:var(--accent)}
+.brief ol{margin:0;padding:0 40px 0 0;font-size:34px;line-height:1.75}
+
+/* project */
+.proj{border:3px solid var(--ink);border-radius:30px;padding:36px;background:var(--paper);display:flex;flex-direction:column;gap:24px}
+.proj h4{margin:0;font-size:38px}
+.instr{background:#F3ECE1;border-radius:18px;padding:22px 26px;font-size:28px;line-height:1.55;color:#433b33}
+.files{display:flex;gap:16px;flex-wrap:wrap}
+.file{background:var(--green-soft);border-radius:14px;padding:14px 22px;font-size:28px;font-weight:600;color:#2f5b3b}
+.chats{display:flex;gap:16px}
+.chats div{flex:1;border:2px dashed var(--line);border-radius:16px;padding:16px;text-align:center;font-size:26px;color:var(--muted)}
+
+/* browser mock */
+.flow{display:flex;align-items:center;gap:40px;flex:1}
+.bubble{background:var(--blue-soft);border-radius:30px 30px 6px 30px;padding:34px 38px;font-size:34px;line-height:1.5;width:560px}
+.arrow{font-size:90px;color:var(--accent);font-weight:700}
+.browser{flex:1;border-radius:22px;border:3px solid var(--ink);background:#fff;overflow:hidden;height:520px;display:flex;flex-direction:column}
+.browser .bar{height:56px;background:#EFE7DB;display:flex;align-items:center;gap:12px;padding:0 22px;direction:ltr}
+.browser .bar i{width:16px;height:16px;border-radius:50%;background:#cfc3b3;display:block}
+.browser .body{flex:1;padding:36px;display:flex;flex-direction:column;gap:20px}
+.wf{border-radius:12px;background:#EFE7DB}
+.formula{margin-top:40px;display:flex;gap:18px;align-items:center;font-size:34px;font-weight:600}
+.formula .pill{background:var(--accent-soft);color:#9C4522}
+
+/* skill */
+.tree{background:var(--dark);color:#E8DFD3;border-radius:26px;padding:36px 40px;font-family:"JetBrains Mono",monospace;font-size:32px;line-height:1.75;direction:ltr;text-align:left}
+.tree .d{color:var(--accent)}
+.code{background:var(--paper);border:2px solid var(--line);border-radius:26px;padding:32px 36px;font-family:"JetBrains Mono",monospace;font-size:27px;line-height:1.7;direction:ltr;text-align:left;position:relative}
+.code mark{background:var(--accent-soft);color:#9C4522;border-radius:6px;padding:0 6px}
+.code .ar{font-family:"IBM Plex Sans Arabic";direction:rtl;unicode-bidi:isolate;font-size:28px}
+.note{font-family:"IBM Plex Sans Arabic";direction:rtl;text-align:right;font-size:28px;color:var(--accent);font-weight:700;margin-top:12px}
+
+/* terminal */
+.term{background:#14110E;color:#E8DFD3;border-radius:24px;padding:44px 48px;font-family:"JetBrains Mono",monospace;font-size:34px;line-height:1.9;direction:ltr;text-align:left;flex:1.25}
+.term .p{color:var(--accent)} .term .t{color:#8FB8D6} .term .ok{color:#86C095} .term .m{color:#8E8478}
+.term .ar{font-family:"IBM Plex Sans Arabic";direction:rtl;unicode-bidi:isolate}
+
+/* grid cards */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;flex:1}
+.grid .card h3{font-size:46px;margin:0 0 14px}
+.grid .card p{font-size:32px;margin:0;color:var(--muted);line-height:1.5}
+.grid .card .ic{font-size:30px;font-family:"JetBrains Mono",monospace;color:var(--accent);direction:ltr;display:inline-block;margin-bottom:14px;background:var(--accent-soft);padding:6px 16px;border-radius:12px}
+</style>
+</head>
+<body>
+
+<!-- 01 · العنوان -->
+<section class="slide title">
+  <div class="kicker">كورس · 20 دقيقة</div>
+  <h1>كلود<br><span class="acc">بعد مرحلة المبتدئ</span></h1>
+  <div class="sub">من البرومبت لين الإيجنت</div>
+  <div class="meta">
+    <span class="pill">البرومبت المبني</span><span class="pill">برومبت ولا إيجنت</span><span class="pill">بناء صفحة</span><span class="pill">السكلز</span><span class="pill">كلود كود</span>
+  </div>
+  <div class="stairs"><i style="height:120px"></i><i style="height:200px"></i><i style="height:280px"></i><i style="height:360px"></i><i style="height:440px"></i><i style="height:520px"></i></div>
+</section>
+
+<!-- 02 · 1.1 السلّم -->
+<section class="slide">
+  <div class="kicker">خريطة الكورس</div>
+  <h2>ست درجات</h2>
+  <p class="lead">كل درجة تشيل شغل من عليك — وانت تحتاج بس الدرجة اللي فوقك.</p>
+  <div class="ladder">
+    <div class="step" style="height:40%;background:#EFE7DB"><b>01</b><strong>برومبت</strong><span>سؤال ما يخلّيه يخمّن</span></div>
+    <div class="step" style="height:52%;background:#EADFD0"><b>02</b><strong>مشروع</strong><span>ذاكرة ثابتة لشغلك</span></div>
+    <div class="step" style="height:64%;background:#E5D6C4"><b>03</b><strong>صفحة</strong><span>أداة بدل جواب</span></div>
+    <div class="step" style="height:76%;background:#E0CDB7"><b>04</b><strong>سكل</strong><span>تعلّمه طريقتك مرة وحدة</span></div>
+    <div class="step" style="height:88%;background:#DBC4AB"><b>05</b><strong>موصلات</strong><span>يجيب المعلومات بنفسه</span></div>
+    <div class="step hi" style="height:100%"><b>06</b><strong>إيجنت</strong><span>يشتغل بدالك لين يخلص</span></div>
+  </div>
+  <div class="foot"><span>كلود · المستوى المتوسط</span><span class="n">02</span></div>
+</section>
+
+<!-- 03 · 2.1 النافذة -->
+<section class="slide">
+  <div class="kicker">01 · البرومبت</div>
+  <h2>كلود ما يتذكر — <span class="acc">يقرا</span></h2>
+  <p class="lead">كل رسالة، يقرا المحادثة كلها من أولها.</p>
+  <div class="row">
+    <div class="col" style="flex:1.1">
+      <div class="window">
+        <span class="lbl">نافذة السياق = الطاولة</span>
+        <div class="chip old">تعليماتك الأولى: «بلهجة عراقية، بلا إيموجي…»</div>
+        <div class="chip u">رسالتك</div>
+        <div class="chip a">جواب طويل</div>
+        <div class="chip f">ملف PDF</div>
+        <div class="chip u">«لا مو هيچ…»</div>
+        <div class="chip a">جواب طويل ثاني</div>
+        <div class="chip u">رسالتك الأخيرة</div>
+      </div>
+    </div>
+    <div class="col" style="justify-content:center">
+      <ul class="pts">
+        <li>المحادثة الطويلة تغطي تعليماتك الأولى</li>
+        <li>موضوع جديد = <span class="acc">محادثة جديدة</span></li>
+        <li>قبل ما تسكر: «لخّص القرارات حتى أبدي من جديد»</li>
+        <li>عدّل رسالتك بدل «لا مو هيچ»</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>كلود · المستوى المتوسط</span><span class="n">03</span></div>
+</section>
+
+<!-- 04 · 3.1 البرومبت المبني -->
+<section class="slide">
+  <div class="kicker">01 · البرومبت</div>
+  <h2>البرومبت المبني</h2>
+  <p class="lead">مو الأطول — هو اللي ما يخلي كلود يخمّن.</p>
+  <div class="blocks">
+    <div class="blk" style="background:var(--blue-soft)"><b>1</b><strong>سياق</strong><span>منو انت، ولمنو الشغل</span></div>
+    <div class="blk" style="background:var(--green-soft)"><b>2</b><strong>مهمة</strong><span>شنو بالضبط تريد</span></div>
+    <div class="blk" style="background:var(--accent-soft)"><b>3</b><strong>قيود</strong><span>الممنوع — ويّا «ليش»</span></div>
+    <div class="blk" style="background:#EFE7DB"><b>4</b><strong>شكل</strong><span>جدول؟ نقاط؟ كم كلمة؟</span></div>
+    <div class="blk" style="background:#E8E1F0"><b>5</b><strong>مثال</strong><span>المثال يغلب الوصف</span></div>
+  </div>
+  <div class="tips">
+    <span class="pill">افصل البيانات بالوسوم <span class="ltr">&lt;data&gt;</span></span>
+    <span class="pill">«اسألني 3 أسئلة قبل ما تبدي»</span>
+    <span class="pill">اطلب انتقاد مو مديح</span>
+  </div>
+  <div class="foot"><span>كلود · المستوى المتوسط</span><span class="n">04</span></div>
+</section>
+
+<!-- 05 · 3.2 ديمو -->
+<section class="slide demo">
+  <div class="kicker">01 · البرومبت</div>
+  <div class="rec"><i></i>ديمو على الشاشة</div>
+  <div class="tag">🎬 ديمو</div>
+  <h2>قبل / بعد</h2>
+  <div class="vs">
+    <div class="card"><small>قبل</small>«اكتب لي بوست عن الإنتاجية»</div>
+    <div class="card"><small>بعد</small>سياق + مهمة + قيود + شكل + مثال<br>+ «اسألني 3 أسئلة قبل ما تبدي»</div>
+  </div>
+  <div class="foot"><span>كلود · المستوى المتوسط</span><span class="n">05</span></div>
+</section>
+
+<!-- 06 · 4.1 برومبت ولا إيجنت -->
+<section class="slide">
+  <div class="kicker">02 · برومبت ولا إيجنت</div>
+  <h2>منو يمسك الدفة؟</h2>
+  <table class="cmp">
+    <tr><th></th><th>البرومبت</th><th class="acc">الإيجنت</th></tr>
+    <tr><td>منو يقرر الخطوة الجاية</td><td>انت</td><td class="ag">كلود</td></tr>
+    <tr><td>عدد الخطوات</td><td>خطوة، جواب، وتوقف</td><td class="ag">خطوات لين يوصل للهدف</td></tr>
+    <tr><td>الأدوات</td><td>غالباً بلا أدوات</td><td class="ag">ملفات، بحث، أوامر، موصلات</td></tr>
+    <tr><td>مثال</td><td>«اكتب كابشن»</td><td class="ag">«حلّل آخر 30 بوست وطلّع تقرير»</td></tr>
+  </table>
+  <div class="bottomline">الفرق مو بالذكاء — بمنو يقرر الخطوة الجاية</div>
+  <div class="foot"><span>كلود · المستوى المتوسط</span><span class="n">06</span></div>
+</section>
+
+<!-- 07 · 4.2 حلقة الإيجنت -->
+<section class="slide">
+  <div class="kicker">02 · برومبت ولا إيجنت</div>
+  <h2>الإيجنت = نموذج + أدوات + <span class="acc">حلقة</span></h2>
+  <div class="row" style="align-items:center">
+    <div class="col" style="flex:1.2;align-items:center">
+      <svg width="760" height="700" viewBox="0 0 760 700" font-family="IBM Plex Sans Arabic" aria-label="حلقة الإيجنت">
+        <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#D9774B"/></marker></defs>
+        <circle cx="380" cy="360" r="230" fill="none" stroke="#E4DACB" stroke-width="6"/>
+        <path d="M 470 148 A 230 230 0 0 1 600 300" fill="none" stroke="#D9774B" stroke-width="6" marker-end="url(#ah)"/>
+        <path d="M 600 430 A 230 230 0 0 1 470 572" fill="none" stroke="#D9774B" stroke-width="6" marker-end="url(#ah)"/>
+        <path d="M 290 572 A 230 230 0 0 1 160 430" fill="none" stroke="#D9774B" stroke-width="6" marker-end="url(#ah)"/>
+        <path d="M 160 300 A 230 230 0 0 1 290 148" fill="none" stroke="#D9774B" stroke-width="6" marker-end="url(#ah)"/>
+        <circle cx="380" cy="360" r="100" fill="#1E1A16"/>
+        <text x="380" y="352" text-anchor="middle" fill="#F6F1E9" font-size="40" font-weight="700">الهدف</text>
+        <text x="380" y="398" text-anchor="middle" fill="#C9BEB1" font-size="26">+ شنو يعني خلصت</text>
+        <g font-size="36" font-weight="700" text-anchor="middle">
+          <rect x="290" y="94" width="180" height="76" rx="38" fill="#DCE8F0"/><text x="380" y="144" fill="#3C6E91">يخطط</text>
+          <rect x="530" y="322" width="210" height="76" rx="38" fill="#F6DCCD"/><text x="635" y="372" fill="#9C4522">ينفذ بأداة</text>
+          <rect x="270" y="552" width="220" height="76" rx="38" fill="#DDEDE0"/><text x="380" y="602" fill="#2f5b3b">يشوف النتيجة</text>
+          <rect x="20" y="322" width="180" height="76" rx="38" fill="#EFE7DB"/><text x="110" y="372" fill="#433b33">يصحح</text>
+        </g>
+      </svg>
+    </div>
+    <div class="col">
+      <ul class="pts">
+        <li>يلف لين يوصل لـ<span class="acc">«خلصت»</span> اللي انت حددته</li>
+        <li>الأدوات: قراءة ملفات، بحث، تشغيل أوامر، موصلات</li>
+        <li>بدون تعريف «خلصت» — يلف أو يوقف بنص الطريق</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>كلود · المستوى المتوسط</span><span class="n">07</span></div>
+</section>
+
+<!-- 08 · 4.3 متى -->
+<section class="slide">
+  <div class="kicker">02 · برومبت ولا إيجنت</div>
+  <h2>متى أستخدم أيهم؟</h2>
+  <div class="row" style="margin-top:20px">
+    <div class="col dec" style="flex:1.35">
+      <div class="dq"><span>المهمة قصيرة وواضحة؟</span><b class="pill p1">برومبت</b></div>
+      <div class="dq"><span>الخطوات معروفة وتتكرر؟</span><b class="pill p2">سكل</b></div>
+      <div class="dq"><span>الخطوات مو معروفة، تحتاج أدوات وتجربة؟</span><b class="pill p3">إيجنت</b></div>
+      <p class="lead" style="margin:16px 0 0;font-size:34px">الإيجنت أبطأ وأغلى — يستاهل لما يوفّر عليك ساعة، مو دقيقة.</p>
+    </div>
+    <div class="col">
+      <div class="brief">
+        <h3>بريف الإيجنت</h3>
+        <ol>
+          <li>الهدف</li>
+          <li>شنو يعني «خلصت»</li>
+          <li>شنو مسموح يستخدم</li>
+          <li>شنو ممنوع يلمس</li>
+          <li>وين يوقف ويسألك</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>كلود · المستوى المتوسط</span><span class="n">08</span></div>
+</section>
+
+<!-- 09 · 5.1 المشاريع -->
+<section class="slide">
+  <div class="kicker">03 · المشاريع</div>
+  <h2>لا تعيد تشرح منو انت</h2>
+  <div class="row" style="margin-top:20px">
+    <div class="col" style="flex:1.25">
+      <div class="proj">
+        <h4>📁 مشروع: المحتوى</h4>
+        <div class="instr"><b>تعليمات ثابتة:</b> أنا صانع محتوى، جمهوري موظفين 25–35. أكتب بلهجة عراقية، جمل قصيرة، بلا إيموجي.</div>
+        <div class="files"><span class="file">هويتي.md</span><span class="file">قراراتي.md</span><span class="file">خدماتي-وأسعاري.md</span></div>
+        <div class="chats"><div>محادثة 1</div><div>محادثة 2</div><div>محادثة 3</div></div>
+      </div>
+    </div>
+    <div class="col" style="justify-content:center">
+      <ul class="pts">
+        <li>كل محادثة بالمشروع تشوف التعليمات والملفات</li>
+        <li>ملفات قليلة ونظيفة — كلها تاكل من الطاولة</li>
+        <li>مشروع لكل <span class="acc">سياق شغل</span>، مو لكل محادثة</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>كلود · المستوى المتوسط</span><span class="n">09</span></div>
+</section>
+
+<!-- 10 · 6.1 بناء صفحة -->
+<section class="slide">
+  <div class="kicker">04 · بناء صفحة</div>
+  <h2>من جواب إلى <span class="acc">صفحة</span></h2>
+  <div class="flow">
+    <div class="bubble">«سوّي صفحة هبوط لكورسي: لمنو، 3 فوايد، الأسعار، وزر تسجيل»</div>
+    <div class="arrow">←</div>
+    <div class="browser">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <div class="body">
+        <div class="wf" style="height:90px;background:var(--accent-soft)"></div>
+        <div style="display:flex;gap:18px"><div class="wf" style="flex:1;height:120px"></div><div class="wf" style="flex:1;height:120px"></div><div class="wf" style="flex:1;height:120px"></div></div>
+        <div class="wf" style="height:80px"></div>
+        <div class="wf" style="height:64px;width:260px;background:var(--accent);margin:0 auto"></div>
+      </div>
+    </div>
+  </div>
+  <div class="formula">وصف الصفحة: <span class="pill">لمنو</span><span class="pill">الهدف</span><span class="pill">الأقسام</span><span class="pill">الشكل</span></div>
+  <div class="foot"><span>كلود · المستوى المتوسط</span><span class="n">10</span></div>
+</section>
+
+<!-- 11 · 6.2 ديمو -->
+<section class="slide demo">
+  <div class="kicker">04 · بناء صفحة</div>
+  <div class="rec"><i></i>ديمو على الشاشة</div>
+  <div class="tag">🎬 ديمو</div>
+  <h2>صفحة هبوط بدقيقتين</h2>
+  <p class="lead">وصف ← صفحة شغالة ← تعديلين بالكلام. بدون سطر كود.</p>
+  <div class="foot"><span>كلود · المستوى المتوسط</span><span class="n">11</span></div>
+</section>
+
+<!-- 12 · 7.1 السكلز -->
+<section class="slide">
+  <div class="kicker">05 · السكلز</div>
+  <h2>المشروع يتذكر <span style="color:var(--muted)">منو انت</span> — السكل يتذكر <span class="acc">شلون تشتغل</span></h2>
+  <div class="row" style="margin-top:24px">
+    <div class="col" style="flex:.8">
+      <div class="tree"><span class="d">caption-skill/</span><br>├── SKILL.md<br>├── examples.md<br>└── <span class="d">scripts/</span></div>
+      <ul class="pts" style="margin-top:40px">
+        <li>نسخت نفس البرومبت ثالث مرة؟ <span class="acc">سوّه سكل</span></li>
+      </ul>
+    </div>
+    <div class="col">
+      <div class="code"><mark>---<br>name: caption-writer<br>description: <span class="ar">يكتب كابشن بأسلوبي. استخدمه لما أطلب كابشن.</span><br>---</mark><br># <span class="ar">الخطوات</span><br>1. <span class="ar">اقرا</span> examples.md<br>2. <span class="ar">سطر أول قوي، بلا إيموجي</span><br>3. <span class="ar">سؤال بالأخير</span>
+        <div class="note">↑ كلود يقرا الوصف بس — ويفتح الباقي وقت الحاجة</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>كلود · المستوى المتوسط</span><span class="n">12</span></div>
+</section>
+
+<!-- 13 · 7.2 ديمو -->
+<section class="slide demo">
+  <div class="kicker">05 · السكلز</div>
+  <div class="rec"><i></i>ديمو على الشاشة</div>
+  <div class="tag">🎬 ديمو</div>
+  <h2>سكل من الصفر</h2>
+  <p class="lead">3 كابشنات من شغلي ← سكل ← «كابشن عن القهوة»</p>
+  <div class="foot"><span>كلود · المستوى المتوسط</span><span class="n">13</span></div>
+</section>
+
+<!-- 14 · 8.1 الموصلات -->
+<section class="slide">
+  <div class="kicker">06 · الموصلات</div>
+  <h2>خلّيه يجيب المعلومات <span class="acc">بنفسه</span></h2>
+  <div class="row" style="align-items:center">
+    <div class="col" style="flex:1.1;align-items:center">
+      <svg width="760" height="620" viewBox="0 0 760 620" font-family="IBM Plex Sans Arabic" aria-label="كلود مربوط بالأدوات عبر MCP">
+        <g stroke="#D9774B" stroke-width="5" stroke-dasharray="12 10">
+          <line x1="380" y1="310" x2="140" y2="110"/><line x1="380" y1="310" x2="620" y2="110"/>
+          <line x1="380" y1="310" x2="120" y2="470"/><line x1="380" y1="310" x2="640" y2="470"/><line x1="380" y1="310" x2="380" y2="560"/>
+        </g>
+        <g font-size="32" font-weight="600" text-anchor="middle">
+          <rect x="40" y="70" width="200" height="80" rx="40" fill="#DCE8F0"/><text x="140" y="121" fill="#3C6E91">درايف</text>
+          <rect x="520" y="70" width="200" height="80" rx="40" fill="#F6DCCD"/><text x="620" y="121" fill="#9C4522">جيميل</text>
+          <rect x="20" y="430" width="200" height="80" rx="40" fill="#DDEDE0"/><text x="120" y="481" fill="#2f5b3b">كالندر</text>
+          <rect x="540" y="430" width="200" height="80" rx="40" fill="#EFE7DB"/><text x="640" y="481" fill="#433b33">نوشن</text>
+          <rect x="280" y="530" width="200" height="80" rx="40" fill="#E8E1F0"/><text x="380" y="581" fill="#5b4a78">أداتك</text>
+        </g>
+        <circle cx="380" cy="310" r="105" fill="#1E1A16"/>
+        <text x="380" y="305" text-anchor="middle" fill="#F6F1E9" font-size="44" font-weight="700">كلود</text>
+        <text x="380" y="350" text-anchor="middle" fill="#D9774B" font-size="28" font-family="JetBrains Mono">MCP</text>
+      </svg>
+    </div>
+    <div class="col">
+      <ul class="pts">
+        <li><span class="ltr">MCP</span>: طريقة موحّدة يربط بيها كلود أي أداة</li>
+        <li>«شنو اجتماعاتي وشنو أحضّر لكل واحد؟»</li>
+        <li>انت تتحكم بالصلاحيات — راجع قبل أي إرسال</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>كلود · المستوى المتوسط</span><span class="n">14</span></div>
+</section>
+
+<!-- 15 · 9.1 كلود كود -->
+<section class="slide">
+  <div class="kicker">07 · كلود كود</div>
+  <h2>هنا كلود يصير <span class="acc">إيجنت حقيقي</span></h2>
+  <div class="row" style="margin-top:20px">
+    <div class="term">
+      <span class="p">&gt;</span> <span class="ar">ابني صفحة الهبوط كملفات وشغّلها</span><br>
+      <span class="m">● Plan: 4 steps</span><br>
+      <span class="t">● Write</span> index.html<br>
+      <span class="t">● Write</span> styles.css<br>
+      <span class="t">● Bash</span> npx serve .<br>
+      <span class="t">● Read</span> console — fix RTL bug<br>
+      <span class="ok">✓ Done — http://localhost:3000</span>
+    </div>
+    <div class="col" style="justify-content:center">
+      <ul class="pts">
+        <li>يقرا، يكتب، يشغّل أوامر على جهازك</li>
+        <li>يكمّل مهمة بعشر خطوات لوحده</li>
+        <li>مو بس للمبرمجين: ملفات، صور، فيديو، بيانات</li>
+        <li>نفس السكلز والـ<span class="ltr">MCP</span> تشتغل هنا</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>كلود · المستوى المتوسط</span><span class="n">15</span></div>
+</section>
+
+<!-- 16 · 9.2 شلون تشتغل وياه -->
+<section class="slide">
+  <div class="kicker">07 · كلود كود</div>
+  <h2>أربع أشياء تفرق المتوسط عن المبتدئ</h2>
+  <div class="grid" style="margin-top:20px">
+    <div class="card"><span class="ic">CLAUDE.md</span><h3>ذاكرة المشروع</h3><p>قواعد مشروعك يقراها كل مرة. <span class="ltr">/init</span> يسويه.</p></div>
+    <div class="card"><span class="ic">Plan mode</span><h3>وضع التخطيط</h3><p>يخطط ويعرض الخطة قبل ما يلمس أي ملف.</p></div>
+    <div class="card"><span class="ic">Permissions</span><h3>الصلاحيات</h3><p>انت تقرر شنو يسوي بدون ما يسألك.</p></div>
+    <div class="card"><span class="ic">Plugins</span><h3>البلگنز</h3><p>سكلز وأوامر وأدوات بحزمة وحدة تنصبها مرة.</p></div>
+  </div>
+  <div class="foot"><span>كلود · المستوى المتوسط</span><span class="n">16</span></div>
+</section>
+
+<!-- 17 · 9.3 ديمو -->
+<section class="slide demo">
+  <div class="kicker">07 · كلود كود</div>
+  <div class="rec"><i></i>ديمو على الشاشة</div>
+  <div class="tag">🎬 ديمو</div>
+  <h2>نفس الصفحة — كمشروع</h2>
+  <div class="vs">
+    <div class="card"><small>بالمحادثة</small>سويت صفحة</div>
+    <div class="card"><small>بكلود كود</small>سويت مشروع: ملفات، تشغيل، تصحيح</div>
+  </div>
+  <div class="foot"><span>كلود · المستوى المتوسط</span><span class="n">17</span></div>
+</section>
+
+<!-- 18 · 10.1 الخاتمة -->
+<section class="slide title">
+  <div class="kicker">الخاتمة</div>
+  <h1 style="font-size:110px">انت بأي درجة <span class="acc">هسه؟</span></h1>
+  <div class="sub">اختار درجة وحدة فوقك وجرّبها هالأسبوع</div>
+  <div class="meta">
+    <span class="pill">برومبت</span><span class="pill">مشروع</span><span class="pill">صفحة</span><span class="pill">سكل</span><span class="pill">موصلات</span><span class="pill" style="background:var(--accent);border-color:var(--accent);color:#fff">إيجنت</span>
+  </div>
+  <div class="stairs"><i style="height:120px"></i><i style="height:200px"></i><i style="height:280px"></i><i style="height:360px"></i><i style="height:440px"></i><i style="height:520px"></i></div>
+</section>
+
+</body>
+</html>
