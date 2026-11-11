@@ -1,0 +1,138 @@
+{
+ "name": "فكرة عمرها 300 يوم — Claude × I/O Studio",
+ "fps": 60,
+ "width": 1080,
+ "height": 1920,
+ "bpm": 80,
+ "beatsPerBar": 4,
+ "beatOffset": 0,
+ "duration": 54,
+ "palette": {
+  "bg": "#0E1014",
+  "ink": "#F7F8FA",
+  "acc": "#2EC4F0",
+  "clay": "#14748F",
+  "hi": "#7FD8F5",
+  "mut": "#8A8F99",
+  "surf": "#161A21",
+  "line": "#2A2F38",
+  "ember": "#FF5A36",
+  "soft": "#ADB3BD"
+ },
+ "fonts": {
+  "display": "Alexandria\", \"AlexLatin",
+  "body": "Readex Pro",
+  "num": "Inter"
+ },
+ "extraFonts": [
+  {
+   "family": "Alexandria",
+   "file": "fonts/Alexandria-Arabic.woff2",
+   "weight": "100 900"
+  },
+  {
+   "family": "AlexLatin",
+   "file": "fonts/Alexandria-Latin.woff2",
+   "weight": "100 900"
+  }
+ ],
+ "post": {
+  "grain": 0.05,
+  "vignette": 0.35
+ },
+ "motionBlur": {
+  "samples": 6,
+  "shutter": 0.5,
+  "transitions": true
+ },
+ "scenes": [
+  {
+   "id": "s1_hook",
+   "file": "scenes/s1_hook.js",
+   "start": 0,
+   "end": 4
+  },
+  {
+   "id": "s2_buried",
+   "file": "scenes/s2_buried.js",
+   "start": 4,
+   "end": 10.4,
+   "transition": {
+    "type": "crossfade",
+    "dur": 0.6
+   }
+  },
+  {
+   "id": "s3_excuses",
+   "file": "scenes/s3_excuses.js",
+   "start": 10.4,
+   "end": 17.6,
+   "transition": {
+    "type": "dip",
+    "dur": 0.5,
+    "color": "#0E1014"
+   }
+  },
+  {
+   "id": "s4_delete",
+   "file": "scenes/s4_delete.js",
+   "start": 17.6,
+   "end": 23,
+   "transition": {
+    "type": "crossfade",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "s5_type",
+   "file": "scenes/s5_type.js",
+   "start": 23,
+   "end": 28.4,
+   "transition": {
+    "type": "cut",
+    "dur": 0
+   }
+  },
+  {
+   "id": "s6_burst",
+   "file": "scenes/s6_burst.js",
+   "start": 28.4,
+   "end": 40.4,
+   "transition": {
+    "type": "cut",
+    "dur": 0
+   }
+  },
+  {
+   "id": "s7_reveal",
+   "file": "scenes/s7_reveal.js",
+   "start": 40.4,
+   "end": 46,
+   "transition": {
+    "type": "cut",
+    "dur": 0
+   }
+  },
+  {
+   "id": "s8_without",
+   "file": "scenes/s8_without.js",
+   "start": 46,
+   "end": 49.6,
+   "transition": {
+    "type": "dip",
+    "dur": 0.4,
+    "color": "#0E1014"
+   }
+  },
+  {
+   "id": "s9_end",
+   "file": "scenes/s9_end.js",
+   "start": 49.6,
+   "end": 54,
+   "transition": {
+    "type": "crossfade",
+    "dur": 0.5
+   }
+  }
+ ]
+}
