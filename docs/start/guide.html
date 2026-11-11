@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>ابدأ مع آي أو استوديو</title>
+<style>
+@font-face{font-family:Cairo;src:url("../../skills/io-video-editor/motion/fonts/Cairo-VF.ttf");font-weight:200 1000}
+@font-face{font-family:Inter;src:url("../../skills/io-video-editor/motion/fonts/Inter-VF.ttf");font-weight:100 900}
+@page{size:A4;margin:0}
+:root{--ink:#14181D;--ink-2:#3B4651;--muted:#6B7783;--accent:#5CB8F0;--accent-strong:#2E9BE0;--soft:#E8F4FC;--line:#D9E3EC;--page:#FFFFFF}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--page);color:var(--ink);font-family:Cairo,sans-serif;font-size:13.2px;line-height:1.75}
+.page{width:210mm;height:297mm;padding:16mm 17mm 14mm;position:relative;overflow:hidden;page-break-after:always}
+.page:last-child{page-break-after:auto}
+code{white-space:nowrap}
+code,.cmd{font-family:Inter,ui-monospace,monospace;direction:ltr;unicode-bidi:isolate}
+header{display:flex;align-items:center;gap:14px;margin-bottom:6mm}
+header svg{width:58px;height:58px;flex:none}
+h1{font-size:30px;line-height:1.2;margin:0;font-weight:900}
+.tag{color:var(--muted);font-size:14px;margin:2px 0 0}
+.hero{background:var(--ink);color:#F2FAFF;border-radius:18px;padding:16px 20px;margin-bottom:6mm}
+.hero p{margin:0}
+.hero b{color:var(--accent)}
+h2{font-size:18px;margin:0 0 3mm;display:flex;align-items:center;gap:10px;font-weight:800}
+h2 .n{width:28px;height:28px;border-radius:9px;background:var(--accent);color:var(--ink);display:grid;place-items:center;font-size:15px;font-weight:900;flex:none}
+section{margin-bottom:5mm}
+ul{margin:0;padding-inline-start:20px}
+li{margin:1px 0}
+.need{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.need div{border:1px solid var(--line);border-radius:12px;padding:8px 12px}
+.need b{display:block;font-size:13.5px}
+.need span{color:var(--muted);font-size:12px}
+.steps{display:grid;gap:8px}
+.step{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start}
+.step i{font-style:normal;width:26px;height:26px;border-radius:50%;border:2px solid var(--accent-strong);color:var(--accent-strong);display:grid;place-items:center;font-weight:900;font-size:13px;margin-top:2px}
+.cmd{display:block;background:var(--soft);border:1px solid #CBE6F8;border-radius:10px;padding:7px 12px;margin-top:4px;font-size:13px;text-align:left;color:#0A3350}
+.note{background:var(--soft);border-radius:12px;padding:10px 14px;color:var(--ink-2)}
+.note b{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:12.6px}
+th,td{text-align:right;padding:3px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;color:var(--muted);font-weight:700}
+td:first-child{font-weight:700;white-space:nowrap}
+td q{quotes:"«" "»"}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.box{border:1px solid var(--line);border-radius:14px;padding:10px 14px}
+.box h3{margin:0 0 4px;font-size:14.5px}
+footer{position:absolute;bottom:10mm;inset-inline:17mm;display:flex;justify-content:space-between;color:var(--muted);font-size:11.5px;border-top:1px solid var(--line);padding-top:3mm}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <header>
+    <svg viewBox="0 0 64 64"><rect width="64" height="64" rx="15" fill="#5CB8F0"/><path d="M10.5 17h11.5v4.6h-2.6v20.8h2.6V47H10.5v-4.6h2.6V21.6h-2.6z" fill="#14181D"/><ellipse cx="47.4" cy="32" rx="8.6" ry="12.2" fill="none" stroke="#14181D" stroke-width="5.6"/><path d="M22 32h14.2" stroke="#F2FAFF" stroke-width="1.6" stroke-linecap="round"/><path d="M29.1 26.4Q30.1 31.0 34.7 32Q30.1 33.0 29.1 37.6Q28.1 33.0 23.5 32Q28.1 31.0 29.1 26.4z" fill="#FFFFFF"/></svg>
+    <div>
+      <h1>ابدأ مع آي أو استوديو</h1>
+      <p class="tag">I/O Studio · «فكرتك تدخل… والذكاء يكمّل الإبداع» · الإصدار 4.2.1</p>
+    </div>
+  </header>
+
+  <div class="hero">
+    <p><b>آي أو استوديو</b> إضافة (بلقن) <b>مجانية</b> لـ Claude Code، معمولة لصنّاع المحتوى العرب. تحچي ويّا Claude بلهجتك، وهو يسوّي لك كاروسيل، سكربت، مونتاج ريل بكابشن عربي، موشن، كفرات، بودكاست، وإحصائيات، لـ <b>إنستقرام ويوتيوب وتيك توك بالتساوي</b>.</p>
+  </div>
+
+  <section>
+    <h2><span class="n">١</span>شنو تحتاج قبل</h2>
+    <div class="need">
+      <div><b>Claude Code</b><span>بالترمنال أو تطبيق سطح المكتب، ويّا اشتراك Claude</span></div>
+      <div><b>Node.js 18 أو أحدث</b><span>من nodejs.org</span></div>
+      <div><b>Python 3</b><span>لأدوات الفيديو والصور</span></div>
+      <div><b>ffmpeg</b><span>للمونتاج. ما عندك؟ أداة الفحص تنصّبه لك</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">٢</span>التنصيب: ٣ خطوات</h2>
+    <div class="steps">
+      <div class="step"><i>1</i><div>افتح Claude Code واكتب هالأمر (يضيف المتجر):<span class="cmd">/plugin marketplace add Safaa-Albasha/io-studio</span></div></div>
+      <div class="step"><i>2</i><div>نصّب البلقن:<span class="cmd">/plugin install io@io-studio</span></div></div>
+      <div class="step"><i>3</i><div>سكّر Claude Code وافتحه من جديد، وبعدها گول <b>«ابدأ»</b> أو اكتب:<span class="cmd">/io:io-start</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">٣</span>أول مرة</h2>
+    <ul>
+      <li>Claude يسألك أسئلة بسيطة يعرّف بيها نفسك: اسمك، مجالك، لهجتك، ألوانك، وحساباتك. يحفظها بمجلد <code>.io/</code> داخل مشروعك، فكل شي يطلع بهويتك.</li>
+      <li>سوّ <b>مجلد لكل مشروع</b> (مثلاً «محتواي») وافتح Claude Code منه.</li>
+      <li>تريد يفحص جهازك وينصّب الناقص (ffmpeg، وِسبر للكابشن، قصّ الشخص…)؟ گول <b>«افحص جهازي»</b> أو اكتب <code>/io:io-doctor</code></li>
+    </ul>
+  </section>
+
+
+  <section>
+    <h2><span class="n">٤</span>البرنامج بالمتصفح</h2>
+    <p style="margin:0">گول <b>«افتح البرنامج»</b>: تنفتح صفحة فيها الأفكار، الجدول، المونتاج بتايملاين، ومكتبة ٣٥٨ حركة ولوكات وأصوات ودروس. كل شي يشتغل على جهازك، وبياناتك ما تطلع منه.</p>
+  </section>
+
+  <footer><span>آي أو استوديو · صفاء البشا · instagram.com/safaaio</span><span>صفحة ١ من ٢</span></footer>
+</div>
+
+<div class="page">
+  <section>
+    <h2><span class="n">٥</span>شنو تگول لـ Claude</h2>
+    <p style="margin:0 0 3mm;color:var(--ink-2)">ما تحتاج تحفظ أسماء الأدوات. احچي عادي، و Claude يختار الأداة الصح.</p>
+    <table>
+      <tr><th>تريد</th><th>گول</th><th>يطلع لك</th></tr>
+      <tr><td>كاروسيل</td><td><q>سوّي كاروسيل عن هالخبر</q> + الرابط</td><td>صور PNG بمقاس كل منصة</td></tr>
+      <tr><td>سكربت ريل</td><td><q>اكتب سكربت ريل عن…</q></td><td>سكربت إيقاعي بلهجتك، جاهز للملقّن</td></tr>
+      <tr><td>مونتاج</td><td><q>منتج هالمقطع</q> + الفيديو</td><td>ريل 9:16 بلا سكتات، كابشن عربي بتوقيت الكلمة، وموشن بألوانك</td></tr>
+      <tr><td>بودكاست</td><td><q>طلّع ريلات من هالحلقة</q> + الرابط</td><td>أقوى اللقطات بدرجات، تختار منها، وما ينزل إلا اللي اخترته</td></tr>
+      <tr><td>موشن</td><td><q>حرّك هالرقم</q> / <q>اشرح هالتطبيق بفيديو</q></td><td>مقطع موشن قصير أو فيلم شرح كامل</td></tr>
+      <tr><td>كفرات</td><td><q>كفر وثمبنيل</q></td><td>كفر ريلز + ثمبنيل يوتيوب + كفر تيك توك</td></tr>
+      <tr><td>تعريب</td><td><q>عرّب هالبوست</q></td><td>البوست الأجنبي بالعربي بنفس تصميمه</td></tr>
+      <tr><td>ترند</td><td><q>شنو الترند بمجالي اليوم؟</q></td><td>لوحة أخبار + فكرة لكل منصة</td></tr>
+      <tr><td>إعلان</td><td><q>إعلان عن</q> + رابط المنتج</td><td>كاروسيل إعلاني من صفحة المنتج</td></tr>
+      <tr><td>تسجيل</td><td><q>أريد أسجّل</q></td><td>استوديو بالمتصفح: شرائح + كاميرا + ملقّن</td></tr>
+      <tr><td>إحصائيات</td><td><q>شلون حساباتي هالشهر؟</q></td><td>لوحة المنصات الثلاث بنفس المعادلات</td></tr>
+      <tr><td>قبل النشر</td><td><q>افحص قبل النشر</q> / <q>كابشن وهاشتاقات</q></td><td>فحص جودة + نص لكل منصة</td></tr>
+    </table>
+  </section>
+
+
+  <section>
+    <h2><span class="n">٦</span>التحديث</h2>
+    <div class="note">لما ينزل إصدار جديد، اكتب الأمرين بالترتيب، وبعدها سكّر Claude Code وافتحه:
+      <span class="cmd">/plugin marketplace update io-studio</span>
+      <span class="cmd">/plugin update io@io-studio</span>
+    </div>
+  </section>
+
+  <div class="two">
+    <div class="box">
+      <h3>💡 نصايح</h3>
+      <ul>
+        <li>Claude يعرض لك النتيجة ويسألك قبل أي شي نهائي، مثل النشر.</li>
+        <li>ما عجبتك؟ گول شنو تغيّر: «كبّر الخط»، «أسرع»، «لون ثاني».</li>
+        <li>الدليل المصوّر الكامل (٢٥ صفحة) داخل البرنامج: زر «📖 دليل الاستخدام».</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>🛠️ إذا صار شي</h3>
+      <ul>
+        <li>أداة ما تشتغل؟ <code>/io:io-doctor</code> يفحص وينصّب الناقص.</li>
+        <li>الأوامر ما تطلع بعد التنصيب؟ سكّر Claude Code وافتحه.</li>
+        <li>نسخة قديمة؟ سوّ خطوة التحديث (٦).</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer><span>github.com/Safaa-Albasha/io-studio · مجاني · رخصة MIT</span><span>صفحة ٢ من ٢</span></footer>
+</div>
+
+</body>
+</html>
